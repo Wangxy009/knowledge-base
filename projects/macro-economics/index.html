@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中级宏观经济学 完整复习+练习题 — 曼昆第十版</title>
+<style>
+:root{--sidebar-w:260px;--c1:#2563eb;--c1l:#eff6ff;--bg:#f1f5f9;--card-bg:#fff;--txt:#1e293b;--txt2:#64748b;--bd:#e2e8f0;--sh:0 1px 3px rgba(0,0,0,0.06);--sh2:0 4px 6px rgba(0,0,0,0.07)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:15px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);line-height:1.75;display:flex;min-height:100vh}
+.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:#0f172a;color:#cbd5e1;overflow-y:auto;z-index:100;display:flex;flex-direction:column}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:#334155;border-radius:2px}
+.sidebar-header{padding:20px 16px 12px;border-bottom:1px solid #1e293b;position:sticky;top:0;background:#0f172a;z-index:2}
+.sidebar-header h2{font-size:1.05rem;font-weight:700;color:#f8fafc}
+.sidebar-header p{font-size:0.68rem;color:#64748b;margin-top:2px}
+.sidebar-nav{flex:1;padding:4px 0}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 16px;color:#94a3b8;text-decoration:none;font-size:0.81rem;font-weight:500;border-left:3px solid transparent;transition:all 0.15s}
+.sidebar-nav a:hover{background:#1e293b;color:#e2e8f0}
+.sidebar-nav a.active{background:#1e293b;color:#fff;border-left-color:var(--c1);font-weight:600}
+.sidebar-nav a .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:5px;background:#1e293b;color:#94a3b8;font-size:0.68rem;font-weight:700;flex-shrink:0}
+.sidebar-nav a.active .n{background:var(--c1);color:#fff}
+.search-wrap{padding:8px 16px 12px;border-bottom:1px solid #1e293b;position:sticky;top:86px;background:#0f172a;z-index:2}
+.search-wrap input{width:100%;padding:6px 10px;border-radius:5px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:0.78rem;outline:none}
+.search-wrap input::placeholder{color:#64748b}
+.search-wrap input:focus{border-color:var(--c1)}
+.main{margin-left:var(--sidebar-w);flex:1;padding:24px 32px;max-width:1050px}
+.chapter{margin-bottom:48px;padding-top:12px;scroll-margin-top:16px}
+.chapter-header{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+.chapter-num{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:11px;background:var(--c1);color:#fff;font-size:1.2rem;font-weight:800;flex-shrink:0}
+.chapter h2{font-size:1.4rem;font-weight:700;color:#0f172a}
+.chapter-subtitle{color:var(--txt2);font-size:0.78rem;margin-bottom:14px;margin-left:54px}
+.sec-title{font-size:1rem;font-weight:700;color:#0f172a;margin:22px 0 10px;padding-bottom:6px;border-bottom:2px solid #e2e8f0;display:flex;align-items:center;gap:6px}
+.card-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:10px}
+@media(min-width:800px){.card-grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--card-bg);border-radius:10px;padding:14px 16px;box-shadow:var(--sh);border:1px solid var(--bd);transition:box-shadow 0.2s}
+.card:hover{box-shadow:var(--sh2)}
+.card h4{font-size:0.9rem;font-weight:700;color:#0f172a;margin-bottom:5px;display:flex;align-items:center;gap:6px}
+.card p,.card ul,.card ol{font-size:0.82rem;color:#334155;line-height:1.7}
+.card ul,.card ol{padding-left:18px;margin-top:3px}
+.card li{margin-bottom:3px}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:0.72rem;font-weight:600;margin-top:4px}
+.tg-b{background:#dbeafe;color:#1e40af}.tg-g{background:#d1fae5;color:#065f46}.tg-o{background:#ffedd5;color:#9a3412}.tg-r{background:#fee2e2;color:#991b1b}.tg-y{background:#fef3c7;color:#92400e}
+
+.derivation{margin:8px 0}
+.derivation summary{cursor:pointer;font-weight:700;font-size:0.86rem;color:var(--c1);padding:8px 12px;background:var(--c1l);border-radius:8px;list-style:none;display:flex;align-items:center;gap:6px;transition:background 0.15s;user-select:none}
+.derivation summary:hover{background:#dbeafe}
+.derivation summary::before{content:"📐";font-size:0.9rem}
+.derivation[open] summary{border-radius:8px 8px 0 0;background:#dbeafe}
+.derivation .dc{padding:10px 14px;background:#f8fafc;border:1px solid #bfdbfe;border-top:none;border-radius:0 0 8px 8px;font-size:0.81rem;line-height:1.8}
+.derivation .dc .step{padding:5px 0;border-bottom:1px dashed #e2e8f0}
+.derivation .dc .step:last-child{border-bottom:none}
+
+.formula{display:inline-block;background:#f1f5f9;padding:1px 6px;border-radius:3px;font-family:"SF Mono","Cascadia Code",monospace;font-size:0.83rem;font-weight:600;color:#b91c1c}
+.fb{display:block;background:#f1f5f9;padding:8px 12px;border-radius:5px;font-family:"SF Mono","Cascadia Code",monospace;font-size:0.84rem;font-weight:600;color:#b91c1c;margin:5px 0;text-align:center;overflow-x:auto}
+.kp{background:#f0fdf4;border-left:4px solid #22c55e;padding:8px 12px;border-radius:0 6px 6px 0;margin:6px 0;font-size:0.81rem}
+.kp strong{color:#15803d}
+.warn{background:#fff7ed;border-left:4px solid #f97316;padding:8px 12px;border-radius:0 6px 6px 0;margin:6px 0;font-size:0.81rem}
+.warn strong{color:#c2410c}
+
+.example-box{background:#fefce8;border:2px solid #facc15;border-radius:10px;margin:12px 0;overflow:hidden}
+.example-box .eh{background:#fef08a;padding:8px 14px;font-weight:700;font-size:0.88rem;color:#854d0e;display:flex;align-items:center;gap:6px}
+.example-box .eb{padding:12px 14px;font-size:0.82rem;line-height:1.8}
+.example-box .eb .q{font-weight:600;color:#0f172a;margin-bottom:3px}
+.example-box .eb .sol{margin-top:6px}
+.example-box .eb .sol strong{color:#059669}
+.example-box .eb .ss{margin:3px 0 3px 8px;padding-left:10px;border-left:2px solid #fde68a}
+
+.q-card{background:var(--card-bg);border-radius:8px;margin:8px 0;box-shadow:var(--sh);border:1px solid var(--bd);overflow:hidden}
+.q-card .qh{padding:9px 12px;background:#f8fafc;border-bottom:1px solid var(--bd);display:flex;align-items:flex-start;gap:8px;font-weight:600;font-size:0.83rem}
+.q-card .qh .qt{display:inline-block;padding:2px 7px;border-radius:4px;font-size:0.7rem;font-weight:700;flex-shrink:0}
+.qt-c{background:#dbeafe;color:#1e40af}.qt-s{background:#d1fae5;color:#065f46}.qt-h{background:#fee2e2;color:#991b1b}
+.q-card .qb{padding:10px 12px;font-size:0.81rem;line-height:1.75}
+.q-card .qb .opts{margin:5px 0 5px 6px}
+.q-card .qb .opts span{display:block;padding:1px 0}
+.q-card .qa{background:#f0fdf4;border-top:1px solid #bbf7d0;padding:9px 12px}
+.q-card .qa summary{cursor:pointer;font-weight:700;font-size:0.8rem;color:#15803d;list-style:none}
+.q-card .qa .ac{margin-top:6px;font-size:0.8rem;line-height:1.8;color:#14532d}
+.q-card .qa .ac .step{padding:3px 0;border-bottom:1px dashed #d1fae5}
+.q-card .qa .ac .step:last-child{border-bottom:none}
+
+.data-table{width:100%;border-collapse:collapse;font-size:0.81rem;margin:6px 0}
+.data-table th{background:#f1f5f9;padding:7px 9px;text-align:left;border:1px solid #e2e8f0;font-weight:600}
+.data-table td{padding:6px 9px;border:1px solid #e2e8f0}
+.data-table tr:nth-child(even){background:#f8fafc}
+
+.chapter-toc{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:0.8rem}
+.chapter-toc strong{color:#0f172a}
+.chapter-toc ol{margin:3px 0 0 18px;color:#475569}
+.chapter-toc ol li{margin:1px 0}
+
+.search-highlight{background:#fde68a;padding:1px 2px;border-radius:2px}
+.hidden-by-search{display:none!important}
+.no-results{text-align:center;padding:60px 20px;color:var(--txt2);display:none}
+
+/* === Interactive Quiz Styles === */
+.quiz-mode-indicator{display:flex;align-items:center;gap:8px;padding:8px 16px;background:#1e293b;border-radius:6px;margin:8px 16px;font-size:0.72rem;color:#94a3b8}
+.quiz-toggle{padding:6px 12px;border-radius:5px;border:1px solid #334155;background:#2563eb;color:#fff;font-size:0.72rem;font-weight:600;cursor:pointer;transition:all 0.15s}
+.quiz-toggle:hover{background:#1d4ed8}
+.quiz-toggle.off{background:#1e293b;color:#94a3b8}
+.quiz-score{font-weight:700;color:#f8fafc;font-size:0.78rem}
+.quiz-reset{padding:4px 8px;border-radius:4px;border:1px solid #334155;background:transparent;color:#94a3b8;font-size:0.68rem;cursor:pointer;margin-left:4px}
+.quiz-reset:hover{background:#334155;color:#e2e8f0}
+
+.quiz-opt{cursor:pointer;display:block;padding:5px 8px;margin:2px 0;border-radius:5px;border:2px solid transparent;transition:all 0.12s;user-select:none}
+.quiz-opt:hover{border-color:#93c5fd;background:#eff6ff}
+.quiz-opt.selected{border-color:#2563eb;background:#dbeafe;font-weight:600}
+.quiz-opt.correct{border-color:#16a34a!important;background:#dcfce7!important;color:#15803d!important;font-weight:700!important}
+.quiz-opt.correct::after{content:" ✓";color:#16a34a;font-weight:700}
+.quiz-opt.wrong{border-color:#dc2626!important;background:#fef2f2!important;color:#991b1b!important;font-weight:700!important}
+.quiz-opt.wrong::after{content:" ✗";color:#dc2626;font-weight:700}
+.quiz-opt.disabled{pointer-events:none;opacity:0.75}
+.quiz-opt.show-correct{border-color:#16a34a!important;background:#dcfce7!important}
+
+.quiz-feedback{padding:6px 10px;margin-top:6px;border-radius:5px;font-size:0.78rem;font-weight:700;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.correct-msg{background:#dcfce7;color:#15803d;border:1px solid #86efac}
+.quiz-feedback.wrong-msg{background:#fef2f2;color:#991b1b;border:1px solid #fca5a5}
+
+/* Mode badge */
+.mode-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.65rem;font-weight:700}
+.mode-badge.quiz-on{background:#dcfce7;color:#15803d}
+.mode-badge.quiz-off{background:#f1f5f9;color:#64748b}
+
+/* Methodology card */
+.method-card{background:linear-gradient(135deg,#eff6ff,#f0fdf4);border:2px solid #93c5fd;border-radius:12px;padding:16px 20px;margin:12px 0}
+.method-card h4{color:#1e40af;font-size:0.92rem;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.method-card ol,.method-card ul{padding-left:20px;font-size:0.82rem;color:#1e293b;line-height:1.8}
+.method-card .step-label{display:inline-block;background:#2563eb;color:#fff;padding:1px 6px;border-radius:3px;font-size:0.7rem;font-weight:700;margin-right:4px}
+
+/* Formula cheat card */
+.cheat-card{background:#fefce8;border:2px solid #facc15;border-radius:12px;padding:14px 18px;margin:12px 0}
+.cheat-card h4{color:#854d0e;font-size:0.9rem;margin-bottom:8px}
+.cheat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px}
+@media(max-width:600px){.cheat-grid{grid-template-columns:1fr}}
+.cheat-item{font-size:0.8rem;padding:4px 0;border-bottom:1px dashed #fde68a}
+.cheat-item code{background:#fef08a;padding:1px 5px;border-radius:3px;font-size:0.78rem;font-weight:600}
+
+/* Exam prediction styles */
+.exam-header{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;padding:20px 24px;border-radius:14px;margin-bottom:20px}
+.exam-header h2{color:#fff!important;font-size:1.5rem}
+.exam-header p{color:#e9d5ff;font-size:0.85rem;margin-top:4px}
+.exam-section-title{font-size:1.05rem;font-weight:700;color:#7c3aed;margin:20px 0 10px;padding-bottom:6px;border-bottom:2px solid #e9d5ff;display:flex;align-items:center;gap:8px}
+.exam-section-title .pts{background:#7c3aed;color:#fff;padding:2px 8px;border-radius:4px;font-size:0.72rem}
+.exam-tf-card{background:#fff;border:2px solid #e2e8f0;border-radius:8px;padding:12px 16px;margin:8px 0}
+.exam-tf-card .tf-line{display:flex;align-items:flex-start;gap:12px;font-size:0.84rem}
+.exam-tf-card .tf-num{font-weight:700;color:#7c3aed;min-width:40px}
+
+@media(max-width:768px){.sidebar{width:100%;height:auto;position:relative}.sidebar-nav{display:flex;flex-wrap:wrap;padding:4px}.sidebar-nav a{padding:6px 10px;font-size:0.73rem;border-left:none;border-bottom:2px solid transparent}.search-wrap{position:static}.main{margin-left:0;padding:14px 12px}.card-grid{grid-template-columns:1fr}.cheat-grid{grid-template-columns:1fr}}
+@media print{.sidebar{display:none}.main{margin-left:0}.derivation,.q-card{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>📖 中级宏观经济学</h2><p>曼昆第十版 · 知识+例题+习题</p></div>
+<div class="search-wrap"><input type="text" id="searchInput" placeholder="🔍 搜索全部内容..." autocomplete="off"></div>
+<div class="quiz-mode-indicator">
+  <button class="quiz-toggle" id="quizToggle" onclick="toggleQuizMode()" title="切换做题/查看模式">📝 做题模式</button>
+  <span class="quiz-score" id="quizScore" style="display:none">0/0</span>
+  <button class="quiz-reset" id="quizReset" style="display:none" onclick="resetQuiz()">↺</button>
+</div>
+<div class="sidebar-nav">
+<a href="#ch1" class="active"><span class="n">1</span>宏观经济学科学</a>
+<a href="#ch2"><span class="n">2</span>宏观经济数据</a>
+<a href="#ch3"><span class="n">3</span>古典模型：总产出</a>
+<a href="#ch4"><span class="n">4</span>货币系统</a>
+<a href="#ch5"><span class="n">5</span>通货膨胀</a>
+<a href="#ch6"><span class="n">6</span>索洛增长模型</a>
+<a href="#ch7"><span class="n">7</span>经济波动导论</a>
+<a href="#ch8"><span class="n">8</span>IS-LM模型</a>
+<a href="#ch9"><span class="n">9</span>IS-LM应用</a>
+<a href="#ch10"><span class="n">10</span>开放经济</a>
+<a href="#ch11"><span class="n">11</span>蒙代尔-弗莱明</a>
+<a href="#exam-prediction" style="color:#fbbf24"><span class="n" style="background:#7c3aed;color:#fff">测</span>考前预测卷</a>
+</div>
+</nav>
+
+<main class="main" id="mainContent">
+
+<div style="background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;padding:14px 20px;border-radius:12px;margin-bottom:20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+<span style="font-size:1.5rem">👋</span>
+<div style="flex:1"><strong style="font-size:1.05rem">欢迎使用增强版复习系统！</strong><br><span style="font-size:0.82rem;opacity:0.9">左侧边栏点击 <strong>「📝 做题模式」</strong>按钮开启互动做题 → 第6章新增<strong>9道</strong>索洛模型选择题 → 底部<strong>考前预测卷</strong>按真实考试格式</span></div>
+<a href="#ch6" style="background:rgba(255,255,255,0.2);color:#fff;padding:6px 14px;border-radius:6px;text-decoration:none;font-size:0.8rem;font-weight:600;white-space:nowrap">新增题目→</a>
+<a href="#exam-prediction" style="background:#fbbf24;color:#1e293b;padding:6px 14px;border-radius:6px;text-decoration:none;font-size:0.8rem;font-weight:700;white-space:nowrap">🎯 预测卷→</a>
+</div>
+
+<!-- ===== CHAPTER 1 ===== -->
+<section class="chapter" id="ch1" data-chapter="1">
+<div class="chapter-header"><div class="chapter-num">1</div><h2>宏观经济学科学</h2></div>
+<div class="chapter-subtitle">The Science of Macroeconomics · 模型 · 内生/外生变量 · 弹性vs粘性价格</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>公式推导</li><li>例题精讲</li><li>课后作业（13题）</li><li>拔高题（2题）</li></ol></div>
+
+<div class="sec-title">📖 知识点详解</div>
+<div class="card-grid">
+<div class="card"><h4>🎯 什么是宏观经济学？</h4><p>研究<strong>整个国家/地区的总体经济</strong>。关注三大核心变量：<strong>GDP、失业率、通货膨胀率</strong>。核心议题分为长期经济增长和短期经济波动。</p><span class="tag tg-b">核心议题：长期增长 + 短期波动</span></div>
+<div class="card"><h4>🔬 经济学家的工具：模型</h4><p>经济太复杂，必须<strong>建立简化模型</strong>。模型的本质：确定内生变量（要解释的）、外生变量（给定的条件）、用数学方程描述关系。<span class="tag tg-g">模型 = 对复杂现实的简化抽象</span></p></div>
+</div>
+<div class="card"><h4>🔄 内生变量 vs 外生变量 — 最重要的区分</h4><div class="fb">外生变量（输入）→ [经济模型] → 内生变量（输出）</div>
+<table class="data-table"><tr><th></th><th>内生 (Endogenous)</th><th>外生 (Exogenous)</th></tr><tr><td>定义</td><td>由模型<strong>内部</strong>决定</td><td>由模型<strong>外部</strong>给定</td></tr><tr><td>供需模型例</td><td>P、Q</td><td>收入Y、偏好</td></tr><tr><td>索洛模型例</td><td>y、k</td><td>s、n、g</td></tr><tr><td>IS-LM例</td><td>Y、r</td><td>G、T、M</td></tr></table></div>
+<div class="card-grid">
+<div class="card"><h4>⏳ 弹性价格 vs 粘性价格</h4><p><strong>弹性价格</strong>：价格自由调整使供需平衡 → 古典经济学 → 分析<strong>长期</strong>。<strong>粘性价格</strong>：价格不能立即调整（菜单成本、合同）→ 凯恩斯经济学 → 分析<strong>短期</strong>。</p><span class="tag tg-o">全书逻辑：长期（弹性）→ 短期（粘性）</span></div>
+<div class="card"><h4>🏛️ 微观基础</h4><p>宏观行为要有微观根基：消费←效用最大化、投资←利润最大化、劳动供给←工作-闲暇权衡。不能随便假设函数形式，必须从理性个体行为推导。</p></div>
+</div>
+
+<div class="sec-title">✏️ 例题精讲</div>
+<div class="example-box"><div class="eh">📝 例1.1 — 识别内生/外生变量</div><div class="eb">
+<p class="q">需求Q<sup>d</sup>=1000-2P+0.5Y，供给Q<sup>s</sup>=3P-200。(a)哪些是内生/外生变量？(b)若Y=2000，求均衡P和Q；(c)Y增至3000后新均衡？</p>
+<div class="sol"><strong>解答：</strong>
+<div class="ss">(a)P和Q由方程组解出 → <strong>内生</strong>；Y是给定的 → <strong>外生</strong>。</div>
+<div class="ss">(b)Q<sup>d</sup>=2000-2P，令等于3P-200 → 5P=2200 → <span class="formula">P*=440, Q*=1120</span>。</div>
+<div class="ss">(c)Q<sup>d</sup>=2500-2P → 5P=2700 → <span class="formula">P**=540, Q**=1420</span>。外生变量变化→内生变量变化，这就是<strong>比较静态分析</strong>。</div></div></div></div>
+
+<div class="sec-title">📋 课后作业（老师布置）</div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第1题 · 经济学使用模型的原因</div><div class="qb"><div class="opts"><span>A.阐明经济学家的思考</span><span>B.说明外生变量如何影响内生变量</span><span>C.有趣</span><span>D.以上所有</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D（以上所有）</strong>。核心是B——模型的核心功能就是描述外生变量如何决定内生变量。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第2题 · 微观与宏观的关系</div><div class="qb"><div class="opts"><span>A.对如何从个体观察构建宏观经济数据的研究</span><span>B.对理解宏观经济关系背后的决策有用</span><span>C.是与宏观经济学无关的另外一个领域</span><span>D.是宏观经济学这个单词的误拼</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。微观研究个体决策，是宏观关系的<strong>微观基础</strong>。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第3题 · 工资粘性</div><div class="qb"><div class="opts"><span>A.劳动力工资是弹性价格的最好例子</span><span>B.劳动力工资是粘性价格的最好例子</span><span>C.劳动力市场容易实现市场出清</span><span>D.劳动力工资由需求方决定</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。工资不随供需灵活调整，正是<strong>价格粘性</strong>的体现。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第4题 · 2024年宏观经济现象</div><div class="qb"><p>关注2024年财经新闻，列出重要的宏观经济现象。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>国际：</strong>美联储维持高利率、地缘政治风险推高能源价格、全球供应链重构。</div><div class="step"><strong>国内：</strong>房地产市场调整、人民币汇率承压、CPI低位、青年失业率较高。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第5题 · 宏观变量识别</div><div class="qb"><div class="opts"><span>A.实际GDP</span><span>B.失业率</span><span>C.边际替代率</span><span>D.通货膨胀率</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。边际替代率（MRS）是<strong>微观</strong>概念（无差异曲线斜率）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第6题 · 严重衰退</div><div class="qb"><div class="opts"><span>A.萧条</span><span>B.通货紧缩</span><span>C.外生事件</span><span>D.市场出清假设</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A（萧条）</strong>。衰退=温和收缩；萧条=严重且持续的衰退（如1929-1933大萧条）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第7题 · 外生变量</div><div class="qb"><div class="opts"><span>A.在模型之外决定</span><span>B.在模型之内决定</span><span>C.为模型分析的结果</span><span>D.由模型所解释</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A</strong>。外生变量=模型的<strong>输入</strong>；内生变量=模型的<strong>输出</strong>。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第8题 · 宏观是"艺术"</div><div class="qb"><div class="opts"><span>A.数据为新理论提供动力</span><span>B.关系可用符号和方程表达</span><span>C.研究者必须主观确定哪些简化假设澄清思想、哪些误导</span><span>D.图表可说明变量</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。假设选择具有<strong>主观性</strong>——这是经济学的"艺术"成分。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第9题 · 总体经济的界定</div><div class="qb"><div class="opts"><span>A.中国经济</span><span>B.欧元区经济</span><span>C.美国经济</span><span>D.日本经济</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">四个选项都是总体经济。可能出题意图是区分"地区经济"与"总体经济"。欧元区是跨国货币区，但仍属宏观研究对象。</div></div></details></div>
+
+<div class="sec-title">🔥 拔高题</div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>1-1 · 构建简单宏观经济模型</div>
+<div class="qb"><p>某城市住房市场：Q<sup>d</sup>=2000-3P+0.8Y，Q<sup>s</sup>=2P-0.5C。Y=5000, C=1000。(a)区分内生/外生变量；(b)求均衡P和Q；(c)C上升50%对P和Q的影响——完整展示比较静态分析。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac">
+<div class="step"><strong>(a)</strong>内生：P、Q；外生：Y、C。</div>
+<div class="step"><strong>(b)</strong>Q<sup>d</sup>=6000-3P, Q<sup>s</sup>=2P-500 → 6000-3P=2P-500 → <span class="formula">P*=1300, Q*=2100</span>。</div>
+<div class="step"><strong>(c)</strong>C=1500 → Q<sup>s</sup>=2P-750 → 6000-3P=2P-750 → <span class="formula">P**=1350, Q**=1950</span>。ΔP=+50, ΔQ=-150。建筑成本↑→供给左移→价格↑、数量↓。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>1-2 · 价格粘性的宏观含义</div>
+<div class="qb"><p>2022-2023年美联储激进加息（0→5.25%），但失业率维持历史低位。用价格粘性理论解释：为什么紧缩没有立即导致失业大幅上升？如果价格完全弹性会怎样？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac">
+<div class="step"><strong>工资粘性：</strong>名义工资不会立即下调（合同、效率工资）→企业先调整<strong>招聘计划</strong>而非裁员→货币政策传导存在<strong>滞后性</strong>（6-18个月）。</div>
+<div class="step"><strong>若完全弹性：</strong>货币紧缩→价格瞬间调整→实际货币供给不变→产出和就业不受影响→货币中性即时成立。正是因为粘性，货币政策短期<strong>有效</strong>但也<strong>有代价</strong>（牺牲率）。</div></div></details></div>
+</section>
+
+<!-- ===== CHAPTER 2 ===== -->
+<section class="chapter" id="ch2" data-chapter="2">
+<div class="chapter-header"><div class="chapter-num">2</div><h2>宏观经济数据</h2></div>
+<div class="chapter-subtitle">GDP核算 · 名义vs实际GDP · CPI · 失业率 · 国民收入恒等式</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>公式推导</li><li>例题精讲</li><li>课后作业（14题）</li><li>拔高题（2题）</li></ol></div>
+
+<div class="sec-title">📖 知识点详解</div>
+<div class="card"><h4>📊 GDP的定义 — 每个字都重要</h4><p>GDP：在<strong>一定时期内</strong>、<strong>一国境内</strong>生产的<strong>所有最终</strong>产品与服务的<strong>市场价值</strong>总和。</p>
+<table class="data-table"><tr><th>关键词</th><th>含义</th></tr><tr><td>一定时期</td><td>GDP是<strong>流量</strong>，二手货不计入</td></tr><tr><td>一国境内</td><td>按地域（GDP）不按国籍（GNP）</td></tr><tr><td>最终</td><td>避免重复计算，只算最终产品</td></tr><tr><td>市场价值</td><td>用价格加权汇总不同商品</td></tr></table></div>
+<div class="card-grid">
+<div class="card"><h4>🧮 支出法 GDP</h4><div class="fb">Y = C + I + G + NX</div><ul><li><strong>C（消费）</strong>：家庭购买，占GDP约68%</li><li><strong>I（投资）</strong>：企业资本品+住房+存货变动。注意：买股票<strong>不算</strong>投资</li><li><strong>G（政府购买）</strong>：不含转移支付（社保、失业金）</li><li><strong>NX（净出口）</strong>：出口-进口</li></ul></div>
+<div class="card"><h4>💰 收入法 GDP</h4><p>GDP=劳动者报酬+资本收入+折旧+间接税-补贴。美国劳动收入约占GDP的<strong>2/3</strong>，资本收入约1/3——这是Cobb-Douglas取α≈1/3的实证基础。</p></div>
+</div>
+
+<details class="derivation"><summary>名义GDP vs 实际GDP — 怎样剥离"纯涨价"的影响？</summary><div class="dc">
+<div class="step"><strong>名义GDP</strong> = Σ(当期价格×当期数量)。包含价格和数量两种变化。</div>
+<div class="step"><strong>实际GDP</strong> = Σ(基期价格×当期数量)。只反映数量的真实变化。</div>
+<div class="step"><strong>GDP平减指数</strong> = (名义GDP/实际GDP)×100。衡量一国<strong>所有生产出来的</strong>商品价格变化。</div>
+<div class="step"><strong>CPI vs GDP平减指数：</strong>CPI衡量消费者购买的<strong>固定篮子</strong>（含进口品）；GDP平减指数衡量<strong>国内生产的所有</strong>商品（不含进口品）。CPI用固定权重（Laspeyres），易高估通胀（替代偏差）。</div></div></details>
+
+<div class="card"><h4>👷 失业率的关键定义</h4><ul><li>劳动力 = 就业者 + 失业者（<strong>积极寻找</strong>工作）</li><li>失业率 = 失业人数/劳动力×100%</li><li>劳动参与率 = 劳动力/成年人口×100%</li><li>"丧失信心的工人"不计入劳动力</li></ul></div>
+
+<div class="sec-title">✏️ 例题精讲</div>
+<div class="example-box"><div class="eh">📝 例2.1 — 支出法GDP</div><div class="eb">
+<p class="q">封闭经济：C=800, I=200, G=300, T=250, TR=50。(a)GDP；(b)私人储蓄、公共储蓄、国民储蓄；(c)验证S=I。</p>
+<div class="sol"><strong>解答：</strong>
+<div class="ss">(a)Y=C+I+G=800+200+300=<span class="formula">1300</span>。T和TR不出现在支出法GDP中。</div>
+<div class="ss">(b)Y<sub>d</sub>=Y-T+TR=1100。S<sub>private</sub>=Y<sub>d</sub>-C=300。S<sub>public</sub>=T-G-TR=-100（赤字）。S=300-100=<span class="formula">200</span>。</div>
+<div class="ss">(c)S=200=I ✓。政府赤字减少了国民储蓄。</div></div></div></div>
+
+<div class="example-box"><div class="eh">📝 例2.2 — CPI替代偏差</div><div class="eb">
+<p class="q">消费者买猪肉和鸡肉。2020年：猪肉10元/斤买5斤，鸡肉8元/斤买5斤。2024年：猪肉20元/斤，鸡肉9元/斤。消费者调整为猪肉3斤、鸡肉7斤。(a)CPI衡量的价格变化；(b)"真实"生活成本变化；(c)CPI偏差？</p>
+<div class="sol"><strong>解答：</strong>
+<div class="ss">(a)固定篮子成本：2020=90元；2024=145元。CPI通胀=<span class="formula">61.1%</span>。</div>
+<div class="ss">(b)调整后支出：3×20+7×9=123元。真实通胀=123/90-1=<span class="formula">36.7%</span>。</div>
+<div class="ss">(c)CPI偏差=61.1%-36.7%≈<span class="formula">24.4个百分点</span>——这就是<strong>替代偏差</strong>。</div></div></div></div>
+
+<div class="sec-title">📋 课后作业（14题）</div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第1题 · 辞职做家庭主妇</div><div class="qb"><div class="opts"><span>A.上升，上升</span><span>B.上升，不变</span><span>C.下降，上升</span><span>D.下降，不变</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。退出劳动力→劳动参与率↓。E↓而U不变→失业率↑。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第2题 · CPI vs GDP平减指数</div><div class="qb"><div class="opts"><span>A.国内汽车商提高卖给政府的汽车价格</span><span>B.三星提高它在国内的手机售价</span><span>C.理发师提高理发价格</span><span>D.房地产商降低商品房售价</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。三星是韩国公司→不影响中国GDP平减指数（仅计国内生产），但影响中国CPI（消费者购买）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第3题 · GDP涵盖范围</div><div class="qb"><div class="opts"><span>A.面包出售给家庭</span><span>B.面包被存放供以后销售</span><span>C.面包发霉变质被扔掉</span><span>D.出售给其它公司</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。面包发霉报废→存货投资被冲销→GDP减少。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第4题 · 不属于政府购买</div><div class="qb"><div class="opts"><span>A.社会保障支付</span><span>B.公共基础设施建设</span><span>C.购买军事设备</span><span>D.公务员提供的服务</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A</strong>。社保是<strong>转移支付</strong>，不购买商品/服务。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第5题 · 婚姻与GDP</div><div class="qb"><div class="opts"><span>A.不改变GDP</span><span>B.减少10万元GDP</span><span>C.增加10万元GDP</span><span>D.增加10万元以上GDP</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。婚前工资计入GDP；婚后同样服务免费→不计入。GDP遗漏了<strong>非市场生产</strong>。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第6题 · 中国GDP规模</div><div class="qb"><div class="opts"><span>A.80多万亿</span><span>B.100多万亿</span><span>C.120多万亿</span><span>D.140多万亿</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。2023年中国GDP约126万亿元。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第7题 · GDP估算值</div><div class="qb"><div class="opts"><span>A.父母在家做晚餐</span><span>B.房东享受住房服务</span><span>C.非法毒品交易</span><span>D.车主使用租赁汽车</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。自有住房的"住房服务"被<strong>估算</strong>（imputed）计入GDP。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第8题 · 伊甸园的GDP</div><div class="qb"><div class="opts"><span>A.0</span><span>B.很小但不为0</span><span>C.无限大</span><span>D.无法确定</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A</strong>。需求即时满足→不需要生产→没有经济活动→GDP=0。GDP衡量经济活动而非福利。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第9题 · 政府购买范围</div><div class="qb"><div class="opts"><span>A.中央政府</span><span>B.中央政府和地方政府</span><span>C.地方政府</span><span>D.国外政府</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。GDP中的G包括<strong>所有层级政府</strong>购买（不含转移支付）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第10题 · 投资的界定</div><div class="qb"><div class="opts"><span>A.百度建造办公大楼</span><span>B.打印店购买新电脑</span><span>C.张三购买商品房</span><span>D.小明购买茅台股票</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D</strong>。宏观"投资"=实物资本形成。买股票是<strong>金融投资</strong>（资产转移），不计入GDP投资。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="21000"><div class="qh"><span class="qt qt-s">简答</span>第11题 · GDP核算链条</div><div class="qb"><p>政府修路花费10000元。水泥厂购买新设备花费5000元。电脑店年末存货增加2000元。工人消费：大米2000元+电脑2000元。求GDP。（提示：C+I+G，注意中间环节不重复计算）</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>GDP=21000元</strong>。C=4000（大米2000+电脑2000），I=7000（设备5000+存货2000），G=10000。GDP=C+I+G=4000+7000+10000=21000。工人工资和水泥款是中间环节不重复计算。</div></div></details></div>
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第12题 · CPI与生活成本</div><div class="qb"><p>消费者只买苹果。2018年：红苹果10元/个买10个。2019年：红苹果20元/个，青苹果10元/个。她转而买10个青苹果。(1)CPI通胀率？(2)名义支出变化？(3)实际支出变化？(4)GDP平减指数变化？(5)真实生活成本变化？说明CPI偏差。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)CPI篮子=10个红苹果。2018成本=100元，2019成本=200元→CPI通胀率=<strong>100%</strong>。</div><div class="step">(2)名义支出不变（2018年100元，2019年10个青苹果×10元=100元）。</div><div class="step">(3)实际支出（2018价格）：10个青苹果×20元=200元→实际支出从100增至200。</div><div class="step">(4)平减指数=名义/实际。2018=1，2019=100/200=0.5（与CPI方向相反——拉氏vs帕氏）。</div><div class="step">(5)真实生活成本不变（两种苹果同效用→100元获相同效用）。CPI显示翻倍→完美展示<strong>替代偏差</strong>。</div></div></details></div>
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第13题 · 劳动力市场指标</div><div class="qb"><p>某国成年人口9000人。全职就业2500人，兼职就业2000人，自雇1000人，失业且正在找工作1000人。(1)求劳动参与率；(2)求失业率；(3)家庭调查和机构调查的就业人数差异？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)就业者=2500+2000+1000=<strong>5500人</strong>。失业者=1000人。劳动力=6500人。劳动参与率=6500/9000≈<strong>72.2%</strong>。</div><div class="step">(2)失业率=1000/6500≈<strong>15.4%</strong>。</div><div class="step">(3)家庭调查统计"有多少人工作"=5500人。机构调查统计"有多少个岗位"=2500+2000+500(双重兼职)+1000=<strong>6000个岗位</strong>。差异来自多份工作者。</div></div></details></div>
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第14题 · 外星人统计GDP</div><div class="qb"><p>假设外星人从太空观测地球，无法看到货币交易。他们可以用哪些实物指标来推断各国的经济活动水平？这反映了GDP统计的什么本质特征？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">可观测指标：夜间灯光亮度（与经济活动高度相关）、交通运输量、建筑物扩张速度、能源消耗（CO₂浓度、热辐射）。本质是<strong>实物指标vs货币指标</strong>的区别——GDP用货币衡量但反映的是实际经济活动。</div></div></details></div>
+
+<div class="sec-title">🔥 拔高题</div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>2-1 · 连锁加权GDP</div>
+<div class="qb"><p>某国只生产手机和面包。2020年（基年）：手机100部@5000元，面包10000个@5元。2024年：手机150部@4000元，面包12000个@6元。(a)拉氏和帕氏实际GDP增长率；(b)费雪指数增长率；(c)为什么连锁加权优于固定基年？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac">
+<div class="step"><strong>(a)</strong>拉氏=47.3%，帕氏=46.1%。</div>
+<div class="step"><strong>(b)</strong>费雪=√(1.473×1.461)≈46.7%。</div>
+<div class="step"><strong>(c)</strong>手机降价而面包涨价→拉氏高估手机权重→两种方法差异显著。连锁加权逐年更新权重，避免替代偏差。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>2-2 · GDP作为福利指标的局限</div>
+<div class="qb"><p>论述：为什么人均GDP不是衡量社会福利的完美指标？至少列6个因素并举例。补充指标建议？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">遗漏因素：(1)家庭生产 (2)闲暇 (3)环境质量 (4)收入分配 (5)健康/预期寿命 (6)地下经济。</div><div class="step">补充指标：HDI、绿色GDP、GPI、主观幸福感调查。</div></div></details></div>
+</section>
+
+<!-- ===== CHAPTER 3 ===== -->
+<section class="chapter" id="ch3" data-chapter="3">
+<div class="chapter-header"><div class="chapter-num">3</div><h2>古典模型：总产出的生产、分配与使用</h2></div>
+<div class="chapter-subtitle">Cobb-Douglas生产函数 · 新古典分配理论 · 可贷资金市场 · 挤出效应</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>公式推导</li><li>例题精讲</li><li>课后作业（22题）</li><li>拔高题（2题）</li></ol></div>
+
+<div class="sec-title">📖 知识点详解</div>
+<div class="card"><h4>🏭 总生产函数</h4><div class="fb">Y = F(K, L) 或 Y = A·K<sup>α</sup>·L<sup>1-α</sup>（Cobb-Douglas）</div><p>三大性质：(1)<strong>规模报酬不变</strong>：F(zK,zL)=zF(K,L)；(2)<strong>边际产出递减</strong>：MPK↓随K↑，MPL↓随L↑；(3)<strong>要素收入份额稳定</strong>：α=资本份额≈1/3。</p></div>
+
+<details class="derivation"><summary>新古典分配理论 — 为什么劳动赚那么多、资本赚那么多？</summary><div class="dc">
+<div class="step"><strong>竞争性企业最大化利润</strong>：max π=P·F(K,L)-W·L-R·K。</div>
+<div class="step"><strong>一阶条件</strong>：W/P=MPL（实际工资=劳动边际产出）；R/P=MPK（实际租金=资本边际产出）。</div>
+<div class="step"><strong>Cobb-Douglas下</strong>：MPL=(1-α)Y/L，MPK=αY/K。劳动收入=(1-α)Y，资本收入=αY。欧拉定理：Y=MPL·L+MPK·K。</div>
+<div class="kp"><strong>核心结论：</strong>每种要素获得其边际产出的价值，恰好分光所有产出。</div></div></details>
+
+<details class="derivation"><summary>可贷资金市场 — 利率是怎样决定的？</summary><div class="dc">
+<div class="step"><strong>封闭经济恒等式</strong>：Y=C+I+G → Y-C-G=I → <strong>S=I</strong>。</div>
+<div class="step"><strong>储蓄分解</strong>：S=(Y-T-C)+(T-G)=S<sub>private</sub>+S<sub>public</sub>。</div>
+<div class="step"><strong>均衡</strong>：S=I(r*)。储蓄=可贷资金供给，投资=需求，利率调节使二者相等。</div>
+<div class="step"><strong>财政扩张的挤出效应</strong>：G↑→S<sub>public</sub>↓→S↓→r↑→I↓。政府借钱→利率↑→私人投资被"挤出"。</div></div></details>
+
+<div class="sec-title">✏️ 例题精讲（2道 · 已包含在课后作业中）</div>
+
+<div class="sec-title">📋 课后作业（22题）</div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第1题 · 古典模型中什么决定产出</div><div class="qb"><div class="opts"><span>A.技术水平</span><span>B.人口增长率</span><span>C.资本积累数量</span><span>D.产品和服务的数量</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D</strong>。给定K、L和技术，Y=F(K,L)就确定了。A和B在古典模型中视为外生。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第2题 · 充分就业假设</div><div class="qb"><div class="opts"><span>A.资本和劳动都得到充分利用</span><span>B.资本充分利用但一些劳动未雇佣</span><span>C.所有劳动被雇佣但资本闲置</span><span>D.资本和劳动力都未充分利用</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A</strong>。价格完全弹性→市场即时出清→不存在失业和产能过剩。这是古典模型与现实的最大差距。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第3题 · 劳动边际产量</div><div class="qb"><div class="opts"><span>A.产出量除以劳动投入量</span><span>B.额外一单位劳动增加的额外产出</span><span>C.额外劳动和资本增加的额外产出</span><span>D.额外一单位货币支出增加的额外产出</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。MPL=∂Y/∂L。A是平均产出（Y/L），混淆边际与平均是常见错误。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>第4题 · 实际工资</div><div class="qb"><p>在古典模型中，实际工资（W/P）衡量的是（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 名义工资减去通胀率</span><span class="quiz-opt" data-val="B">B. 名义工资除以价格水平，以产出数量衡量</span><span class="quiz-opt" data-val="C">C. 名义工资乘以价格水平</span><span class="quiz-opt" data-val="D">D. 企业的利润份额</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。实际工资=名义工资/价格水平，衡量劳动能购买多少商品，即劳动的边际产出价值。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第5题 · 国民收入分配</div><div class="qb"><p>古典模型中国民收入的分配取决于（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 政府的税收政策</span><span class="quiz-opt" data-val="B">B. 劳动者的谈判能力</span><span class="quiz-opt" data-val="C">C. 国民收入在生产要素（资本和劳动）之间的分配</span><span class="quiz-opt" data-val="D">D. 企业的垄断程度</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。新古典分配理论：每种要素获得其边际产出价值，恰好分光所有产出。劳动份额=(1-α)，资本份额=α。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">单选</span>第6题 · 资本积累对工资的影响</div><div class="qb"><p>根据Cobb-Douglas生产函数，资本积累的提高会使实际工资（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 下降，因为资本替代了劳动</span><span class="quiz-opt" data-val="B">B. 不变</span><span class="quiz-opt" data-val="C">C. 上升，但仅短期有效</span><span class="quiz-opt" data-val="D">D. 上升，因为MPL=(1-α)A(K/L)^α随K/L提高而提高</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D</strong>。K↑→K/L↑→每个工人搭配更多资本→MPL↑→W/P↑。资本积累不替代劳动而是<strong>互补</strong>劳动，提高劳动生产率。</div></div></details></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第7题 · 投资决策</div><div class="qb"><div class="opts"><span>A.不开，回报率只有6%</span><span>B.不开，回报率只有12%</span><span>C.开，回报率是30%</span><span>D.开，回报率是35%</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。回报率=60/500=12%<15%（借款利率）→不开。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第10题 · 地震与要素价格</div><div class="qb"><div class="opts"><span>A.实际工资↑，实际租金↓</span><span>B.两者都↓</span><span>C.两者都↑</span><span>D.实际工资↓，实际租金↑</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D</strong>。K↓→MPK↑→R/P↑。同时每个工人搭配的资本↓→MPL↓→W/P↓。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第11-14题 · 增税效应</div><div class="qb"><p>政府增税1000亿（一次性），MPC=0.6，Y不变。(11)私人储蓄(12)公共储蓄(13)国民储蓄(14)投资。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(11)<strong>D</strong>（↓400亿）。ΔC=-600→ΔS<sub>private</sub>=-1000+600=-400。</div><div class="step">(12)<strong>A</strong>（↑1000亿）。S<sub>public</sub>=T-G。</div><div class="step">(13)<strong>B</strong>（↑600亿）。ΔS=-400+1000=+600。</div><div class="step">(14)<strong>B</strong>（↑600亿）。S↑→r↓→I↑600。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="A"><div class="qh"><span class="qt qt-c">单选</span>第15题 · 消费减少的效应</div><div class="qb"><p>政府鼓励储蓄使消费下降。在古典模型中，这将导致（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 投资增加和利率下降</span><span class="quiz-opt" data-val="B">B. 投资减少和利率上升</span><span class="quiz-opt" data-val="C">C. 投资和利率都不变</span><span class="quiz-opt" data-val="D">D. 产出下降</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A</strong>。C↓→S↑→可贷资金供给右移→r↓→I↑。储蓄是"美德"——更多储蓄压低利率刺激投资。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>第16题 · G和T等额减少</div><div class="qb"><p>政府购买G和税收T等额减少1000亿。古典模型中（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 投资减少和利率上升</span><span class="quiz-opt" data-val="B">B. 投资增加和利率下降</span><span class="quiz-opt" data-val="C">C. 投资和利率不变</span><span class="quiz-opt" data-val="D">D. 产出增加</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。ΔG=ΔT→S_public不变。但T↓→可支配收入↑→C↑（幅度<ΔT，因MPC<1）→S_private↑→总S↑→r↓→I↑。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第17题 · T和G各减1000</div><div class="qb"><p>税收T和政府购买G各减少1000亿，MPC=0.6。国民储蓄变化（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 减少1000亿元</span><span class="quiz-opt" data-val="B">B. 不变</span><span class="quiz-opt" data-val="C">C. 增加400亿元</span><span class="quiz-opt" data-val="D">D. 增加1000亿元</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。T和G各减1000→S_public不变。ΔC=MPC×(-1000)=-600→ΔS_private=-(-1000)-(-600)=<strong>+400</strong>。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>第18题 · 挤出效应</div><div class="qb"><p>政府购买G增加100亿。古典模型中（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 投资被完全挤出100亿</span><span class="quiz-opt" data-val="B">B. 有投资被挤出，但在0和100亿之间</span><span class="quiz-opt" data-val="C">C. 投资不受影响</span><span class="quiz-opt" data-val="D">D. 投资反而增加</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。G↑→r↑→C↓（r↑抑制消费）→S↑→部分抵消G↑对利率的推升→挤出<100亿。消费的利率弹性缓冲了挤出。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第19题 · MPL=W/P与P=MC的关系</div><div class="qb"><p>这两种利润最大化条件有何关系？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>等价！</strong>MC=W/MPL，P=MC→P=W/MPL→W/P=MPL。两者是同一条件的不同表述。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第20题 · 古典模型完整求解</div><div class="qb"><p>Y=8000,G=2500,T=2000,C=1000+2/3(Y-T),I=1200-100r。求储蓄、均衡利率及G减500后的变化。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac">
+<div class="step">S<sub>private</sub>=1000, S<sub>public</sub>=-500, S=500。r=7%。</div>
+<div class="step">G减500→S<sub>public</sub>=0, S=1000→r=2%。利率从7%降至2%。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第21题 · 房地产与可贷资金</div><div class="qb"><p>政府用税收减免改变企业投资和住房投资比重。分析对可贷资金市场和均衡的影响。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">企业投资税收减免→I<sub>business</sub>↑→总投资需求右移→r↑→I<sub>housing</sub>被部分挤出。结构改变，总投资方向调整。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第22题 · 储蓄悖论</div><div class="qb"><p>"储蓄悖论"的含义？政府应否鼓励节俭？短期/长期/超长期分析。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac">
+<div class="step"><strong>悖论：</strong>个体节俭是美德，但所有人同时增加储蓄→C↓→Y↓→衰退→储蓄可能反而不变。</div>
+<div class="step"><strong>短期（凯恩斯）：</strong>储蓄↑有害（需求不足）。<strong>长期（古典）：</strong>储蓄↑→r↓→I↑→K↑→Y↑（美德）。<strong>超长期（索洛）：</strong>s↑→k*↑→y*↑（水平效应），但增长率不变。</div></div></details></div>
+
+<div class="sec-title">🔥 拔高题</div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>3-1 · CES生产函数下的要素份额</div>
+<div class="qb"><p>CES: Y=[αK<sup>ρ</sup>+(1-α)L<sup>ρ</sup>]<sup>1/ρ</sup>。(a)推导MPK和MPL；(b)证明ρ→0时资本收入份额→α；(c)为什么替代弹性σ=1/(1-ρ)影响要素份额动态？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">ρ→0时CES退化为Cobb-Douglas，要素份额恒定。σ>1时K↑→资本份额↑（Piketty关注的情形）。σ的大小决定了r随K积累而下降的速度。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>3-2 · 李嘉图等价</div>
+<div class="qb"><p>政府今天减税1000亿并发债弥补，计划未来增税偿还。(a)李嘉图等价下C和S如何变化？(b)流动性约束下结论如何改变？(c)有限理性下呢？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac">
+<div class="step"><strong>(a)</strong>消费者是前瞻的→减税≠财富增加→C不变→S<sub>private</sub>↑=减税额→国民S不变→r不变。</div>
+<div class="step"><strong>(b)</strong>流动性约束→部分消费者借不到钱→减税释放流动性→C↑→S↓。李嘉图等价失效。</div>
+<div class="step"><strong>(c)</strong>短视→消费者只看今天减税→C↑→同(b)。实证倾向于拒绝完全的李嘉图等价。</div></div></details></div>
+</section>
+
+<!-- ===== CHAPTER 4 ===== -->
+<section class="chapter" id="ch4" data-chapter="4">
+<div class="chapter-header"><div class="chapter-num">4</div><h2>货币系统</h2></div>
+<div class="chapter-subtitle">货币定义 · 基础货币 · 货币乘数 · 存款创造 · 公开市场操作</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>课后作业（10题）</li><li>拔高题（2题）</li></ol></div>
+
+<div class="sec-title">📖 知识点详解</div>
+<div class="card-grid">
+<div class="card"><h4>💵 货币的定义与职能</h4><p>货币是<strong>被普遍接受作为交易媒介的资产</strong>。三大职能：计价单位、交易媒介、价值储藏。</p><p>货币层次：<strong>M0</strong>=通货+准备金；<strong>M1</strong>=通货+活期存款；<strong>M2</strong>=M1+储蓄存款+小额定期存款。</p></div>
+<div class="card"><h4>🏦 货币乘数</h4><div class="fb">M = m × B，其中 m = (cr+1)/(cr+rr)</div><p>B=基础货币=C+R，cr=C/D（通货存款比），rr=R/D（准备金率）。央行控制B，但m取决于公众（cr）和银行（rr）的行为。</p></div>
+</div>
+<details class="derivation"><summary>存款创造过程 — 100元如何变成几百元？</summary><div class="dc">
+<div class="step">央行注入100元基础货币→家庭留cr/(1+cr)现金，存1/(1+cr)入银行→银行留rr比例作准备，贷出(1-rr)→贷款被花掉→收款人再存→循环。每轮贷出规模递减（因准备金和现金漏出），最终货币供给扩大m倍。</div>
+<div class="step">公式推导：M=C+D=cr·D+D=(1+cr)D；B=C+R=cr·D+rr·D=(cr+rr)D。m=M/B=(1+cr)/(cr+rr)。</div></div></details>
+
+<div class="sec-title">📋 课后作业（10题）</div>
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第1题 · 货币的定义</div><div class="qb"><p>货币是（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 收入和利润的总和</span><span class="quiz-opt" data-val="B">B. 财富的另一种说法</span><span class="quiz-opt" data-val="C">C. 用于交易的资产</span><span class="quiz-opt" data-val="D">D. 央行持有的黄金</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。货币的核心定义是被普遍接受的交易媒介。收入是流量，财富是存量，黄金只是货币的组成部分之一。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>第2题 · 公开市场操作</div><div class="qb"><p>公开市场操作是指（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 央行调整法定准备金率</span><span class="quiz-opt" data-val="B">B. 中央银行购买和出售政府债券</span><span class="quiz-opt" data-val="C">C. 商业银行之间的拆借</span><span class="quiz-opt" data-val="D">D. 政府发行国债</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。OMO是央行最主要的货币政策工具。买债券→释放基础货币→M↑。卖债券→收回基础货币→M↓。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第3题 · M1的构成</div><div class="qb"><p>M1货币供给包括（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 通货和银行准备金</span><span class="quiz-opt" data-val="B">B. 储蓄存款和定期存款</span><span class="quiz-opt" data-val="C">C. 通货和活期存款</span><span class="quiz-opt" data-val="D">D. 股票和债券</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。M1=通货+活期存款。A是基础货币(M0)，B属于M2，D是金融资产而非货币。</div></div></details></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第4题 · 基础货币计算</div><div class="qb"><p>C=1000亿, R=500亿, D=5000亿。基础货币=？</p><div class="opts"><span>A.500</span><span>B.1000</span><span>C.1500</span><span>D.6000</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C（1500亿）</strong>。B=C+R=1000+500=1500。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第5题 · 货币供给</div><div class="qb"><p>接上题，货币供给=？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C（6000亿）</strong>。M=C+D=1000+5000=6000。货币乘数=6000/1500=4。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第6题 · 货币乘数公式</div><div class="qb"><p>cr=0.5, rr=0.1，货币乘数=？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D（2.5）</strong>。m=(0.5+1)/(0.5+0.1)=1.5/0.6=2.5。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第7题 · 超额准备金</div><div class="qb"><p>超额准备金是银行持有的（  ）准备金。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D</strong>（高于法定要求数量）。总准备金=法定+超额。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第8题 · QE的抵消</div><div class="qb"><p>美联储QE导致基础货币大增，由（  ）部分抵消。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A</strong>（准备金率提高）。银行持有大量超额准备金而不贷出→货币乘数大幅下降→M1未等比例扩张。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第9题 · 货币供给完整计算</div><div class="qb"><p>C=100亿, R=100亿, cr=0.2, rr=0.2。(1)B、D、m、M；(2)R提至110亿，V和Y不变，通胀率？(3)目标通胀10%，央行怎么做？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)B=200亿, D=500亿, m=3, M=600亿。(2)R提至110亿→rr=110/500=0.22→新m=(1.2)/(0.22+0.2)≈<strong>2.85</strong>→新M=210×2.85≈<strong>598.5亿</strong>→ΔM≈<strong>-0.3%</strong>→通胀率↓约0.3%。<strong>关键：R↑→rr↑→m↓，M反而减少！</strong>(3)需M=660→B=660/3=220亿→增发20亿基础货币。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第10题 · 存款创造</div><div class="qb"><p>央行印100万，家庭持1/4现金，余存银行，银行留5%准备金。M增加多少？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">现金=25万，存款=75万。准备金率5%→存款乘数=1/0.05=20→银行存款=75×20=<strong>1500万</strong>。M=现金+存款=25+1500=<strong>1525万</strong>。</div><div class="step"><strong>官方答案：M增加1525万。</strong>存款乘数法假设贷款全部以存款形式回流银行体系，每次贷出金额都重新存入银行再贷出，最终创造20倍存款。</div></div></details></div>
+
+<div class="sec-title">🔥 拔高题</div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>4-1 · 货币乘数的比较静态</div><div class="qb"><p>推导m=(cr+1)/(cr+rr)。(a)证明∂m/∂cr<0；(b)证明∂m/∂rr<0；(c)2008年后美国rr≈0但cr↑，为什么m从9暴跌至3？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(a)∂m/∂cr=(rr-1)/(cr+rr)²<0。(b)∂m/∂rr=-(cr+1)/(cr+rr)²<0。</div><div class="step">(c)恐慌→囤积现金→cr从~0.1升至~0.5-0.8→即使rr=0，m也大幅下降。恐慌驱动的现金囤积抵消了准备金扩张效果。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>4-2 · 数字货币与货币乘数</div><div class="qb"><p>央行推CBDC，家庭可将存款1:1兑换为数字人民币。(a)cr如何变化？(b)m如何变化？(c)对银行信贷能力的影响？(d)央行如何应对？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">CBDC降低持现成本→cr↑→m↓→银行存款外流→信贷收缩（"数字挤兑"）。央行需扩大资产负债表对冲，或通过CBDC利率调控替代传统工具。</div></div></details></div>
+</section>
+
+<!-- ===== CHAPTER 5 ===== -->
+<section class="chapter" id="ch5" data-chapter="5">
+<div class="chapter-header"><div class="chapter-num">5</div><h2>通货膨胀与货币数量论</h2></div>
+<div class="chapter-subtitle">货币数量论 · 费雪方程 · 铸币税 · 恶性通胀 · 古典二分法</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>公式推导</li><li>课后作业（17题）</li><li>拔高题（2题）</li></ol></div>
+
+<div class="sec-title">📖 知识点详解</div>
+<details class="derivation"><summary>货币数量论 — 为什么"印钱多了就一定通胀"？</summary><div class="dc">
+<div class="step"><strong>数量方程式（恒等式）：</strong><span class="formula">M×V=P×Y</span>。M=货币量，V=流通速度，P=价格，Y=实际产出。</div>
+<div class="step"><strong>变成理论：</strong>假设V恒定、Y由供给侧决定（长期Ȳ）→M↑→P必须等比例↑。<strong>货币供给增长率≈通胀率。</strong></div>
+<div class="step"><strong>增长率形式：</strong><span class="formula">π=ΔM/M-ΔY/Y</span>（ΔV/V=0）。例：M增长8%、Y增长3%→π≈5%。</div></div></details>
+
+<details class="derivation"><summary>费雪方程 — 名义利率与实际利率</summary><div class="dc">
+<div class="step"><strong>费雪方程：</strong><span class="formula">i=r+π</span>（近似）或(1+i)=(1+r)(1+π)（精确）。</div>
+<div class="step"><strong>费雪效应：</strong>货币供给↑→预期通胀↑→名义利率↑（一对一）。实际利率r由实体经济决定（S=I），不受货币影响。</div>
+<div class="step"><strong>事前vs事后：</strong>事前r=i-π<sup>e</sup>；事后r=i-π<sub>actual</sub>。未预期通胀→事前≠事后→财富在债权人和债务人之间再分配。</div></div></details>
+
+<div class="card"><h4>💸 通货膨胀的社会成本</h4><table class="data-table"><tr><th>成本</th><th>解释</th></tr><tr><td>鞋底成本</td><td>频繁跑银行取现</td></tr><tr><td>菜单成本</td><td>频繁更新价格标签</td></tr><tr><td>相对价格扭曲</td><td>不同企业调价频率不同</td></tr><tr><td>税收扭曲</td><td>名义税制不对通胀调整</td></tr><tr><td>财富再分配</td><td>未预期通胀→债务人受益</td></tr><tr><td>不确定性</td><td>高通胀→抑制长期投资</td></tr></table></div>
+
+<div class="sec-title">📋 课后作业（17题）</div>
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>第1题 · 实际货币余额</div><div class="qb"><p>实际货币余额是指（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 银行持有的准备金</span><span class="quiz-opt" data-val="B">B. 以其能够购买的产品和服务的数量表示的货币量</span><span class="quiz-opt" data-val="C">C. 通货的面值</span><span class="quiz-opt" data-val="D">D. 中央银行的资产</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。实际货币余额=M/P，衡量货币的实际购买力。人们关心的是能买多少东西（实际量），而非名义金额。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第2题 · 货币需求</div><div class="qb"><p>根据货币数量论，货币需求（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 随利率上升而增加</span><span class="quiz-opt" data-val="B">B. 是固定的</span><span class="quiz-opt" data-val="C">C. 随着实际收入的增加而增加</span><span class="quiz-opt" data-val="D">D. 完全由央行控制</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。Y↑→交易需求↑→L(Y,r)↑。货币需求随收入增加，随名义利率（持币机会成本）减少。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第3题 · 流通速度与通胀</div><div class="qb"><p>M增长10%，V增长2%，Y增长3%，则通胀率（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 等于7%</span><span class="quiz-opt" data-val="B">B. 小于7%</span><span class="quiz-opt" data-val="C">C. 大于7%</span><span class="quiz-opt" data-val="D">D. 等于10%</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。π=ΔM/M+ΔV/V-ΔY/Y=10%+2%-3%=<strong>9%</strong>>7%。V的增长额外推高了通胀。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第4题 · 实际利率计算</div><div class="qb"><p>i=1%, π=5%，实际利率=？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C（-4%）</strong>。r=i-π=1%-5%=-4%。实际利率为负→购买力缩水。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第5题 · 费雪效应</div><div class="qb"><p>实际利率↓1%，通胀↑2%，名义利率（ ）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B（↑1%）</strong>。Δi=Δr+Δπ=-1%+2%=+1%。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第6题 · 货币增长率+费雪效应</div><div class="qb"><p>r和Y不变，货币增长率↑1%→通胀↑1%，名义利率↑1%。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。完全一对一——费雪效应的核心预测。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第7题 · 名义利率变化</div><div class="qb"><p>货币供给增长率↑3%，r=2%，名义利率提高？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B（3%）</strong>。Δi=Δπ=3%（费雪效应）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第8题 · 货币增长影响什么</div><div class="qb"><p>古典模型中货币增长率↑会增加？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C（名义利率）</strong>。Y由供给决定（货币中性），r由S=I决定，V由支付习惯决定。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第9题 · 持有货币的机会成本</div><div class="qb"><p>持有货币的机会成本是（ ）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A（名义利率）</strong>。持币放弃的收益=将钱存银行能获得的i。标准Baumol-Tobin模型定义机会成本为名义利率。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第10题 · 预期未来QE</div><div class="qb"><p>央行宣布将实施QE但未改变当期政策，则（ ）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D（名义利率和当前价格都↑）</strong>。预期未来通胀↑→费雪效应→i↑。前瞻性定价→当前P也开始↑。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第11题 · 恶性通胀的动机</div><div class="qb"><p>恶性通胀背后的动机往往是政府（ ）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>（需要通过铸币税支付支出）。财政困境→货币超发→恶性通胀。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="A"><div class="qh"><span class="qt qt-c">单选</span>第12题 · 实际利率的含义</div><div class="qb"><p>实际利率等于（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 当期消费与未来消费的相对价格</span><span class="quiz-opt" data-val="B">B. 名义利率减去失业率</span><span class="quiz-opt" data-val="C">C. 中央银行设定的政策利率</span><span class="quiz-opt" data-val="D">D. 银行的贷款利率</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A</strong>。r衡量放弃1单位今天消费能在未来获得多少消费。r↑→今天消费更"贵"→储蓄激励↑→消费↓。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第13题 · 实际变量</div><div class="qb"><p>以下哪项是实际变量（而非名义变量）？（  ）</p><div class="opts"><span class="quiz-opt" data-val="A">A. 价格水平</span><span class="quiz-opt" data-val="B">B. 名义GDP</span><span class="quiz-opt" data-val="C">C. 产品和服务的数量</span><span class="quiz-opt" data-val="D">D. 名义工资</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。实际变量用实物单位衡量，不受货币供给影响。名义变量用货币单位衡量，随M等比例变化（货币中性）。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第14题 · 货币非中性的渠道</div><div class="qb"><p>在短期，货币供给增加可能通过什么渠道影响实际产出？（  ）</p><div class="opts"><span class="quiz-opt" data-val="A">A. 增加技术进步的速率</span><span class="quiz-opt" data-val="B">B. 提高劳动参与率</span><span class="quiz-opt" data-val="C">C. 货币供给增长→实际余额↑→消费↑，同时M↑→r↓→投资可能↑或↓</span><span class="quiz-opt" data-val="D">D. 货币在长期才是中性的</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。短期价格粘性→M↑→实际M/P↑→刺激消费。同时M↑→r↓→I可能↑。但这些效应在长期价格调整后消失。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第15题 · 恶性通胀与财政</div><div class="qb"><p>解释(1)恶性通胀开始与财政政策相关；(2)结束也与财政政策变化有关。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">财政危机→无法征税/发债→只能印钱→货币激增→恶性通胀（财政是根源，货币是近因）。停止恶性通胀需财政改革（削减赤字、扩大税基）+货币改革同时进行。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第16题 · 事前/事后实际利率</div><div class="qb"><p>通胀序列：1%,2%,4%；名义利率：5%,5%,6%。(1)事后实际利率；(2)若π<sup>e</sup>=π<sub>-1</sub>，第2/3期事前r；(3)小明第2期放贷，第3期收到还款时愉快吗？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)事后：4%,3%,2%。(2)事前：第2期4%，第3期4%。(3)预期赚4%实际只赚2%→<strong>不愉快</strong>（通胀超预期→债权人受损）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第17题 · V与通胀</div><div class="qb"><p>(1)π表达式；(2)V不变→"通胀永远是货币现象"；(3)疫情C和I↓→V如何变？对结论的影响？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)π=ΔM/M+ΔV/V-ΔY/Y。(2)V不变→π由ΔM/M决定。(3)V↓（顺周期）→MV=PY中P↓压力。但V变化是暂时的，长期中V回归趋势→π仍由货币增长决定。</div></div></details></div>
+
+<div class="sec-title">🔥 拔高题</div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>5-1 · Cagan模型与恶性通胀</div><div class="qb"><p>Cagan货币需求：ln(M/P)=a-bπ<sup>e</sup>。适应性预期。(a)铸币税最大化的通胀率；(b)稳态铸币税；(c)为何超过最优点后会通胀失控？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(a)μ*=1/b。(b)S=μ·e<sup>a-bμ</sup>。(c)μ>1/b时高货币增长反而减少实际铸币税→政府印更多→恶性循环→恶性通胀（通胀的"拉弗曲线"）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>5-2 · 泰勒规则与通胀目标</div><div class="qb"><p>Taylor Rule: i=r*+π+0.5(π-π*)+0.5(Y-Ȳ)/Ȳ。r*=2%,π*=2%。当前π=6%,Y=Ȳ。(a)建议i？(b)建议的实际利率？为什么反通胀需要r>r*？(c)牺牲率约多少？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(a)i=2+6+0.5(4)+0=10%。(b)实际r=10-6=4%>r*=2%。反通胀需要实际利率高于自然利率来抑制总需求。(c)牺牲率≈4（降1%通胀约牺牲4%GDP）。</div></div></details></div>
+</section>
+
+<!-- ===== CHAPTER 6 ===== -->
+<section class="chapter" id="ch6" data-chapter="6">
+<div class="chapter-header"><div class="chapter-num">6</div><h2>索洛增长模型</h2></div>
+<div class="chapter-subtitle">稳态 · 黄金律 · 技术进步 · 收敛 · 增长核算</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>公式推导</li><li>课后作业（第一批+新增共19题）</li><li>拔高题（2题）</li></ol></div>
+
+<div class="sec-title">📖 知识点详解</div>
+<div class="card"><h4>🗺️ 索洛模型三层次</h4><table class="data-table"><tr><th>版本</th><th>持平投资</th><th>回答的问题</th></tr><tr><td>仅资本积累</td><td>δk</td><td>储蓄率如何影响生活水平？</td></tr><tr><td>+人口增长</td><td>(δ+n)k</td><td>为什么有些国家持续增长？</td></tr><tr><td>+技术进步</td><td>(δ+n+g)k̂</td><td>为什么人均生活水平持续提高？</td></tr></table></div>
+
+<details class="derivation"><summary>核心推导：资本积累方程与稳态</summary><div class="dc">
+<div class="step"><strong>每有效工人资本积累：</strong><span class="formula">Δk̂=s·f(k̂)-(δ+n+g)k̂</span>。实际投资-持平投资。</div>
+<div class="step"><strong>稳态条件：</strong>Δk̂=0→<span class="formula">s·f(k̂*)=(δ+n+g)k̂*</span>。</div>
+<div class="step"><strong>平衡增长路径增长率：</strong>每有效工人k̂,ŷ→0%；人均k,y→g；总量K,Y→n+g；实际工资→g；资本回报率→0%。</div>
+<div class="kp"><strong>最重要结论：</strong>长期人均生活水平只能靠技术进步(g)提高。储蓄率只有<strong>水平效应</strong>，没有<strong>增长效应</strong>。</div></div></details>
+
+<details class="derivation"><summary>黄金律 — 最大化稳态消费</summary><div class="dc">
+<div class="step"><strong>稳态消费：</strong>ĉ*=f(k̂*)-(δ+n+g)k̂*。</div>
+<div class="step"><strong>黄金律条件：</strong><span class="formula">f'(k̂<sub>gold</sub>)=δ+n+g</span>即MPK=持平投资斜率。</div>
+<div class="step"><strong>判断口诀：</strong>MPK>δ+n+g→资本太少→多储蓄。MPK<δ+n+g→资本太多→少储蓄多消费。</div></div></details>
+
+<details class="derivation"><summary>增长核算 — 把增长拆成要素贡献+TFP</summary><div class="dc">
+<div class="step"><span class="formula">ΔY/Y=ΔA/A+α·ΔK/K+(1-α)·ΔL/L</span>。产出增长=TFP增长+资本贡献+劳动贡献。</div>
+<div class="step"><strong>索洛残差：</strong>ΔA/A=ΔY/Y-α·ΔK/K-(1-α)·ΔL/L。衡量<strong>技术进步</strong>的贡献。</div></div></details>
+
+	<div class="sec-title">🧠 解题方法论：索洛模型四大题型</div>
+	<div class="method-card">
+	<h4>🔑 题型一：求稳态值</h4>
+	<ol><li><span class="step-label">1</span>写出稳态条件：sf(k̂*)=(δ+n+g)k̂*</li>
+	<li><span class="step-label">2</span>Cobb-Douglas下：k̂*=[s/(δ+n+g)]<sup>1/(1-α)</sup></li>
+	<li><span class="step-label">3</span>记住增长率：ŷ增长0%，y增长g，Y增长n+g</li></ol>
+	<h4 style="margin-top:10px">🔑 题型二：黄金律判断</h4>
+	<ol><li><span class="step-label">1</span>计算MPK=α/(K/Y)或α·k̂<sup>α-1</sup></li>
+	<li><span class="step-label">2</span>比较MPK vs δ+n+g</li>
+	<li><span class="step-label">3</span>MPK>δ+n+g→资本不足→增s；MPK<δ+n+g→资本过度→降s</li></ol>
+	<h4 style="margin-top:10px">🔑 题型三：政策效果分析</h4>
+	<ol><li><span class="step-label">1</span>区分水平效应vs增长效应：s只改变水平，g改变增长率</li>
+	<li><span class="step-label">2</span>过渡动态：画出Δk̂图→s变化→实际投资线移动→新稳态</li>
+	<li><span class="step-label">3</span>人均消费c*=(1-s)f(k̂*)——黄金律最大化c*</li></ol>
+	<h4 style="margin-top:10px">🔑 题型四：增长核算</h4>
+	<ol><li><span class="step-label">1</span>ΔY/Y=ΔA/A+αΔK/K+(1-α)ΔL/L</li>
+	<li><span class="step-label">2</span>索洛残差=ΔY/Y-αΔK/K-(1-α)ΔL/L</li></ol>
+	</div>
+	<div class="cheat-card">
+	<h4>📐 索洛模型公式速记卡</h4>
+	<div class="cheat-grid">
+	<div class="cheat-item"><strong>资本积累</strong><br><code>Δk̂=sf(k̂)-(δ+n+g)k̂</code></div>
+	<div class="cheat-item"><strong>稳态条件</strong><br><code>sf(k̂*)=(δ+n+g)k̂*</code></div>
+	<div class="cheat-item"><strong>黄金律</strong><br><code>MPK=δ+n+g</code></div>
+	<div class="cheat-item"><strong>Cobb-Douglas稳态</strong><br><code>k̂*=[s/(δ+n+g)]<sup>1/(1-α)</sup></code></div>
+	<div class="cheat-item"><strong>人均增长率</strong><br><code>g(Y/L)=g</code>（仅由技术进步决定）</div>
+	<div class="cheat-item"><strong>总产出增长率</strong><br><code>g(Y)=n+g</code></div>
+	<div class="cheat-item"><strong>MPK公式</strong><br><code>MPK=α·k̂<sup>α-1</sup>=α/(K/Y)</code></div>
+	<div class="cheat-item"><strong>收敛速度</strong><br><code>λ=(1-α)(δ+n+g)</code></div>
+	</div>
+	</div>
+
+<div class="sec-title">📋 课后作业</div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第1题 · 技术进步的类型</div><div class="qb"><p>在索洛模型中，与平衡增长路径兼容的技术进步是（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 资本改善型技术进步</span><span class="quiz-opt" data-val="B">B. 希克斯中性技术进步</span><span class="quiz-opt" data-val="C">C. 劳动改善型技术进步Y=F(K,L×E)</span><span class="quiz-opt" data-val="D">D. 任何类型都可以</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。Y=F(K,L×E)，E以速率g增长。这是唯一与稳态（K/Y、MPK不变）兼容的形式，称为哈罗德中性技术进步。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">单选</span>第2题 · 有效工人增长率</div><div class="qb"><p>L增长率5%，E增长率2%，则有效工人L×E增长率是（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 3%</span><span class="quiz-opt" data-val="B">B. 5%</span><span class="quiz-opt" data-val="C">C. 2%</span><span class="quiz-opt" data-val="D">D. 7%</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D（7%）</strong>。有效工人L×E增长率=ΔL/L+ΔE/E=5%+2%=7%。增长率相加（乘积的增长率=各自增长率之和）。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">单选</span>第3题 · 持平投资</div><div class="qb"><p>在包含技术进步的索洛模型中，"持平投资"(δ+n+g)k̂包括（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 仅折旧的资本</span><span class="quiz-opt" data-val="B">B. 折旧+提供给新工人的资本</span><span class="quiz-opt" data-val="C">C. 折旧+技术进步需要的资本</span><span class="quiz-opt" data-val="D">D. 折旧的资本、提供给新工人的资本和提供给新的有效工人的资本</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D</strong>。持平投资需要覆盖三部分：δk̂（折旧）、nk̂（新工人需要的资本）、gk̂（技术进步使有效工人增加需要的资本）。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">单选</span>第4题 · 黄金律最大化什么</div><div class="qb"><p>在有技术进步的索洛模型中，黄金律稳态最大化的是（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 人均产出</span><span class="quiz-opt" data-val="B">B. 总消费</span><span class="quiz-opt" data-val="C">C. 人均资本</span><span class="quiz-opt" data-val="D">D. 有效工人人均消费</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D</strong>。黄金律最大化稳态ĉ*（有效工人人均消费）。人均消费c以g增长而非恒定，但ĉ*最大化等价于最大化消费路径的截距。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">单选</span>第5题 · 稳态中不变的量</div><div class="qb"><p>在有技术进步的稳态中，以下哪项以g的速率增长（而非常数）？（  ）</p><div class="opts"><span class="quiz-opt" data-val="A">A. 有效工人人均资本k̂</span><span class="quiz-opt" data-val="B">B. 有效工人人均产出ŷ</span><span class="quiz-opt" data-val="C">C. 资本产出比K/Y</span><span class="quiz-opt" data-val="D">D. 实际工资W/P</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D</strong>。W/P=MPL=(1-α)Y/L以g增长。k̂、ŷ、K/Y、MPK在稳态均不变。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">单选</span>第6题 · 净MPK</div><div class="qb"><p>资本收入占GDP的20%，K/Y=2，折旧率=4%。净MPK是（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 4%</span><span class="quiz-opt" data-val="B">B. 8%</span><span class="quiz-opt" data-val="C">C. 10%</span><span class="quiz-opt" data-val="D">D. 6%</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D（6%）</strong>。MPK×K=资本收入=0.2Y。K/Y=2→MPK×2Y=0.2Y→MPK=10%。净MPK=10%-4%=6%。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第7题 · 内生增长模型</div><div class="qb"><p>AK模型（内生增长模型）与索洛模型的根本区别在于（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. AK模型中储蓄率更高</span><span class="quiz-opt" data-val="B">B. AK模型不考虑折旧</span><span class="quiz-opt" data-val="C">C. 资本没有表现出边际报酬递减</span><span class="quiz-opt" data-val="D">D. AK模型中没有技术进步</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。AK模型中MPK=A（常数），只要sA>δ+n，k永远增长。这消除了边际报酬递减，使<s的永久增长效应>成为可能。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第8题 · 增长核算</div><div class="qb"><p>Y从4000到4500，K从10000到12000，L从2000到1750，α=0.3。求资本、劳动、TFP贡献率。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">ΔY/Y=12.5%，ΔK/K=20%，ΔL/L=-12.5%。资本贡献=0.3×20%=6%；劳动贡献=0.7×(-12.5%)=-8.75%；TFP贡献=12.5%-6%-(-8.75%)=15.25%。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第9题 · AK内生增长模型</div><div class="qb"><p>Y=AK。(1)推导Δk/k的表达式，什么条件下k永续增长？(2)Δy/y的表达式，s↑对增长率有何影响？与索洛模型有何不同？(3)比较AK与索洛模型中增长率的来源。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)y=Ak。Δk=sAk-(δ+n)k。Δk/k=sA-δ-n。若sA>δ+n，k以常数率永续增长。</div><div class="step">(2)Δy/y=sA-δ-n，s↑→增长率<strong>永久</strong>提高（不同于索洛仅水平效应）。</div><div class="step">(3)AK增长率=sA-δ-n（内生于s和A），索洛增长率=g（外生）。政策含义完全不同。</div></div></details></div>
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第10题 · 两部门内生增长模型</div><div class="qb"><p>生产部门Y=K<sup>α</sup>(LE)<sup>1-α</sup>；研发部门ΔE/E=B(1-μ)，μ为研发部门劳动比例。(1)写出ŷ和Δk̂的表达式；(2)μ=1时黄金律k̂_gold和s_gold；(3)s<s_gold的国家调整难度？(4)Y增长率？(5)μ↑的权衡？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)ŷ=k̂^α；Δk̂=sŷ-(δ+n+g)k̂；g=ΔE/E=B(1-μ)。</div><div class="step">(2)μ=1时g=0→黄金律MPK=δ+n→k̂_gold=[α/(δ+n)]^(1/(1-α))。s_gold=α。</div><div class="step">(3)s<s_gold需减消费增储蓄→当前一代做出牺牲→更难。</div><div class="step">(4)Y增长率=n+g=n+B(1-μ)。s不影响增长率。</div><div class="step">(5)μ↑→g↓→Y增长率↓但k̂*↑。水平vs增长的权衡。</div></div></details></div>
+
+<div class="sec-title">📋 新增作业（9选择+3大题）</div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>新增1 · 人均生产函数的含义</div><div class="qb"><p>经济增长的真实含义是人均收入的持续增长。以人均量形式表示的生产函数y=f(k)表明（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 劳动不是经济增长的决定因素</span><span class="quiz-opt" data-val="B">B. 人均产出是劳动生产率的函数</span><span class="quiz-opt" data-val="C">C. 人均产出取决于人均资本存量</span><span class="quiz-opt" data-val="D">D. 生产函数符合规模报酬递增特征</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：C</strong>。y=f(k)直接表明人均产出(y)由人均资本(k)决定——这是索洛模型的核心逻辑起点。</div></div></details>
+	</div>
+
+	<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>新增2 · 储蓄率提高的稳态效应</div><div class="qb"><p>2008年金融危机之后，欧美国家致力于提高储蓄率。根据索罗增长模型，这些国家新的稳态和初始稳态相比，资本的边际产量（  ），经济增长率（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 相同；降低</span><span class="quiz-opt" data-val="B">B. 降低；更高</span><span class="quiz-opt" data-val="C">C. 更低；相同</span><span class="quiz-opt" data-val="D">D. 更高；相同</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：C（更低；相同）</strong>。s↑→k*↑→MPK↓（边际报酬递减）。但长期增长率由g决定，与s无关——s只有水平效应没有增长效应。这是索洛模型最核心结论。</div></div></details>
+	</div>
+
+	<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>新增3 · 边际报酬递减与收敛</div><div class="qb"><p>假设甲乙两个经济体相同，只是甲国的人均资本量高于乙国。两个经济体的生产函数都显示资本的边际产量递减。那么额外的人均资本存量所导致的人均产出（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 甲国更高</span><span class="quiz-opt" data-val="B">B. 乙国更高</span><span class="quiz-opt" data-val="C">C. 两国增加量相同</span><span class="quiz-opt" data-val="D">D. 只有甲国会增加</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：B（乙国更高）</strong>。MPK递减→k较低的穷国MPK更高→同样增一单位k→乙国产出增幅更大。这就是收敛假说的微观基础。</div></div></details>
+	</div>
+
+	<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>新增4 · 战后恢复的索洛预测</div><div class="qb"><p>第二次世界大战摧毁德国和日本的物质资本，按照索洛增长模型的预测，在储蓄率不变的情况下，这两个国家的产出将会增长且新的稳态将会接近（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 比之前更高的人均产出水平</span><span class="quiz-opt" data-val="B">B. 和之前的人均产出相同</span><span class="quiz-opt" data-val="C">C. 比之前的人均产出更低</span><span class="quiz-opt" data-val="D">D. 资本的黄金律水平</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：B（和之前的人均产出相同）</strong>。s、δ、n、g未变→稳态k*、y*不变。战后K被摧毁→k<k*→快速资本积累→回到原稳态。索洛完美预测了德日经济奇迹本质是回归稳态。</div></div></details>
+	</div>
+
+	<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>新增5 · MPK低于折旧率的含义</div><div class="qb"><p>假设某个孤立国处在没有人口增长和技术进步的稳态，且资本的边际产量低于折旧率，则（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 经济遵循黄金律</span><span class="quiz-opt" data-val="B">B. 人均稳态消费可能高于低储蓄率的稳态</span><span class="quiz-opt" data-val="C">C. 人均稳态消费可能高于高储蓄率稳态</span><span class="quiz-opt" data-val="D">D. 为实现黄金律稳态，折旧率应该被取消</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：C</strong>。MPK<δ→资本过度积累→k*>k_gold→降低储蓄率可以释放资源用于消费→c*反而提高。这正是动态无效率：资本太多不如少存多吃。</div></div></details>
+	</div>
+
+	<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>新增6 · 判断资本是否达到黄金律</div><div class="qb"><p>假设某个孤立国没有人口增长和技术进步，该经济体稳态的资本边际产量是0.125，折旧率是0.1，储蓄率是0.225，那么稳态的资本存量（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 大于黄金律水平</span><span class="quiz-opt" data-val="B">B. 小于黄金律水平</span><span class="quiz-opt" data-val="C">C. 等于黄金律水平</span><span class="quiz-opt" data-val="D">D. 可能大于也可能小于黄金律水平</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：B（小于黄金律水平）</strong>。无n和g时黄金律MPK=δ=0.10。当前MPK=0.125>0.10→资本太少→k*<k_gold。口诀：MPK>δ+n+g→资本不足，应多储蓄。</div></div></details>
+	</div>
+	
+
+	<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">单选</span>新增7 · 降低储蓄率的过渡动态</div><div class="qb"><p>假设某个孤立国处于稳态且资本存量高于黄金律水平，且该国没有人口增长和技术进步。如果储蓄率下降，（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 产出、消费、投资和折旧都会减少</span><span class="quiz-opt" data-val="B">B. 产出和投资会减少，消费和折旧会增加</span><span class="quiz-opt" data-val="C">C. 产出和投资会减少，消费和折旧会增加然后减少，但最终接近高于其初始状态的水平</span><span class="quiz-opt" data-val="D">D. 产出、投资和折旧会减少，消费会增加然后减少，但最终接近高于其初始状态的水平</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：D</strong>。s↓→I↓→k↓→Y↓、δk↓。消费c=(1-s)y：s↓直接增消费份额但y↓减消费量→c先↑后↓，新稳态c*高于初始（向黄金律移动）。</div></div></details>
+	</div>
+
+	<div class="q-card quiz-card" data-answer="A"><div class="qh"><span class="qt qt-c">单选</span>新增8 · 人口规模对稳态的影响</div><div class="qb"><p>假设有甲和乙两个国家——甲国有10亿人口，乙国有1000万人口。这两个国家在其它方面均相同（相同的生产函数、相同的储蓄率、相同的折旧率和相同的人口增长率），则稳态的人均产出水平（  ），稳态的人均产出增长率（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 相同；相同</span><span class="quiz-opt" data-val="B">B. 甲国更高；甲国更高</span><span class="quiz-opt" data-val="C">C. 乙国更高；乙国更高</span><span class="quiz-opt" data-val="D">D. 甲国更高；乙国更高</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：A（相同；相同）</strong>。人口规模L不影响人均稳态值。y*由s、δ、n、g决定与L无关。增长率也相同（都由g决定）。</div></div></details>
+	</div>
+
+	<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>新增9 · 人口增长率降为零的影响</div><div class="qb"><p>随着工业化和城市化的推进，欧美发达国家逐渐从人口增长的稳态转变为人口增长率为零。在新的稳态，总产出的增长会（  ），人均产出的增长会（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 更低；更低</span><span class="quiz-opt" data-val="B">B. 更低；和以前一样</span><span class="quiz-opt" data-val="C">C. 更高；比之前高</span><span class="quiz-opt" data-val="D">D. 更高；更低</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：B（更低；和以前一样）</strong>。Y增长率=n+g，n↓→Y增长↓。y增长率=g不变。但n↓→k*↑→y*水平↑（水平效应）。</div></div></details>
+	</div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>新增第10题 · 黄金律完整计算</div><div class="qb"><p>y=k<sup>α</sup>,α=0.3,Y增长3%,δ=4%,K/Y=2.5。已处稳态。(1)初始s？(2)MPK？(3)黄金律MPK？比较；(4)黄金律K/Y？(5)黄金律s？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)<strong>s=(n+δ)(K/Y)=(3%+4%)×2.5=17.5%</strong>。题目"总产出平均增长率3%"在无技术进步时即为n。(2)MPK=α/(K/Y)=12%。(3)黄金律MPK=n+δ=7%。12%>7%→资本<strong>低于</strong>黄金律→需增储蓄。(4)黄金律K/Y=α/MPK_gold=0.3/0.07≈4.29。(5)s_gold=30%。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>新增第11题 · Cobb-Douglas稳态</div><div class="qb"><p>Y=K<sup>1/3</sup>(LE)<sup>2/3</sup>,s=24%,δ=5%,n=2%,g=1%。(1)增长率；(2)k̂*,ŷ*,MPK；(3)比黄金律？(4)过渡与新稳态比较？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)Y增长3%，y增长1%，ŷ增长0%。(2)k̂*≈5.20,ŷ*≈1.73,MPK≈11.1%。(3)MPK>δ+n+g=8%→低于黄金律→需增s。(4)过渡期y增长率>1%；新稳态y*更高，但增长率恢复1%。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>新增第12题 · 科教兴国与疫情刺激</div><div class="qb"><p>(1)科教兴国提高劳动生产率→索洛分析；(2)增长率和福利变化？(3)疫情财政赤字刺激→索洛分析。是否与刺激初衷违背？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)g↑→持平投资线上移→k̂*↓但长期人均增长=g↑。(2)增长率永久↑；短期ĉ可能↓（多投资），长期E增长主导→人均消费↑。(3)赤字→S↓→I↓→K↓→y*↓。<strong>违背初衷：</strong>短期刺激（凯恩斯）vs长期损害（索洛）的矛盾。</div></div></details></div>
+
+<div class="sec-title">🔥 拔高题</div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>6-1 · 收敛速度量化</div><div class="qb"><p>λ=(1-α)(δ+n+g)。(a)推导；(b)α=0.3,δ=0.04,n=0.02,g=0.02→λ和半衰期？(c)为何经验估计（~2%）远低于模型预测（~5.6%）？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(a)Δk≈[sf'(k*)-(δ+n+g)](k-k*)=-(1-α)(δ+n+g)(k-k*)。(b)λ=5.6%，半衰期≈12.4年。(c)人力资本调整慢、技术扩散不即时、制度惯性→Mankiw-Romer-Weil(1992)加入人力资本后λ降低。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>6-2 · 资源诅咒</div><div class="qb"><p>Y=K<sup>α</sup>(LE)<sup>1-α</sup>+R。(a)Δk̂表达式？(b)R↑会提高稳态y吗？(c)用这个模型解释"资源诅咒"。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(a)Δk̂=s(k̂<sup>α</sup>+r̂)-(δ+n+g)k̂。(b)长期r̂→0（LE增长稀释R），稳态不变。(c)资源收入→减少"投资紧迫感"→s↓；Dutch Disease→制造业衰退；寻租→制度恶化→TFP↓。</div></div></details></div>
+</section>
+
+<!-- ===== CHAPTER 7 ===== -->
+<section class="chapter" id="ch7" data-chapter="7">
+<div class="chapter-header"><div class="chapter-num">7</div><h2>经济波动导论</h2></div>
+<div class="chapter-subtitle">奥肯定律 · 货币中性 · 短期vs长期 · AD-AS引论</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>课后作业（7题）</li><li>拔高题（1题）</li></ol></div>
+
+<div class="sec-title">📖 知识点详解</div>
+<div class="card-grid">
+<div class="card"><h4>📉 经济周期的特征事实</h4><ul><li>衰退中C↓、I↓。投资波动<strong>远大于</strong>消费（加速数效应）</li><li>经济周期<strong>不定期且不可预测</strong></li><li>奥肯定律：Δ(Y-Ȳ)/Ȳ≈-2Δu。失业↑1%→GDP↓约1.5-2%</li></ul></div>
+<div class="card"><h4>⚡ 短期vs长期的核心区别</h4><p><strong>短期</strong>：价格粘性→货币非中性→M↓→Y↓+失业↑。<strong>长期</strong>：价格弹性→货币中性→M↓只影响P不影响Y。自然产出率Ȳ=当u=u<sub>n</sub>时的产出水平，由供给侧决定。</p></div>
+</div>
+
+<div class="sec-title">📋 课后作业（7题）</div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第1题 · 衰退中的消费与投资</div><div class="qb"><p>典型衰退中，消费（ ）；投资波动比例（ ）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C（下降，更大）</strong>。投资波动远超消费（加速数效应）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第2题 · 经济周期</div><div class="qb"><p>经济周期是（ ）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D（不定期且不可预测）</strong>。不像物理周期那样规律。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第3题 · 奥肯定律</div><div class="qb"><p>失业率↑2%，GDP将（ ）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C（↓约3-4%）</strong>。典型考题取中间值~3%。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">单选</span>第4题 · 货币紧缩的时间维度</div><div class="qb"><p>货币供给减少5%。以下说法正确的是（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 短期和长期Y都下降5%</span><span class="quiz-opt" data-val="B">B. 短期和长期P都下降5%</span><span class="quiz-opt" data-val="C">C. 短期Y不变，长期Y下降</span><span class="quiz-opt" data-val="D">D. 发生在长期但在短期导致失业</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D</strong>。长期中P↓5%+Y不变（货币中性）。但短期P粘性→Y↓+失业↑。货币中性是长期结果，短期中有真实效应。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="A"><div class="qh"><span class="qt qt-c">单选</span>第5题 · 货币中性的定义</div><div class="qb"><p>货币中性意味着货币供给变化不影响（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 实际变量（Y、r、就业）</span><span class="quiz-opt" data-val="B">B. 价格水平</span><span class="quiz-opt" data-val="C">C. 名义工资</span><span class="quiz-opt" data-val="D">D. 名义GDP</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A</strong>。货币中性=货币只影响名义变量（P、W、名义GDP），不影响实际变量（Y、r、就业）。古典二分法的核心命题。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第6题 · 自然产出率</div><div class="qb"><p>自然产出率Ȳ是指（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 零失业率时的产出</span><span class="quiz-opt" data-val="B">B. 最大可能产出</span><span class="quiz-opt" data-val="C">C. 失业率处于自然水平时的产出水平</span><span class="quiz-opt" data-val="D">D. 通货膨胀为零时的产出</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。Ȳ=当u=u_n时的产出，由供给侧（K、L、技术）决定。Ȳ会随时间增长，但不等于零失业产出（摩擦性失业永远存在）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第7题 · 货币紧缩的短期与长期</div><div class="qb"><p>M↓5%，V不变。(1)短期和长期的Y和P？(2)奥肯定律下Y变化？(3)短期和长期r的变化？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)短期：P粘性→Y↓；长期：Y不变，P↓5%。(2)短期Y↓→u↑；长期Y回Ȳ→u回u<sub>n</sub>。(3)短期：M/P↓→r↑；长期：r回初始水平（由S=I决定）。</div></div></details></div>
+
+<div class="sec-title">🔥 拔高题</div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>7-1 · AD-AS供给冲击分析（能源危机）</div></div>
+</section>
+
+<!-- ===== CHAPTER 8 ===== -->
+<section class="chapter" id="ch8" data-chapter="8">
+<div class="chapter-header"><div class="chapter-num">8</div><h2>IS-LM模型：总需求</h2></div>
+<div class="chapter-subtitle">凯恩斯交叉 · IS曲线 · LM曲线 · 流动性偏好 · 财政与货币政策</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>公式推导</li><li>例题精讲</li><li>课后作业（15题）</li><li>拔高题（2题）</li></ol></div>
+
+	<div class="sec-title">🧠 解题方法论：IS-LM模型解题步骤</div>
+	<div class="method-card">
+	<h4>📐 IS-LM标准解题流程</h4>
+	<ol><li><span class="step-label">1</span><strong>推导IS</strong>：Y=C(Y-T)+I(r)+G → 整理为Y=a-br形式</li>
+	<li><span class="step-label">2</span><strong>推导LM</strong>：M/P=L(Y,r) → 整理为r=(k/h)Y-(1/h)(M/P)</li>
+	<li><span class="step-label">3</span><strong>联立求解</strong>：IS与LM相交得(Y*,r*)</li>
+	<li><span class="step-label">4</span><strong>政策分析</strong>：G↑/T↓→IS右移；M↑→LM右移</li>
+	<li><span class="step-label">5</span><strong>挤出效应</strong>：凯恩斯乘数ΔY-IS-LM实际ΔY=被挤出的部分</li></ol>
+	<h4 style="margin-top:10px">⚠️ 常见误区</h4>
+	<ul><li>混淆IS和LM的移动方向：G↑→IS<strong>右</strong>移（给定r下Y更高）</li>
+	<li>M↑→LM<strong>右/下</strong>移（给定Y下r更低，或给定r下Y更高）</li>
+	<li>P↑→实际M/P↓→LM<strong>左</strong>移（与M↑效果相反）</li>
+	<li>挤出效应大小取决于：投资利率弹性d越大、货币需求利率弹性h越小→挤出越大</li></ul>
+	<h4 style="margin-top:10px">🔑 关键参数含义</h4>
+	<ul><li>IS斜率=-d/(1-b)：d↑→IS更平坦；b(MPC)↑→IS更平坦</li>
+	<li>LM斜率=k/h：k↑→LM更陡；h↑→LM更平坦</li>
+	<li>乘数=1/(1-b)：b越大乘数越大</li></ul>
+	</div>
+	<div class="cheat-card">
+	<h4>📐 IS-LM核心公式速记</h4>
+	<div class="cheat-grid">
+	<div class="cheat-item"><strong>IS曲线（线性）</strong><br><code>Y=[a-bT+c+G-dr]/(1-b)</code></div>
+	<div class="cheat-item"><strong>LM曲线（线性）</strong><br><code>r=(k/h)Y-(1/h)(M/P)</code></div>
+	<div class="cheat-item"><strong>政府支出乘数</strong><br><code>1/(1-MPC)</code></div>
+	<div class="cheat-item"><strong>税收乘数</strong><br><code>-MPC/(1-MPC)</code></div>
+	<div class="cheat-item"><strong>AD曲线</strong><br><code>Y=Y(M/P,G,T)</code>，P↓→Y↑</div>
+	<div class="cheat-item"><strong>流动性陷阱</strong><br>h→∞，LM水平，货币政策无效</div>
+	</div>
+	</div>
+
+<div class="sec-title">📖 知识点详解</div>
+<div class="card"><h4>🎯 IS-LM模型做什么用？</h4><p>IS-LM是<strong>短期</strong>分析框架——假设<strong>P固定</strong>，回答"在短期中什么决定了GDP和利率？"<strong>IS曲线</strong>（I=S）：商品市场均衡→Y与r负相关（向下倾斜）。<strong>LM曲线</strong>（L=M/P）：货币市场均衡→Y与r正相关（向上倾斜）。<strong>交点</strong>：两个市场同时均衡的(Y,r)。</p></div>
+
+<details class="derivation"><summary>IS曲线推导 — 为什么利率下降会提高产出？</summary><div class="dc">
+<div class="step"><strong>凯恩斯交叉：</strong>计划支出PE=C(Y-T)+I(r)+G。均衡Y=PE→Y=C(Y-T)+I(r)+G。</div>
+<div class="step"><strong>r↓的传导：</strong>r↓→I↑→PE↑→通过<strong>乘数效应</strong>→Y↑↑。</div>
+<div class="step"><strong>IS代数（线性）：</strong>Y=[a-bT+c+G-dr]/(1-b)。乘数=1/(1-b)。IS的斜率=-d/(1-b)：d越大（投资对r越敏感）→IS越平坦。</div>
+<div class="step"><strong>IS移动：</strong>G↑或T↓→IS<strong>右移</strong>。财政紧缩→IS<strong>左移</strong>。</div></div></details>
+
+<details class="derivation"><summary>LM曲线推导 — 为什么收入增加会提高利率？</summary><div class="dc">
+<div class="step"><strong>货币市场均衡：</strong>实际货币供给M̄/P̄=实际货币需求L(Y,r)=kY-hr。</div>
+<div class="step"><strong>Y↑→r↑的逻辑：</strong>Y↑→交易需求↑→货币需求L↑→供给固定→r必须↑以减少投机性需求→恢复均衡。</div>
+<div class="step"><strong>LM代数（线性）：</strong>r=(k/h)Y-(1/h)(M/P)。斜率=k/h。k越大→LM越陡；h越大→LM越平。</div>
+<div class="step"><strong>LM移动：</strong>M↑→LM<strong>右移/下移</strong>（给定Y下r更低）。P↑→M/P↓→LM<strong>左移/上移</strong>。</div></div></details>
+
+<div class="card"><h4>⚖️ IS-LM政策效果总结</h4><table class="data-table"><tr><th>政策</th><th>曲线移动</th><th>Y</th><th>r</th></tr><tr><td>G↑（扩张财政）</td><td>IS右移</td><td>↑</td><td>↑</td></tr><tr><td>T↓（减税）</td><td>IS右移</td><td>↑</td><td>↑</td></tr><tr><td>M↑（扩张货币）</td><td>LM右移</td><td>↑</td><td>↓</td></tr></table></div>
+
+<div class="card-grid">
+<div class="card"><h4>⚠️ 流动性陷阱</h4><p>r极低（接近0）→货币需求水平→LM水平段。货币政策<strong>无效</strong>（增发货币无法再降r），财政政策<strong>完全有效</strong>（无挤出效应）。日本1990年代、2008年后欧美是典型。</p></div>
+<div class="card"><h4>🏛️ 古典情形</h4><p>货币需求与r无关（h=0）→LM<strong>垂直</strong>。财政政策<strong>完全无效</strong>（完全挤出），货币政策<strong>最有效</strong>。这是货币数量论在IS-LM中的体现。</p></div>
+</div>
+
+<div class="sec-title">✏️ 例题精讲</div>
+<div class="example-box"><div class="eh">📝 例8.1 — IS-LM完整求解（曼昆经典题）</div><div class="eb">
+<p class="q">C=200+0.75(Y-T), I=200-25r, G=T=100, M=1000, P=2, L=Y-100r。(a)IS；(b)LM；(c)均衡Y,r；(d)G增至150后新均衡和挤出效应？</p>
+<div class="sol"><strong>解答：</strong>
+<div class="ss">(a)IS: Y=200+0.75(Y-100)+200-25r+100→<span class="formula">Y=1700-100r</span>。(b)LM: 500=Y-100r→<span class="formula">Y=500+100r</span>。</div>
+<div class="ss">(c)1700-100r=500+100r→1200=200r→<span class="formula">r*=6%, Y*=1100</span>。</div>
+<div class="ss">(d)新IS: Y=1900-100r。r**=7%，Y**=1200。ΔG=50，乘数=4→若无挤出预期Y=1300。实际ΔY=100→挤出=100（乘数×25r=4×25=100✓）。</div></div></div></div>
+
+<div class="sec-title">📋 课后作业（15题）</div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第1题 · 乘数效应</div><div class="qb"><p>MPC=2/3, G↑1200亿→Y↑？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D（3600亿）</strong>。乘数=1/(1-2/3)=3。ΔY=3×1200=3600。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第2题 · 税收乘数</div><div class="qb"><p>MPC=2/3, 减税1200亿→Y↑？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C（2400亿）</strong>。税收乘数=-MPC/(1-MPC)=-2。ΔY=2×1200=2400。小于支出乘数（3）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第3题 · 古典vs凯恩斯</div><div class="qb"><p>古典理论Y取决于（ ）；凯恩斯Y取决于（ ）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B（总供给；总需求）</strong>。全书最重要的二分法。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>第4题 · IS-LM的外生变量</div><div class="qb"><p>在IS-LM模型中，以下哪项是外生变量？（  ）</p><div class="opts"><span class="quiz-opt" data-val="A">A. 产出Y</span><span class="quiz-opt" data-val="B">B. 价格水平P</span><span class="quiz-opt" data-val="C">C. 利率r</span><span class="quiz-opt" data-val="D">D. 消费C</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。IS-LM假设P固定（外生），Y和r由模型内生决定。G、T、M也是外生政策变量。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第5题 · 凯恩斯交叉</div><div class="qb"><p>凯恩斯交叉模型中均衡是指（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 商品市场和货币市场同时均衡</span><span class="quiz-opt" data-val="B">B. 总供给等于总需求</span><span class="quiz-opt" data-val="C">C. 在短期，计划支出和实际GDP相等</span><span class="quiz-opt" data-val="D">D. 储蓄等于投资</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。凯恩斯交叉：Y=PE（计划支出）。只关注商品市场均衡，利率r视为外生参数，存货调整机制使经济趋向均衡。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>第6题 · G和T等额增加</div><div class="qb"><p>MPC=0.6，G和T各增加100亿。凯恩斯交叉中Y增加（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 0</span><span class="quiz-opt" data-val="B">B. 100亿</span><span class="quiz-opt" data-val="C">C. 250亿</span><span class="quiz-opt" data-val="D">D. 60亿</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B（100亿）</strong>。平衡预算乘数=1。ΔY=1/(1-0.6)×100 + (-0.6)/(1-0.6)×100=2.5×100-1.5×100=100。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第7题 · 两种利率决定理论</div><div class="qb"><p>凯恩斯vs古典：利率由什么决定？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">古典：r由可贷资金S=I决定（实际变量）→长期。凯恩斯：r由货币市场M/P=L(Y,r)决定→短期。不矛盾——适用不同时间维度。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第9题 · 特朗普减税+加息</div><div class="qb"><p>2018年减税+加息。(1)IS-LM分析加息逻辑；(2)索洛与政策因素。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)减税→IS右移→Y↑+r↑。过热风险→加息（LM左移）→r进一步↑→Y回落。(2)索洛是长期框架，但政策通过影响s、制度改变长期水平。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第10题 · IS-LM完整计算</div><div class="qb"><p>C=1275+0.5(Y-T),I=900-200r,L=0.5Y-200r,Ȳ=4600,T=G=450,M=9000。求IS、LM、AD及均衡。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">IS: Y=4800-400r。LM: 200r=0.5Y-9000/P。AD: Y=2400+9000/P。P≈4.09, r=0.5%, C=3350, I=800。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="A"><div class="qh"><span class="qt qt-c">单选</span>第11题 · 减税vs增支</div><div class="qb"><p>减税和增加政府支出哪种方式可能使MPC提高更多？（  ）</p><div class="opts"><span class="quiz-opt" data-val="A">A. 减税可以使MPC提高更多（供给学派：边际税率↓→工作储蓄投资激励↑）</span><span class="quiz-opt" data-val="B">B. 增支效果更好</span><span class="quiz-opt" data-val="C">C. 两者效果完全相同</span><span class="quiz-opt" data-val="D">D. 两者都无效</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A</strong>。供给学派观点：边际税率↓→工作、储蓄、投资激励↑→潜在产出也可能↑。增支不改变激励结构。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">单选</span>第12题 · 实际货币余额供给</div><div class="qb"><p>在短期IS-LM模型中（P固定），实际货币余额的供给（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 由市场利率决定</span><span class="quiz-opt" data-val="B">B. 随Y变化而变化</span><span class="quiz-opt" data-val="C">C. 由商业银行决定</span><span class="quiz-opt" data-val="D">D. 由中央银行固定</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D</strong>。短期P固定→实际货币供给(M/P)^s由央行外生决定。长期P可调，但短期视为给定。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">单选</span>第13题 · 短期vs长期利率</div><div class="qb"><p>货币供给增长率永久下降。短期名义利率（  ），长期名义利率（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 降低；降低</span><span class="quiz-opt" data-val="B">B. 提高；降低</span><span class="quiz-opt" data-val="C">C. 降低；提高</span><span class="quiz-opt" data-val="D">D. 不变；不变</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>B</strong>。短期：M↓→LM左移→r↑→i↑（流动性效应主导）。长期：持续低货币增长→低通胀→费雪效应→i↓。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第14题 · 流动性偏好理论</div><div class="qb"><p>根据流动性偏好理论，Y增加会导致（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 较低的利率</span><span class="quiz-opt" data-val="B">B. 利率不变</span><span class="quiz-opt" data-val="C">C. 较高的利率</span><span class="quiz-opt" data-val="D">D. 货币供给增加</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。Y↑→交易需求↑→L(Y,r)↑→给定M/P固定→r必须↑以减少投机需求恢复均衡。这是LM向上倾斜的原因。</div></div></details></div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">单选</span>第15题 · IS-LM交点</div><div class="qb"><p>IS曲线和LM曲线的交点决定了（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 均衡价格水平</span><span class="quiz-opt" data-val="B">B. 自然产出率</span><span class="quiz-opt" data-val="C">C. 给定G、T、M和P下，r和Y的均衡值</span><span class="quiz-opt" data-val="D">D. 长期经济增长率</span></div><div class="quiz-feedback"></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>C</strong>。四个外生变量（G,T,M,P）固定后，IS和LM联立解出均衡(Y,r)。这是短期分析的核心工具。</div></div></details></div>
+
+<div class="sec-title">🔥 拔高题</div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>8-1 · 政策组合分析（财政紧缩+货币宽松）</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>8-2 · 挤出效应精确量化</div><div class="qb"><p>C=200+0.6(Y-T),I=300-150r,G=T=200,M=2000,P=2,L=0.8Y-200r。(a)初始均衡；(b)G↑100后ΔY和ΔI；(c)挤出比例？(d)什么参数决定挤出比例？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(a)IS:Y=1450-375r;LM:Y=1250+250r;r=32%,Y=1330。(b)G=300→新r=72%,Y=1430。ΔY=100,ΔI=-60。(c)挤出比例=60%。(d)取决于投资利率弹性d、货币需求利率弹性h、MPC。</div></div></details></div>
+</section>
+
+<!-- ===== CHAPTER 9 ===== -->
+<section class="chapter" id="ch9" data-chapter="9">
+<div class="chapter-header"><div class="chapter-num">9</div><h2>IS-LM模型应用与总供给</h2></div>
+<div class="chapter-subtitle">AD曲线推导 · 菲利普斯曲线 · 牺牲率 · 理性预期 · 卢卡斯批判</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>公式推导</li><li>课后作业（6题）</li><li>拔高题（1题）</li></ol></div>
+
+<div class="sec-title">📖 知识点详解</div>
+<div class="card-grid">
+<div class="card"><h4>📏 LRAS vs SRAS</h4><p><strong>LRAS</strong>：垂直，Y=Ȳ。产出由供给侧决定。<strong>SRAS</strong>：向上倾斜，Y=Ȳ+α(P-P<sup>e</sup>)。P>P<sup>e</sup>→增产；P<P<sup>e</sup>→减产。四种解释：粘性工资、粘性价格、不完全信息、工人错觉。</p></div>
+<div class="card"><h4>💔 菲利普斯曲线</h4><div class="fb">π=π<sup>e</sup>-γ(u-u<sub>n</sub>)+ε</div><p>通胀=预期通胀-γ×失业缺口+供给冲击。短期存在通胀-失业权衡，长期菲利普斯曲线在u<sub>n</sub>处垂直（无权衡）。</p></div>
+</div>
+
+<details class="derivation"><summary>从SRAS到菲利普斯曲线 — 完整推导</summary><div class="dc">
+<div class="step">SRAS: Y=Ȳ+α(P-P<sup>e</sup>)+v。</div>
+<div class="step">通胀形式：P-P<sup>e</sup>=π-π<sup>e</sup>→Y=Ȳ+α(π-π<sup>e</sup>)+v。</div>
+<div class="step">奥肯定律：Y-Ȳ=-β(u-u<sub>n</sub>)。代入→-β(u-u<sub>n</sub>)=α(π-π<sup>e</sup>)+v。</div>
+<div class="step">得菲利普斯曲线：<span class="formula">π=π<sup>e</sup>-γ(u-u<sub>n</sub>)+ε</span>，γ=β/α。</div></div></details>
+
+<div class="card"><h4>🧠 适应性预期 vs 理性预期</h4><p><strong>适应性预期</strong>：π<sup>e</sup>=π<sub>-1</sub>→反通胀需失业>u<sub>n</sub>（有代价）。<strong>理性预期</strong>（卢卡斯）：利用所有信息→可预测的政策变化失效。<strong>牺牲率</strong>≈5（降1%通胀需牺牲5%GDP）。理性预期+可信承诺→牺牲率可接近0。<strong>卢卡斯批判</strong>：政策规则改变→行为改变→历史数据估计的模型参数不再有效。</p></div>
+
+<div class="sec-title">📋 课后作业（6题）</div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第1题 · T↑导致Y↓和r？（IS-LM应用）</div><div class="qb"><div class="opts"><span>A.T↑</span><span>B.T↓</span><span>C.M↑</span><span>D.M↓</span></div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>D（M↓）</strong>→LM左移→r↑+Y↓。A（T↑）→IS左移→r↓+Y↓。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第2题 · 收入和利率都下降→T↑</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第3题 · IS-LM中的挤出</div><div class="qb"><p>IS-LM中扩张财政对Y的影响小于凯恩斯交叉，因为（ ）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>A</strong>。G↑→Y↑→r↑→I↓→部分抵消Y的初始增加（挤出效应）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第4题 · 2001年衰退→IS左移</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第5题 · I取决于r（实际），L取决于i（名义）</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第6题 · G和T等额↑：Y↑、r↑、C↓、I↓</div></div>
+
+<div class="sec-title">🔥 拔高题</div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>9-1 · 从IS-LM推导AD曲线</div><div class="qb"><p>C=800+0.6(Y-T),I=700-100r,G=T=400,M=3000,L=0.8Y-200r。(a)IS和LM；(b)AD曲线Y=Y(P)；(c)LRAS Y=3000时长期P和r；(d)M增至3600的短期和长期影响。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(a)IS:Y=4150-250r;LM:r=0.004Y-15/P。(b)AD:Y=2075+1875/P。(c)长期P≈2.03,r=4.6。(d)新AD:Y=2075+2250/P。短期（P粘性）：Y≈3183>3000（过热）；长期P≈2.43,Y回归3000。</div></div></details></div>
+</section>
+
+<!-- ===== CHAPTER 10 ===== -->
+<section class="chapter" id="ch10" data-chapter="10">
+<div class="chapter-header"><div class="chapter-num">10</div><h2>开放经济</h2></div>
+<div class="chapter-subtitle">贸易余额 · 汇率 · 小型开放经济 · 大型开放经济 · 双赤字</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>公式推导</li><li>课后作业（11题）</li><li>拔高题（1题）</li></ol></div>
+
+<div class="sec-title">📖 知识点详解</div>
+<div class="card"><h4>🌍 开放经济的基本恒等式</h4>
+<div class="fb">NX = S - I = (Y - C - G) - I</div>
+<p><strong>贸易余额</strong> = 国民储蓄-国内投资。如果S>I→NX>0（贸易顺差，资本流出）；S<I→NX<0（贸易逆差，资本流入）。贸易余额的镜像就是<strong>资本净流出</strong>。</p></div>
+
+<div class="card-grid">
+<div class="card"><h4>🏝️ 小型开放经济</h4><p>国内利率=r*（世界利率），国内无法影响r*。I由r*决定，S由国内Y、G、T决定。NX=S-I。任何使S↓（如G↑）的事件→NX↓（贸易赤字扩大）。财政赤字→贸易赤字（<strong>双赤字假说</strong>）。</p></div>
+<div class="card"><h4>🏰 大型开放经济</h4><p>国内能影响世界利率。G↑→S↓→r↑（本国大→推高全球利率）→I↓。r↑→资本流入→本币升值→NX↓。大国的财政扩张既挤出国内投资也挤出净出口。</p></div>
+</div>
+
+<div class="card"><h4>💱 实际汇率与名义汇率</h4><p><strong>实际汇率</strong>ε=e·P*/P（一篮子国内商品换多少国外商品）。ε↓→国内商品相对便宜→NX↑。<strong>购买力平价（PPP）</strong>：长期中ε=1（一价定律）。<strong>利率平价（UIP）</strong>：i-i*≈预期汇率贬值率（无套利条件）。</p></div>
+
+<div class="sec-title">📋 课后作业（11题）</div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第1题 · G↑→贸易赤字+升值</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第2题 · r*↑→贸易盈余+贬值</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第3题 · S↑→贬值+NX↑</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第4题 · 大国财政扩张→r↑+汇率↑</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第5题 · 偏好转向进口→汇率↓+NX不变</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第6题 · 国外补贴投资→小国汇率↓+NX↑</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第7题 · 安全港效应→r↑+NX↓</div></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第8题 · 利率平价</div><div class="qb"><p>美国i=12%，中国i=8%。资本自由流动，PPP成立。(1)预期通胀差？(2)汇率预期？(3)可从中国借钱存美国赚4%吗？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)π<sup>e</sup><sub>US</sub>-π<sup>e</sup><sub>CN</sub>=4%。(2)人民币预期升值4%/年。(3)不能！美元预期贬值4%→实际回报=12%-4%=8%，等于中国利率（UIP无套利）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第9题 · 减税增支+小型开放经济</div><div class="qb"><p>疫情减税增支。(1)短期Y、储蓄影响？(2)小国开放+r*处存在贸易赤字→画图分析；(3)对汇率和NX影响？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)S↓。(2)r=r*固定，I不变→S-I↓→NX↓（贸易赤字扩大）。(3)S↓→资本流入→本币升值→NX进一步恶化。<strong>双赤字假说</strong>：财政赤字→贸易赤字。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第10题 · 实际/名义汇率预测</div><div class="qb"><p>中国出口电视（¥稳定）、俄罗斯出口伏特加（₽快速增发）。预测实际汇率（电视/伏特加）和名义汇率（¥/₽）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">中国技术进步→电视相对供给↑→相对价格↓→实际汇率↓（贬值）。俄罗斯M快速增长→卢布贬值→名义¥/₽↑（人民币升值）。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第11题 · 叙利亚战争对美国经济影响</div><div class="qb"><p>叙利亚内战使美国增加军费开支，同时别国增加对美国武器需求，美国人因安全顾虑减少出国旅游。(1)美国G↑对r和NX的影响；(2)别国增加武器需求对NX的影响；(3)出国减少对NX的影响；(4)资本流入("安全港"效应)的影响。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)G↑→S↓→r↑→I↓→资本流入→美元升值→NX↓。</div><div class="step">(2)别国↑对美国武器需求→出口↑→NX曲线右移→实际汇率升值→部分抵消(1)。</div><div class="step">(3)美国人少出国→服务进口↓→NX↑→汇率升值→部分抵消。</div><div class="step">(4)资本流入美国→r↓→I↑→S-I↓→NX↓→美元升值。多种力量同时作用，净效应取决于各因素相对大小。</div></div></details></div>
+
+<div class="sec-title">🔥 拔高题</div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>10-1 · 双赤字假说</div><div class="qb"><p>(a)小国开放经济中严格推导财政赤字与贸易赤字的关系；(b)1990年代克林顿财政盈余但贸易赤字持续→对双赤字假说的挑战？(c)2009-2010中国财政刺激伴随经常账户顺差收窄→支持or反对？(d)分析为什么双赤字不是机械的1:1。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(a)NX=S-I→G↑→S↓→NX↓。ΔNX=ΔS=-ΔG（若I不变）。(b)S<sub>public</sub>↑但S<sub>private</sub>↓→总体S-I仍为负→NX为负。关键是<strong>国民储蓄</strong>而非仅公共储蓄。(c)G↑→S↓→经常账户顺差↓→<strong>支持</strong>双赤字。(d)I也会调整（r变化）、私人S也会调整（李嘉图效应）、汇率调整改变贸易结构→不是1:1恒等式。</div></div></details></div>
+</section>
+
+<!-- ===== CHAPTER 11 ===== -->
+<section class="chapter" id="ch11" data-chapter="11">
+<div class="chapter-header"><div class="chapter-num">11</div><h2>蒙代尔-弗莱明模型</h2></div>
+<div class="chapter-subtitle">Mundell-Fleming Model · 浮动汇率 · 固定汇率 · 不可能三角 · 货币危机</div>
+<div class="chapter-toc"><strong>📋 结构：</strong><ol><li>知识点详解</li><li>核心结论对比</li><li>课后作业（8题）</li><li>拔高题（1题）</li></ol></div>
+
+	<div class="sec-title">🧠 解题方法论：蒙代尔-弗莱明模型速记</div>
+	<div class="method-card">
+	<h4>📊 政策效果速查表（比背十遍都管用！）</h4>
+	<table class="data-table"><tr><th>政策</th><th>浮动汇率</th><th>固定汇率</th></tr>
+	<tr><td>财政扩张G↑</td><td>Y不变，ε↑，NX↓（<strong>完全无效</strong>）</td><td>Y↑，ε不变，M↑（<strong>有效</strong>）</td></tr>
+	<tr><td>货币扩张M↑</td><td>Y↑，ε↓，NX↑（<strong>有效</strong>）</td><td>Y不变，储备↓（<strong>无效</strong>）</td></tr>
+	<tr><td>贸易保护</td><td>Y不变，ε↑，NX不变（<strong>无效</strong>）</td><td>Y↑，ε不变，NX↑（<strong>有效</strong>）</td></tr>
+	<tr><td>r*↑</td><td>Y↑，ε↓，NX↑</td><td>Y↓，M↓（衰退压力）</td></tr></table>
+	<h4 style="margin-top:12px">🔑 M-F解题四步法</h4>
+	<ol><li><span class="step-label">1</span><strong>确定汇率制度</strong>：浮动→LM*垂直；固定→LM*内生</li>
+	<li><span class="step-label">2</span><strong>写出IS*</strong>：Y=C(Y-T)+I(r*)+G+NX(e)</li>
+	<li><span class="step-label">3</span><strong>写出LM*</strong>：M/P=L(r*,Y)（注意r被r*锁定！）</li>
+	<li><span class="step-label">4</span><strong>分析冲击</strong>：浮动→e调整；固定→M调整→传导到Y</li></ol>
+	<h4 style="margin-top:10px">💡 记忆口诀</h4>
+	<p><strong>"浮财无，货有；固财有，货无"</strong>——浮动汇率下财政无效货币政策有效；固定汇率下财政有效货币政策无效。</p>
+	<p><strong>"三选二"</strong>——独立货币政策、资本自由流动、固定汇率，三者不可兼得（不可能三角）。</p>
+	</div>
+
+<div class="sec-title">📖 知识点详解</div>
+<div class="card"><h4>🎯 蒙代尔-弗莱明模型 = IS-LM的开放经济版</h4><p>M-F模型假设<strong>小型开放经济+完全资本流动</strong>→国内利率=世界利率r*。IS*: Y=C(Y-T)+I(r*)+G+NX(e)。LM*: M/P=L(r*,Y)。核心区别：LM*是<strong>垂直的</strong>（r被r*锁定，Y由货币市场单独决定）。</p></div>
+
+<div class="card"><h4>⚡ 浮动vs固定汇率：政策效果完全相反</h4><table class="data-table"><tr><th></th><th>浮动汇率</th><th>固定汇率</th></tr><tr><td><strong>财政扩张</strong></td><td>无效（本币升值→NX↓完全抵消）</td><td>有效（央行配合扩张M→双重刺激）</td></tr><tr><td><strong>货币扩张</strong></td><td>有效（本币贬值→NX↑）</td><td>无效（央行必须维持汇率→M外生）</td></tr><tr><td><strong>贸易保护</strong></td><td>NX不变（升值抵消）</td><td>NX增加</td></tr></table></div>
+
+<div class="card"><h4>🔺 不可能三角（Impossible Trinity）</h4><p><strong>独立的货币政策、自由的资本流动、固定汇率</strong>——三者只能选其二。中国选择：独立货币政策+管理汇率→必须<strong>限制资本流动</strong>。这就是为什么中国资本市场开放和汇率制度改革必须同时推进。</p></div>
+
+<div class="sec-title">📋 课后作业（8题）</div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第1题 · 浮动汇率下M↑→Y↑</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第2题 · 固定汇率下T↓→Y↑</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第3题 · 限制进口→升值+NX不变（浮动汇率）</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第4题 · 贬值预期→利率↑+货币真贬值（自我实现）</div></div>
+<div class="q-card"><div class="qh"><span class="qt qt-c">单选</span>第5题 · 不可能三角→独立货币政策+资本自由→不能固定汇率</div></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第6题 · 中国不可能三角</div><div class="qb"><p>为什么中国资本市场开放和汇率制度改革必须同时进行？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">中国需独立货币政策（大国周期不同步）。若开放资本账户而不放松汇率→资本自由+固定汇率→货币政策独立性丧失（M-F结论）。所以需先扩大汇率弹性→逐步开放资本账户→实现"三角的中间解"。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第7题 · 扩展M-F模型（P含进口价格）</div><div class="qb"><p>P=αPd+(1-α)Pf/e。(1)LM*为何向上倾斜？(2)浮动汇率下财政政策效果？(3)风险贴水↑的影响？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(1)P含进口价格→e影响P→实际M/P非固定→LM*向上倾斜。(2)财政政策有一定效果（不同于标准M-F的完全无效）。(3)i↑→货币需求↓→LM*右移（扩张）；但i↑→I↓→IS*左移（紧缩）。净效应不确定。</div></div></details></div>
+
+<div class="q-card"><div class="qh"><span class="qt qt-s">简答</span>第8题 · 特朗普减税+加息（国际视角）</div><div class="qb"><p>美国加息对小型开放经济体的影响（分固定和浮动汇率讨论）。</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>浮动汇率：</strong>资本外流→本币贬值→IS*右移（NX↑）→Y可能↑（贬值主导）。<strong>固定汇率：</strong>资本外流→央行干预→M↓→LM*左移→Y↓。固定汇率国家面临衰退压力。2018年新兴市场货币危机即此逻辑。</div></div></details></div>
+
+<div class="sec-title">🔥 拔高题</div>
+<div class="q-card"><div class="qh"><span class="qt qt-h">拔高</span>11-1 · 第一代货币危机模型（Krugman 1979）</div><div class="qb"><p>(a)持续财政赤字+印钱融资+固定汇率→影子浮动汇率如何演变？(b)为何储备会在有限时间内耗尽？(c)危机爆发时间点？(d)为何货币危机是"必然的"（若财政政策不变）？</p></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step">(a)持续印钱→M↑→P有上涨压力→固定汇率下央行卖储备R吸收过剩→R↓→影子浮动汇率e<sub>shadow</sub>↑。(b)印钱是流量（持续），储备是存量（有限）→存量最终被流量耗尽。(c)危机爆发于e<sub>shadow</sub>=固定汇率时（投机攻击提前引爆）。(d)财政赤字货币化+固定汇率+资本自由流动→必然崩溃（不可能三角的财政版）。</div></div></details></div>
+</section>
+
+
+<!-- ===== PREDICTION EXAM ===== -->
+<section class="chapter" id="exam-prediction" data-chapter="exam">
+<div class="exam-header">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:48px;height:48px;border-radius:12px;background:#fbbf24;color:#7c3aed;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;flex-shrink:0">🎯</div>
+<div><h2>考前预测卷</h2><p>基于老师出题规律 · 索洛/IS-LM/蒙代尔-弗莱明必考计算 · 难度高于平时作业</p></div>
+</div>
+<div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
+<span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:6px;font-size:0.8rem">📋 选择题 ×15 (1分/题=15分)</span>
+<span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:6px;font-size:0.8rem">✅ 判断题 ×10 (2分/题=20分)</span>
+<span style="background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:6px;font-size:0.8rem">📝 计算分析 ×3 (20+25+20=65分)</span>
+</div>
+</div>
+
+<div class="sec-title">📋 第一部分：选择题（15×1分=15分）</div>
+<p style="color:var(--txt2);font-size:0.8rem;margin-bottom:10px">提示：点击选项即可作答，绿色=正确，红色=错误</p>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">选择</span>第1题 · GDP平减指数与CPI</div><div class="qb"><p>假设进口石油价格大幅上涨。以下说法正确的是（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. GDP平减指数和CPI上涨幅度相同</span><span class="quiz-opt" data-val="B">B. GDP平减指数比CPI上涨更多</span><span class="quiz-opt" data-val="C">C. CPI比GDP平减指数上涨更多</span><span class="quiz-opt" data-val="D">D. 两者都不受影响</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：C</strong>。CPI包含进口消费品（如汽油），GDP平减指数只计国内生产。进口石油涨价→CPI显著上升，GDP平减指数受影响较小。这是CPI与GDP平减指数的关键区别。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">选择</span>第2题 · 古典模型中的财政政策</div><div class="qb"><p>在古典模型中，政府增加购买支出G且不增税（发债融资）。长期中，（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 产出Y增加，利率r下降</span><span class="quiz-opt" data-val="B">B. 产出Y增加，利率r上升</span><span class="quiz-opt" data-val="C">C. 产出Y不变，利率r下降</span><span class="quiz-opt" data-val="D">D. 产出Y不变，利率r上升，投资I被挤出</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：D</strong>。古典模型中Y由K、L和技术决定（供给侧），G↑不改变Y。但G↑→S_public↓→国民储蓄↓→可贷资金供给左移→r↑→I↓（挤出效应）。这是古典二分法的核心应用。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">选择</span>第3题 · 货币乘数</div><div class="qb"><p>假设通货存款比cr=0.3，准备金率rr=0.1。央行通过公开市场操作注入100亿元基础货币，货币供给M最终增加约（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 250亿</span><span class="quiz-opt" data-val="B">B. 325亿</span><span class="quiz-opt" data-val="C">C. 400亿</span><span class="quiz-opt" data-val="D">D. 1000亿</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：B</strong>。m=(cr+1)/(cr+rr)=(0.3+1)/(0.3+0.1)=1.3/0.4=3.25。ΔM=m×ΔB=3.25×100=<strong>325亿</strong>。注意区分货币乘数与存款乘数。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="A"><div class="qh"><span class="qt qt-c">选择</span>第4题 · 费雪效应</div><div class="qb"><p>根据费雪方程，如果实际利率保持在3%，货币供给增长率从5%永久提高到8%，长期中名义利率将（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 从8%上升到11%</span><span class="quiz-opt" data-val="B">B. 从8%上升到8%（不变）</span><span class="quiz-opt" data-val="C">C. 从3%上升到6%</span><span class="quiz-opt" data-val="D">D. 从5%上升到8%</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：A</strong>。i=r+π。货币数量论：ΔM/M↑→π↑（一对一）。初始π=5%→i=8%；新π=8%→i=11%。关键：r由实体经济决定不受货币影响（货币中性），费雪效应为一对一传导。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">选择</span>第5题 · 索洛模型中储蓄率的效应</div><div class="qb"><p>在包含技术进步的索洛模型中，储蓄率永久提高会导致（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 人均产出增长率永久提高</span><span class="quiz-opt" data-val="B">B. 总产出增长率永久提高</span><span class="quiz-opt" data-val="C">C. 人均产出水平提高，但增长率不变</span><span class="quiz-opt" data-val="D">D. 有效工人人均资本不变</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：C</strong>。储蓄率只有<strong>水平效应</strong>没有<strong>增长效应</strong>。s↑→k̂*↑→ŷ*↑→人均y*水平提高，但长期人均增长率仍为g。这是索洛模型最核心的结论。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">选择</span>第6题 · 黄金律判断</div><div class="qb"><p>某经济体处于稳态，δ=0.04, n=0.01, g=0.02, MPK=0.10。该经济体的资本存量（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 大于黄金律水平</span><span class="quiz-opt" data-val="B">B. 小于黄金律水平</span><span class="quiz-opt" data-val="C">C. 等于黄金律水平</span><span class="quiz-opt" data-val="D">D. 无法判断</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：B</strong>。黄金律MPK=δ+n+g=0.04+0.01+0.02=0.07。当前MPK=0.10>0.07→资本边际产出高于持平投资斜率→资本不足→k*<k_gold→应提高储蓄率。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">选择</span>第7题 · IS-LM中的挤出效应</div><div class="qb"><p>在IS-LM模型中，政府支出乘数小于凯恩斯交叉中的乘数，原因是（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 价格水平上升抵消了部分效果</span><span class="quiz-opt" data-val="B">B. 净出口减少</span><span class="quiz-opt" data-val="C">C. 税收自动增加</span><span class="quiz-opt" data-val="D">D. 利率上升挤出了部分投资</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：D</strong>。IS-LM中G↑→Y↑→货币需求↑→r↑→I↓→部分抵消Y的初始增加。这是<strong>利率渠道的挤出效应</strong>。凯恩斯交叉假设r不变故无此效应。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="A"><div class="qh"><span class="qt qt-c">选择</span>第8题 · 流动性陷阱</div><div class="qb"><p>当经济处于流动性陷阱时，（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 货币政策无效，财政政策完全有效</span><span class="quiz-opt" data-val="B">B. 财政政策无效，货币政策完全有效</span><span class="quiz-opt" data-val="C">C. 财政政策和货币政策都无效</span><span class="quiz-opt" data-val="D">D. 财政政策和货币政策都完全有效</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：A</strong>。流动性陷阱中r极低→LM水平段→货币增发无法进一步降低r→货币政策无效。财政扩张不抬高利率→无挤出→财政政策完全有效。日本1990年代和2008年后欧美接近此情形。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">选择</span>第9题 · AD曲线推导</div><div class="qb"><p>从IS-LM模型推导总需求曲线时，价格水平P下降导致（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. IS曲线右移，Y增加</span><span class="quiz-opt" data-val="B">B. IS曲线左移，Y减少</span><span class="quiz-opt" data-val="C">C. LM曲线右移，Y增加</span><span class="quiz-opt" data-val="D">D. LM曲线左移，Y减少</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：C</strong>。P↓→实际货币供给M/P↑→给定Y下r更低→LM右移（下移）→与IS交点处Y更大。这就是AD曲线向右下倾斜的原因：P↓→Y↑。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">选择</span>第10题 · 菲利普斯曲线</div><div class="qb"><p>根据附加预期的菲利普斯曲线，如果通货膨胀低于预期通货膨胀，（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 失业率低于自然失业率</span><span class="quiz-opt" data-val="B">B. 失业率高于自然失业率</span><span class="quiz-opt" data-val="C">C. 失业率等于自然失业率</span><span class="quiz-opt" data-val="D">D. 实际GDP高于自然产出水平</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：B</strong>。π=π^e-γ(u-u_n)。π<π^e→-γ(u-u_n)>0→u-u_n<0→u>u_n。通胀低于预期→失业高于自然率（短期权衡）。反通胀的成本就是失业高于自然率。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">选择</span>第11题 · 小型开放经济</div><div class="qb"><p>小型开放经济中，世界利率r*上升会导致（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 贸易余额改善，实际汇率升值</span><span class="quiz-opt" data-val="B">B. 贸易余额恶化，实际汇率贬值</span><span class="quiz-opt" data-val="C">C. 贸易余额恶化，实际汇率升值</span><span class="quiz-opt" data-val="D">D. 贸易余额改善，实际汇率贬值</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：D</strong>。r*↑→国内I↓（投资减少）→S不变而I↓→S-I↑→NX↑（贸易盈余扩大）。NX↑→本币需贬值来增加净出口。注意传导链：r*↑→I↓→资本外流→本币贬值→NX↑。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="C"><div class="qh"><span class="qt qt-c">选择</span>第12题 · 蒙代尔-弗莱明：浮动汇率</div><div class="qb"><p>在蒙代尔-弗莱明模型中，浮动汇率制下财政扩张（G↑）会导致（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 产出增加，汇率不变</span><span class="quiz-opt" data-val="B">B. 产出增加，汇率贬值</span><span class="quiz-opt" data-val="C">C. 产出不变，汇率升值</span><span class="quiz-opt" data-val="D">D. 产出减少，汇率贬值</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：C</strong>。浮动汇率+资本自由流动→G↑→IS*右移→r有上升压力→资本流入→本币升值→NX↓→IS*回到原位→Y不变。财政政策在浮动汇率下<strong>完全无效</strong>（挤出的是净出口而非投资）。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="A"><div class="qh"><span class="qt qt-c">选择</span>第13题 · 蒙代尔-弗莱明：固定汇率</div><div class="qb"><p>在蒙代尔-弗莱明模型中，固定汇率制下货币扩张（M↑）会导致（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 产出不变，央行外汇储备减少</span><span class="quiz-opt" data-val="B">B. 产出增加，央行外汇储备增加</span><span class="quiz-opt" data-val="C">C. 产出增加，汇率不变</span><span class="quiz-opt" data-val="D">D. 产出减少，汇率不变</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：A</strong>。固定汇率下M↑→LM*右移→r有下降压力→资本外流→本币贬值压力→央行干预（卖外汇买本币）→M自动回缩→LM*回到原位→Y不变。货币政策在固定汇率下<strong>完全无效</strong>，只会消耗储备。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="B"><div class="qh"><span class="qt qt-c">选择</span>第14题 · 增长核算</div><div class="qb"><p>某国GDP增长5%，资本增长6%，劳动增长2%，资本份额α=0.4。索洛残差（TFP增长率）约为（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 1.8%</span><span class="quiz-opt" data-val="B">B. 1.4%</span><span class="quiz-opt" data-val="C">C. 2.6%</span><span class="quiz-opt" data-val="D">D. 5.0%</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：B</strong>。ΔA/A=ΔY/Y-αΔK/K-(1-α)ΔL/L=5%-0.4×6%-0.6×2%=5%-2.4%-1.2%=<strong>1.4%</strong>。TFP贡献占总增长的28%。</div></div></details>
+	</div>
+
+<div class="q-card quiz-card" data-answer="D"><div class="qh"><span class="qt qt-c">选择</span>第15题 · 不可能三角</div><div class="qb"><p>根据"不可能三角"理论，如果一国选择固定汇率且允许资本自由流动，则（  ）。</p><div class="opts"><span class="quiz-opt" data-val="A">A. 可以同时保持独立的货币政策</span><span class="quiz-opt" data-val="B">B. 货币政策对调节国内经济最有效</span><span class="quiz-opt" data-val="C">C. 财政政策完全无效</span><span class="quiz-opt" data-val="D">D. 货币政策必须服从汇率目标，丧失独立性</span></div><div class="quiz-feedback"></div>
+		<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>答案：D</strong>。不可能三角：独立货币政策、资本自由流动、固定汇率——三者只能选其二。选固定汇率+资本自由→货币政策不再独立（必须用于维持汇率）。中国选择货币政策独立+管理汇率→必须限制资本流动。</div></div></details>
+	</div>
+
+<div class="sec-title">✅ 第二部分：判断题（10×2分=20分）<span class="pts">判断正误，错误的请改正</span></div>
+
+<div class="exam-tf-card"><div class="tf-line"><span class="tf-num">第1题</span><div>GDP是衡量经济福利的完美指标。（  ）</div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>错误（×）</strong>。改正：GDP遗漏了家庭生产、闲暇、环境质量、收入分配、地下经济等，不是完美的福利指标。应使用HDI、绿色GDP等补充。</div></div></details></div>
+
+<div class="exam-tf-card"><div class="tf-line"><span class="tf-num">第2题</span><div>古典模型中，价格完全弹性，货币供给的变化只影响名义变量而不影响实际变量。（  ）</div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>正确（✓）</strong>。这就是<strong>古典二分法/货币中性</strong>——长期中货币只影响价格水平等名义变量，不影响Y、r、就业等实际变量。</div></div></details></div>
+
+<div class="exam-tf-card"><div class="tf-line"><span class="tf-num">第3题</span><div>在索洛增长模型中，储蓄率的提高可以永久提高人均产出的增长率。（  ）</div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>错误（×）</strong>。改正：储蓄率提高只有<strong>水平效应</strong>（y*提高），没有<strong>增长效应</strong>（长期增长率仍为g）。人均产出增长率在过渡期暂时提高，但长期恢复为技术进步率g。</div></div></details></div>
+
+<div class="exam-tf-card"><div class="tf-line"><span class="tf-num">第4题</span><div>根据索洛模型，两个有相同s、δ、n、g的经济体将收敛到相同的人均产出水平。（  ）</div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>正确（✓）</strong>。这是<strong>条件收敛</strong>假说。给定相同的结构参数（s、δ、n、g和生产函数），不同国家收敛到相同稳态。绝对收敛（无条件收敛）的预测力较弱。</div></div></details></div>
+
+<div class="exam-tf-card"><div class="tf-line"><span class="tf-num">第5题</span><div>在IS-LM模型中，如果LM曲线垂直（古典情形），则财政政策对产出完全没有影响。（  ）</div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>正确（✓）</strong>。LM垂直→货币需求与利率无关→G↑只会抬高r→完全挤出I→Y不变。这是"完全挤出"的极端情形。反之，LM水平（流动性陷阱）→财政政策完全有效。</div></div></details></div>
+
+<div class="exam-tf-card"><div class="tf-line"><span class="tf-num">第6题</span><div>根据菲利普斯曲线，政策制定者可以永久地用较高的通货膨胀换取较低的失业率。（  ）</div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>错误（×）</strong>。改正：<strong>长期</strong>菲利普斯曲线在自然失业率处垂直——不存在长期通胀-失业权衡。只有<strong>短期</strong>中（预期未调整）才有权衡关系。弗里德曼-费尔普斯的自然率假说。</div></div></details></div>
+
+<div class="exam-tf-card"><div class="tf-line"><span class="tf-num">第7题</span><div>在小型开放经济中，财政扩张会导致贸易赤字和本币升值。（  ）</div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>正确（✓）</strong>。G↑→S↓→S-I↓→NX↓（贸易赤字）。NX↓→本币需求减少→实际汇率升值。这就是<strong>双赤字假说</strong>（Twin Deficits）的核心逻辑。</div></div></details></div>
+
+<div class="exam-tf-card"><div class="tf-line"><span class="tf-num">第8题</span><div>蒙代尔-弗莱明模型中，固定汇率制下的财政政策比浮动汇率制下更有效。（  ）</div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>正确（✓）</strong>。固定汇率下G↑→Y↑→r有上升压力→资本流入→央行买外汇放本币→M被动扩张→LM*右移→双重刺激→Y大幅↑。浮动汇率下G↑→本币升值→NX完全抵消→Y不变。</div></div></details></div>
+
+<div class="exam-tf-card"><div class="tf-line"><span class="tf-num">第9题</span><div>适应性预期假设下，反通货膨胀不需要付出产出损失的代价。（  ）</div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>错误（×）</strong>。改正：适应性预期（π^e=π_{-1}）下，降低通胀需要实际失业>自然失业率→存在<strong>牺牲率</strong>（降1%通胀约牺牲5%GDP）。理性预期+可信承诺下牺牲率可接近零。</div></div></details></div>
+
+<div class="exam-tf-card"><div class="tf-line"><span class="tf-num">第10题</span><div>根据卢卡斯批判，使用历史数据估计的宏观经济模型参数在政策规则改变后依然有效。（  ）</div></div>
+<details class="qa"><summary>查看答案</summary><div class="ac"><div class="step"><strong>错误（×）</strong>。改正：卢卡斯批判指出：政策规则改变→经济主体的行为（预期）改变→历史数据估计的模型参数不再有效。因此政策评估必须考虑理性预期对行为方程的影响。</div></div></details></div>
+
+<div class="sec-title">📝 第三部分：计算分析题（20+25+20=65分）</div>
+<div class="warn"><strong>⚠️ 考试重点：索洛模型、IS-LM模型、蒙代尔-弗莱明模型必出计算题。以下题目难度高于平时作业。</strong></div>
+
+<!-- 计算题1: 索洛模型 20分 -->
+<div class="q-card"><div class="qh"><span class="qt qt-s" style="background:#7c3aed;color:#fff">计算 20分</span>第1题 · 索洛增长模型综合计算</div>
+<div class="qb">
+<p>假设某经济体的生产函数为Y=K<sup>0.3</sup>(LE)<sup>0.7</sup>，储蓄率s=20%，折旧率δ=5%，人口增长率n=2%，劳动改善型技术进步率g=1%。</p>
+<p>(1)（4分）求稳态的有效工人人均资本k̂*和有效工人人均产出ŷ*。（提示：k̂*=[s/(δ+n+g)]<sup>1/(1-α)</sup>）</p>
+<p>(2)（4分）稳态的总产出增长率、人均产出增长率、有效工人人均产出增长率各是多少？</p>
+<p>(3)（4分）计算稳态的资本边际产量MPK。该经济体是否达到了黄金律水平？如果没有，应增加还是减少储蓄率？</p>
+<p>(4)（4分）假设政策制定者希望将经济推向黄金律稳态，黄金律下的k̂_gold和ŷ_gold是多少？</p>
+<p>(5)（4分）要达到黄金律稳态，储蓄率应调整为多少？从当前稳态向黄金律过渡期间，人均产出增长率会如何变化？</p>
+</div>
+<details class="qa"><summary>查看答案</summary><div class="ac">
+<div class="step"><strong>(1) k̂*和ŷ*</strong></div>
+<div class="step">k̂*=[s/(δ+n+g)]<sup>1/(1-α)</sup>=[0.20/(0.05+0.02+0.01)]<sup>1/0.7</sup>=[0.20/0.08]<sup>1/0.7</sup>=2.5<sup>1.4286</sup>≈<strong>3.70</strong></div>
+<div class="step">ŷ*=(k̂*)<sup>α</sup>=3.70<sup>0.3</sup>≈<strong>1.48</strong></div>
+<div class="step"><strong>(2) 增长率</strong></div>
+<div class="step">总产出Y增长率=n+g=2%+1%=<strong>3%</strong></div>
+<div class="step">人均产出y=Y/L增长率=g=<strong>1%</strong></div>
+<div class="step">有效工人人均产出ŷ=Y/(LE)增长率=<strong>0%</strong>（稳态不变）</div>
+<div class="step"><strong>(3) MPK与黄金律判断</strong></div>
+<div class="step">MPK=α·(k̂*)<sup>α-1</sup>=0.3×(3.70)<sup>-0.7</sup>=0.3/2.50≈<strong>0.12=12%</strong></div>
+<div class="step">黄金律MPK=δ+n+g=0.05+0.02+0.01=<strong>0.08=8%</strong></div>
+<div class="step">MPK=12%>8%→资本边际产出高于持平投资斜率→资本存量<strong>低于</strong>黄金律水平→应<strong>增加</strong>储蓄率</div>
+<div class="step"><strong>(4) 黄金律k̂_gold和ŷ_gold</strong></div>
+<div class="step">MPK=α·k̂<sup>α-1</sup>=δ+n+g→k̂_gold=[α/(δ+n+g)]<sup>1/(1-α)</sup>=[0.3/0.08]<sup>1/0.7</sup>=3.75<sup>1.4286</sup>≈<strong>6.62</strong></div>
+<div class="step">ŷ_gold=(6.62)<sup>0.3</sup>≈<strong>1.76</strong></div>
+<div class="step"><strong>(5) 黄金律储蓄率</strong></div>
+<div class="step">稳态条件s·f(k̂)=(δ+n+g)k̂→s_gold=(δ+n+g)k̂_gold/ŷ_gold=0.08×6.62/1.76≈<strong>0.301=30.1%</strong></div>
+<div class="step">过渡期间：s从20%升至30.1%→资本积累加速→人均产出增长率暂时<strong>高于</strong>1%。到达新稳态后增长率恢复为1%。</div>
+</div></details></div>
+
+<!-- 计算题2: IS-LM 25分 -->
+<div class="q-card"><div class="qh"><span class="qt qt-s" style="background:#7c3aed;color:#fff">计算 25分</span>第2题 · IS-LM模型与政策分析</div>
+<div class="qb">
+<p>某封闭经济体的特征如下：</p>
+<p>C=300+0.6(Y-T)，I=400-50r，G=500，T=400，实际货币需求L=0.5Y-100r，名义货币供给M=2000，价格水平P=2。</p>
+<p>(1)（5分）推导IS曲线方程和LM曲线方程。</p>
+<p>(2)（4分）求均衡的产出Y和利率r。</p>
+<p>(3)（4分）假设政府购买G从500增至600。求新的均衡Y和r，并计算挤出效应的规模。</p>
+<p>(4)（4分）假设央行将货币供给M从2000增至2400（P不变）。求新的均衡Y和r。与(3)相比政策效果有何不同？</p>
+<p>(5)（4分）如果G增至600的同时M增至2400，求均衡Y和r。这种政策组合的优缺点是什么？</p>
+<p>(6)（4分）推导该经济的总需求曲线AD：Y=Y(P)。当P从2升至3时Y如何变化？解释经济含义。</p>
+</div>
+<details class="qa"><summary>查看答案</summary><div class="ac">
+<div class="step"><strong>(1) IS和LM方程</strong></div>
+<div class="step">IS: Y=C+I+G=300+0.6(Y-400)+400-50r+500 → Y=300+0.6Y-240+400-50r+500</div>
+<div class="step">Y-0.6Y=960-50r → 0.4Y=960-50r → <strong>Y=2400-125r</strong>（IS曲线）</div>
+<div class="step">LM: M/P=L → 2000/2=0.5Y-100r → 1000=0.5Y-100r → <strong>Y=2000+200r</strong>（LM曲线）</div>
+<div class="step"><strong>(2) 均衡</strong></div>
+<div class="step">2400-125r=2000+200r → 400=325r → <strong>r*=1.23%</strong></div>
+<div class="step">Y*=2000+200×1.23=2000+246=<strong>2246</strong>（或2400-125×1.23=2246）</div>
+<div class="step"><strong>(3) G增至600（财政扩张）</strong></div>
+<div class="step">新IS: Y=300+0.6(Y-400)+400-50r+600 → Y-0.6Y=1060-50r → <strong>Y=2650-125r</strong></div>
+<div class="step">2650-125r=2000+200r → 650=325r → <strong>r**=2.0%</strong></div>
+<div class="step">Y**=2000+200×2=2400。ΔY=2400-2246=<strong>154</strong></div>
+<div class="step">政府支出乘数（凯恩斯交叉）：1/(1-0.6)=2.5。若无利率上升：ΔY=2.5×100=<strong>250</strong></div>
+<div class="step">挤出效应=250-154=<strong>96</strong>。投资变化：I=400-50×2=300（原I=400-50×1.23=338.5）→ΔI=-38.5。挤出约38.5。</div>
+<div class="step"><strong>(4) M增至2400（货币扩张）</strong></div>
+<div class="step">新LM: 2400/2=0.5Y-100r → 1200=0.5Y-100r → <strong>Y=2400+200r</strong></div>
+<div class="step">2400-125r=2400+200r → 0=325r → <strong>r***=0%</strong>, <strong>Y***=2400</strong></div>
+<div class="step">ΔY=2400-2246=154（与财政扩张的产出效果恰好相同）。但r↓而非r↑→投资↑而非被挤出。货币政策刺激的是I，财政刺激的是G。</div>
+<div class="step"><strong>(5) 财政+货币同时扩张</strong></div>
+<div class="step">新IS: Y=2650-125r；新LM: Y=2400+200r</div>
+<div class="step">2650-125r=2400+200r → 250=325r → <strong>r=0.77%</strong>, <strong>Y=2554</strong></div>
+<div class="step">优点：Y大幅增加（308），r温和（0.77），投资未受严重挤出。缺点：双扩张→通胀压力增加（长期P↑）。这是"政策组合"的经典应用。</div>
+<div class="step"><strong>(6) AD曲线</strong></div>
+<div class="step">IS: Y=2400-125r → r=(2400-Y)/125</div>
+<div class="step">LM: M/P=0.5Y-100r → 2000/P=0.5Y-100×(2400-Y)/125=0.5Y-1920+0.8Y=1.3Y-1920</div>
+<div class="step"><strong>AD: Y≈1477+1538/P</strong></div>
+<div class="step">P=2→Y=1477+769=<strong>2246</strong>；P=3→Y=1477+513=<strong>1990</strong></div>
+<div class="step">P↑→实际货币供给↓→LM左移→r↑→I↓→Y↓。AD向下倾斜。</div>
+</div></details></div>
+
+<!-- 计算题3: 蒙代尔-弗莱明 20分 -->
+<div class="q-card"><div class="qh"><span class="qt qt-s" style="background:#7c3aed;color:#fff">计算 20分</span>第3题 · 蒙代尔-弗莱明模型与汇率制度</div>
+<div class="qb">
+<p>某小型开放经济面临世界利率r*=4%。其经济结构为：</p>
+<p>C=200+0.7(Y-T)，I=300-40r*，G=400，T=400，NX=250-100ε（ε为实际汇率），实际货币需求L=0.6Y-80r*，名义货币供给M=2400，P=3。</p>
+<p>(1)（5分）计算该经济在浮动汇率下的均衡产出Y、实际汇率ε和净出口NX。</p>
+<p>(2)（4分）浮动汇率下，政府购买G增至500。求新的Y、ε和NX。说明财政政策无效的原因。</p>
+<p>(3)（4分）浮动汇率下，政府转而采用贸易保护政策（NX=300-100ε）。求新的Y、ε和NX。为什么NX最终不变？</p>
+<p>(4)（4分）现在假设该国实行固定汇率制，固定ε=1.0。当政府购买G增至500时，求新的Y和央行需要调整的货币供给量。</p>
+<p>(5)（3分）结合(2)和(4)的计算结果，用"不可能三角"理论解释为什么不同汇率制度下财政政策效果不同。</p>
+</div>
+<details class="qa"><summary>查看答案</summary><div class="ac">
+<div class="step"><strong>(1) 浮动汇率均衡</strong></div>
+<div class="step">IS*: Y=C+I+G+NX=200+0.7(Y-400)+300-40×4+400+250-100ε</div>
+<div class="step">Y=200+0.7Y-280+300-160+400+250-100ε → Y-0.7Y=710-100ε → 0.3Y=710-100ε → <strong>Y=(710-100ε)/0.3</strong></div>
+<div class="step">LM*: M/P=L(r*,Y) → 2400/3=0.6Y-80×4 → 800=0.6Y-320 → 0.6Y=1120 → <strong>Y*=1866.67</strong></div>
+<div class="step">代入IS*: 0.3×1866.67=710-100ε → 560=710-100ε → 100ε=150 → <strong>ε*=1.5</strong></div>
+<div class="step"><strong>NX=250-100×1.5=100</strong></div>
+<div class="step"><strong>(2) G增至500（浮动汇率）</strong></div>
+<div class="step">新IS*: Y=200+0.7(Y-400)+300-160+500+250-100ε → 0.3Y=810-100ε</div>
+<div class="step">LM*: Y=1866.67（货币市场单独决定Y，不受G影响！）</div>
+<div class="step">0.3×1866.67=810-100ε → 560=810-100ε → <strong>ε**=2.5</strong></div>
+<div class="step"><strong>NX=250-100×2.5=0</strong></div>
+<div class="step">Y不变（1866.67）！财政扩张→本币升值（ε从1.5→2.5）→NX从100→0（完全抵消）。浮动汇率下财政政策完全无效。</div>
+<div class="step"><strong>(3) 贸易保护（浮动汇率）</strong></div>
+<div class="step">新IS*: 0.3Y=760-100ε（NX截距从250→300）</div>
+<div class="step">LM*: Y仍=1866.67。0.3×1866.67=760-100ε → 560=760-100ε → <strong>ε=2.0</strong></div>
+<div class="step"><strong>NX=300-100×2.0=100</strong>（与原来相同！）</div>
+<div class="step">贸易保护→本币升值完全抵消保护效果→NX不变。这是M-F模型的核心结论：浮动汇率下贸易政策无效。</div>
+<div class="step"><strong>(4) 固定汇率ε=1.0，G增至500</strong></div>
+<div class="step">IS*（G=500，ε=1）: 0.3Y=810-100×1=710 → <strong>Y=2366.67</strong></div>
+<div class="step">LM*需满足：M/3=0.6×2366.67-80×4=1420-320=1100 → M=3300</div>
+<div class="step">原M=2400→央行需增发<strong>900</strong>货币。财政扩张→Y↑→r有上升压力→资本流入→央行买外汇放本币→M被动↑→Y大幅增加。固定汇率下财政政策<strong>非常有效</strong>。</div>
+<div class="step"><strong>(5) 不可能三角解释</strong></div>
+<div class="step">小型开放经济+资本自由流动→r=r*固定。浮动汇率：货币政策独立，LM*垂直→Y由货币市场决定→财政无效。固定汇率：货币政策不独立（需维持汇率），LM*内生调整→财政扩张被货币被动扩张放大→财政有效。三个目标（独立货币政策、资本自由流动、固定汇率）不可兼得。</div>
+</div></details></div>
+
+</section>
+
+</main>
+
+<script>
+(function(){
+  const sidebarLinks=document.querySelectorAll('.sidebar-nav a');
+  const chapters=document.querySelectorAll('.chapter');
+  const searchInput=document.getElementById('searchInput');
+  const mainContent=document.getElementById('mainContent');
+  function updateActive(){
+    let cur='';
+    chapters.forEach(ch=>{if(ch.getBoundingClientRect().top<=130)cur=ch.id;});
+    sidebarLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+  }
+  window.addEventListener('scroll',updateActive,{passive:true});
+  sidebarLinks.forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});sidebarLinks.forEach(l=>l.classList.remove('active'));this.classList.add('active');}});});
+
+  function performSearch(){
+    const q=searchInput.value.trim().toLowerCase();
+    document.querySelectorAll('.search-highlight').forEach(el=>{const p=el.parentNode;if(p){p.replaceChild(document.createTextNode(el.textContent),el);p.normalize();}});
+    if(!q){
+      document.querySelectorAll('.chapter,.card,.derivation,.q-card,.example-box,.sec-title,.chapter-toc').forEach(el=>el.classList.remove('hidden-by-search'));
+      const nr=document.getElementById('noResultsMsg');if(nr)nr.style.display='none';
+      return;
+    }
+    let anyVis=false;
+    document.querySelectorAll('.chapter').forEach(ch=>{
+      const els=ch.querySelectorAll('.card,.derivation,.q-card,.example-box,.sec-title,.chapter-toc,.chapter-header,.chapter-subtitle');
+      let chMatch=false;
+      els.forEach(el=>{
+        if(el.textContent.toLowerCase().includes(q)){el.classList.remove('hidden-by-search');chMatch=true;
+          const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null,false);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+          nodes.forEach(node=>{const t=node.textContent.toLowerCase();const idx=t.indexOf(q);if(idx>=0&&node.parentNode){const span=document.createElement('span');span.className='search-highlight';const range=document.createRange();range.setStart(node,idx);range.setEnd(node,idx+q.length);try{range.surroundContents(span);}catch(e){}}});
+        }else{el.classList.add('hidden-by-search');}
+      });
+      ch.classList.toggle('hidden-by-search',!chMatch);if(chMatch)anyVis=true;
+    });
+    let nr=document.getElementById('noResultsMsg');
+    if(!nr){nr=document.createElement('div');nr.id='noResultsMsg';nr.className='no-results';nr.textContent='📭 未找到匹配的内容';mainContent.appendChild(nr);}
+    nr.style.display=anyVis?'none':'block';
+  }
+  searchInput.addEventListener('input',function(){clearTimeout(this._t);this._t=setTimeout(performSearch,200);});
+  document.addEventListener('keydown',function(e){
+    if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();searchInput.focus();searchInput.select();}
+    if(e.key==='Escape'&&document.activeElement===searchInput){searchInput.value='';performSearch();}
+  });
+  updateActive();
+})();
+
+// ===== Interactive Quiz System =====
+let quizMode = true;  // 默认开启做题模式！
+let quizStats = {total:0, correct:0, attempted:new Set()};
+
+function initQuiz(){
+  const btn = document.getElementById('quizToggle');
+  const scoreEl = document.getElementById('quizScore');
+  const resetBtn = document.getElementById('quizReset');
+  if(!btn) return;
+
+  btn.textContent = '📝 做题模式 ●';
+  btn.classList.remove('off');
+  if(scoreEl) scoreEl.style.display = 'inline';
+  if(resetBtn) resetBtn.style.display = 'inline';
+  document.querySelectorAll('.qa').forEach(d => d.open = false);
+  updateScore();
+}
+window.addEventListener('DOMContentLoaded', initQuiz);
+
+function toggleQuizMode(){
+  quizMode = !quizMode;
+  const btn = document.getElementById('quizToggle');
+  const scoreEl = document.getElementById('quizScore');
+  const resetBtn = document.getElementById('quizReset');
+  if(!btn) return;
+
+  if(quizMode){
+    btn.textContent = '📝 做题模式 ●';
+    btn.classList.remove('off');
+    if(scoreEl) scoreEl.style.display = 'inline';
+    if(resetBtn) resetBtn.style.display = 'inline';
+    document.querySelectorAll('.qa').forEach(d => d.open = false);
+    document.querySelectorAll('.quiz-card').forEach(card => {
+      card.querySelectorAll('.quiz-opt').forEach(opt => opt.classList.remove('correct','wrong','selected','disabled','show-correct'));
+      const fb = card.querySelector('.quiz-feedback');
+      if(fb){fb.classList.remove('show','correct-msg','wrong-msg');fb.textContent='';}
+    });
+    quizStats = {total:0, correct:0, attempted:new Set()};
+    updateScore();
+  } else {
+    btn.textContent = '📝 做题模式';
+    btn.classList.add('off');
+    if(scoreEl) scoreEl.style.display = 'none';
+    if(resetBtn) resetBtn.style.display = 'none';
+    document.querySelectorAll('.quiz-card').forEach(card => {
+      card.querySelectorAll('.quiz-opt').forEach(opt => opt.classList.remove('correct','wrong','selected','disabled','show-correct'));
+      const fb = card.querySelector('.quiz-feedback');
+      if(fb){fb.classList.remove('show','correct-msg','wrong-msg');fb.textContent='';}
+    });
+  }
+}
+
+function resetQuiz(){
+  quizStats = {total:0, correct:0, attempted:new Set()};
+  document.querySelectorAll('.quiz-card').forEach(card => {
+    card.querySelectorAll('.quiz-opt').forEach(opt => opt.classList.remove('correct','wrong','selected','disabled','show-correct'));
+    const fb = card.querySelector('.quiz-feedback');
+    if(fb){fb.classList.remove('show','correct-msg','wrong-msg');fb.textContent='';}
+  });
+  updateScore();
+}
+
+function updateScore(){
+  const scoreEl = document.getElementById('quizScore');
+  if(scoreEl){
+    scoreEl.textContent = quizStats.correct + '/' + quizStats.attempted.size + (quizStats.attempted.size > 0 ? ' (' + Math.round(quizStats.correct/quizStats.attempted.size*100) + '%)' : '');
+  }
+}
+
+// Delegate click on quiz options
+document.addEventListener('click', function(e){
+  if(!quizMode) return;
+  var opt = e.target;
+  // Walk up to find .quiz-opt
+  while(opt && !(opt.classList && opt.classList.contains('quiz-opt'))){
+    opt = opt.parentElement;
+  }
+  if(!opt || !opt.classList) return;
+  var card = opt.parentElement;
+  while(card && !(card.classList && card.classList.contains('quiz-card'))){
+    card = card.parentElement;
+  }
+  if(!card || !card.classList) return;
+
+  var cardId = '';
+  var qh = card.querySelector('.qh');
+  if(qh) cardId = (qh.textContent || '').trim();
+  if(quizStats.attempted.has(cardId)) return;
+
+  var correctAnswer = card.getAttribute('data-answer');
+  var userAnswer = opt.getAttribute('data-val');
+  var allOpts = card.querySelectorAll('.quiz-opt');
+  var fb = card.querySelector('.quiz-feedback');
+
+  quizStats.attempted.add(cardId);
+  quizStats.total++;
+
+  for(var i=0; i<allOpts.length; i++) allOpts[i].classList.add('disabled');
+
+  if(userAnswer === correctAnswer){
+    opt.classList.add('correct');
+    quizStats.correct++;
+    if(fb){fb.textContent='✅ 正确！';fb.className='quiz-feedback show correct-msg';}
+  } else {
+    opt.classList.add('wrong');
+    for(var j=0; j<allOpts.length; j++){
+      if(allOpts[j].getAttribute('data-val')===correctAnswer) allOpts[j].classList.add('show-correct');
+    }
+    if(fb){fb.textContent='❌ 错误！正确答案是 '+correctAnswer;fb.className='quiz-feedback show wrong-msg';}
+  }
+  updateScore();
+});
+</script>
+</body>
+</html>
