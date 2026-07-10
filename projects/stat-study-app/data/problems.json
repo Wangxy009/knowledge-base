@@ -1,0 +1,2066 @@
+{
+  "total": 205,
+  "problems": [
+    {
+      "id": "QB-2-01",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "设X ,X …,X 是来自正态总体X 的简单随机样本,\n1 2 9\n1 1 1 9 2(Y −Y )\nY = (X +Λ+ X ),Y = (X + X + X ),S2 = ∑(X −Y )2,Z = 1 2 ,\n1 6 1 6 2 3 7 8 9 2 i 2 S\ni=7",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "抽样分布定理"
+      ]
+    },
+    {
+      "id": "QB-2-03",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "设总体 X 服从正态分布 N(μ,σ2) , X ,X , …, X 是来自该总体的一个样本,记\n1 2 n\n1 k\nX = ∑X (1≤k ≤n),求统计量X −X 的分布。\nk k i k+1 k\ni=1",
+      "solution": "解:因为正态分布的线性组合还是正态分布,所以X −X (1≤k ≤n−1)服从正态分布,\nk+1 k\n下面只需要确定这个正态分布的期望与方差就可以了。\n1 k+1 1 k 1 k+1 k+1 k \n由于X\nk+1\n−X\nk\n=\nk +1\n∑X\ni\n−\nk\n∑X\ni\n=\nk+1 \n∑X\ni\n−\nk\n∑X\ni \ni=1 i=1 i=1 i=1\n1 k+1 k 1 k 1\n=\n\n∑X −∑X − ∑X\n\n= ( X − X )\nk+1 i i k i k+1 k+1 k\ni=1 i=1 i=1\n由于X 与X 是相互独立的,且求得\nk+1 k\n1 1\n( ) ( ) ( )\nE X −X = E X −X = EX −EX =0\nk+1 k k+1 k+1 k k+1 k+1 k\n1 1 σ2 σ2\nVar ( X − X ) = ( Var(X )+Var ( X )) = σ2 + =\nk+1 k (k+1)2 k+1 k (k+1)2 k k(k+1)\nσ2\n可知统计量X −X 服从正态分布N(0, )\nk+1 k k(k+1)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-2-04",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "设X ,X , …, X 是来自正态总体N(μ,σ2)的样本,X 和S2是样本均值和样本方差;又设\n1 2 n n\nX ~ N(μ,σ2),且与X ,X ,√√√,X 独立,试求统计量\nn+1 1 2 n\nX −X n−1\nT = n+1\nS n+1\nn\n的概率分布。",
+      "solution": "解:根据正态总体抽样分布的性质可知\n1 n σ2\nX = ∑X ~ N(μ, ) ,\nn i n\ni=1\nnS2\n根据定理可知 n ~γ2(n−1) ,且 X与S2相互独立 ,又已知 X ~ N(μ,σ2) ,且与\nσ2 n n+1\nn+1 X −X\nX ,X ,√√√,X 独立,所以 X − X ~ N(0, σ2) , 即 n+1 ~ N(0,1) ,且\n1 2 n n+1 n n+1\nσ\nn\nn+1\n(X − X) σ\nX −X nS2 n+1 n\nn+1 与 n 独立,因此T = ~ t(n−1)\nn+1 σ2 nS2\nσ n (n−1)\nn σ2\nX − X n−1\n即T = n+1 ~t(n−1)。\nS n+1\nn",
+      "difficulty": "easy",
+      "tags": [
+        "抽样分布定理"
+      ]
+    },
+    {
+      "id": "QB-2-05",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "设(X ,X , …, X )T 和(Y,Y , …, Y )T 分别是来自两个独立的正态总体 N(μ,σ2) 和\n1 2 m 1 2 n 1\nN(μ,σ2)的样本,α和β是两个实数,试求\n2\nα(X −μ)+β(Y −μ)\nZ = 1 2\nmS2 +nS2 α2 β2\n1m 2n +\nm+n−2 m n\n的概率分布。其中X ,S2 和Y ,S2 分别是两个总体的样本均值、样本方差。\n1m 2n\nσ2 σ2",
+      "solution": "解:因为X ~ N(μ, )、Y ~ N(μ, )且相互独立, 所以\n1 m 2 n\nα2σ2 β2σ2 α(X −μ)+β(Y −μ)\nαX +βY ~ N(αμ +βμ, + ),即U = 1 2 服从N(0,1)。\n1 2 m n α2 β2\nσ +\nm n\nmS2 nS2\n又 1m ~γ2(m−1) , 2n ~γ2(n−1) 且相互独立,所以,\nσ2 σ2\nmS2 nS2 α(X −μ)+β(Y −μ)\nV = 1m + 2n ~γ2(m+n−2),且U = 1 2 与相互独立从而,由t\nσ2 σ2 α2 β2\nσ +\nm n\nα(X −μ)+β(Y −μ)\n分布的定义得:Z = 1 2 ~t(m+n−2)\nmS2 +nS2 α2 β2\n1m 2n +\nm+n−2 m n",
+      "difficulty": "easy",
+      "tags": [
+        "抽样分布定理"
+      ]
+    },
+    {
+      "id": "QB-2-06",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "设(X ,X , …, X ,X ,X , …, X )T 是来自正态总体N(0,σ2)容量为n+m的样本,\n1 2 n n+1 n+2 n+m\nn n\nm∑X m∑X2\ni i",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "抽样分布定理"
+      ]
+    },
+    {
+      "id": "QB-2-07",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "试求下列统计量的概率分布:(1)Y = i=1 ; (2)Z = i=1 。\nn+m n+m\nn ∑ X2 n∑ X2\ni i\ni=n+1 i=n+1\nn\n∑X\nn i\nm∑X i=1\ni\nnσ",
+      "solution": "解:(1)Y = i=1 =\nn n ∑ +m X2 m ∑ +n X i 2\ni \ni=n+1 i=n+1 σ \nm\n1 n\n因为 X 服从N(0,σ2) (i =1,2, …, n,n+1, …, n+m)且相互独立,所以 ∑X 服从正\ni i\nnσ\ni=1\nm+n X 2 1 n m+n X 2\n态分布N(0,1),又因为 ∑\n\ni\n\n服从γ2(m) ,且 ∑X 与 ∑\n\ni\n\n相互独\n σ nσ i σ \ni=n+1 i=1 i=n+1\nn\nm∑X\ni\n立,所以 Y = i=1 ~t(m)。\nn+m\nn ∑ X2\ni\ni=n+1\nn X 2\n∑ i\nn \nm∑X2\ni=1\n σ \n因为 Z = i=1 i = n ,又因为 ∑ n \n\nX i \n\n2 服从γ2(n) , m ∑ +n \n\nX i \n\n2 服从\nn m ∑ +n X2 n ∑ +m X i 2 i=1 σ i=n+1 σ \ni \ni=n+1 i=n+1 σ \nm\nn\nm∑X2\ni\nγ2(m)且相互独立,所以Z = i=1 ~ F(n,m)。\nn+m\nn∑ X2\ni\ni=n+1",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-2-08",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "设总体X 在(0,θ)(θ>0)上服从均匀分布,X ,X , …, X 为其一个样本,设\n1 2 n\nX =min{X ,X , …, X } 。(1)X 的概率密度函数 f (x);(2)求EX 。\n(1) 1 2 n (1) (1) (1)\n1\n , 0≤ x≤θ",
+      "solution": "解:(1) X 的概率密度函数为: f (x)=θ , X 的分布函数为:\nX\n 0, 其他\n1, x >θ\n\nx\nF (x)= , 0≤ x≤θ,X 的概率密度函数为:\nX θ (1)\n\n0, x<0\n\nn x n−1\nf (x)=nf (x)[1−F (x)]n−1 = θ 1− θ , 0≤ x≤θ ,\n(1) X X\n\n 0, 其他\n(2)EX = n ∫ θ x(θ−x)n−1 dx = θ ,\n(1) θn 0 n+1\n2x, 0< x<1",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-2-09",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "设总体X 的分布密度为 f(x)= ,X ,X ,Λ,X 为来自总体X 的样本,试分\n 0, 其他 1 2 n\n别求次序统计量X ,X 和X 的概率密度函数。\n(1) (n) (k)\n0, x<0",
+      "solution": "解:总体X 的分布函数为F(x)=x2,0≤ x<1\n\n1, x≥1\n\nf\n(x)=n[1−F(x)]n−1\nf(x)=n\n( 1−x2)n−1\n√2x=2n\n( 1−x2)n−1\nx,0< x<1.\nX(1)\nf (x)=n[F(x)]n−1 f(x) =n√ ( x2)n−1 √2x=2nx2n−1,0< x<1.\nX(n)\nf (x)= n! [F(x)]k−1[1−F(x)]n−k f(x)= n! ( x2)k−1( 1−x2)n−k √2x,0<x<1\nX(k) (k−1)!(n−k)! (k−1)!(n−k)!\n因此,次序统计量X ,X 和X 的概率密度函数分别为:\n(1) (n) (k)\n 2n ( 1−x2)n−1 x, 0< x<1 2nx2n−1,0< x<1\nf (x)= , f (x)=\nX(1) 0, 其它 X(n) 0, 其它\n n! ( x2)k−1( 1−x2)n−k\n2x, 0< x<1\n\nf (x)=\n(k−1)!(n−k)!\nX(k)\n\n 0, 其它",
+      "difficulty": "easy",
+      "tags": [
+        "F分布",
+        "次序统计量"
+      ]
+    },
+    {
+      "id": "QB-2-10",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "设总体X服从区间(0,θ)上的均匀分布,X ,X ,Λ,X 为来自总体X 的样本,试分别求次\n1 2 n\n序统计量X ,X 和X 的概率密度函数。\n(1) (n) (k)",
+      "solution": "解:总体X 的分布密度函数:\n1\n , 0< x<θ\nf(x)=θ\n 0, 其他\n所以X 的分布函数:\n0, x≤0\n\nx\nF(x)= , 0< x<θ\nθ\n\n1, x≥θ\n\n又因为\nf\n(x)=n[1−F(x)]n−1\nf(x) , f\n(x)=n[F(x)]n−1\nf(x)\nX X\n(1) (n)\nn!\nf (x)=\n[F(x)]k−1[1−F(x)]n−k\nf(x).\nX (k) (k−1)!(n−k)!\n所以次序统计量X ,X 和X 的概率密度函数分别为:\n(1) (n) (k)\n 1 x nxn−1\nn (1− )n−1, 0< x<θ , 0< x<θ\nf (x)= θ θ , f (x)=θn\nX X\n(1) (n)\n 0, 其它 0, 其它\n n! 1 x x\n ( )k−1(1− )n−k, 0< x<θ\nf (x)=(k−1)!(n−k)!θ θ θ ,k =1,2…n\nX\n(k)\n 0, 其它",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-2-11",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "设总体X ~ E(1/θ),X ,X , …, X 为来自总体X 的样本, 为次序统计\n1 2 n X ,X , …, X\n(1) (2) (n)\n量,设n= 2l+1,试证明样本中位数M 的概率密度函数为:\np\n n! e−x(l+1)/θ1−e−x/θ l\n, x >0\n \nf (x)=\n(l!)2\n(m)\n\n 0, x≤0",
+      "solution": "解:总体X 的概率密度函数和分布函数分别为:\n1\n e−x/θ, x >0 1−e−x/θ, x>0\nf(x)=θ 和 F(x)=\n 0, x≤0 0, x≤0\n当n= 2l+1,样本中位数M 的概率密度函数为:\np\n n! e−x(l+1)/θ1−e−x/θ l\n, x>0\n \nf (x)=Cl[F(x)]l C1 f(x)[1−F(x)]l = (l!)2\n(m) n l+1\n\n 0, x≤0",
+      "difficulty": "easy",
+      "tags": [
+        "次序统计量"
+      ]
+    },
+    {
+      "id": "QB-2-12",
+      "source": "试题库",
+      "chapter": 2,
+      "statement": "设总体为威布尔分布W(m,η),其密度函数为\n mxm−1 x m \n exp− x>0\nf(x;m,η)= ηm\n\nη\n\n(m>0,η>0)\n\n 0 x≤0\n现从中得到样本X ,X , …, X ,证明X 仍服从威布尔分布,并指出其参数。\n1 2 n (1)",
+      "solution": "解:由总体分布的密度函数可得总体的分布函数F(x)为:\nF(x)= ∫\nxmtm−1 e−(t/η)m\ndt =−∫\nxmtm−1 e−(t/η)m\nd\n( −(t/η)m) =1−e−(x/η)m\n(x>0)\n0 ηm 0 ηm\n因而最小次序统计量X 的分布函数为:\n(1)\n( )n\nF (x)= P\n(\nX ≤ x\n)\n=1−P\n(\nX > x\n)\n=1−\ne−(x/η)m =1−e−n(x/η)m\n,x>0\n(1) (1) (1)\n即X ~W(m,ηn−1/m)\n(1)",
+      "difficulty": "easy",
+      "tags": [
+        "F分布"
+      ]
+    },
+    {
+      "id": "QB-3-01",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设总体X 的分布函数为\n 1\n1− x >1\nF(x;β)= xβ\n 0 x≤1\n其中未知参数β>1,X ,X , …, X 为来自总体X 的简单随机样本,求:(1)β的矩估计\n1 2 n\n量;(2)β的极大似然估计量.\n1 x−μ\n exp{− } x≥μ",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": [
+        "矩估计",
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "QB-3-02",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设总体X 服从指数分布,其密度函数为:f(x;μ)=θ θ ,其中μ,θ都\n 0 其它\n是未知参数。X ,X , …, X 为从此总体中抽取的一个样本。试求μ,θ的极大似然估计\n1 2 n\nμ^ ,θ ^ 。\nL L\n n \n∑(x −μ)\n1 i",
+      "solution": "解:似然函数为L(μ,θ;x ,x , …, x )= exp− i=1 , x >μ,因为μ= x ,L\n1 2 n θn θ (1) (1)\n \n \n∂logL 1 n\n达到最大,所以μ^ = X 。从 =0中解得θ= ∑(x −μ),所以\nL (1) ∂θ n i\ni=1\n1 n\nθ ^ = ∑(X −X )\nL n i (1)\ni=1\n(1+θ)xθ, 0< x<1",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "QB-3-03",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设总体 X 的密度函数为 f(x;θ)= ,现在得到总体的一个样本\n 0, 其它\nX ,X , …, X ,求θ的矩法估计量和极大似然估计量。\n1 2 n\n1 1+θ",
+      "solution": "解:(1)先求数学期望 EX =∫ x(1+θ)xθdx= ,由矩法方程 EX = X ,其中\n0 2+θ\n1 n 1+θ 2X −1\nX = ∑X ,即 = X ,于是θ的矩法估计量为:θ ^ = ;\nn i 2+θ 1 1− X\ni=1\n(2 )似然函数L(x ,x , …, x ;θ)=(1+θ)n(x x Λx )θ ,取对数\n1 2 n 1 2 n\n n \nlnL(x ,x , …, x ;θ)=nln(1+θ)+θ ∑lnx , 对θ求导数,得似然方程\n1 2 n i\n \ni=1\nn n\n+∑lnx =0\n1+θ i\ni=1\n−n\n^\n解似然方程得θ的极大似然估计量:θ = −1.\n2 n\n∑lnX\ni\ni=1",
+      "difficulty": "medium",
+      "tags": [
+        "矩估计",
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "QB-3-04",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设总体X ~ N(μ,1),X ,X , …, X 为来自总体X 的样本,如果有必要的话,请利用符\n1 2 n\n号φ和Φ回答下面的问题,其中φ和Φ分别表示标准正态分布的概率密度函数和分布函\n数。\nn",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-3-05",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "1) 证明∑X 是μ的充分完备统计量;\ni\ni=1",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "hard",
+      "tags": [
+        "充分统计量"
+      ]
+    },
+    {
+      "id": "QB-3-06",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "2) 设τ(μ)= P{X ≤2},试求τ(μ)的一致最小方差无偏估计。(提示:利用结论:X − X\n1 1\n服从正态分布且与X 相互独立;",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计",
+        "相合性"
+      ]
+    },
+    {
+      "id": "QB-3-07",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "3) 试求τ(μ)= P{X ≤2}的极大似然估计;\n1",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "QB-3-08",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "4) 试给出τ(μ)= P{X ≤2}的极大似然估计的大样本分布;特别地,利用φ或Φ给出\n1\n极大似然估计的大样本均值和方差;\nθ\n , x>θ",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "QB-3-09",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设总体X 的概率密度函数为 f(x;θ)=x2 (θ>0),X ,X , …, X 为来自总\n1 2 n\n 0, 其它\n^\n体X 的样本,试求1)参数θ的极大似然估计θ ;2)证明T = X 是参数θ的充分统计量;\nL (1)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计",
+        "充分统计量"
+      ]
+    },
+    {
+      "id": "QB-3-10",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "3)基于T = X 构造出参数θ的无偏估计;4)参数θ的置信度为1−α的置信区间。\n(1)\n解 1)因为似然函数为\nθn\nL(x , …, x ;θ)= I\n1 n (x x Λx )2 {x (1) >θ}\n1 2 n\n^\n所以,参数θ的极大似然估计量为θ = X ;\nL (1)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计",
+        "无偏估计",
+        "区间估计"
+      ]
+    },
+    {
+      "id": "QB-3-11",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "2)因为似然函数为\nθn\nL(x , …, x ;θ)= I\n1 n (x x Λx )2 {x (1) >θ}\n1 2 n\n由分解定理知T = X 是参数θ的充分统计量;\n(1)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "极大似然估计",
+        "充分统计量"
+      ]
+    },
+    {
+      "id": "QB-3-12",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "3)T 的概率密度函数为\nnθn\n , x >θ\nf\n(x)=n[1−F(x;θ)]n−1\nf(x;θ)=xn+1\nX\n(1)\n\n 0, x≤θ\n+∞ nθn n n−1\nEX =∫ x dx = θ,所以参数θ的无偏估计为 X\n(1) θ xn+1 n−1 n (1)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "QB-3-13",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "4)我们基于T 构造参数θ的置信区间。T 的分布函数为\n θn\n1− , t >θ\nG(t,θ)=1−[1−F(t;θ)]n\n= tn\n\n 0, 其它\n由此可见, T 的分布函数G(t,θ)关于θ是连续严格递减函数。参数θ的置信水平为1−α的\n置信下限θ为方程\nG(X ,θ)=1−α/2\n(1)\n得解。其解为\nθ= nα/2X\n(1)\n参数θ的置信水平为1−α的置信上限θ为方程\nG(X ,θ)=α/2\n(1)\n得解。其解为\nθ= n1−α/2X\n(1)\n综上可知,参数θ的置信水平为1−α的置信区间为 θ,θ ,其中θ= nα/2X ,\n (1)\nθ= n1−α/2X\n(1)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": [
+        "区间估计"
+      ]
+    },
+    {
+      "id": "QB-3-14",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设总体X 的概率密度函数为:\n 1\n xe−x/θ, x>0\nf(x,θ)=θ2 (θ>0),\n 0 x≤0\n^\nX ,X , …, X 为来自总体X 的样本。1)试求参数θ的极大似然估计θ 和 Fisher 信息量\n1 2 n L\n^ ^\nI(θ);2) θ 是否为参数θ的一致最小方差无偏估计量?3)θ 的渐近分布是什么?\nL L",
+      "solution": "解:1)似然函数为:\nn\n∑x\ni\nL(x ,x , …, x ;θ)=∏\nn\nf(x ,θ)=\n1\n(x x Λx )e\n−i=\nθ\n1\n, x ,x , …, x >0\n1 2 n i θ2n 1 2 n 1 2 n\ni=1\nn\n∑x\ni\n对数似然函数为:l(x ,x , …, x ;θ)=−2nlnθ+ln(x x Λx )− i=1\n1 2 n 1 2 n θ\nn\n∑x\n∂l 2n i 1 n X\n似然方程为: =− + i=1 =0,所以θ的极大似然估计θ ^ = ∑X = 。\n∂θ θ θ2 L 2n i 2\ni=1\n∂ X 2 2\nFisher信息量为:I(θ)= E[ ln f(X;θ)]2 = E( − )2 =\n∂θ θ2 θ θ2\n1 1 θ2",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计",
+        "无偏估计",
+        "相合性"
+      ]
+    },
+    {
+      "id": "QB-3-15",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "2)因为E(X)=2θ,D(X)=2θ2,所以Eθ ^ = EX =θ,Dθ ^ = DX = ,θ ^ 为参数θ\nL 2 L 4 2n L\nθ2 1\n^ ^\n的无偏估计,且Dθ = = ,因此θ 是方差达到C−R下界的无偏估计量,即为一\nL 2n nI(θ) L\n致最小方差无偏估计量。",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "QB-3-16",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "3)因为极大似然估计渐近服从正态分布N\n( θ,[nI(θ)]−1)\n,所以θ\n^\n的渐近分布为:\nL\n 1 \nN\n\nθ, θ2\n\n 2n",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "QB-3-17",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设总体X ~ N(0,σ2),σ>0是未知参数,(X ,X ,Λ,X )T 是来自总体X 的一个样本,\n1 2 n\n1 n",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-3-18",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "试证估计量σ^2 = ∑X 2 是σ2的相合估计。\nn i\ni=1\n1 n",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "相合性"
+      ]
+    },
+    {
+      "id": "QB-3-19",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "证明:因为X ~ N(0,σ2) ,所以EX =0,DX =σ2,于是Eσ^2 =E( ∑X 2)=σ2,\nn i\ni=1\n1 n\n即σ^2 = ∑X 2 是σ2的无偏估计。\nn i\ni=1\n1 n σ4 1 n σ4 2σ4\n又因为σ^2 = ∑X 2 X ~ N(0,σ2) ,所以Dσ^2 = D( ∑X 2)= 2n=\nn i i n2 σ2 i n2 n\ni=1 i=1\n2σ4 1 n",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "QB-3-20",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "从而 lim Dσ^2 = lim =0,因此估计量σ^2 = ∑X 2 是σ2的相合估计。\nn→+∞ n→+∞ n n i\ni=1",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "相合性"
+      ]
+    },
+    {
+      "id": "QB-3-21",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设X ,X , …, X 是来自正态总体N(μ,σ2)的一个样本,证明S2是σ2的相合估计。\n1 2 n n\nn−1 n−1",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "相合性"
+      ]
+    },
+    {
+      "id": "QB-3-22",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "证明:因为ES2 = DX ,所以limES2 =lim DX = DX =σ2,即S2是σ2的渐\nn n n→∞ n n→∞ n n\nnS2 n\n近无偏估计。而 n ~γ2(n−1),所以D( S2)=2(n−1),即\nσ2 σ2 n\n2(n−1)σ4\nDS2 = ,\nn n2\n2(n−1)σ4\n可得limDS2 =lim =0,故S2是σ2的相合估计。\nn→∞ n n→∞ n2 n",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计",
+        "相合性"
+      ]
+    },
+    {
+      "id": "QB-3-23",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设总体X ~ N(μ,σ2),X ,X , …, X 为来自总体X的样本,试求:(1)证明\n1 2 n\nn n\nT=(∑X ,∑X 2)'是(μ,σ2)'的充分完备统计量;(2)μ2 −4σ2的最小方差无偏估计。\ni i\ni=1 i=1",
+      "solution": "解: (1)(X ,X , …, X ) 联合分布密度是\n1 2 n\n n \n∑(x −μ)2\nn 1 i \n∏ f(x;μ,σ2)= exp− i=1 \ni ( )n 2σ2\ni=1 2πσ \n \n1 −\nnμ2\n 1 n μ n \n= e 2σ2 exp− ∑x2 + ∑x \n( 2πσ )n 2σ2 i=1 i σ2 i=1 i \nn n\n它是指数族分布,因此T=(∑X ,∑X 2)'是(μ,σ2)T的充分完备统计量\ni i\ni=1 i=1\n1 n 1 n 1 n\n(2) 因为 E ∑X2 =σ2 +μ2 ,所以 E ∑X2 −S2 =μ2 ,即 ∑X2 −5S2 是\n n i n i n i\ni=1 i=1 i=1\n1 n 1 n 1 n\nμ2 −4σ2的无偏估计;又E ∑X2 −5S2 |T = ∑X2 −5S2,因此 ∑X2 −5S2是\n n i n i n i\ni=1 i=1 i=1\nμ2 −4σ2的最小方差无偏估计。",
+      "difficulty": "hard",
+      "tags": [
+        "无偏估计",
+        "充分统计量"
+      ]
+    },
+    {
+      "id": "QB-3-24",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设总体X 服从对数正态分布LN(θ,θ),即ln X ~ N(θ,θ),(θ>0),X ,X , …, X 为来\n1 2 n\nn\n自总体X 的样本。1) 证明参数θ的充分完备统计量为T =∑(ln X )2 ;2)试求参数θ的\ni\ni=1\n^ ^\n极大似然估计θ ;3) 试求参数θ的Fisher信息量I(θ),θ 的渐近分布是什么?\nL L",
+      "solution": "解:总体X 的概率密度函数为:\n n\n∑(lnx−θ)2\n 1 1 −i=1 i\nf(x;θ)= e 2θ , x>0\n2πθ x\n\n 0, x≤0",
+      "difficulty": "hard",
+      "tags": [
+        "极大似然估计",
+        "充分统计量"
+      ]
+    },
+    {
+      "id": "QB-3-25",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "1)样本X ,X , …, X 的联合概率密度函数为:\n1 2 n\nn\nf(x ,x , …, x ;θ)=∏ f(x,θ)\n1 2 n i\ni=1\nn\n= 1 (x x Λx )−1 e − ∑ i=1 (ln 2θ x i −θ)2 = e − n 2 θ (x x Λx )−1 e ∑ i= n 1 lnx i e − 2 1 θ ∑ i= n 1 (lnx i )2\n(2πθ)n/2 1 2 n (2πθ)n/2 1 2 n\nn\n因此,T =∑(ln X )2 为参数θ的充分完备统计量。\ni\ni=1",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "hard",
+      "tags": [
+        "充分统计量"
+      ]
+    },
+    {
+      "id": "QB-3-26",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "2)似然函数为:\nn\n∑(lnx−θ)2\ni\nL(x ,x , …, x ;θ)=∏\nn\nf(x ,θ)=\n1\n(x x Λx )−1 e\n−i=1\n2θ , x ,x , …, x >0\n1 2 n i (2πθ)n/2 1 2 n 1 2 n\ni=1\n对数似然函数为:\nn\n∑(lnx −θ)2\nn i\nl(x ,x , …, x ;θ)= ln(2πθ)−ln(x x Λx )− i=1\n1 2 n 2 1 2 n 2θ\nn 1 n n nθ\n=− ln(2πθ)−ln(x x Λx )− ∑(lnx )2 +∑lnx −\n2 1 2 n 2θ i i 2\ni=1 i=1\n∂l n 1 n n n 1 n \n似然方程为: =− + ∑(lnx )2 − =− θ2 +θ− ∑(lnx )2 =0,其解\n \n∂θ 2θ 2θ2 i 2 2θ2 n i \ni=1 i=1\n1 1 4 n\n为:θ=− ± 1+ ∑(lnx )2 ,因为θ>0,所以θ的极大似然估计\n2 2 n i\ni=1\n1 1 4 n\nθ ^ =− + 1+ ∑(ln X )2 。\nL 2 2 n i\ni=1\n∂2",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "QB-3-27",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "3)Fisher信息量为:I(θ)=−E[ ln f(X;θ)],而 ln f(x;θ)= − ,由\n∂θ2 ∂θ2 2θ2 θ3\n于ln X ~ N(θ,θ),所以\n∂2 1 (ln X)2 1+2θ\nI(θ)=−E[ ln f(X;θ)]=−E − =\n∂θ2 2θ2 θ3 2θ2\n \n因为极大似然估计渐近服从正态分布N\n( θ,[nI(θ)]−1)\n,所以θ\n^\n的渐近分布为:\nL\n 1 2θ2 \nNθ, \n n1+2θ\n1\n−\n1\nx\n e θ x>0",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "QB-3-28",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设总体 X ~ E(1/θ) 分布,即 X 的概率密度函数为: f(x;θ)=θ ,其中\n\n 0 x≤0\nθ(θ>0)为未知常数,X ,X , …, X 为来自总体X 的样本,试证X 和nX 都是θ的无偏\n1 2 n (1)\n估计量,并比较其有效性。\nθ2",
+      "solution": "解:由指数分布知,E[X]=θ,var[X]=θ2,因而EX =θ,varX = ,这说明X 是\n \nn\nn\n−\nn\nx\n e θ x >0\nθ的无偏估计量。又最小次序统计量X 的密度函数为 f (x;θ)=θ ,\n(1) (1)\n\n 0 x≤0\nθ θ2\n即X ~ E(n/θ),因而有EX = ,varX = .\n(1) (1) n (1) n2",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "QB-3-29",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "从而EnX =θ,varnX =θ2,即nX 是θ的无偏估计量,。注意到当n>1时,\n (1) (1) (1)\nθ2\nvarX = <θ2 = varnX \n \nn\n (1)\n这说明作为θ的无偏估计,X 比nX 更有效。\n(1)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "QB-3-30",
+      "source": "试题库",
+      "chapter": 3,
+      "statement": "设某产品的寿命T 服从指数分布E(λ),θ=1/λ。现从这种产品中抽取n个进行寿命试\n验,试验进行到第r个失效为止,记样本为:T,T , …, T ,又记 T ,T , …, T 为次序\n1 2 r (1) (2) (r)\n统计量,试求(1) θ的极大似然估计;(2) θ的置信水平为1−α的置信下限;(3) T −T\n(r) (1)\n的分布。\n r \n∑t +(n−r)t\nn! 1 r (i) (r)",
+      "solution": "解:(1) 似然函数为L(θ;t ,t ,Λ,t )= exp− i=1 \n(1) (2) (r) (n−r)!θ\n\nθ\n\n \nr\n∑T +(n−r)T\n∂L (i) (r)\n令 =0,从中解得θ的极大似然估计为 i=1\n∂θ r\n r \n2 ∑T +(n−r)T\n \n(i) (r)\n \n(2)θ的置信水平为1−α的置信下限为 i=1\nγ2(2r)\nα\n(3)T −T 的 p.d.f.为\n(n) (1)\n (n−1)! ( 1−exp{−λt})r−2 λexp { −(n−r+1)λt } t >0\ng(t)=(r−2)!(n−r+1)!\n\n 0 t ≤0",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "QB-4-01",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "1.5/2\n(5)犯第一类错误的概率为P(X ≤1.5)= ∫ nxn−1dx =0.75n。\n(15)\n0",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-02",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设总体X 为一个连续型随机变量,其分布函数为F(x)。记x 为中位数,从此总体抽取一\ne\n个容量为10的样本X ,X , …, X ,记X ,X , …, X 为次序统计量,如果将\n1 2 10 (1) (2) (10)\n[X ,X ]作为x 的一个置信区间,试求此置信区间的置信水平。\n(1) (10) e",
+      "solution": "解:记Y = F(X ),则Y ,Y , …, Y 为从总体U(0,1)中抽取的容量为10的样本的次\n(i) (i) (1) (2) (10)\n序统计量。而(Y ,Y )的联合 p.d.f.为:\n(1) (10)\n90(y−x)8 0< x< y <1\ng(x,y)=\n 0 其它\n所以此置信区间的置信水平为\n1−α= P(X < x < X )\n(1) e (n)\n= P ( F ( X ) < F(x )< F ( X ))\n(1) e (n)\n= P(Y <1/2<Y )\n(1) (n)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-4-03",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "0.5 0.5\n=1−∫ dx∫ 90(y−x)8dy =0.999\n0 x",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-04",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设总体X 的概率密度函数为:\nθxθ−1, 0≤ x≤1\nf(x;θ)= (θ>0)\n 0, 其它\n^\nX ,X , …, X 为来自总体X 的样本。1)试求参数θ的矩估计θ ;2)试求参数θ的极大\n1 2 n M\n^ ^ ^\n似然估计θ ;3) θ 为参数θ的无偏估计吗? 4)试证明θ 为参数θ的相合估计;5)试说\nL L L\nn n\n明θ ^· =−(n−1)/∑ln X 为参数θ的有效估计吗?6)试证明T =∑ln X 为参数θ的充\ni i\ni=1 i=1\nn\n分完备统计量;7)试证明−(n−1)/∑lnX 为参数θ的一致最小方差无偏估计;8)试求\ni\ni=1\n参数θ的置信水平为1−α的(单侧和双侧)置信区间。\nθ X\n^",
+      "solution": "解: 1) 因为EX = ,所以参数θ的矩估计量为θ = 。\n1+θ M 1− X",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-4-05",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "2)似然函数为:\nn\nL(x ,x , …, x ;θ)=∏ f(x ,θ) =(θ)n(x x ,…x )θ−1 ,0< x ,x , …, x <1\n1 2 n i 1 2 n 1 2 n\ni=1\n∂lnL n n n\n似然方程为: = +∑lnx =0,所以θ的极大似然估计θ ^ =− 。\n∂θ θ i L n\ni=1 ∑ln X\ni\ni=1\nn",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-4-06",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "3)因为−lnX ~ E(θ)=Γ(1,θ),−∑lnX ~Γ(n,θ),所以\ni\ni=1\n \n \nn +θ θn n\nE− = n∫ y−1yn−1e−θydy = θ≠θ\n n 0 Γ(n) n−1\n∑ln X\n \ni\n \ni=1\n^\n因此,θ 不是参数θ的无偏估计,但为参数θ的渐近无偏估计。\nL",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-07",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "4)由马尔科夫夫不等式:\nP { θ ^ −θ ≥ε } ≤ ( Dθ ^ +bias(θ ^ ,θ) ) /ε2\nL L L\nn2\n由于limDθ ^ =lim θ2 =0,limbias(θ ^ ,θ)=0所以limθ ^ =θ(P),即θ ^\nn→∞\nL n→∞(n−1)2(n−2)\nn→θ\nL\nn→∞\nL L\n为参数θ的相合估计。\n \n \nn−1 1 θ2",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-08",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "5) 因为θ ^· = θ ^ 为参数θ的无偏估计,且Dθ ^· =(n−1)2 D− = ,而\nn L +∞ n−2\n∑ln X\n \ni\n \ni=1\n∂ 1 1\nFisher 信 息 量 为 I(θ)= E[ ln f(X;θ)]2 = E( +lnX)2 = , 因 此\n∂θ θ θ2\nθ2 1 θ2\nDθ\n^·\n= > = ,即不是有效估计量。\nn−2 nI(θ) n",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-09",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "6) 因为X ,X , …, X 的联合概率密度函数为:\n1 2 n\nn\nL(x ,x , …, x ;θ)=∏ f(x ,θ)=(θ)n(x x ,…x )θ−1\n1 2 n i 1 2 n\ni=1\n ∞ \n=θnexp (θ−1)∑lnx ,0< x ,x , …, x <1\ni 1 2 n\n \ni=1\nn\n它是指数分布族,因此T =∑ln X 为参数θ的充分完备统计量。\ni\ni=1\n n n",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "hard",
+      "tags": []
+    },
+    {
+      "id": "QB-4-10",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "7)因为E\n\n−(n−1)/∑ln X\ni \n=θ,即−(n−1)/∑lnX\ni\n为参数θ的无偏估计,且\n \ni=1 i=1\n n n\nE\n\n−(n−1)/∑lnX |T\n\n=−(n−1)/∑lnX\ni i\n \ni=1 i=1\nn\n因此−(n−1)/∑lnX 为参数θ的一致最小方差无偏估计。\ni\ni=1\nn 1",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-11",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "8)枢轴量γ2 =−2θ∑lnX ~Γ(n, )=γ2(2n),由\ni 2\ni=1\nn α n α\nP(−2θ∑lnX <a)= ,P(−2θ∑ln X >b)=\ni 2 i 2\ni=1 i=1\nγ2 (2n) γ2 (2n)\n我们有a=γ2 (2n),b=γ2 (2n),即P(− 1−α/2 ≤θ≤− α/2 )=1−α\n1−α/2 α/2 ∞ ∞\n2∑ln X 2∑lnX\ni i\ni=1 i=1\n \n γ2 (2n) γ2 (2n) \n于是参数θ的置信水平为1−α的双侧置信区间为− 1−α/2 ,− α/2 。\n∞ ∞\n 2∑lnX 2∑ln X \n i i\n \ni=1 i=1\n \n γ2 (2n) γ2(2n) \n参数θ的置信水平为1−α的单侧置信区间分别为− 1−α ,+∞和0,− α 。\n 2∑ ∞ ln X 2∑ ∞ ln X \n i i\n \ni=1 i=1\n假设检验",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-4-12",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设某次考试的学生成绩服从正态分布,从中随机地抽取36位考生的成绩,算得平均成绩为",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-13",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "66.5分,标准差为15分,问在显著性水平0.05下,是否可以认为这次考试全体考生的平均\n成绩为70分?并给出检验过程。",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-14",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设总体X 服从均匀分布U(0,θ),X ,X , …, X 是样本,考虑检验问题\n1 2 n\nH :θ≥3 H :θ<3\n0 1\n{ }\n拒绝域取为W = X ≤2.5 ,求检验犯第一类错误的最大值α。若要使得该最大值不超过\n(n)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-15",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "0.05,n至少要取多大?",
+      "solution": "解:均匀分布U(0,θ)的最大次序统计量X 的概率密度函数为\n(n)\nnxn−1\n 0< x<θ\nf (x)= θn\n(n)\n\n 0 其它\n因而检验犯第一类错误的概率为\n( )",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-16",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "2.5nxn−1 2.5 n\nα(θ)= P X ≤2.5|H = ∫ dx=\n \nθ≥3\n(n) 0 0 θn θ \n它是θ的严格减函数,故其最大值在θ=3处达到,即\nn\n2.5\nα=α(3)=\n \n 3 \n若要使得α(3)≤0.05,则要求nlog(2.5/3)≤log(0.05),这给出n≥16.43 ,即n至少为\n17。",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-17",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设总体X ~ N(μ,16),X ,X , …, X 为来自总体X 的样本,考虑假设检验问题:\n1 2 n\nH :μ=25,H :μ=24\n0 1",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-4-18",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "1)试求此检验问题检验水平为α的H 的拒绝域W ;2)设犯第一类错误的概率为α=0.05,\n0\n而犯第二类错误的概率β=0.05,试确定样本容量n。(已知Φ(1.645)=0.95)\n 4",
+      "solution": "解:H 的拒绝域W =x <25+u ;当α=0.05,u =−1.645,于是H 的拒绝域\n0 α 0.05 0\n n\n 4 \nW =x <25−1.645× \n n\n 4 n\n由β= P\n\nX ≥25−1.645× |μ=24\n\n=0.05,得 −1.645=1.645,即n173.20,\n n 4\n于是样本容量n=174。",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-19",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设 X ,X , …, X 是 来 自 U(0,θ) 的 一 个 样 本 , 对 如 下 的 检 验 问 题 :\n1 2 n\n{ }\nH :θ≤1/2← H :θ>1/2。已给出拒绝域W = x ≥c ,X 为样本的最大次序统计\n0 1 (n) (n)\n量。",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-21",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "2) 若要求检验犯第一类错误的概率不超过0.05(即α(θ)≤0.05,如何确定c?",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-22",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "3) 若在2)的要求下进一步要求检验在θ=3/4处犯第二类错误的概率不超过0.02(即\nβ(θ)≤0.02),n至少要取多少?",
+      "solution": "解:(1)此检验的功效函数为:\n 0, θ≤c\n{ } { } \ng(θ)= P X (n) ≥c =1−P X (n) ≤c = \n1−\n c n\n, θ>c\n \n θ\n可见,在θ>c时,势函数g(θ)是θ的严格增函数。",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-23",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "2)在H 成立下,犯第一类错误的概率为α(θ)= g(θ),故有题意知,应有\n0\nn\n c 1\ng(θ)=1−\n \n≤0.05,θ≤\nθ 2\n1\n由于 g(θ) 是θ 的严格增函数,故 g(θ) 在θ= 时处达到最大值。故只要使\n2\n1 1 1\ng =1−(2c)n =0.05即可实现,即c= (0.95) n 。\n2 2\nn\n c 1",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-24",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "3)在备择假设H 成立下,犯第二类错误的概率为β(θ)=1−g(θ)=\n \n,θ>\n1 θ 2\nn\n3 c 1 1\n由题意知要求θ= 处有β(θ)≤0.02 即 ≤0.02,把2)中的c= (0.95) n 代入\n4 3/4 2\nln95−ln2 3\n可得n≥ =9.52,可见若取n=10即可使在θ= 处犯第二类错误的概率不超\nln3−ln2 4\n过0.02",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-25",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设X ,X , …, X 是来自正态总体N(μ,4)的样本,考虑检验问题\n1 2 16\nH :μ=6← H :μ≠6,\n0 1\n{ }\n拒绝域取为W = X −6 ≥c ,试求c使得检验的显著性水平为0.05,并求该检验在μ=6.5\n处犯第二类错误的概率。\n( ) X −6 c",
+      "solution": "解:(P X −6 ≥c|H = P ≥ =0.05…c=0.98,该检验在μ=6.5处犯第\n0 1/2 1/2\n \n二类错误的概率为\n X −6.5 \n( )\nβ= P X −6 <0.98|H = P −2×1.48< <2×0.48 =Φ(0.96)+Φ(2.96)−1\n \n1 1/2 \nλe−λx x >0",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-26",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设某种设备寿命服从参数为λ的指数分布,即密度函数为 f(x;λ)= ,为检\n 0 x≤0\n1 1\n测这种设备的平均寿命 是否大于 ,即假设检验问题\nλ λ\n0\n1 1 1 1\nH : ≤ ← H : > .\n0 λ λ 1 λ λ\n0 0\n现抽取 n 个此类设备进行试验,直到设备不能正常工作为止,并记录其寿命分别为\nx ,x ,Λ,x ,试求这个检验问题的水平为α的UMPT\n1 2 n\nn 1",
+      "solution": "解:样本的联合密度函数为:L(x ,x , …, x ;λ)=λnI exp{−λ∑x},令 =θ,\n1 2 n {min{x i }>0} i λ\ni=1\n则假设 检验问题变为:H :θ≤θ,← H :θ>θ . (1)\n0 0 1 0\n1 n\n联合密度函数变为L(x ,x , …, x ;θ)=θ-nI exp{− ∑x}.\n1 2 n {min{x i }>0} θ i\ni=1\nn 1\n这样,T(x ,x , …, x )=∑x,C(θ)=− 且是θ的严格单调递增函数. 所以检验问题(1)\n1 2 n i θ\ni=1\n n \n的水平为α的UMPT的拒绝域为W = (x ,x , …, x ):∑x ≥c.\n1 2 n i\n \ni=1\nn n γ2(2n)\nΘ E (δ*(x ,x , …, x ))= P {∑X ≥c}=α,2λ∑X ~γ2(2n),c= α\nθ 1 2 n θ i i 2λ\n0 0\ni=1 i=1\nn γ2(2n)\n因此水平为α的UMPT的拒绝域为W ={x:∑x ≥ α }\ni 2λ\ni=1",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-4-27",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设总体X 的概率密度函数为:\nθxθ−1, 0≤ x≤1\nf(x;θ)= (θ>0)\n 0, 其它\nX ,X , …, X 为来自总体X 的样本。考虑假设检验问题:H :θ≤θ,H :θ>θ , 试求该\n1 2 n 0 0 1 0\n检验问题的检验水平为α的一致最大功效检验δ·。\n解 样本的联合概率密度函数为:\nn n \nf (x , …, x ;θ)=∏ f (x;θ)=θnexp (θ−1)∑lnx 0≤ x , …, x ≤1\n1 n i i 1 n\n \ni=1 i=1\n为单参数指数族,且φ(θ)=θ−1为参数θ的严格单调增函数,因此该检验问题的水平为α\n的UMPT为:\n1, T(x , …, x )≥c\nδ· = 1 n (c<0)\n 0, T(x , …, x )<c\n1 n\nn n\n其中T(X , …, X )=∑ln X ,由于Y =−lnX ~Γ(1,θ),所以−∑lnX ~Γ(n,θ),即\n1 n i i\ni=1 i=1\nn 1\nγ2 =−2θ∑lnX ~Γ(n, )=γ2(2n)\ni 2\ni=1\n于是c满足:\n n n \nP\n\n∑ln X ≥c|",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-4-28",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设总体X 的概率密度函数为: f(x;θ)=2θ3 (θ>0),X ,X , …, X 为\n1 2 n\n\n 0 x≤0\n来自总体X 的样本。考虑假设检验问题:H :θ=θ,H :θ>θ ,试求该检验问题的检验\n0 0 1 0\n水平为α的一致最大功效检验δ·。\n解 样本的联合概率密度函数为:\n∏ n f(x ,θ)= 1 (x x Λx )2 e − θ\n1∑\ni\nn\n=1 x i , x ,x , …, x >0\ni θ3n 1 2 n 1 2 n\ni=1\n1\n为单参数指数族,且φ(θ)=− 为参数θ的严格单调增函数,因此该检验问题的水平为α的\nθ\nUMPT为:\n1, T(x , …, x )≥c\nδ· = 1 n\n 0, T(x , …, x )<c\n1 n\nn n\n其中T(X , …, X )=∑X ,由于X ~Γ(3,θ),所以∑X ~Γ(3n,θ),即\n1 n i i\ni=1 i=1\n2 n 1\nγ2 = ∑X ~ Γ(3n, )=γ2(6n)\nθ i 2\ni=1\n于是c满足:\n n 2 n 2 2 \nP ∑X ≥c|H = P ∑X ≥ c|θ≤θ",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-4-29",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设总体X ~ N(μ,σ2),总体Y ~ N(μ,σ2),(σ2未知)从总体X 抽取样本X ,X , …, X ,\n1 2 1 2 n",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-4-30",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "从总体Y 抽取样本Y,Y , …, Y ,两样本独立。考虑如下假设检验问题\n1 2 n\nH :cμ +dμ =δ H :cμ +dμ ≠δ\n0 1 2 1 1 2\n其中c≠0,d ≠0,δ都是已知常数,求检验统计量与拒绝域。",
+      "solution": "解: 以X,Y 分别表示来自二个总体的样本均值,S2,S2分别为其样本方差,记\nX Y\n(m−1)S2 +(n−1)S2 σ2 σ2\nS2 = X Y ,由所给条件,有X ~ N(μ, ),Y ~ N(μ, ),且相互独立,\nw m+n−2 1 m 2 n\nc2 d2 \n由此得cX +dY ~ N(cμ +dμ, + σ2),在原假设成立时,\n1 2 m n \ncX +dY −δ\nU = ~ N(0,1)\nc2 d2\nσ +\nm n\n(m−1)S2 (n−1)S2\n又 X ~γ2(m−1), Y ~γ2(n−1),且二者独立,故\nσ2 σ2\n(m+n−2)S2 (m−1)S2 +(n−1)S2\nw = X Y ~γ2(m+n−2)\nσ2 σ2\ncX +dY −δ\n由此,在原假设成立时,检验统计量T = ~t(m+n−2)\nc2 d2\nS +\nw m n\n{ }\n若取显著性水平为α,检验拒绝域为W = t ≥t (m+n−2) 。\nα/2",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-4-31",
+      "source": "试题库",
+      "chapter": 4,
+      "statement": "设总体X ~U(θ,2θ),X ,X , …, X 为从此总体中抽取的一个样本。试求 K,使得\n1 2 n\nK(X − X )为θ的置信水平为1−α的单侧置信下限。\n(n) (1)\nX −θ",
+      "solution": "解:记Y = (i) , 所以(Y ,Y )的联合 p.d.f.为:\n(i) θ (1) (n)\nn(n−1)(y−x)n−2 0< x< y<1\ng(x,y)=\n 0 其它\n为使得K(X − X )为θ的置信水平为1−α的单侧置信下限,即\n(n) (1)\n1−α= P(θ> K(X −X ))\n(n) (1)\n 1 (X −θ)−(X −θ) 1 \n= P > (n) (1) =P >Y −Y \n K θ K (n) (1) \n1−1/K 1/K+x 1 1\n=∫ dx∫ n(n−1)(y−x)n−2dy+∫ dx∫ n(n−1)(y−x)n−2dy\n0 x 1−1/K x\n所以K满足:\nnK −n+1\n1−α=\nKn",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-5-01",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "设总体X 服从参数为θ指数分布,即X 的概率密度函数为 f(x;θ)= ,其中\n 0 x≤0\nθ(θ>0)为未知常数,X ,X , …, X 为来自总体X 的样本,θ的先验分布为Γ分布,其\n1 2 n\n概率密度函数为:\n 1\n θαe−θ/β θ>0\nπ(θ)=Γ(α+1)βα+1\n\n 0 θ≤0\n其中α>−1,β>0,损失函数为L(θ,d)=(θ−d)2,求θ的贝叶斯估计。\n解 样本分布密度为\n n\n\n−θ∑x\ni\nq(x| p)= θne i=1 , x ,x , …, x >0\n1 2 n\n 0, 其它\n而θ的先验密度为\n 1\n θαe−θ/β θ>0\nπ(θ)=Γ(α+1)βα+1\n\n 0 θ≤0\n所以θ的后验分布为\n−(∑ n x+ 1 )\nh(θ|x)q(x|θ)π(θ)θα+n+1−1e\ni=1\ni β\nn 1\n即给定X=x,θ的条件分布为Γ(α+n−1,∑x + ),因此θ的贝叶斯估计为\ni β\ni=1\nn+α+1\nθ ^ = E[θ|x]=\nn 1\n∑x +\ni β\ni=1",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计",
+        "统计决策"
+      ]
+    },
+    {
+      "id": "QB-5-02",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "设X 服从二项分布B(N,p),p的先验分布为区间 (0,1) 上的均匀分布,X ,X , …, X 为\n1 2 n\n来自总体X 的样本,试在平方损失函数下,试求 p的贝叶斯估计。",
+      "solution": "解:由于对给定的 p,X 的条件概率为 f(x| p)=Cx px(1− p)N−x,(x=0,1,...,N),所以\nN\n(X ,X , …, X )的条件概率为\n1 2 n\nn n \nq(x| p)=∏Cx i px i(1− p)N−x i = ∏Cx i pnx(1− p)nN−nx,\nN N\n \ni=1 i=1\n(0< p<1,x =0,1,...,N;,i=1,2,...,n)\ni\n1 0< p<1\n而 p的先验密度为π(p)= ,所以(X ,X , …, X ,p)的联合密度为\n0 其它 1 2 n\n n \ng(x,p)= ∏Cx i pnx(1− p)nN−nx,(0< p<1,x =0,1,...,N;,i=1,2,...,n)\nN i\n \ni=1\n所以 p 的后验分布为 h(p|x) pnx(1− p)Nn−nx ,即给定 X=x , p 的条件分布为\nnX +1\n(nx +1,Nn−nx +1),因此 p的贝叶斯估计为 p^ = E[p|X]= .\nNn+2",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计",
+        "统计决策"
+      ]
+    },
+    {
+      "id": "QB-5-03",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "设 总 体 X ~ P(λ) , X ,X , …, X 为 来 自 总 体 X 的 样 本 , 损 失 函 数 为\n1 2 n\nL(λ,λ ^) = (λ− λ ^)2,假定λ的先验分布密度为:\n βα\n λα−1e−βλ, λ > 0\n( ) ( )\nπ λ = Γ α\n\n 0, λ ≤ 0\n其中μ为已知常数。1)试求λ的后验分布;2)试求λ的贝叶斯估计。\n βα\n λα−1e−βλ, λ > 0\n( ) ( )",
+      "solution": "解:1)因为λ的先验密度函数π(λ)为π λ = Γ α\n\n 0, λ ≤ 0\nn\nλ ∑ i=1 x i ∑ n x i\n样本分布密度函数为:q(x ,x , …, x |λ)= e−nλλi=1 e−nλ\n1 2 n x !x !…,x !\n1 2 n\nn n\n∑x α+∑x−1\n所以λ的后验分布h(λ|x ,x , …, x )λi=1 i e−nλλα−1e−βλ =λ i=1 i e−(n+β)λ ,即\n1 2 n\nn\nλ|x ,x , …, x ~Γ(α+∑x ,(n+β))\n1 2 n i\ni=1\nα+nX",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-5-04",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "2)λ的贝叶斯估计为λ ^ = E(λ| X ,X , …, X )= .\n1 2 n (n+β)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-5-05",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "设 总 体 X ~ E(λ) , X ,X , …, X 为 来 自 总 体 X 的 样 本 , 损 失 函 数 为\n1 2 n\nL(λ,λ ^) = (λ− λ ^)2,假定λ的先验分布密度为:\nμe−μλ, λ > 0\n( )\nπ λ = \n 0, λ ≤ 0\n其中μ为已知常数。1)试求λ的后验分布;2)试求λ的贝叶斯估计。\nμe−μλ, λ > 0\n( )",
+      "solution": "解:1)因为λ的先验密度函数π(λ)为π λ = \n 0, λ ≤ 0\n n \n−λ∑x\n i\n样本分布密度函数为:q(x ,x , …, x |λ)=λne i=1 , x ,x , …, x >0\n1 2 n 1 2 n\n n \n−λ∑x+μ\n i \n所以λ的后验分布h(λ|x ,x , …, x )λne i=1 ,即\n1 2 n\nn\nλ|x ,x , …, x ~Γ(n+1,∑x +μ)\n1 2 n i\ni=1\n1+n",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-5-06",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "2)λ的贝叶斯估计为λ ^ = E(λ| X ,X , …, X )= 。\n1 2 n μ+nX",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-5-07",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "设总体X ~ N(0,θ),其中θ未知,其先验分布为IΓ(α,λ),X ,X , …, X 为来自总体X\n1 2 n\nn\n∑X2\nn i\n的样本。(1)证明:θ的后验分布h(θ|x)为IΓ( +α, i=1 +λ);(2)试在损失函数\n2 2\n(d −θ)2\nL(θ,d)= 下,求θ的贝叶斯估计,并计算其贝叶斯风险。\nθ2",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计",
+        "统计决策"
+      ]
+    },
+    {
+      "id": "QB-5-08",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "设一页书上的错别字个数服从泊松分布P(λ),λ有二个可能取值:1.5和1.8,且先验分布\n为P(λ=1.5)=0.45,P(λ=1.8)=0.55,现检查了一页,发现有3个错别字,试求λ的后验\n分布。",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-5-09",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "1.53 1.83",
+      "solution": "解: P(X =3|λ=1.5)= e−1.5,P(X =3|λ=1.8)= e−1.8,因此\n3! 3!\nP(X =3)= P(X =3|λ=1.5)P(λ=1.5)+P(X =3|λ=1.8)P(λ=1.8)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-5-10",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "1.51875e−1.5 +3.2076e−1.8\n=\n6\n由以上结果我们可以得到λ的后验分布\nP(X =3|λ=1.5)P(λ=1.5)\nP(λ=1.5| X =3)=\nP(X =3)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-5-11",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "1.51875e−1.5\n= =0.3899",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-5-12",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "1.51875e−1.5 +3.2076e−1.8\nP(X =3|λ=1.8)P(λ=1.8)\nP(λ=1.8| X =3)=\nP(X =3)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-5-13",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "3.2076e−1.8\n= =0.6101",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-5-14",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "1.51875e−1.5 +3.2076e−1.8\n假设总体X~P(λ), X ,X , …, X 为来自总体X 的样本,假定λ的先验分布为伽玛分布\n1 2 n\nΓ(α,β),(1)证明:λ的后验分布h(λ|x)服从Γ-分布;(2)求λ的条件期望估计。",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-5-15",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "设总体为均匀分布U(θ,θ+1),θ的先验分布是均匀分布U(10,16)。现有三个观测值:11.7,",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-5-16",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "12.1,12.0。求θ的后验分布。\n1 θ< x<θ+1",
+      "solution": "解:当θ已知时,总体X 的条件密度为q(x|θ)= ,所以当θ已知时,\n\n0 其它\n样本(X ,X ,X )的联合密度函数为:\n1 2 3\n1 θ< x ,x ,x <θ+1\nq(x ,x ,x |θ)=\n\n1 2 3\n1 2 3 0 其它\n1\n10<θ<16\n\n而θ的先验分布密度为:π(θ)= 6 ,因此,(X ,X ,X ,θ)的联合密度函\n 1 2 3\n\n0 其它\n数为:\n1\n θ< x ,x ,x <θ+1,10<θ<16\nf(x ,x ,x ,θ)=q(x ,x ,x |θ)π(θ)=6 1 2 3\n1 2 3 1 2 3\n 0 其它\n1\n , 10<θ< x < x <θ+1<17\n=6 (1) (3)\n 0, 其它\n此时x =11.7,x =12.1,从而θ<11.7,12.1<θ+1,即11.1<θ<11.7,所以当\n(1) (3)",
+      "difficulty": "easy",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-5-17",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "11.1<θ<11.7后验密度函数为:\nf(x ,x ,x ,θ) 1/6 1\nh(θ|x ,x ,x )= 1 2 3 = =\n1 2 3 ∫ f(x ,x ,x ,θ)dθ 11.71 0.6\n1 2 3 ∫ dθ",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-5-18",
+      "source": "试题库",
+      "chapter": 5,
+      "statement": "11.1 6\n即θ的后验分布为U(11.1,11.7)。",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "QB-6-01",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "设有三台机器制造同一种产品,今比较三台机器生产能力,记录其五天的日产量\n机器 I II III\n138 163 155\n日 144 148 144\n产 135 152 159\n量 149 146 141\n143 157 153\n现把上述数据汇总成方差分析表如下\n方差来源 平方和 自由度 均方和 F 比\n组间 352.933\n组内 12\n总和 893.733 14\n(1) 试把上述方差分析表补充完整;(2) 问这三台机器的生产能力有显著差异。\n(α=0.05)?(查表得:F (12,2)=19.4,F (2,12)=3.89,F (3,12)=3.49)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-6-02",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "0.05 0.05 0.05",
+      "solution": "解: (1)\n方差来源 平方和 自由度 均方和 F 比\n组间 352.933 2 176.467",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-03",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "3.916\n组内 540.8 12 45.067\n总和 893.733 14\n(2) ) 假设H :μ =μ =μ ← H :μ,μ,μ不全相等,检验统计量为\n0 1 2 3 1 1 2 3\nS /(r−1)\nF = A ,查F 分布表,得F (2,12)=3.89,所以拒绝域为W ={F ≥3.89},\nS /(n−r) 0.05\ne\n又因为F =3.916> F (2,12)=3.89,所以样本落入拒绝域,即认为三台机器的生产能力",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-04",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "0.05\n有显著差异。\n为了改进录音效果,今比较三种不同磁粉的录音带的放音效果,用这三种不同的磁粉(记为\nA,A ,A )的录音带录音,假设A ~ N(μ,σ2), A ~ N(μ,σ2),A ~ N(μ,σ2),得\n1 2 3 1 1 2 2 3 3\n到的数据已汇总成方差分析表如下:\n方差来源 平方和 自由度 均方和 F 比\n组间 667.73\n组内 12\n总和 1114.93 14\n(1) 试把上述方差分析表补充完整\n(2) 问这三种磁粉的平均放音效果有无显著差异(α=0.05)?\n(查表得:F (12,2)=19.4,F (2,12)=3.89,F (3,12)=3.49)",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-6-05",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "0.05 0.05 0.05",
+      "solution": "解:(1)\n方差来源 平方和 自由度 均方和 F 比\n组间 667.73 2 333.867",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-06",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "8.96\n组内 447.2 12 37.267\n总和 1114.93 14\n(2) 假 设 H :μ =μ =μ ← H :μ,μ,μ 不 全 相 等 , 检 验 统 计 量 为\n0 1 2 3 1 1 2 3\nS /(r−1)\nF = A , 查 F 分 布 表 , 得 F (2,12)=3.89 , 所 以 拒 绝 域 为\nS /(n−r) 0.05\ne\nW ={F ≥3.89} ,由上表得实际的F 值为8.96,落在拒绝域,所以拒绝H ,即三种\n0\n磁粉对录音平均放音效果有差异。\n在某化工生产中为了提高效益,选择了三种不同浓度 A ,i =1,2,3. ,四种不同温度\ni\nB , j =1,2,3,4.,在每组浓度温度组合下各做两次实验,若 ∑∑∑x2 =2752,\nj ijk\ni j k\n∑∑∑x =250,∑x2 =21188,∑x2 =15694,∑x2 =5374.\nijk i√√ √j√ ij√\ni j k i j i,j",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-07",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "试在α=0.05显著性水平下检验不同浓度、不同温度以及它们间的交互作用对效益有无显著\n( )\n影响?(已知:F 2,12 =3.89).",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-08",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "0.05\n2\n1",
+      "solution": "解:Θ ∑∑∑y =2604.1667 S =2752−2604.1667 =147.8333\n24 ijk T\n i j k \n1 1\nS = ×21188−2604.1667 = 44.3333,S = ×15694−2604.1667 =11.5000\nA 8 B 6\n1\nS = ×5374−2604.1667−44.3333−11.5000= 27.0000\nA×B 2\nS =S −S −S −S =65.0000\nE T A B A×B\n方差分析表\n误 差 来 源 平 方 和 自 由 度 均 方 和 F 比\n因 子 A 44.3333 2 22.1667 4.09\n因 子 B 11.5000 3 3.8333 <1\n交互作用AxB 27.0000 6 4.5000 <1\n随机误差e 65.0000 12 5.4167\n总 和 147.8333 23\n方差分析结果表明:只有因子 A 是显著的,即浓度不同将对收益产生显著影响;而温度\n及交互作用的影响都不显著,这说明要提高收益必须把浓度控制好。\n为研究三种不同教材的质量,抽取三个实验班分别使用其中一种教材,而对其他因素加以控\n制,现每班随机抽取五人,测得平均分为 71,75,70,求得总离差平方和 SST=192,试分\n析三种教材质量有没有显著性差异(α=0.05)。(已知F (2,12)=3.88).",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-09",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "0.05",
+      "solution": "解:建立原假设H :μ =μ =μ\n0 1 2 3\n71+75+70\n(1)求离差平方和:因为X = =72,所以\n3\n3\nSSA=∑n ( X −X )2 =5(71−72)2 +(75-72)2 +(70−72)2 =70\nj j \nj=1\nSSE = SST −SSA=192−70=122 。\n(2)确定自由度:\ndf =3−1=2,df =3×5−1=14,df =df −df =14−2=12\nA T E T A\n70 122\n(3)求平均离差平方和: MSA= =35; MSE = =10.17\n2 12\nMSA 35\n( )\n(4)进行F-检验:F = = =3.44< F 2,12 =3.88\nMSE 10.17 0.05\n故不能拒绝H ,即三种教材质量无显著性差异。\n0\n随机抽取20名被试,将其随机分成4组,每组5人,各组分别随机地接受一种自学辅导方\n( )\n案,结果如下表。问四种自学辅导方案的效果是否一致?(已知F 3,16 =5.29)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-10",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "0.01\n自学辅导方案 A B C D\n每组人数 n 5 5 5 5\nj\n每组平均数X 79 75.4 81 77.2\nj\n每组方差 S2 4 2.8 3 3.5\nj",
+      "solution": "解:建立原假设H :μ =μ =μ =μ\n0 A B C D\nX + X + X + X 79+75.4+81+77.2\n由 X = A B C D = =78.15\nt 4 4\nk k\nS =n√∑( X −X )2 =86.55,S =n√∑S2 =66.50\nA j t E j\nj=1 j=1\nS 86.55 S 66.50\n故 MS = A = =28.85, MS = E = =4.16\nA df 4−1 E df 20−4\nA E\nMS 28.85\nF = A = =6.94> F (3,16)=5.29\nMS 4.16 0.01\nE\n故 拒绝H ,即四种自学辅导方案存在显著差异。\n0\n对某种作物采取五种不同的施用化肥方案,进行收获量试验,每种方案作了四块试验地,其",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-11",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "试验所得的数据如下:\n5 4 5 4 5 4\n∑∑x =1417,∑∑x 2 =106093,∑(∑x )2 =415723\nij ij ij\nj=1 i=1 j=1 i=1 j=1 i=1",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-12",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "试问施肥方案的不同,对收获量有无显著影响(a=0.01)?\n解 由题中所给数据,计算各离差平方和为\n14172 1 14172\nS =106093− =5698.55,S = ×415723− =3536.3\nT 20 A 4 20\nS =5698.55−3536.3=2162.25\nE\nS ,S ,S 的自由度依次为n−1=19,r−1=4,n−r =15,列出方差分析表,如下表所示。\nT A E\n方差来源 平方和 自由度 均方 F F\nα\n组间(因\nS =3536.3 r−1=4 MS =884.075 6.13 F (4,15)= 4.89\n素) A A 0.05\n组内 S =2162.25 n−r =15 MS =144.15\nE E\n总和 S =5698.55 n−1=19\nT\n因F =6.13> F (4,15)=4.89,故拒绝H ,即施用化肥方案的不同对于收获量有显著的",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-6-14",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "某种金属材料生产过程中,对热处理温度(A)与时间(B)各取两个水平,在每组温度时间组合\n下 各 做 两 次 实 验 , 产 品 的 强 度 测 量 计 算 结 果 为 :\nS =71.82,S =1.62,S =11.52,S =54.08.试列出方差分析表,并α= 0.05在下检验\nT A B A×B\n( ( ) )\n温度、时间及两者交互作用对产品强度是否有显著影响? F 1,4 = 7.71",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "QB-6-15",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "0.05",
+      "solution": "解: 由S =71.82,S =1.62,S =11.52,S =54.08,得\nT A B A×B\nS =S −S −S −S =4.60\nE T A B A×B\n方差分析表\n误 差 来 源 平 方 和 自 由 度 均 方 和 F 比\n因 子 A 1.62 1 1.62\nF =1.4\n因 子 B 11.52 1 11.52 A\nF =10.0*\n交互作用A×B 54.08 1 54.08 B\nF =47.0*\n随机误差e 4.60 4 1.15 C\n总 和 71.82 7\n( )\n由于F 1,4 = 7.71, 所以认为时间对强度的影响不显著,而温度及交互作用影响显著。",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-16",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "0.05\n附表:标准正态分布表\nz 1 −\nt2\nΦ(z)= ∫ e 2dt\n−∞ 2π\nz 1.28 1.645 1.96 2.33\nΦ(z) 0.900 0.950 0.975 0.990\n{ }\n附表:t分布表 P t(n)≤t (n) = P\np\nt (n) P\np",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "QB-6-17",
+      "source": "试题库",
+      "chapter": 6,
+      "statement": "0.95 0.975\nn\n35 1.6896 2.0301\n36 1.6883 2.0281\n βα\n xα−1e−βx x>0\n附:Γ-分布的概率密度函数: f(x;α,β)= Γ(α) )\n\n 0 其它\n附:贝塔分布的概率密度函数:\n Γ(a+b)\n xa−1(1−x)b−1 0≤ x≤1\nβ(x;a,b)=Γ(a)Γ(b)\n 0 其它\n附:逆伽玛分布的概率密度函数:\n βα 1 α+1 − β\n e x x>0\nIΓ(x;α,β)=Γ(α) x\n\n 0 x≤0",
+      "solution": "(解答请参照试题库原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-2-02",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "设(X ,X , …, X )T是来自正态总体N(0,σ2)的一个样本,试求统计量\n1 2 2n\nX + X +Λ+ X\nT = 1 2 n\nX2 + X2 +Λ+ X2\nn+1 n+2 2n\n的分布密度。",
+      "solution": "解:由于(X ,X , …, X )T是来自正态总体N(0,σ2)的一个样本,则\n1 2 2n\nX +X +Λ+X X2 + X2 +Λ+ X2\n1 2 n ~ N(0,1), n+1 n+2 2n ~γ2(n),且相互独立,从而\nnσ σ2\nX + X +Λ+ X\nT = 1 2 n ~t(n)\nX2 + X2 +Λ+ X2\nn+1 n+2 2n\nn+1\nΓ( )\n2\nx2\n−\nn+1\n其分布密度为: f(x)= (1+ ) 2 。\nn n\nnπΓ( )\n2",
+      "difficulty": "easy",
+      "tags": [
+        "抽样分布定理"
+      ]
+    },
+    {
+      "id": "EX-2-03",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "设总体X ~ N(μ,σ2),μ,σ2已知,(X ,X ,Λ,X )T 是来自总体X 的一个样本,\n1 2 N\nn\n试求统计量T =∑(X −μ)2 的分布密度。\ni\ni=1\nX −μ i.i.d. n n X −μ",
+      "solution": "解:记Y = i ,i =1,2,Λ,n,则Y ~ N(0,1) 且Y =∑Y2 =∑( i )2 ~γ2(n)\ni σ i i σ\ni=1 i=1\n 1 − x n −1\n e 2σ2x2 , 0< x<∞\nn n\n则 T =∑(X −μ)2 的分布密度函数为 f(x)=(2σ2)n/2Γ( )\ni\n2\ni=1 \n 0, x≤0",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-2-04",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "设(X ,X ,Λ,X )T是来自正态总体N(0,σ2)的一个样本,试求下列统计量的分布密度:\n1 2 n\n2 2\nn 1 n n 1 n \n(1)Y\n1\n=∑X\ni\n2 ;(2)Y\n2\n=\nn\n∑X\ni\n2 ;(3)Y\n3\n=\n \n∑X\ni \n;(4)Y\n4\n=\nn \n∑X\ni \n。\ni=1 i=1 i=1 i=1\nX i.i.d. n X 2",
+      "solution": "解: 由题知: i ~ N(0,1). (i =1,2,...,n),所以∑ i ~γ2(n).\nσ σ2\ni=1\nn X 2\n(1)Y =σ2∑ i ,\n1 σ2\ni=1\nn\n1 1 x 2 −1 − x\nf (x)=\n \ne 2σ2\nY 1 σ2 n nσ2 \n22Γ\n \n2\n= 1 1 (x) n 2 −1 e − 2σ x 2. (x>0)\nσn n n\n22Γ\n \n2\n1\n(2)Y = Y ,\n2 n 1\nf (x)=nf (nx)=n√ 1 1 (nx)2 n −1 e − 2 n σ x 2\nY 2 Y 1 σn n n\n22Γ\n \n2\nn\nn2 n −1 − nx\n= x2 e 2σ2 (x>0)\nn n\n22σnΓ\n\n2\n2\n n \n∑X\n \nn i\n(3)因为∑X ~ N ( 0,nσ2) ,所以Z = i=1 ~γ2(1),Y =nσ2Z ,因此\ni 3\n nσ \ni=1\n \n \n1\nf (x)= 1 x − 2 e − nσ x 2 /2 1 = 1 x − 1 2e − 2n x σ2 (x>0).\nY 3 2πnσ2 nσ2 2πnσ\n1\n(4)Y = Y ,\n4 n 3\n1 − nx 1 − 1 − x\nf (x)=nf (nx)=n√ e 2nσ2 = x 2e 2σ2.\nY Y\n4 3 σ 2nπnx σ 2π\n4,设(X ,X , …, X ,X ,X , …, X )T 是来自正太总体N(0,σ2)容量为n+m的样\n1 2 n n+1 n+2 n+m\nn n\nm∑X m∑X2\ni i\n本,试求下列统计量的概率分布:(1)Y = i=1 ; (2)Z = i=1 。\nn+m n+m\nn ∑ X2 n∑ X2\ni i",
+      "difficulty": "easy",
+      "tags": [
+        "抽样分布定理"
+      ]
+    },
+    {
+      "id": "EX-2-05",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "设(X ,X ,√√√,X )T 是来自正态总体N(μ,σ2)的样本,X 和S2是样本均值和样本方差;\n1 2 n n\n又设X ~ N(μ,σ2),且与X ,X ,√√√,X 独立,试求统计量\nn+1 1 2 n\nX −X n−1\nT = n+1\nS n+1\nn\n的概率分布。",
+      "solution": "解:根据正态总体抽样分布的性质可知\n1 n σ2\nX = ∑X ~ N(μ, ) ,\nn i n\ni=1\n根据定理可知\nnS2\nn ~γ2(n−1),且X与S2相互独立,\nσ2 n\nn+1\n又已知X ~ N(μ,σ2),且与X ,X ,√√√,X 独立,所以X − X ~ N(0, σ2), 即\nn+1 1 2 n n+1 n\nX −X X −X nS2\nn+1 ~ N(0,1) ,且 n+1 与 n 独立,因此\nn+1 n+1 σ2\nσ σ\nn n\nn+1\n(X − X) σ\nn+1 n\nT = ~ t(n−1)\nnS2\nn (n−1)\nσ2\nX − X n−1\n即T = n+1 ~t(n−1)。\nS n+1\nn",
+      "difficulty": "easy",
+      "tags": [
+        "抽样分布定理"
+      ]
+    },
+    {
+      "id": "EX-2-06",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "设(X ,X , …, X )T 和(Y,Y , …, Y )T 分别是来自两个独立的正态总体 N(μ,σ2) 和\n1 2 m 1 2 n 1\nN(μ,σ2)的样本,α和β是两个实数,试求\n2\nα(X −μ)+β(Y −μ)\nZ = 1 2\nmS2 +nS2 α2 β2\n1m 2n +\nm+n−2 m n\n的概率分布。其中X ,S2 和Y ,S2 分别是两个总体的样本均值、样本方差。\n1m 2n\nσ2 σ2",
+      "solution": "解:因为X ~ N(μ, )、Y ~ N(μ, )且相互独立, 所以\n1 m 2 n\nα2σ2 β2σ2 α(X −μ)+β(Y −μ)\nαX +βY ~ N(αμ +βμ, + ),即U = 1 2 服从N(0,1)。\n1 2 m n α2 β2\nσ +\nm n\nmS2 nS2\n又 1m ~γ2(m−1) , 2n ~γ2(n−1) 且 相 互 独 立 , 所 以 ,\nσ2 σ2\nmS2 nS2 α(X −μ)+β(Y −μ)\nV = 1m + 2n ~γ2(m+n−2),且U = 1 2 与相互独立从而,由t\nσ2 σ2 α2 β2\nσ +\nm n\n分布的定义得:\nα(X −μ)+β(Y −μ)\nZ = 1 2 ~t(m+n−2)\nmS2 +nS2 α2 β2\n1m 2n +\nm+n−2 m n",
+      "difficulty": "easy",
+      "tags": [
+        "抽样分布定理"
+      ]
+    },
+    {
+      "id": "EX-2-07",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "设总体X 的分布函数为F(x)、分布密度为 f(x),(X ,X ,Λ,X )T为来自总体X 的\n1 2 N\n一个样本,记X =min(X ),X =max(X ),试求X 和X 各自的分布函数和分布密\n(1) i (n) i (1) (n)\n1≤i≤n 1≤i≤n\n度。\nn",
+      "solution": "解:F (x)= P{X ≤ x}=P{X ≤ x,i =1,2,Λ,n}=∏P{X ≤ x}=[F(x)]n\nX (n) i i\n(n)\ni=1\nn\nF (x)=P{X ≤ x}=1−P{X > x}=1−P{X > x,x=1,2,Λn}=1−∏P{X > x}\nX (1) (1) i i\n(1)\ni=1\n=1−[1−P{X ≤ x}]n =1−[1−F(x)]n\ni\nf (x)= F' (x)=n[1−F(x)]n−1 f(x), f (x)=F' (x)=n[F(x)]n−1 f(x)\nX (1) X (n)\n(1) (n)\n2x, 0< x<1",
+      "difficulty": "easy",
+      "tags": [
+        "F分布"
+      ]
+    },
+    {
+      "id": "EX-2-08",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "设总体X 的分布密度为 f(x)= (X ,X ,Λ,X )T为来自总体X 的样\n 0, 其他 1 2 n\n本,试求最小次序统计量X 、最大次序统计量X 、及第k个次序统计量X 的分布密\n(1) (n) (k)\n度。\n0, x<0",
+      "solution": "解:知X 的分布函数为F(x)=x2,0≤ x<1\n\n1, x≥1\n\nf\n(x)=n[1−F(x)]n−1\nf(x)=n\n( 1−x2)n−1\n√2x=2n\n( 1−x2)n−1\nx,0< x<1.\nX(1)\nf (x)= n! [F(x)]k−1[1−F(x)]n−k f(x)= n! ( x2)k−1( 1−x2)n−k √2x,0<x<1\nX(k) (k−1)!(n−k)! (k−1)!(n−k)!\nf (x)=n[F(x)]n−1 f(x) =n√ ( x2)n−1 √2x=2nx2n−1,0< x<1.\nX(n)\n因此,\n\n2n\n( 1−x2)n−1\nx, 0< x<1\nf (x)=\nX(1)\n 0, 其它\n2nx2n−1,0< x<1\nf (x)=\nX(n) 0, 其它\n n! ( x2)k−1( 1−x2)n−k\n2x, 0< x<1\n\nf (x)=\n(k−1)!(n−k)!\nX(k)\n\n 0, 其它\n9,设总体X服从区间(0,θ)上的均匀分布,(X ,X , …, X )T为来自总体X 的样本,试分\n1 2 n\n别求次序统计量X ,X 和X 的分布密度。\n(1) (n) (k)\n解:总体X 的分布密度函数:\n1\n , 0< x<θ\nf(x)=θ\n 0, 其他\n所以X 的分布函数:\n0, x≤0\n\nx\nF(x)= , 0< x<θ\nθ\n\n1, x≥θ\n\n又因为 f\n(x)=n[1−F(x)]n−1\nf(x) ,所以\nX\n(1)\n 1 x\nn (1− )n−1, 0< x<θ\nf (x)= θ θ\nX\n(1)\n 0, 其它\n又因为 f\n(x)=n[F(x)]n−1\nf(x),所以\nX\n(n)\nnxn−1\n , 0< x<θ\nf (x)=θn\nX\n(n)\n\n 0, 其它\nn!\nf (x)=",
+      "difficulty": "easy",
+      "tags": [
+        "F分布",
+        "次序统计量"
+      ]
+    },
+    {
+      "id": "EX-2-09",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "设总体X 服从参数为λ的指数分布,即X 的分布密度为\nλe−λx, x>0,\nf(x)=\n 0, x≤0,\n其中λ>0,(X ,X ,√√√,X )T 为来自总体X 的样本,试求次序统计量(X ,X ,√√√,X )T\n1 2 n (1) (2) (n)\n的联合分布密度和(X ,X )T 的联合分布密度。\n(1) (n)",
+      "solution": "解:(1)(X ,X ,√√√,X )T 的联合分布密度\n(1) (2) (n)\nn\nn −λ∑y\ni\nf (y ,y ,√√√,y ) =n!∏ f (y)=n!λne i=1 (0< y < y √√√< y )\n1 2 n i 1 2 n\ni=1\n联合分布密度为:\n n\n\n−λ∑y\ni\nf(y ,y ,√√√,y )= n!λne i=1 , y < y √√√< y\n1 2 n 1 2 n\n 0, 其他\n(2)(X ,X )T 的联合分布密度:\n(1) (n)\nn(n−1)[F(y)−F(x)]n−2\nf(x)f(y), x< y\nf (x,y)=\n(X ,X )\n(1) (n) 0, x≥ y\n其中F(x),F(y)为总体X 的分布函数:\n x x\n∫ f (x)dx = ∫λe−λxdx =1−e−λx, x >0\nF(x)= \n−∞ 0\n\n 0, x≤ 0\n y y\n∫ f(y)dy =∫λe−λydy =1−e−λy, y >0\nF(y)=\n−∞ 0\n\n 0, y ≤0\n则代入上式可得到(X ,X )T的联合分布密度为\n(1) (n)\n λ2n(n−1)e−λx −e−λy n−2 e−λ(x+y), 0< x< y\n \nf (x,y)=\n(X ,X )\n(1) (n) 0, x≥ y",
+      "difficulty": "easy",
+      "tags": [
+        "F分布",
+        "次序统计量"
+      ]
+    },
+    {
+      "id": "EX-2-10",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "若从某种体中抽取容量为13的样本:(-2.1,3.2,0,-0.1,1.2,-4,2.22,2.0,1.2,-0.1,",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-2-11",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "21,-2.1,0)。试写出这个样本的次序统计量,求出样本中位数和极差。如果再加一个2.7\n构成一个容量为14的样本,求样本中位数。",
+      "solution": "解: 1样本的次序统计量为(-4,-2.1,-2.1,-0.1,-0.1,0,0,1.2,1.2,2.0,2.22,3.2,",
+      "difficulty": "easy",
+      "tags": [
+        "次序统计量"
+      ]
+    },
+    {
+      "id": "EX-2-12",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "21);\n X , n为奇数\nn+1\n ( )\n 2\n₅\n2根据样本中位数 X = 和极差 R = X −X 的定\n1 (n) (1)\n X + X , n为偶数\n 2 ( n ) ( n+1 )\n2 2\n义,易知样本的中位数和极差分别为0与7.21;\n3添加2.7后样本的中位数为0.6。",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-2-13",
+      "source": "习题2",
+      "chapter": 2,
+      "statement": "设总体样本X 分布密度为\n3(1−x)2, 0< x<1\nf(x)=\n 0, 其它\n(X ,X ,ΛΛ,X )是来自总体X 的容量为7的样本,试求样本中位数X 小于1− 3 0.6的\n1 2 7 (4)\n概率.",
+      "solution": "解:总体X 的分布函数为\n1−(1−x)3, 0< x<1\nF(x)=\n 0, 其他\n样本X 的概率密度函数为:\n(4)\n7!\nf (x)=\n[F(x)]4−1[1−F(x)]7−4\nf(x).\nX (4) (4−1)!(7−4)!\nF = p { X ≤ x } = ∫ x f (x)dx= 7! 1−(1 ∫ −x)3 t3(1−t)3 dt\nX(4) (4) X (4) 3!3!\n−∞ 0\n令x=1− 3 0.6,则\n7! t7 t6 3t5 t4 0.4\nF (1−3 0.6) = ×(− + − + )\nX(4)\n3!3! 7 2 5 4 0",
+      "difficulty": "easy",
+      "tags": [
+        "F分布"
+      ]
+    },
+    {
+      "id": "EX-3-02",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设体X 服从正态分布N(μ,σ2),(X ,X , …, X )T是其样本,\n1 2 n\n1 n−1\n(1) 求k使估计量σ2 = ∑(X −X )2 是σ2的无偏估计量;\nk i+1 i\ni=1\n1 n __\n(2)求k使估计量σ^ = ∑ X − X |为σ的无偏估计。\nk i\ni=1\n1 n−1 1",
+      "solution": "解:(1)E\n\n∑(X − X )2\n\n= [(n−1)EX2 −2(n−1)EX √EX +(n−1)EX2]\nk i+1 i k\ni=1\n1\n= [(n−1)(σ2 +u2)−2(n−1)u2 +(n−1)(σ2 +u2)]\nk\n1\n= [2(n−1)(σ2 +u2)−2(n−1)u2]\nk\n1\n= √2(n−1)σ2 =σ2 …k =2(n−1)\nk\n1 n __ n __\n(2)E ∑| X −X |= E| X −X |,而\nk i k i\ni=1\n__ (X + X +Λ+ X ) (n−1) 1\nX − X = X − 1 2 n = X − (X +Λ+ X + X +Λ+ X )\ni i n n i n 1 i−1 i+1 n\n__ __ (n−1)2 1 (n−1)\n所以E(X − X)=0,D(X −X)= σ2 + (n−1)σ2 = σ2\ni i n2 n2 n\n__\nX −X +∞ 1 −\ny2\n2\n令Y = i ,则Y ~ N(0,1),从而E(|Y |)= ∫ | y| e 2dy = ;\n(n−1) −∞ 2π π\nσ\nn\n1 n __ 1 n __\n若 ∑| X −X |为σ的无偏估计,即E ∑| X −X |=σ,则\nk i k i\ni=1 i=1\n1 n __ nσ n−1 2 2n(n−1)\nE ∑| X − X |= =σ,于是k = 。\nk i k n 2π π\ni=1\nn",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "EX-3-03",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设 (X ,X ,……,X )T 是来自总体X 的样本,α >0(i =1,2,...,n)且满足∑α =1,\n1 2 n i i\ni=1\nn\n试证:(1)∑αX 是EX 的无偏估计;\ni i\ni=1\nn 1 n\n(2)在EX 的所有形如∑αX 的线性无偏估计类中,X = ∑X 的方差最小即X 是\ni i n i\ni=1 I=1\nEX 的最小方差线性无偏估计。\n n n n n\n证明:(1)E\n\n∑αX\n\n=∑αEX =\n\n∑α\n\nEX = EX ,即∑αX 是EX 的无偏估计。\ni i i i i i i\n \ni=1 i=1 i=1 i=1\nn n n \n(2)D(∑αX )=∑α2D(X )=D(X) ∑α2\n \ni i i i i\n \ni=1 i=1 i=1\n考虑条件极值问题:\n n \nmax ∑α2\n \ni\n(α 1",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "EX-3-04",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X 服从区间 [ 0,θ ] 上的均匀分布, ( X ,X ,Λ,X )T 是其样本,(1)证明θ ^ = 2X 和\n1 2 n 1\nn+1\nθ ^ = max{X }均为θ的无偏估计;(2)比较θ ^ ,θ ^ ,哪个有效。\n2 n 1≤i≤n i 1 2\n1\n , 0≤ x≤θ θ 1 θ",
+      "solution": "解:(1) f (x)=θ EX = ∫ x dx= , Eθ = 2EX = 2EX =θ\n0 θ 2 1\n 0, 其他\nθ ^ 为θ的无偏估计。 记X =max{X },则\n1 (n) i\n1≤i≤n\n x n−1 1\nf (x)= n θ θ , 0≤ x≤θ\nX(n)\n\n 0, 其它\nn−1\nEθ ^ = n+1 EX = n+1 ∫ θ x√n \n\nx\n\n1 dx= n+1 √ nθ =θ,\n2 n (n) n 0 θ θ n n+1\n^\nθ 也为θ的无偏估计。\n2\n(2) DX = EX2 −(EX)2 = ∫ θ x2 1 dx− θ2 = θ2 ,Dθ ^ = 4DX = 4 DX = θ2 ,\n0 θ 4 12 1 n 3n\n2\n( )2 θ x n−1 1 θ x n−1 1 \nDX = EX 2 − EX = ∫ x2n\n \ndx−∫ x√n\n \ndx\n(n) (n) (n) 0 θ θ 0 θ θ \nnθ2\n= ,\n(n+2)(n+1)2\n(n+1)2 θ2\n^\nDθ = DX = ,\n2 n2 (n) n(n+2)\n^ ^ ^ ^\n由于Dθ > Dθ (n≥2),故θ 比θ有效。\n1 2 2 1",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "EX-3-05",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X ~ P(λ),其中参数λ>0,X 为总体X 的一个样本,试证:T(X )=(-2)X 1\n1 1\n是待估计函数e−3λ的无偏差估计。\n∞ λk\n证明:ET(X )=E(-2)X 1 =∑(-2)k e−λ =e−3λ 所以(-2)X 1 是待估计函数e−3λ的无偏差\n1 k!\nk=0\n估计。",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "EX-3-06",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X 的均值μ和方差σ2存在,(X ,X ,...,X )T为来自总体X 的样本,求μ的估\n1 2 n\n2 n\n计量μ^ = ∑iX 的均方误差MSE(μ^,μ)。\nn(n+1) i\ni=1",
+      "solution": "解:因为MSE(μ^,μ)= Dμ^ + (Eμ^ −μ)2,而\n2 n 2 n 2 n\nEμ^ =E[ ∑(iX )]= E[∑(iX )]= ∑(iEX)=μ,\nn(n+1) i n(n+1) i n(n+1)\ni=1 i=1 i=1\n于是\n2 n\nMSE(μ^,μ) =Dμ^ =D[ ∑(iX )]\nn(n+1) i\ni=1\n4 n\n= ∑(i2DX)\nn2(n+1)2\ni=1\n4 n(n+1)(2n+1) 2(2n+1)\n= σ2 = σ2\nn2(n+1)2 6 3n(n+1)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-3-07",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X ~ N(0,σ2),σ>0是未知参数,(X ,X ,Λ,X )T 是来自总体X 的一个样\n1 2 n\n1 n\n本,试证估计量σ^2 = ∑X 2 是σ2的相合估计。\nn i\ni=1\n1 n\n证明:因为X ~ N(0,σ2) ,所以EX =0,DX =σ2,于是Eσ^2 =E( ∑X 2)=σ2,\nn i\ni=1\n1 n\n即σ^2 = ∑X 2 是σ2的无偏估计。\nn i\ni=1\n1 n σ4 1 n σ4 2σ4\n又因为σ^2 = ∑X 2 X ~ N(0,σ2) ,所以Dσ^2 = D( ∑X 2)= 2n=\nn i i n2 σ2 i n2 n\ni=1 i=1\n2σ4 1 n\n从而 lim Dσ^2 = lim =0,因此估计量σ^2 = ∑X 2 是σ2的相合估计。\nn→+∞ n→+∞ n n i\ni=1",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计",
+        "相合性"
+      ]
+    },
+    {
+      "id": "EX-3-08",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设(X ,X ,……,X )T 是来自正态总体N(μ,σ2)的一个样本,证明S2是σ2的相合估\n1 2 n n\n计。\nn−1 n−1\n证明:因为ES2 = DX ,所以limES2 =lim DX = DX =σ2,即S2是σ2的渐\nn n n→∞ n n→∞ n n\nnS2 n\n近无偏估计。而 n ~γ2(n−1),所以D( S2)=2(n−1),即\nσ2 σ2 n\n2(n−1)σ4\nDS2 = ,\nn n2\n2(n−1)σ4\n可得limDS2 =lim =0,故S2是σ2的相合估计。\nn→∞ n n→∞ n2 n",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计",
+        "相合性"
+      ]
+    },
+    {
+      "id": "EX-3-09",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X 服从几何分布P { X =k } = p(1− p)k−1,k =1,2,Λ, ( X ,X ,Λ,X )T 为总体X\n1 2 n\n的样本,试求参数 p的矩估计和极大似然估计。\n∞ 1 1 1",
+      "solution": "解: EX = ∑k√ p(1− p)k−1 = ,得 p = ,故 p的矩估计量为 p^ = .\np EX X\nk=1\n似然函数为:\nn\nL(p)=∏ n P{X = x}=∏ n p(1− p)x i −1 = pn(1− p) ∑ i=1 x i −n\ni i\ni=1 i=1\nn\nlnL(p)=nln p+(∑x −n)ln(1− p)\ni\ni=1\nn\n∑x −n\ndlnL(p) n i\n= − i=1 =0,\ndp p 1− p\n1\n所以 p的极大似然估计为 p^ = 。\nX\n9,设总体X 的分布密度为:\n 2\n (θ−x), 0< x<θ\nf(x)=θ2\n 0, 其它\n(X,ΛX )T为总体X 的样本,试求θ的矩估计。\n1 n\n+∞ θ 2 1 1\n^\n解:EX = ∫ xf(x)dx= ∫x (θ−x)dx= θ, 令 X = EX = θ,得θ=3X\nθ2 3 3\n−∞ 0\n^\n故θ的矩估计量为3X",
+      "difficulty": "medium",
+      "tags": [
+        "矩估计",
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "EX-3-10",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X 服从(0,θ)上的均匀分布,(1.3,0.6,1.7,2.2,0.3,1.1)T 是总体X 的一个样本\n观测值, (1)试用矩估计法求总体均值、总体方差及参数θ的估计值;(2)试用极大似然\n估计法求总体均值、总体方差及参数θ的估计值。\n解 : 设 (X ,X ...,X )T 来 自 总 体 X 的 一 个 样 本 , 记\n1 2, n\n(x ,x ,...x )T =(1.3,0.6,1.7,2.2,0.3,1.1)T 为样本对应的一组值。\n1 2 6\n(1) 用矩估计法估计,由于\n 0+θ θ\nEX =μ= = = X\n\n 2 2\n\n1 n\nEX2 =DX +(EX)2 =σ2 +μ2 = ∑X 2\n n i\ni=1\n所以可得μ、σ2和θ的矩估计量分别为μ^ = X ,σ^2 = S2和θ ^ =2X ; 则矩估计法求总体均\nn\n值,总体方差及参数θ的矩估计值分",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "medium",
+      "tags": [
+        "矩估计",
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "EX-3-11",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体的分布密度为\n(θ+1)xθ,0< x<1,\nf(x)=\n 0, 其它\n其中θ>−1,(X ,X ,Λ,X )T 为其样本,求参数θ的矩估计和极大似然估计。当样本值\n1 2 n\n为(0.1,0.2,0.9,0.8,0.7,0.7)T 时求θ的估计值。\n1 θ+1 1 θ+1",
+      "solution": "解:(1)矩估计 EX =∫ x(θ+1)xθdx= ∫ (θ+2)xθ+1dx=\n0 θ+2 0 θ+2\n^\nθ+1 θ+1 2X −1\n^\n… EX = 令X = …θ=\nθ+2 θ ^ +2 1− X\n2X −1\n^\n所以参数θ的矩估计量为θ= .\n1− X\n(2)似然函数\nn n\nL(x ,x , …, x ;θ)=∏ f(x )=(θ+1)n(∏x )θ\n1 2 n i i\ni=1 i=1\nn\nlnL=nln(θ+1)+θ∑lnx\ni\ni=1\n∂lnL n n 1 n\n= +∑lnx =0 …θ ^ =−1−( ∑lnx )−1\n∂θ θ+1 i n i\ni=1 i=1\n所以参数θ的极大似然估计量为:\n1 n\nθ ^ =−1−( ∑ln X )−1\nn i\ni=1\n当样本值(0.1,0.2,0.9,0.8,0.7,0.7)T\n1\n… x = (0.1+0.2+0.9+0.8+0.7+0.7)=0.57\n6\n2x −1 1 n\n由上所述:(1)θ ^ = =0.3 ;(2)θ ^ =−1−( ∑lnx )−1=0.2\n1−x n i\ni=1",
+      "difficulty": "medium",
+      "tags": [
+        "矩估计",
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "EX-3-12",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设(X ,X ,……,X )T 是来自总体X 的样本,试分别求总体分布中未知参数的极大似\n1 2 n\n然估计,已知总体X 的分布密度为\n2x −\nx2\n(1) f(x)= e θ2,x>0,θ>0,;\nθ2\n1 − x\n(2) f(x)= e σ,−∞< x<+∞,(σ>0);\n2σ\n(3) f(x)=e−(x−θ),x≥θ,\nx−α\n1 −\n(4) f(x)= e β ,x≥α,β>0\nβ\nn\nn\n∏2x\ni −\n∑x\ni\n2",
+      "solution": "解: (1) 似然函数:L(x ,x , …, x ;θ)=∏ f(x;θ)= i=1 e θ2\n1 2 n i θ2n\ni=1\nn ∑x2\nlnL=∑ln2x −2nlnθ− i\ni θ2\ni=1\n∂lnL 1 ∑x2 1 n\n令 =0,得 −2n +2 i =0,解得:θ ^ = ∑x2\n∂θ θ θ3 n i\ni=1\n1 n\n所以参数θ的极大似然估计为θ ^ = ∑X2 ;\nn i\ni=1\n∑x\nn 1 − i\n(2) 似然函数:L(x ,x , …, x ;θ)=∏ f(x;θ)= e σ\n1 2 n i (2σ)n\ni=1\nn\n∑ x\ni\nlnL=−nln(2σ)− i=1\nσ\nn\n∑ x\n∂InL 1 i 1 n\n令 =0,得 −n + i=1 =0,解得:σ^ = ∑ x\n∂σ σ σ2 n i\ni=1\n1 n\n所以参数σ的极大似然估计为σ^ = ∑ X ;\nn i\ni=1\nn\n(3) 似然函数:L(x\n1\n,x\n2\n, …, x\nn\n;θ)=∏ f(x\ni\n;θ)=e −∑x i +nθ , x\n1\n,x\n2\n, …, x\nn\n>θ\ni=1\nn ∂InL\nlnL=−∑x +nθ, =n>0\ni ∂θ\ni=1\n所以lnL为参数θ的单调递增函数,因此当θ= x 时,函数L(x ,x , …, x ;θ)达到最大,\n(1) 1 2 n\n^\n故参数θ的极大似然估计为θ= X\n(1);\nn\n∑x−nα\ni\nn 1 −i=1\n(4) 似然函数:L(x ,x , …, x ;θ)=∏ f(x;θ)= e β ,x ,x , …, x ≥α\n1 2 n i βn 1 2 n\ni=1\nn\n∑x\nnα i ∂InL n\nlnL=−nlnβ+ − i=1 , = >0,\nβ β ∂α β\n所以lnL为参数α的单调递增函数,因此当α= x 时,函数L达到最大,又令\n(1)\nn\n∑x\n∂lnL n nα i\n=",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-3-13",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X ~ N(μ,σ2),对于容量为n的样本,求使得P { X ≥θ } =0.05的参数θ的极\n大似然估计。\nX −μ θ−μ X −μ θ−μ",
+      "solution": "解: 将随机变量X 标准化P ≥ =0.05,P ≤ =0.95\n σ σ σ σ \nθ−μ θ−μ\nΦ( )=0.95 ,查表得 =1.645,θ=μ+1.645σ,\nσ σ\n1 n\n θ的极大似然估计为θ ^ = X +1.645S , 而S = ∑(X −X)2 .\nn n n i\ni=1\n14,设总体X ~ N(μ,σ2),想得到总体X的一个样本值为\n(14.7,15.1,14.8,15.0,15.2,14.6)T\n(1) 试用极大似然估计与次序统计量法估计μ的值;\n(2) 试用极大似然估计与次序统计量法估计σ2的值。\n1 (x-μ)2\n解:因为X ~ N(μ,σ2),即X 的概率密度函数为: f(x)= e− 2σ2 ,-∞<x<∞\n2πσ\n所以,似然函数为:\nL(μ,σ2)=∏ n f(x,μ,σ2)=( 1 )ne − 2σ 1 2 ∑ i= n 1 (x i −μ)2 )=( 1 )ne− 2σ 1 2 ∑ n (x −μ)2\ni i\n2πσ 2πσ\ni=1 i=1\n∂lnL ∂lnL\n由 =0及 =0 得:μ= x,σ2 = s2,因此,μ与σ2的极大似然估计分别为X 和\n∂μ ∂σ2 n\n2\n1 R \nS 2;而μ与σ2的用次序统计量的估计分别为μ^ = [X + X ]和σ^2 = ;\nn 2 ( n ) ( n +1) d \n2 2 n\n(1)用极大似然估计法估计得:\n1\nμ^ = (14.7+1501+14.8+15.0+15.2+14.6)=14.9\n6\n1 1\n用次序统计量法估计μ^ = [x +x ]= (14.8+15.0)=14.9\n2 (3) (4) 2\n1 6\n(2) 极大似然估计法估计σ2 =S 2 = ∑(x −x)2\nn 6 i\ni=1\n1 6\n= ∑x2 −x2=222.056667-2",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-3-14",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X 服从二项分布B(N, p),(X ,X ...,X )T为其样本,求参数 p的最小方差无\n1 2, n\n偏估计。",
+      "solution": "解:根据题设 X ~ B(N, p) ,则 X 的分布律为 P{X = x}=Cx px(1− p)N−x 且有\nN\nEX = Np,即 f(x;p) =Cx px(1− p)N−x x=0,1,2...N\nN\nln f(x;p) =lnCx +xln p+(N −x)ln(1− p)\nN\n则有\n∂ X N − X\nI(p)= E[ ln f(X;p)]2 = E( − )2\n∂p p 1− p\n1 DX\n= E(X −Np)2 =\np2(1− p)2 p2(1− p)2\nNp(1− p) N\n= =\np2(1− p)2 p(1− p)\n于是 p的任一无偏估计量 p^(X ,X ...X )都满足不等式\n1 2, n\n1 p(1− p)\nDp^ ≥ =\nnI(p) nN\n1\n对于 p的无偏估计 p^ = X 则有\nN\n1 1 1 1 1 p(1− p)\nDp^ = DX = DX = Np(1− p)=\nN2 N2 n N2 n nN\n1\n因此 p^ = X 是方差达到C−R下界的无偏估计量,即是所要求的最小方差无偏估计量。\nN",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-3-15",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X 的分布密度为\n1\n−\nx\n e θ, x>0,θ>0\nf(x)=θ\n\n 0, x≤0\n(X ,X , …, X )T 是其样本,试求参数θ的最小方差无偏估计。\n1 2 n\nn\n∑x\ni\nn 1 −i=1 1 − nX __\n解法一:因为∏ f(x,θ)= e θ = e θ ,所以 X 是θ的充分完备统计量,又因\ni θn θn\ni=1\n为\n∞ 1 − x\nEX = EX = ∫x e θdx=θ\nθ\n0\n__ __\n所以X 是θ的无偏估计量,由所以E(X | X)= X ,因此,X 是θ的最小方差无偏估计。\n__\n解法二:利用极大似然估计法可以计算出θ的极大似然估计量为X ,又因为EX =θ,所\n__\n以X 是θ的无偏估计量;因为Fisher信息量为:\n∂ln f(X;θ) 1 X 1\nI(θ)= E[ ]2 = E[− + ]2 =\n∂θ θ θ2 θ2\n1 θ2 DX",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "hard",
+      "tags": [
+        "极大似然估计",
+        "无偏估计",
+        "充分统计量"
+      ]
+    },
+    {
+      "id": "EX-3-16",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X ~ N(0,σ2),(X ,X ,……,X )T 为其样本,试求:\n1 2 n\n(1)σ2的最小方差无偏估计;\n(2)σ和σ4的最小方差无偏估计;\n1 −\nx2",
+      "solution": "解:ΘX ~ N(0,σ2), f(x)= e 2σ2,x∈R,因此,似然函数为:\n2πσ\nn\n∑x2\ni\nn 1 −i=1\n∏ f(x ,θ)=( )ne 2σ2\ni\n2πσ\ni=1\nn\n即T =∑X 2是σ2的充分完备统计量。\ni\ni=1\n1 n 1 n\n(1)因为E( ∑X 2)=σ2,所以 ∑X 2是σ2的无偏估计量,又\nn i n i\ni=1 i=1\n1 n 1 n\nE( ∑X 2 |T)= ∑X 2 ,\nn i n i\ni=1 i=1\n1 n\n故 ∑X 2是σ2的最小方差无偏估计;\nn i\ni=1\n1 n n 1\n(2)因为 ∑X 2 ~γ2(n)=Γ( , ),所以\nσ2 i 2 2\ni=1\nn\n12 n+1\n1 2Γ \n 1 n 2 +∞ 2 n + 1 −1 − 1 x 2 \nE\n\n∑X2\n\n= ∫ x2 2 e 2 dx=\nσ2 i 0 n n\ni=1 Γ Γ \n2 2\n2 2\n 1 n 1 n 1 n \nE ∑X 2 =Var( ∑X 2)+E ∑X 2 \nσ2 i\n\nσ2 i\n\nσ2 i\n\ni=1 i=1 i=1\n=2n+n2 =n(n+2)\n即\n n \nΓ\n \n2 n 1 n\nE ∑X2 =σ,E( (∑X 2)2)=σ4,\n n+1 i (n n+2) i\n2Γ i=1 i=1\n 2 \nn\nΓ\n \n2 n 1 n\n所以 ∑X2 是σ的无偏估计量且 (∑X 2)2是σ4的无偏估计量,又\nn+1 i (n n+2) i\n2Γ i=1 i=1\n 2 \n n n\nΓ Γ\n \n2 n 2 n\nE ∑X2",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "EX-3-17",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X ~ N(μ,σ2), ( X ,X ,Λ,X )T 为其样本,试求:\n1 2 n\n(1)3μ+4σ2的最小方差无偏估计;(2)μ2 −4σ2的最小方差无偏估计。\nn n",
+      "solution": "解: T =(∑X ,∑X 2)T 是(μ,σ2)T的充分完备统计量\ni i\ni=1 i=1\n1 n 1 n\n(1) 因为 X = ∑X 为μ的无偏估计, S2 = ∑(X −X)2 为σ2的无偏估计,所以\nn i n−1 i\ni=1 i=1\n3X +4S2为3μ+4σ2的无偏估计,又E3X +4S2|T =3X +4S2,因此3X +4S2是\n \n3μ+4σ2的最小方差无偏估计;\n1 n 1 n 1 n\n(2)因为 E ∑X2 =σ2 +μ2 ,所以 E ∑X2 −S2 =μ2 ,即 ∑X2 −5S2 是\n n i n i n i\ni=1 i=1 i=1\n1 n 1 n 1 n\nμ2 −4σ2的无偏估计;又E ∑X2 −5S2 |T = ∑X2 −5S2,因此 ∑X2 −5S2是\n n i n i n i\ni=1 i=1 i=1\nμ2 −4σ2的最小方差无偏估计。\n19,在下列情况下,分别求罗—克拉美不等式的下界:\n(1) 总体X ~ N(θ,1),g(θ)=θ2;\n(2) 总体X ~U(0,θ),g(θ)= DX ;\n(3) 总体X ~ B(N,p),g(p)= p2\n[g'(θ)]2 ∂f(X,θ)\n解:罗克拉美不等式下界为: ,其中 I(θ)= E( )2\nnI(θ) ∂θ\n(1)X 的概率密度函数为:\n1 −\n(x−θ)2\nf(x)= e 2 x∈R\n2π\n1\nln f(x,θ)=−ln 2π− (x−θ)2\n2\n∂ln f(X,θ)\nI(θ)= E[ ]2 = E[X −θ]2 = DX =1\n∂θ\n[g'(θ)] (2θ)2 4θ2\n所以,罗克拉美不等式下界为: = =\nnI(θ) n n\n(2)X 的概率密度函数为:\n1\n , 0≤ x≤θ\nf(x)=θ\n 0, 其它\n∂ln f(X;",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "EX-3-18",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设(X ,X ...,X )T是来自正态总体N(0,σ2)的一个样本,试证:\n1 2, n\n1 n\n(1)σ^2 = ∑X2是σ2的有效估计;\nn i\ni=1\n1 n\n(2)σ^2 = ∑(X −X)2不是σ2的有效估计,而是σ2的渐近有效估计。\nn−1 i\ni=1\n证明:设总体X ~ N(0,σ2),(X ,X ...,X )T 是来自正态总体X 的一个样本,则总\n1 2, n\n体X 的分布密度为\n1 x2\nf(x;σ2)= exp(− )\n2πσ 2σ2\n1 1\nln f(x;σ2)=−ln 2π− lnσ2 − x2\n2 2σ2\n则有\n∂ 1 x2\nln f(x;σ2)=− +\n∂σ2 2σ2 2σ4\n∂2 1 x2\nln f(x;σ2)= −\n∂(σ2)2 2σ4 σ6\n∂2 EX2 1 1\n则可得I(σ2)=−E[ ln f(X;σ2)]= − =\n∂(σ2)2 σ6 2σ4 2",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-3-19",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设 (X ,X ΛX )T 是取自正态总体 N(μ,σ2) 的一个样本, μ为已知,试证\n1 2 n\n1 π n\nσ^ = ∑|X −μ|是σ的无偏估计;并求σ^ 的效率e(σ^)。\nn 2 i\ni=1\n证明:\n1 π\nE(σ^)= (| X −μ|+| X −μ|+Λ+| X −μ|)\nn 2 1 2 n\n1 π | X −μ|\n=nσ E( )\nn 2 σ\nπ+∞|x−μ| 1 − (x−μ)2\n=σ ∫ e 2σ2 dx=σ\n2 σ 2π\n−∞\n1 π n\n即σ^ = ∑|X −μ|是σ的无偏估计;估计量σ^ 的方差为\nn 2 i\ni=1\nπ | X −μ| πσ2 2 π−2\nD(σ^)= nσ2D( )= 1− = σ2 ,\n2n2 σ 2n π 2n\n∂2ln f(X;σ) 3(X −μ)2 1 2\nFisher信息量为:I(σ)=−E( )= E",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": [
+        "无偏估计"
+      ]
+    },
+    {
+      "id": "EX-3-20",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X ~ N(1,σ2),(X ,X ,……,X )T 为其样本,试求参数σ2的有效估计。\n1 2 n",
+      "solution": "解:先考虑σ2的极大似然估计,\n∑(x−1) 2\n1 − i\nL(x ,x ,……,x ;θ)=∏ f(x;θ)= e 2σ2\n1 2 n n\n(2πσ2)2\n∂InL 1 1 n 1 n\n令 =0,得σ^2 = ∑(x −1) 2 ,而E( ∑(X −1)2)=σ2,所以 ∑(X −1)2 是σ2\n∂σ2 n i n i n i\ni=1 i=1\n的无偏估计;又\n∂ln f(x;σ2) 1 (x−1)2 ∂2ln f(x;σ2) 1 (x−1)2\n=− + , = − ,\n∂(σ2) 2σ2 2σ4 ∂(σ2)2 2σ4 σ6\n1 (X −1)2 1\nI(σ2)=−E[ − ]=\n2σ4 σ6 2σ4\n,\n1 2σ4 2σ4 1 n\n所以 = ,而 Dσ^2 = ,所以 ∑(X −1)2 是σ2的有效估计。\nnI(σ2) n n n i\ni=1\n θα\n e−θxxα−1, x>0,",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-3-21",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X 服从Ga ( α,θ ) 分布,即分布密度为 f(x)=Γ ( α )\n 0, x≤0,\n其中α ( α>0 ) 为已知常数,θ ( θ>0 ) 为未知常数, ( X ,X ,Λ,X )T 为X 总体的一个样本,\n1 2 n\n1\n( )\n试求gθ = 的极大似然估计,并判别其是否为有效估计。\nθ\nn",
+      "solution": "解: 似然函数:L(θ)=∏ n θα e−θx ixα−1 = θnα e −θ∑ i=1 x i (x x Λx )α−1\ni=1Γ(α) i [Γ(α)]n 1 2 n\nn n\n对数似然函数:lnL(θ)=nαlnθ−θ∑x +(α−1)∑lnx −nlnΓ(α)\ni i\ni=1 i=1\ndlnL(θ) nα n nα α\n= −∑x =0,得θ ^ = = ,\ndθ θ i n x\ni=1 ∑x\ni\ni=1\n θ ^ = α 是θ的极大似然估计.由极大似然估计的不变性知, g ( θ ^) 是g(θ)的极大似然\nX\nX 1\n估计,即 是g(θ)= 的极大似然估计.\nα θ\nα α θα 1 β−α − x\nEX = ,DX = , f (x;θ)= e−θxxα−1 令β= ,则 f (x;β)= e βxα−1\nθ θ2 Γ(α) θ Γ(α)\nx\nln f (x;β)=−αlnβ− +(α−1)lnx−lnΓ(α)\nβ\n∂ln f (x;β) −α x 1\n= + = (x−αβ),\n∂β β β2 β2\n∂ln f (X;β) 2 1 1 α 2 DX α\nE = E(X −αβ)2 = E X − = =\n ∂β β4 β4 θ β4 β2\n I(β)= α , 1 = β2 , Dg ( θ ^) = D X = DX = β2\nβ2 nI(β) nα α nα2 nα\n1\nX nI(β) X 1\n^\n故e(β)=e( )= =1, 故 是 的有效估计.\nα X α θ\nD\n \nα\n1\n−\nx\n e θ,x >0,",
+      "difficulty": "medium",
+      "tags": [
+        "极大似然估计"
+      ]
+    },
+    {
+      "id": "EX-3-22",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X 的分布密度为 f(x)=θ 其中θ>0为未知参数,X ,X ,Λ,X\n1 2 n\n\n 0, x≤0,\n为来自总体X 的样本,证明样本均值X 是参数θ的充分完备统计量。",
+      "solution": "解:样本(X ,X ,Λ,X )T的联合分布密度为\n1 2 n\nn\n∑x\ni\n1 −i=1 1 − nT\nL(x ,x , …, x ;θ)= e θ ,则L(x ,x , …, x ;θ)= e θ 为指数型分布族;\n1 2 n θn 1 2 n θn\n1 n 1 n\n其中T =T(x ,x , …, x)= ∑x = x ;因此, ∑X ,即X 是参数θ的充分完备\n1 2 n n i n i\ni=1 i=1\n统计量。",
+      "difficulty": "hard",
+      "tags": [
+        "充分统计量"
+      ]
+    },
+    {
+      "id": "EX-3-23",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X ~ N(0,σ2),(X ,X , …, X ) X ,X ,Λ,X 为来自总体X 的样本,证明样\n1 2 n 1 2 n\n1 n\nT = ∑X2 是参数σ2的充分完备统计量。\nn i\ni=1",
+      "solution": "解:由于(X ,X , …, X )是来自正态总体N(0,σ2)的一个样本,则(X ,X , …, X )的联\n1 2 n 1 2 n\n合概率密度函数为:\n n \n∑x2\nf(x ,x , …, x ;σ2)= 1 n ( σ2)−n/2 exp − i=1 i \n1 2 n 2π 2σ2 \n \n其为指数分布族,其中\nn\nh(x ,x , …, x )=1,c(σ2)= \n\n1 \n\n( σ2)−n/2\n1 2 n\n 2π\n1 n 1\nT(x ,x , …, x )= ∑x2,b(σ2)=−\n1 2 n n i 2σ2\ni=1\n1 n\n于是由定理知:T = ∑X2 是参数σ2的充分完备统计量。\nn i\ni=1",
+      "difficulty": "hard",
+      "tags": [
+        "充分统计量"
+      ]
+    },
+    {
+      "id": "EX-3-24",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "设总体X ~ B(N,p),N 已知,X ,X ,Λ,X 为来自总体X 的样本,证明样本均值X\n1 2 n\n是参数 p的充分完备统计量。",
+      "solution": "解:由于(X ,X , …, X )是来B(N,p)的一个样本,则(X ,X , …, X )的联合概率分布为:\n1 2 n 1 2 n\nn\nf(x ,x , …, x ;p)=∏P(X = x )\n1 2 n i i\ni=1\nn n\n∑x nN−∑x\ni i\n=Cx 1Cx 2ΛCx npi=1 (1− p) i=1\nN N N\n= ( Cx 1Cx 2ΛCx n ) (1− p)nN exp { xn(ln p−ln(1− p))}\nN N N\n其为指数分布族,其中\nh(x ,x , …, x )=Cx 1Cx 2ΛCx n,c(p)=(1− p)nN\n1 2 n N N N\n1 n\nT(x ,x , …, x )= ∑x ,b(p)=n(ln p−ln(1− p))\n1 2 n n i\ni=1\n于是由定理知:样本均值X 是参数 p的充分完备统计量。\n27,随机的从一批零建中抽取16个,测得其长度(单位:cm)为:",
+      "difficulty": "hard",
+      "tags": [
+        "充分统计量"
+      ]
+    },
+    {
+      "id": "EX-3-25",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "14,2.10,2.13,2.15,2.13,2.12,2.13,2.10",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-3-26",
+      "source": "习题3",
+      "chapter": 3,
+      "statement": "15,2.12,2.14,2.10,2.13,2.11,2.14,2.11\n假设该零件的长度服从正态分布N(μ,σ2),试求总体均值μ的置信度为90%的置信间:\n(1) 若已知σ=0.01 (cm);\n(2) 若σ未知。\nX −μ",
+      "solution": "解:(1)Θ X ~ N(μ,σ2)  U = ~ N(0,1),由 P(U <u )=1−α ,\nσ 1−α/2\nn\nσ σ\n得置信度为1−α的置信区间为 (x −u ,x +u ),其中\n1−α/2 1−α/2\nn n\nu =u =1.645,x =2.125,n=16,σ=0.01\n1−α/2 0.95\nμ的置信度为90%的置信区间为 (2.121,2.129);\nX −μ\n(2)ΘT = ~t(n−1),由P(T <t (n−1))=1−α,得置信度为1−α的置信\nα/2\nS/ n\ns s\n区间为:(x −t (n−1) ,x +t (n−1) ),其中:\nα/2 α/2\nn n\n1 16\nx =2.125,n=16,t (n−1)=t (15)=1.7531,s = ∑(x −x)2 =0.0171\nα/2 0.05 15 i\ni=1\nμ的置信度为90%的置信区间为 (2.1175,2.1325)。",
+      "difficulty": "easy",
+      "tags": [
+        "区间估计"
+      ]
+    },
+    {
+      "id": "EX-4-02",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "在正态总体N(μ,1)中取100个样品,计算得样本的均值x =5.32,\n(1) 试检验假设H :μ=5← H :μ≠5是否成立?(α=0.05);\n0 1\n(2) 计算上述检验在H :μ=4.8下犯第II类错误的概率;\n1\n(3) 试求检验的功效函数;",
+      "solution": "解:(1)Θ X ~ N(μ,1),假设H :μ=5← H :μ≠5,所以采用U −检验法,在H 成立时,检验\n0 1 0\nX −5\n统计量U = ~ N(0,1);而x =5.32,n=100,α=0.05,查正态分布表得u =1.96,因\n1−0.05/2\n1/ 100\n此",
+      "difficulty": "easy",
+      "tags": [
+        "两类错误"
+      ]
+    },
+    {
+      "id": "EX-4-03",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "32−5\nu = =3.2>1.96\n1/ 100\n故拒绝H 。\n0\n(2)由(1)知,H 的拒绝域为:W ={(x ,x , …, x ):x <4.804.or.x >5.196},所以该假设检\n0 1 2 n\n验问题的检验函数为:\n1, 当(x ,x , …, x )∈W\nδ(x)= 1 2 n\n0, 当(x ,x , …, x )∉W\n\n1 2 n\n所以在H :μ=4.8下犯第II类错误的概率\n1\n4.804−4.8 X −4.8 5.196−4.8\n{ }\nP 4.804≤ X ≤5.196|μ=4.8 =P ≤ ≤ \n 1/ 100 1/ 100 1/ 100 \n=\nΦ(3.96)−Φ(0.04)\n=0.483\n(3)检验的功效函数:\ng(μ)= Eδ(X)= P((X ,X , …, X )∈W)\n1 2 n\nX −5\n= P( >1.96)\n1/ 100\n=1−P(4.8",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": [
+        "两类错误"
+      ]
+    },
+    {
+      "id": "EX-4-04",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "804−μ X −μ 5.196−μ\n=1−P( ≤ ≤ )\n1/10 1/10 1/10\n=1−Φ(51.96−10μ)+Φ(48.04−10μ)",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-05",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "设总体X 服从正态N(μ,1)分布,欲检验假设H :μ=6← H :μ=7,设从该总体中抽取了一个容\n0 1\n量为4的样本。\n(1)试定义该问题的检验函数。\n(2)若该问题的一个检验函数为\n1, 当x ≥7,\nδ(x)=\n0, 当x<7.\n求犯第Θ类和犯第ΘΘ类错误的概率。\nX −μ X −6",
+      "solution": "解:(1)检验统计量U = 0 ,因为在H 属真的情况下有U = ~ N(0,1),所以H 的拒绝\n0 0\nσ n 1 4\n x −6 \n域为W = >u ,即为W ={2(x −6)>u },则检验函数为\nα α\n1/ 4 \n1, 当2(x −6)>u\nδ(x)= α\n0, 当2(x −6)<u\n\nα\n(2)犯第Θ类错误的概率为\nX −6 7−6 \n{ }\nα=P X ≥7|H = P > =2\n0\n1/ 4 1/ 4 \n=1−Φ(2)=0.02275\n犯第ΘΘ类错误的概率为\nX −7 7−7 \n{ }\nβ=P X <7|H = P < =0 =Φ(0)=0.5\n1\n1/ 4 1/ 4",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-06",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "设(−0.2,−0.9,−0.6,0.1)T 是来自总体X ~ N ( μ,1 ) 的一个样本,试检验假设\nH :μ≤0← H :μ>0(若给定检验水平α=0.05).\n0 1\n_ _\nX−μ X−μ _",
+      "solution": "解:H :μ≤0,H :μ>0选取检验统计量:U = = =2(X−μ)\n0 1 σ 1\nn 2\n \nX −μ c−μ\n则H 的拒绝域为:W ={x >c},P ( X >c|μ≤0 ) =P > |μ≤0=α\n0 1 1 \n 2 2 \n…1−Φ(2(c−μ))≤α,(μ≤0)在μ=0处取最大值…\n1\n1−Φ(2c)=α…2c=μ …c= ×1.645=0.8225\n1−α 2\n1\nx = ×(−0.2−0.9−0.6+0.1)=−0.4<c=0.8225\n4\n所以接受H .\n0",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-07",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "某车间用一台包装机包装葡萄糖,额定标准为每袋净重 0.5kg,设包装机称得糖重服从正态分布,且\n根据长期的经验知其标准差为σ=0.015kg。某天开工后,为检验包装机工作是否正常,随机抽取它所包\n装的糖9袋,算得x =0.511kg,问这天包装机工作是否正常(α=0.05)。",
+      "solution": "解:由题知:X ~ N(μ,σ2),μ =0.5,σ= 0.015,n=9,x =0.511\n0\nX −0.5 H\n0\n假设 H :μ=0.5← H :μ≠ 0.5 ,检验统计量为: U = ~ N(0,1) ,查表得:\n0 1",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-08",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "015/ 9\n x −0.5 \nu =u =1.96,所以H 的拒绝域为:W = >1.96,由资料计算U 的观测值得:\n1−α/2 0.975 0\n0.015/ 9",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-09",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "511−0.5\nu = =2.2>1.96",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-10",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "015/3\n所以拒绝H ,即这台工作机不正常工作。\n0",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-11",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "设 X 和Y 分别是正态总体N(μ,σ2) 和N(μ,σ2)的容量为n和m的独立样本的样本均值,\n1 1 2 2\nX −Y σ2 σ2\nσ2,σ2已知,根据统计量T = ,其中σ2 = 1 + 2 。\n1 2 σ n m\n(1)试检验假设H :Δ=μ −μ =0← H :Δ>0 ;\n0 1 2 1\n(2)试求出该检验的效函数。\nX −Y",
+      "solution": "解:(1)设H 的拒绝域为W ={T >c},且在H 下:T = ~ N(0,1)\n0 0 σ\n设检验水平为α,则有\nX −Y\nα= P(W |H )= P( >c)=1−Φ(c)\n0 σ\n则有c=u 即得W ={T >u }\nα α\n(2)效函数为\nX −Y \nβ(μ −μ)= P ≥u \n1 2 σ α \nX −Y −(μ −μ) μ −μ μ −μ\n= P 1 2 ≥u − 1 2=1−Φ(u − 1 2)\n σ α σ α σ\nσ2 σ2\n其中σ= 1 + 2 。\nn m",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-12",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "零件长度服从正态分布,过去的均值为20.0cm,现换了新材料从产品中随机抽取了8个样品,测得长\n度为(单位:cm)20.0,20.2,20.1,20.0,20.2,20.3,19.8,20.2,问用新教材做的零件平均长度是\n否起了变化(α=0.05)?\n1 8 x −μ",
+      "solution": "解:假设H :μ= 20.0← H :μ≠ 20.0,x = ∑x =20.1,而s* =0.160.拒绝域: >t ,\n0 1 8 i n s* / n α/2\ni=1 n\nx −μ 20.1−20.0\n又 = =1.768<t =2.36,故新教材做的零件的平均长度没有发生变化。\ns* / n 0.16/ 8 0.025\nn",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-13",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "从某种试验物中取出24个样品,测量其发热量,计算得x =11956cal,样本标准差s* =323cal,\nn\n问以5%的显著水平是否可以认为发热量的期望值是12100cal(假定发热量服从正态分布)?",
+      "solution": "解:假设H :μ=12100← H :μ≠1210\n0 1\n检验统计量\nX −μ\nT = 0\nS2 / n\nH 的拒绝域为\n0\n \nW =t ≥t (n−1)\nα\n \n2\n查表得:t (23)=2.0687,又",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-14",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "025\n11956−12100\nt = =2.18406>2.0687\n323/ 24\n因此不能接受发热期望值为12100cal",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-15",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "测定某种溶液中的水平,它的10个测定值给出x =0.452%,s* =0.037%,设测定值总体为正态分布,\nn\nμ为总体均值,σ2为总体方差,试在水平α=0.05下检验假设:\n(1)H :μ≥0.5%← H :μ<0.5%;\n0 1\n(2)H :σ≥0.4% ← H :σ< 0.4%\n0 1\nX −μ",
+      "solution": "解:(1) H :μ≥0.5%← H :μ<0.5%,选择检验统计量T = 0 ,μ =0.5% ,其拒绝域为\n0 1 S 0\nn\nW =\n{\nT\n<C*}\n,则犯第一类错误的概率为:\n \nα(μ)= P ( T <C*|μ≥μ ) = P X −μ+μ−μ 0 <C* |μ≥μ \n0 S 0\n \n n \n \n X −μ μ−μ μ−μ \n= P <C*− 0 |μ≥μ = F C*− 0 (μ≥μ)\n S S 0 t(n−1) S 0\n \n n n n \n在μ=μ 处取得最大值… F (C*)=α,查表得:\n0 t(n−1)\nC* =t (n−1)=t (9)=−t (9)=−1.8331\n1−α 0.95 0.05",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-16",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "452%−0.5%\n又因为:T = −4.1046<C* = −1.8331",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-17",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "037%\n10\n所以应该拒绝H ,即水分含量均值不超过0.5%\n0\n(n−1)S2\n(2)H :σ≥ 0.4%,H :σ< 0.4%,选择检验统计量γ2 = ,σ =0.4%,其拒绝域为:\n0 1 σ2 0\n0\nW = { γ2 <C*}\n则犯第一类错误的概率为:\nα ( σ2 ) = P ( γ2 <C* |σ2 ≥ (0.4%)2 ) = P (n−1)S2 < σ 0 2 C*|σ2 ≥(0.4%)2 \nσ2 σ2\n \n当σ=σ 时达到最大值…γ 2(n−1)=C* =γ 2(9)查表得:C* =3.33\n0 1−α 0.95\n9×\n(",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-18",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "037%\n)2\n由样本观测值得γ2 = = 0.0770067 <C* =3.33,所以应该拒绝H\n(",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-20",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "从某锌矿的东西两支矿脉中,各抽取样本容量分别为9与8的样本分析后,算得其样本含锌(%)平\n均值及方差如下:\n东支:x =0.230,s2 =0.1337,n =9,\n1 1 1\nn1\n西支:x =0.269,s2 =0.1736,n =8,\n2 2 2\nn2\n若东西两支脉矿含锌量都服从正态分布且方差相等,在α=0.05的条件下问东西两支矿脉含锌量的平均\n值是否可看作一样?",
+      "solution": "解:令 X,Y 分别代表东西两支矿脉含锌量,由题意知:X ~ N(μ,σ2),Y ~ N(μ,σ2),且 X,Y\n1 2\n相互独立。 提出假设:H:μ −μ =0→H:μ −μ ≠0\n0 1 2 1 1 2\n检验统计量为:\nX −Y H\n0\nT = ~t(n +n −2)\n1 1\n(n −1)S2 +(n −1)S2 1 2\n+ . 1 1n 1 2 2n 2\nn n n +n −2\n1 2 1 2\n{ }\n拒绝域为: W = T >t (n +n −2) ,查表得:t (n +n −2)=t (15)=2.1315\nα/2 1 2 α/2 1 2 0.025\n计算T的观测值为:t=1.917<2.1315,所以:接受H ,即东西两只矿场含锌量平均值可看作一样。\n0",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-21",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "在 10 块田地上同时试种甲、乙两种品种的作物,根据产量计算得x =30.97, y =21.79,\ns* = 26.7,s* =21.1。假定两种品种的产量分别服从正态分布,对α=0.05,试问这两种品种的产\nX Y\n量能否认为来自同一正态分布?",
+      "solution": "解:设两种品种的产量X ~ N(μ,σ2),Y ~ N(μ,σ2) ,且X 与Y 相互独立,其中μ,σ2,μ,σ2均\n1 1 2 2 1 1 2 2\n为未知参数,X 与Y 的样本数分别为n =10,n =10。\n1 2\n(1)先作假设H :σ2 =σ2 ← H :σ2 ≠σ2;\n0 1 2 1 1 2\nS*2\n当H 成立时,统计量F = X ~ F(n −1,n −1),对检验水平α=0.05,H 的拒绝域为\n0 S*2 1 2 0\nY\n对于显著性水平α=0.05查表可得\nF (n −1,n −1)= F (9,9)=4.07\nα/2 1 2 0.025\n1 1\nF (n −1,n −1)=F (9,9)= =\n1−α/2 1 2 0.975 F (9,9) 4.07",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-22",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "025\ns*2 26.72\n根据观测值可得F = x = =1.6,显然有F (9,9)< F < F (9,9),则接受假设H ,即X\ns*2 21.12 0.975 0.025 0\ny\n与Y 的方差无显著差异(σ2 =σ2)。\n1 2\n(2)在假定σ2 =σ2的条件下再作假设H :μ =μ ← H :μ ≠μ(α=0.05).\n1 2 0 1 2 1 1 2\nX −Y nn (n +n −2)\n当H 成立时,统计量 T = 1 2 1 2 ~t(n +n −2)\n0 (n −1)S*2 +(n −1)S*2 n +n 1 2\n1 X 2 Y 1 2\nx − y nn (n +n −2)\n根据样本数据可得 T = 1 2 1 2 =0.853\n(n −1)s*2 +(n −1)s*2 n +n\n1 x 2 y 1 2\n查表可知 t (n +n −2)=t (18)=2.101则有 T <",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-23",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "9 个运动员才初进学校时,要接受体育训练的检验,接受训练一个星期,再接受检验,检验结果记\n分如下:\n入学初X:76,71,57,49,70,69,26,65,59,\n训练后Y:81,85,52,52,70,63,33,83,62.\n假定分数服从正态分布,试在显著水平0.05下判断运动员的体育训练有无显著进步?",
+      "solution": "解:由试验方案知X 与Y 独立,且X ~ N(μ,σ2),Y ~ N(μ,σ2)\n1 1 2 2\n要求假设检验H :σ2 =σ 2;H :σ2 ≠σ2,又所给计算数据得\n0 1 2 1 1 2\nn =9,x =60.22,s* 2 = 233.7, y =64.6,s* 2 =297.47,\n1 1n 2n\n1 2\nS*2\n因而计算得F = x =0.79,对于α=0.05,由附表4查得\nS*2\ny\n1\nF (8.8)=4.43,F (8,8)= =0.23,",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-24",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "025 0.975 F (8,8)",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-25",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "025\n由于F (8.8)< F < F (8.8),故 应接受H …σ2 =σ2",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-4-26",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "975 0.025 0 1 2\n假设检验H ':μ =μ ← H ':μ ≠μ ,检验统计量\n0 1 2 1 1 2\nX −Y nn (n +n −2) H\n0\nT = 1 2 1 2 ~t(n +n −2)\n(n −1)S*2 +(n −1)S*2 n +n 1 2\n1 1n 2 2n 1 2\n1 2\n由表得t (16)=2.1199,于是 t =0.57<2.1199=t (16)",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "EX-4-27",
+      "source": "习题4",
+      "chapter": 4,
+      "statement": "05 0.05\n2 2\n所以接受假设H ,没有理由认为运动员的体育训练有显著进步!\n0",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-5-02",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "某厂打算根据各年度市场的销售量来决定下年度应该扩大生产还是缩减生产,或者维持\n原状,如果已知本年度市场的销售量服从指数分布E(λ),其中λ未知(λ>0),试写出样\n本空间及样本分布族。\n λe−λx, x >0",
+      "solution": "解:f(x;λ)= ,λ>0\n 0 x≤0",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-5-03",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "在一个参数统计模型中,如果要求未知参数θ的单侧区间估计 ( −∞,θ(X ,X , …, X ),\n1 2 n \n试写出决策空间,并给出适当的损失函数。",
+      "solution": "解:决策空间= {(−∞,a ]:−∞<a <+∞ } ,损失函数\n2 2\nL(θ,a)=1−I (θ)\n(−∞,a ]\n2\nθ∈Θ,a=(−∞,a ]∈。\n2",
+      "difficulty": "easy",
+      "tags": [
+        "统计决策"
+      ]
+    },
+    {
+      "id": "EX-5-04",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "设(X ,X , …, X )是来自正态总体N(0,σ2)的样本,其中σ2未知,现给出σ2的五种\n1 2 n\n估计量:\n1 n 1 n 1 n\nσ^2 = ∑(X − X)2,σ^2 = ∑(X −X)2 ,σ^2 = ∑(X − X)2\n1 n−1 i 2 n i 3 n+1 i\ni=1 i=1 i=1\n1 n 1 n\nσ^2 = ∑X2,σ^2 = ∑X2\n4 n i 5 n+2 i\ni=1 i=1\n试在平方损失函数L ( σ2,d ) = ( σ2 −d )2 下,求出它们的风险函数,并比较风险函数值的大\n小。",
+      "solution": "解:\n2\nR ( σ2,σ^2) = E ( σ^2 −σ2)2 = E 1 ∑ n (X −X)2 −σ2 \n \n1 1 n−1 i \ni=1\nσ4 1 n 2σ4 1 n \n= D ∑(X − X)2 = Θ ∑(X − X)2 ~γ2(n−1)\n \n(n−1)2 σ2 i n−1 σ2 i \ni=1 i=1\nn−1\n注意到σ^2 = σ^2,所以\n2 n 1\n2\nR ( σ2,σ^2) = E n−1 σ^2 −σ2 \n \n2 n 1 \n2\nn−1 n−1 1 \n= E\n\nσ^2 − σ2 − σ2\n\n n 1 n n \n2\n=\nn−1\nR ( σ2,σ^2) +\n1\nσ4 =\n2n−2\nσ4\n \n n 1 n2 n2\nn−1\n因为σ^2 = σ^2,所以\n3 n+1 1\n2\nR ( σ2,σ^2) = E n−1 σ^2 −σ2 \n \n3 n+1 1 \n2\nn−1 n−1 2 \n= E\n\nσ^2 − σ2 − σ2\n\nn+1 1 n+1 n+1 \n2\n=\nn−1\nR ( σ2,σ^2) +\n4\nσ4 =\n2\nσ4\n \nn+1 1 (n+1)2 n+1\n1 n 1 n \n因为\nσ2\n∑X\ni\n2 ~γ2(n),且E\n n\n∑X\ni\n2\n \n=σ2,所以\ni=1 i=1\nσ4 1 n 2\nR ( σ2,σ^2) = D ( σ^2) = D\n\n∑X2\n\n= σ4\n4 4 n2 σ2 i n\ni=1\nn\n又因为σ^2 = σ^2,所以\n5 n+2 4\n2\nR ( σ2,σ^2) = E n σ^2 −σ2 \n \n5 n+2 4 \n2\n n n 2 \n= E\n\nσ^2− σ2 − σ2\n\nn+2",
+      "difficulty": "easy",
+      "tags": [
+        "统计决策"
+      ]
+    },
+    {
+      "id": "EX-5-05",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "设(X ,X , …, X )是来自正态总体N(μ,σ2)的样本,其中μ,σ2未知,−∞<μ<+∞,\n1 2 n\nσ2 >0,现给出σ2的三种估计量:\n1 n 1 n 1 n\nσ^2 = ∑(X − X)2,σ^2 = ∑(X −X)2 ,σ^2 = ∑(X − X)2\n1 n−1 i 2 n i 3 n+1 i\ni=1 i=1 i=1\n试求σ^2,σ^2,σ^2在平方损失函数L ( σ2,d ) = ( σ2 −d )2 下的风险函数,并比较风险函数\n1 2 3\n值的大小。",
+      "solution": "解:\n2\nR ( σ2,σ^2) = E ( σ^2 −σ2)2 = E 1 ∑ n (X −X)2 −σ2 \n \n1 1 n−1 i \ni=1\nσ4 1 n 2σ4 1 n \n= D ∑(X − X)2 = Θ ∑(X − X)2 ~γ2(n−1)\n \n(n−1)2 σ2 i n−1 σ2 i \ni=1 i=1\nn−1\n注意到σ^2 = σ^2,所以\n2 n 1\n2\nR ( σ2,σ^2) = E n−1 σ^2 −σ2 \n \n2 n 1 \n2\nn−1 n−1 1 \n= E\n\nσ^2 − σ2 − σ2\n\n n 1 n n \n2\n=\nn−1\nR ( σ2,σ^2) +\n1\nσ4 =\n2n−2\nσ4\n \n n 1 n2 n2\nn−1\n因为σ^2 = σ^2,所以\n3 n+1 1\n2\nR ( σ2,σ^2) = E n−1 σ^2 −σ2 \n \n3 n+1 1 \n2\nn−1 n−1 2 \n= E\n\nσ^2 − σ2 − σ2\n\nn+1 1 n+1 n+1 \n2\n=\nn−1\nR ( σ2,σ^2) +\n4\nσ4 =\n2\nσ4\n \nn+1 1 (n+1)2 n+1\n可见σ^2的风险函数值最小,σ^2的风险函数值最大。\n3 1",
+      "difficulty": "easy",
+      "tags": [
+        "统计决策"
+      ]
+    },
+    {
+      "id": "EX-5-06",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "试证明当总体分布密度函数为 p(x;θ),θ∈Θ,且θ得先验分布的密度函数为π(θ)时,\nθ的后验分布可以按下列两个公式之一计算:\n(1) 当先验分布为连续型时,后验分布的概率密度函数为:\nn\n∏p(x;θ)π(θ)\nh(θ|x ,x , …, x )= i=1 , θ∈Θ\n1 2 n n\n∫∏ p(x;θ)π(θ)dθ\nΘ i=1\n(2) 当先验分布为离散型时,后验分布的概率密度函数为:\nn\n∏p(x;θ)π(θ)\nh(θ|x ,x , …, x )= i=1 , θ∈Θ\n1 2 n n\n∑∏ p(x;θ)π(θ)dθ\nΘ i=1\nn",
+      "solution": "解:样本分布q(x ,x , …, x |θ)=∏p(x;θ),(X ,X , …, X ;θ)的联合概率密度函数为\n1 2 n 1 2 n\ni=1\nn\nf(x ,x , …, x ;θ)=∏p(x;θ)π(θ)\n1 2 n\ni=1\n(1) 当先验分布为连续型时,后验分布的概率密度函数为:\nn\n∏ p(x;θ)π(θ)\nf(x ,x , …, x ;θ)\nh(θ|x ,x , …, x )= 1 2 n = i=1 , θ∈Θ\n1 2 n g(x ,x , …, x ) n\n1 2 n ∫∏ p(x;θ)π(θ)dθ\nΘ i=1\n(2) 当先验分布为离散型时,后验分布的概率密度函数为:\nn\n∏ p(x;θ)π(θ)\nf(x ,x , …, x ;θ)\nh(θ|x ,x , …, x )= 1 2 n = i=1 , θ∈Θ\n1 2 n g(x ,x , …, x ) n\n1 2 n ∑∏p(x;θ)π(θ)dθ\nΘ i=1",
+      "difficulty": "easy",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "EX-5-07",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "设总体X 服从泊松分布P(λ),其中λ未知,λ>0;X ,X , …, X 为来自总体X 的样\n1 2 n\n本,试证明λ的共轭分布为Γ分布。",
+      "solution": "解:设λ的先验分布为Γ(α,β),也即λ的先验分布的密度函数为\n βα\n λα−1e−βλ, λ>0\nπ(λ)=Γ(α)\n\n 0, λ≤0\n样本X ,X , …, X 的联合分布为\n1 2 n\nn\n1 ∑x i\nq(x ,x , …, x |λ)= λi=1 e−nλ\n1 2 n x !x !, …, x !\n1 2 n\nλ的后验分布的概率密度函数为:\nn\nα+∑x−1\nh(λ|x ,x , …, x )λ i=1\ni e−(n+β)λ\n1 2 n\nn\n即λ|x ,x , …, x ~Γ(α+∑x ,n+β),因此λ的共轭分布为Γ分布。\n1 2 n i\ni=1",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-5-08",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "设总体X 服从泊松分布P(λ),其中λ未知参数,λ>0;X ,X , …, X 为来自总体X\n1 2 n\n的样本,损失函数为L(λ,λ ^) = (λ− λ ^)2,假定λ的先验分布密度为\nλe−λ, λ > 0\n( )\nπ λ = \n 0, λ ≤ 0\n试求λ的贝叶斯估计。",
+      "solution": "解:因为λ的先验密度函数π(λ)为\nλe−λ, λ > 0\n( )\nπ λ = \n 0, λ ≤ 0\n样本分布密度函数为:\nn\nλ ∑ i=1 x i ∑ n x i\nq(x|λ)= e−nλλi=1 e−nλ\nx !x !…,x !\n1 2 n\n所以\nn\n∑x+2−1\ni\nh(λ|x)λi=1 e−(1+n)λ\n即\nn\nλ|x~Γ(2+∑x ,1+n)\ni\ni=1\n故λ的贝叶斯估计为\n2+nX\nλ ^ = E(λ|X)=\n1+n",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计",
+        "统计决策"
+      ]
+    },
+    {
+      "id": "EX-5-09",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "设X 服从二项分布B(N,p),p的先验分布为区间 (0,1) 的均匀分布,X ,X , …, X 为\n1 2 n\n来自总体X 的样本,试在平方损失函数下,试求 p的贝叶斯估计。",
+      "solution": "解:由于对给定的 p,X 的条件概率为 f(x| p)=Cx px(1− p)N−x,(x=0,1,...,N),所以\nN\n(X ,X , …, X )的条件概率为\n1 2 n\nn n \nq(x| p)=∏Cx i px i(1− p)N−x i = ∏Cx i pnx(1− p)nN−nx,\nN N\n \ni=1 i=1\n(0< p<1,x =0,1,...,N;,i=1,2,...,n)\ni\n而 p的先验密度为\n1 0< p<1\nπ(p)=\n0 其它\n所以(X ,X , …, X ,p)的联合密度为\n1 2 n\n n \ng(x,p)= ∏Cx i pnx(1− p)nN−nx,(0< p<1,x =0,1,...,N;,i=1,2,...,n)\nN i\n \ni=1\n所以 p的后验分布为\nh(p|x) pnx(1− p)Nn−nx\n即给定X=x, p的条件分布为(nx +1,Nn−nx +1),因此 p的贝叶斯估计为\nnX +1 a\np^ = E[p|X]= (Θ若X ~(a,b),则EX = )\nNn+2 a+b",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计",
+        "统计决策"
+      ]
+    },
+    {
+      "id": "EX-5-10",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "设 总 体 X 服 从 参 数 为 θ 的 指 数 分 布 E(θ) , 即 X 的 概 率 密 度 函 数 为\nθe−θx x>0\nf(x;θ)= ,X ,X , …, X 为来自总体X 的样本,θ的先验分布为Γ分布,\n1 2 n\n 0 x≤0\n其密度函数为\n1\nπ ( θ ) = θαe−θ/β,θ > 0\nΓ ( α + 1) βα+1\n其中α > −1,β > 0,损失函数为L(θ,θ ^) = (θ − θ ^)2,求θ的贝叶斯估计。",
+      "solution": "解:样本分布密度为\n n\n\n−θ∑x\ni\nq(x| p)= θne i=1 , x ,x , …, x >0\n1 2 n\n 0, 其它\n而θ的先验密度为\n 1\n θαe−θ/β θ>0\nπ(θ)=Γ(α+1)βα+1\n\n 0 θ≤0\n所以θ的后验分布为\n−(∑ n x+ 1 )\nh(θ|x)q(x|θ)π(θ)θα+n+1−1e\ni=1\ni β\nn 1\n即给定X=x,θ的条件分布为Γ(α+n+1,∑x + ),因此θ的贝叶斯估计为\ni β\ni=1\nn+α+1\nθ ^ = E[θ|x]=\nn 1\n∑x +\ni β\ni=1",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计",
+        "统计决策"
+      ]
+    },
+    {
+      "id": "EX-5-11",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "设 X 服从贝努里分布B(1,p),其中参数 p 的先验分布为区间 (0,1) 的均匀分布,\n(\np −\np^)2\nX ,X , …, X 为来自总体X 的样本,试在损失函数L\n( p,p^)\n= 下,试证明p\n1 2 n p(1 − p)\n1 n 1\n的贝叶斯估计为X = ∑ X ,且它的风险函数是常数 。\nn i n\ni=1",
+      "solution": "解:因为(X ,X , …, X )的条件概率分布为\n1 2 n\nn\nq(x| p)= p ∑ i=1 x i (1− p)n−∑ n x i\ni=1\n而θ的先验密度为\n1, 0< p<1\nπ(p)=\n0, 其它\n所以θ的后验分布为\nh(θ|x) pnx (1− p)n−nx\n(\np −\np^)2\n即θ|X=x~(nx +1,n−nx +1)。在损失函数L\n( p,p^)\n= 下,p的贝叶斯估\np(1 − p)\n计为\n 1 1 1 Γ(n+2)\nE √p|x ∫ pnx+1−1(1− p)n−nx+1−1dp\n\np(1− p)\n\n01− p Γ(nx +1)Γ(n−nx +1)\np^ = =\nB 1 ∫ 1 1 Γ(n+2) pnx+1−1(1− p)n−nx+1−1dp\nE\np(1− p)\n√|x\n0 p(1− p) Γ(nx +1)Γ(n−nx +1)\n \n(n+1) 1 Γ(n+1)\n∫ pnx+1−1(1− p)n−nx−1dp\n(n−nx)\n0\nΓ(nx +1)Γ(n−nx)\n= = x\n(n+1) 1 Γ(n) 1\n∫ pnx−1(1− p)n−nx−1dp\nx(n−nx) 0 Γ(nx)Γ(n−nx) p(1− p)\n1 n\n故 p的贝叶斯估计为X = ∑ X 。这个估计的风险函数为\nn i\ni=1\nR(p,p^)= E [L(p,p^)]\np\n1 1 1\n( )2 ( )\n= E p− X = D X =\np(1− p) p p(1− p) p n",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计",
+        "统计决策"
+      ]
+    },
+    {
+      "id": "EX-5-12",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "设总体X 服从正态分布N(0,θ),X ,X , …, X 是来自总体X 的样本,又设参数θ的\n1 2 n\n先验分布为逆伽玛分布(记作θ~IΓ(α,λ)),即θ的先验密度函数为\n λα 1 α+1 − λ\n e θ θ>0\nIΓ(θ,α,λ)=Γ(α)θ (α,λ>0为已知)\n\n 0 其它\n( 易 证 明 : 1. 若 X ~Γ(α,β) , 则 X−1 ~ IΓ(α,β) ; 2. X ~ IΓ(α,β) , 则\nΓ(α−k)βk β β2\nEXk = ,特别地,E[X]= ,EX2 = )\n \nΓ(α) α−1 (α−1)(α−2)\n(d −θ)2\n假定损失函数是L(θ,d)= ,试求参数θ的贝叶斯估计。\nθ2\n解 因为(X ,X , …, X )的条件概率密度为\n1 2 n\nn\n∑x2\ni\nn\n− −i=1\nq(x|θ)θ 2e 2θ\n而θ的先",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计",
+        "统计决策"
+      ]
+    },
+    {
+      "id": "EX-5-13",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "设总体 X 服从正态分布 N(0,σ2) 的一个样本,σ2 > 0,取σ2 的先验分布为\nπ ( σ2) 1,X ,X , …, X 为来自总体X 的样本,试求σ2的置信度为1 − α的置信区\n1 2 n\n间。",
+      "solution": "解:因为(X ,X , …, X )的条件概率分布为\n1 2 n\nn\nn\n∑x\ni\n2\nq(x|σ2)=(2π)− n 2 1 2 e − 1 2 i= σ 1 2\nσ2 \n而σ2的先验密度为\nπ(σ2)1\nn\nn\n∑x\ni\n2\n 1 2 − 1i=1\n因此σ2的后验分布密度函数为h(σ2 |x) e 2 σ2 。\nσ2 \nn n\n1 1 1 n 2 −2 − 1 ∑ i=1 x i 2 ∑x i 2\n令θ= ,则h( |x) e 2 σ2 ,所以 i=1 |x~γ2(n−2),由\nσ2 σ2 σ2 σ2\n n \n∑x2\n i \nPγ2 (n−2)≤ i=1 ≤γ2 (n−2)|x=1−α\n1−α/2 σ2 α/2\n \n \n得σ2的置信度为1 − α的置信区间为\nn n\n∑x2 ∑x2\ni i\ni=1 ≤σ2 ≤ i=1\nγ2 (n−2) γ2 (n−2)\nα/2 1−α/2\n 1",
+      "difficulty": "easy",
+      "tags": [
+        "贝叶斯估计"
+      ]
+    },
+    {
+      "id": "EX-5-14",
+      "source": "习题5",
+      "chapter": 5,
+      "statement": "设随机变量 X 服从Γ分布Γ α, ,其中α > 0,已知,θ未知。试在损失函数\n θ\n( ^)2\nθ − θ\nL ( θ,θ ^) = 下,验证θ ^ = X 是θ的最小最大估计。\nθ2 1 + α\n解 因为样本分布密度函数为\nα\n1\n \nθ − x\nq(x|θ)= xα−1e θ\nΓ(α)\n设θ的先验密度为\n1\nπ(θ)\nθ\nx\n则 的后验分布密度为\nθ\nx x α−1 − x\nh( |x) e θ\nθ θ\nx\n由此可知 |x ~Γ(α,1),而\nθ\nα\n^\nE\n\nθ−2θ|x\n x x\nθ= = =\nE\n\nθ−2 |x\n\n1 ( α+α2) (α+1)\nx2\nX\n^\n即θ的贝叶斯估计为θ =\n1 + α\n^\nθ的风险函数为\n2\n1 X \nR(p,p^)= E −θ\nθ2\nθ\n1+α\n\n2\n1 X 1",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "hard",
+      "tags": [
+        "贝叶斯估计",
+        "统计决策",
+        "Minimax"
+      ]
+    },
+    {
+      "id": "EX-6-02",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "证明: 关于单因素方差分析模型:\nr iid ( )\ny =μ+α +ε , i =1,2,Λ,r, j =1,2,Λ,t, ∑α =0, ε ~ N 0,σ2\nij i ij i ij\ni=1\n的平方和分解式: S = S + S 。\nT E A\nr t ( ) r t ( )\n证明:S = ∑∑ y − y 2 =∑∑ y − y + y − y\nT ij ij i√ i√\ni=1 j=1 i=1 j=1\nr t r\n=∑∑( y − y )2 +∑t(y − y)2 = S +S\nij i√ i√ E A\ni=1 j=1 i=1\n其中交叉乘积项:\n2∑ r ∑ t ( y − y )( y − y ) =2∑ r ( y − y ) √∑ t ( y − y ) =2∑ r ( y − y )( y −ty ) =0.\nij i√ i√ i√ ij i√ i√ i√ i√\ni=1 j",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "medium",
+      "tags": [
+        "单因素方差分析"
+      ]
+    },
+    {
+      "id": "EX-6-03",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "写出关于单因素方差分析模型:\nr iid ( )\ny =μ+α +ε , i =1,2,Λ,r, j =1,2,Λ,t, ∑α =0, ε ~ N 0,σ2\nij i ij i ij\ni=1\n的平方和S ,S ;并求ES ,ES .\nE A E A\nr t r",
+      "solution": "解:S =∑∑( y − y )2 , S = ∑t ( y − y )2\nE ij i√ A i√\ni=1 j=1 i=1\nr t r t r σ2 \nES =∑E ∑( ε −ε ) =∑E ∑ε2 −tε2 =∑ tσ2 −t√ =(n−r)σ2\nE i=1 j=1 ij i√ i=1 j=1 ij i√ i=1 t \nr [ ] r r r\nES =tE∑α2 +2α ( ε −ε ) + ( ε −ε )2 =tE∑α2 +tE∑ε2 −rε2=t∑α2 + ( r −1 ) σ2\nA i i i√ i√ i i√ i\n \ni=1 i=1 i=1 i=1\n.",
+      "difficulty": "medium",
+      "tags": [
+        "单因素方差分析"
+      ]
+    },
+    {
+      "id": "EX-6-04",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "为研究三种不同教材的质量,抽取三个实验班分别使用其中一种教材,而对其他因素加以控制,\n现每班随机抽取五人,测得平均分为 71,75,70,求得总偏差平方和S =192,试分析三种教\nT\n材质量有没有显著性差异。(已知F (2,12)=3.88).",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-05",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "05\n- 1 -\n71+75+70",
+      "solution": "解:(1)Θx = =72,S\n=5(71−72)2 +(75-72)2 +(70−72)2\n=70\n3 A \nS =192−70=122 。\nE\n(2)确定自由度:df =3−1=2,df =15−1=14,df =15−3=12.\nA T E\n70 122\n(3)求均方: MS = =35, MS = =10.17\nA 2 E 12\nMS 35\n(4)进行F-检验:F = A = =3.44< F (2,12)=3.88\nMS 10.17 0.05\nE\n故不能拒绝H ,即三种教材质量无显著性差异\n0",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-06",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "随机抽取20名被试,将其随机分成4组,每组5人,各组分别随机地接受一种自学辅导方案,\n( )\n结果如下表。问四种自学辅导方案的效果是否一致?(已知F 3,16 =5.29)",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-07",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "01\n自学辅导方案 A B C D\n每组人数 n 5 5 5 5\nj\n每组平均数X 79 75.4 81 77.2\nj\n每组方差 S2 4 2.8 3 3.5\nj",
+      "solution": "解:建立原假设H :μ =μ =μ =μ\n0 A B C D\nX + X + X + X 79+75.4+81+77.2\n由 X = A B C D = =78.15\nt 4 4\nk k\nS =n√∑( X −X )2 =86.55,S =n√∑S2 =66.50\nA j t E j\nj=1 j=1\nS 86.55 S 66.50\n故 MS = A = =28.85, MS = E = =4.16\nA df 4−1 E df 20−4\nA E\nMS 28.85\nF = A = =6.94> F (3,16)=5.29\nMS 4.16 0.01\nE\n故 拒绝H ,即四种自学辅导方案存在显著差异。\n0\n- 2 -",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-08",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "从三种型号的制砖机所生产的砖中各取若干块进行抗断强度测试,得数据如下表。\n试验号\n1 2 3 4 5 6\n机型\n甲 32.33 31.28 30.35 32.14 31.75 ----\n乙 33.24 32.56 31.49 32.67 33.04 31.18\n丙 33.44 32.48 33.15 32.46 32.18 ----\n试根据这些数据,用单因素的方差分析方法鉴定不同型号制砖机所生产的砖的抗断强度有无显著\n差异。\n解 题中所给数据的有效位数较多,为简化计算将所有数据都减去30,另组计算表如下表。\n机 型\n甲 乙 丙\n1 2.33 3.24 3.44\n2 1.28 2.56 2.48\n3 0.35 1.49 3.15\n4 2.14 2.67 2.46\n5 1.75 3.04 2.18\n6 1.18\n3\nT 7.85 14.18 13.71 ∑T =35.74\n.j .j\nj=1",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "medium",
+      "tags": [
+        "单因素方差分析"
+      ]
+    },
+    {
+      "id": "EX-6-09",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "6225 201.0724 187.9641 ------\n.j\nT2 3 T2\n.j 12.3245 33.5121 37.5928 ∑ .j =83.4294\nn n\nj j=1 j\nn j 3 n j\n∑x2 14.8319 37.0342 38.7105 ∑∑x2 =90.5766\nij ij\ni=1 j=1 i=1",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-10",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "742\nS =90.5766− =10.7424,\nT 16",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-11",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "742\nS =83.4294− =3.5952,S =10.7424−3.5952=7.1472\nA 16 E\nS ,S ,S 的自由度依次为n−1=15,r−1=2,n−r =13,得方差分析表如下表所示。\nT A E\n- 3 -\n方差 来\n平方和 自由度 均方 F F\n源 α\n组间(因\nS =3.5952 r−1=2 MS =1.7976 3.2696 F (2,13)=3.81\n素) A A 0.05\n组内 S =7.1472 n−r =13 MS =0.5498\nE E\n总和 S =10.7424 n−1=15\nT\n由于F (2,13)=3.81>3.2696故接受H ,即就所提供的数据,还看不出三种不同型号的制砖机",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "EX-6-12",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "05 0\n所生产的砖抗强度有显著差异。",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-13",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "对某种作物采取五种不同的施用化肥方案,进行收获量试验,每种方案作了四块试验地,其试\n验所得的数据如下:\n5 4 5 4 5 4\n∑∑x =1417,∑∑x 2 =106093,∑(∑x )2 =415723\nij ij ij\nj=1 i=1 j=1 i=1 j=1 i=1\n试问施肥方案的不同,对收获量有无显著影响(a=0.01)?\n解 由题中所给数据,计算各离差平方和为\n14172 1 14172\nS =106093− =5698.55,S = ×415723− =3536.3\nT 20 A 4 20\nS =5698.55−3536.3=2162.25\nE\nS ,S ,S 的自由度依次为n−1=19,r−1=4,n−r =15,列出方差分析表,如下表所示。\nT A E\n方差来源 平方和 自由度 均方 F F\nα\n组间(因\nS =3536.3 r−1=4 MS =884.075 6.13 F",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "EX-6-15",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "考察温度对某一化工产品得率的影响,选了五种不同的温度,在同一温度下做了三次实验,\n- 4 -\n测得其得率如下,试分析温度对得率有无显著影响。\n温度 60 65 70 75 80\n90 91 96 84 84\n得率 92 93 96 83 89\n88 92 93 83 82\n解 把原始数据均减去90后可列出如下计算表和方差分析表,r表示因子水平数,t为重复实验\n次数。\nr =5,t =3,n=rt =15\n计算表\n温度 60 65 70 75 80\n0 1 6 -6 -6\ny 5 3 6 -7 -4\nij\n-2 2 3 -2 -8\ny 0 6 15 -15 -18\n∑y\ni\n=−12\niγ\ni\n2\n \n\n∑∑y\n\nij\n∑∑y2 =308,∑y2 =810, i j =9.6\nij i n\ni j i\n1\nS = ×810−9.6=260.4,S =308−9.6=298.4",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "EX-6-16",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "1\n实验误差 38 10 3.8\n总和 298.4 17 F (4,10)=6",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-17",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "99\n由于F =17.1>6,所以在α=0.01上水平上认为温度对得率有显著影响。\n\ny =μ+α +β +γ +ε\n ijk i j ij ijk\n r s r s",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-18",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "对双因子方差分析模型: ∑α = 0,∑β = 0,∑γ = 0,∑γ = 0\ni j ij ij\n i=1 j=1 i=1 j=1\n iid ( )\nε ~ N 0,σ2 ,i =1,Λ,r, j =1,Λ,s,k =1,Λ,t.\n ijk\n- 5 -\n写出 S ,S ,S ,S ,S 表示式.\nT A B A×B E\nr s t ( ) 2 1 r s t",
+      "solution": "解:S = ∑∑∑ y − y , y = ∑∑∑y ;\nT ijk rst ijk\ni=1 j=1 k=1 i=1 j=1 k=1\nr r 1\nS = ∑st ( y − y )2 = ∑st ( α +ε +ε )2, y = ∑∑y ;\nA √i√ i i√√ √i√ st ijk\ni=1 i=1 j k\ns ( ) s ( ) 1\nS = ∑rt y − y 2 = ∑rt β +ε +ε 2, y = ∑∑y\nB √ji√ j √j√√ √j√ st ijk\nj=1 j=1 j k\nr s ( ) r s ( )\nS = ∑∑t y − y − y + y 2 = ∑∑tγ +ε −ε −ε +ε 2;\nA×B ij√ i√√ √j√ ij ij√ i√√ √j√\ni=1 j=1 i=1 j=1\nS =∑ r ∑ s ∑ t ( y − y )2 ,y = 1 ∑y .\nE ijk ij ij t ijk\ni=1 j=1 k=1 k",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "EX-6-19",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "试写出无交互作用方差分析模型,检验假设和检验统计量。\n\ny =μ+α +β +ε\n ij i j ij\n r s i =1,2,Λ,r",
+      "solution": "解:模型为: ∑α = 0, ∑β =0,\ni j j =1,2,Λ,s\n i=1 j=1\n iid ( )\nε ~ N 0,σ2\n ij\n检验假设为:H :α =α =Λ=α =0, H :β =β =Λ=β = 0\n01 1 2 r 02 1 2 s\nS /(r−1)\n检验统计量为; F = A ~ F ( r−1,(r−1)(s−1))\nA S /(r−1)(s−1)\nE\nS /(s−1)\nF = B ~ F ( s−1,(r−1)(s−1)) .\nB S /(r−1)(s−1)\nE",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "EX-6-20",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "设在某实验中有三个因子A、B、C,它们分别取r、s、t个不同水平,在水平(A ,B ,C )组\ni j k\n合下各进行一次实验,其结果为y 。试给出考虑交互作用A×B,B×C,A×C的方差分析表。\nijk",
+      "solution": "解:S = ∑∑∑ ( y − y ) 2, S = r∑( y − y )2, S = s∑ ( y − y ) 2\nT ijk A i√√ B √j√\ni j k i j\nS = t∑( y − y )2, S = ∑∑∑ ( y − y ) 2, S = ∑∑∑ ( y − y ) 2\nC √√k A×B ijk ij√ B×C ijk √jk\nk i j k i j k\n- 6 -\n( )\nS = ∑∑∑ y − y 2\nA×C ijk i√k\ni j k\n1\n其 中 : y = ∑∑∑y ,\nrst ijk\ni j k\n1 1 1\ny = ∑∑y , y = ∑∑y , y = ∑∑y\ni√√ st ijk √j√ rt ijk √√k rs ijk\nj k i k i j\n1 1 1\ny = ∑y , y = ∑y , y = ∑y\nij√ k ijk √jk r ijk i√k s ijk\nk i j\n误 差 来 源 平 方 和 自 由 度 均 方 和 F 比\n因 子 A S r-1 MS\nA A\nF\n因 子 B S s-1 MS A\nB B\nF\n因 子 C S t-1 MS B\nC C\nF\n交互作用AxB S (r-1)(s-1) MS C\nAxB (AxB)\nF\n交互作用BxC S (s-1)(t-1) MS AxB\nBxC (BxC)\nF\n交互作用AxC S (r-1)(t-1) MS BxC\nAxC (AxC)\nF\n随机误差E S (r-1)(s-1)(t-1) MS AxC\nE E\n总 和 S rst-1\nT",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "EX-6-21",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "在某化工生产中为了提高效益,选择了三种不同浓度 A ,i =1,2,3. ,四种不同温度\ni\nB , j =1,2,3,4.,在每组浓度温度组合下各做两次实验,若 ∑∑∑y2 =2752,\nj ijk\ni j k\n∑∑∑y =250, ∑y2 =21188,∑y2 =15694, ∑y2 =5374.\nijk i√√ √j√ ij√\ni j k i j i,j\n试在α=0.05 显著性水平下检验不同浓度、不同温度以及它们间的交互作用对效益有无显著影\n( )\n响? (已知:F 2,12 =3.89).",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-22",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "05\n2\n1",
+      "solution": "解:Θ ∑∑∑y = 2604.1667S =2752−2604.1667 =147.8333\n24 ijk T\n i j k \n1 1\nS = ×21188−2604.1667 = 44.3333,S = ×15694−2604.1667 =11.5000\nA 8 B 6\n1\nS = ×5374−2604.1667−44.3333−11.5000= 27.0000\nA×B 2\nS =S −S −S −S =65.0000\nE T A B A×B\n方差分析表\n误 差 来 源 平 方 和 自 由 度 均 方 和 F 比\n因 子 A 44.3333 2 22.1667 4.09\n- 7 -\n因 子 B 11.5000 3 3.8333 <1\n交互作用AxB 27.0000 6 4.5000 <1\n随机误差e 65.0000 12 5.4167\n总 和 147.8333 23\n方差分析结果表明:只有因子A是显著的,即浓度不同将对收益产生显著影响;而温度及交互\n作用的影响都不显著,这说明要提高收益必须把浓度控制好。",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-23",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "在某种金属材料生产过程中,对热处理温度(A)与时间(B)各取两个水平,产品的强度测量计\n算结果为: S =71.82, S =1.62, S =11.52, S =54.08.\nT A B A×B\n试列出方差分析表,并α= 0.05在下检验温度、时间及两者交互作用对产品强度是否有显著影\n( ( ) )\n响? F 1,4 = 7.71",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "medium",
+      "tags": []
+    },
+    {
+      "id": "EX-6-24",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "05",
+      "solution": "解:\n误 差 来 源 平 方 和 自 由 度 均 方 和 F 比\n因 子 A 1.62 1 1.62\nF =1.4\n因 子 B 11.52 1 11.52 A\nF =10.0\n交互作用AxB 54.08 1 54.08 B\nF =47.0\n随机误差e 4.6 4 1.15 C\n总 和 71.8 7\n( )\n由于F 1,4 = 7.71, 所以认为时间对强度的影响不显著,而温度及交互作用影响显著。",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-26",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "下面记录了三位操作工分别在四台不同机器上操作三天的日 产量:\n操 作 工\n机 器\n甲 乙 丙\nA 15 15 17 17 19 16 16 18 21\n1\nA 17 17 17 15 15 15 19 22 22\n2\nA 15 17 16 18 17 16 18 18 18\n3\nA 18 20 22 15 16 17 17 17 17\n4\n试在显著性水平α=0.05下检验:\n(1) 操作工之间有无显著性差异?\n(2) 机器之间的差异是否显著?\n(3) 操作工与机器的交互作用是否显著?\n解 用r表示机器的水平数,s表示操作工的水平数,t表示重复实验次数,列出计算表和方差分\n析表:\n- 8 -\nr =4,s=3,t =3,n=rst =36\n- 9 -\ny 甲 乙 丙 y\nij i.\nA 47 54 55 156\n1\nA 51 45 63 159\n2\nA 48 51 54 153\n3\nA 60",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-27",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "90\n交互作用A×B 73.50 6 12.25",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    },
+    {
+      "id": "EX-6-28",
+      "source": "习题6",
+      "chapter": 6,
+      "statement": "12\ne 41.33 24 1.72\nF (2,24)=3.40",
+      "solution": "(解答请参照习题册原文)",
+      "difficulty": "easy",
+      "tags": []
+    }
+  ]
+}
