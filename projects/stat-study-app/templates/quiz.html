@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% block title %}测验 · 数理统计B{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto">
+    <!-- 测验设置 -->
+    <div id="quiz-setup" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h1 class="text-xl font-bold text-gray-800 mb-4">🎲 随机组卷测验</h1>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+                <label class="text-sm text-gray-600">题目数量</label>
+                <select id="quiz-count" class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg">
+                    <option value="5">5题（快速）</option>
+                    <option value="10" selected>10题（标准）</option>
+                    <option value="20">20题（全面）</option>
+                    <option value="30">30题（挑战）</option>
+                </select>
+            </div>
+            <div>
+                <label class="text-sm text-gray-600">章节范围</label>
+                <select id="quiz-chapter" class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg">
+                    <option value="">全部章节</option>
+                    <option value="2">第2章</option>
+                    <option value="3">第3章</option>
+                    <option value="4">第4章</option>
+                    <option value="5">第5章</option>
+                    <option value="6">第6章</option>
+                </select>
+            </div>
+            <div>
+                <label class="text-sm text-gray-600">难度</label>
+                <select id="quiz-difficulty" class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg">
+                    <option value="">全部</option>
+                    <option value="easy">简单</option>
+                    <option value="medium">中等</option>
+                    <option value="hard">困难</option>
+                </select>
+            </div>
+            <div>
+                <label class="text-sm text-gray-600">时间限制（分钟）</label>
+                <input type="number" id="quiz-time" value="30" min="5" max="120" class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg">
+            </div>
+        </div>
+        <button onclick="startQuiz()" class="w-full bg-indigo-500 text-white rounded-lg py-3 font-medium hover:bg-indigo-600 transition-colors">
+            🚀 开始测验
+        </button>
+    </div>
+
+    <!-- 测验进行中 -->
+    <div id="quiz-active" class="hidden">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-4 flex items-center justify-between">
+            <div>
+                <span class="text-sm text-gray-500">进度：</span>
+                <span class="font-bold text-gray-800"><span id="quiz-progress">1</span>/<span id="quiz-total">10</span></span>
+            </div>
+            <div>
+                <span class="text-sm text-gray-500">⏱ 剩余时间：</span>
+                <span id="quiz-timer" class="font-bold text-indigo-600">30:00</span>
+            </div>
+            <button onclick="submitQuiz()" class="px-4 py-2 bg-green-500 text-white rounded-lg text-sm font-medium hover:bg-green-600">
+                📤 提交
+            </button>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-4" id="quiz-question"></div>
+
+        <div class="flex justify-between">
+            <button onclick="prevQuestion()" id="btn-prev" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm hover:bg-gray-200" disabled>
+                ← 上一题
+            </button>
+            <button onclick="nextQuestion()" id="btn-next" class="px-4 py-2 bg-indigo-500 text-white rounded-lg text-sm hover:bg-indigo-600">
+                下一题 →
+            </button>
+        </div>
+    </div>
+
+    <!-- 测验结果 -->
+    <div id="quiz-result" class="hidden">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center">
+            <div class="text-6xl mb-4" id="result-emoji">🎉</div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">测验完成！</h2>
+            <div class="text-4xl font-bold text-indigo-600 mb-2" id="result-score">--</div>
+            <div class="text-sm text-gray-500 mb-6" id="result-detail"></div>
+            <button onclick="location.reload()" class="px-6 py-3 bg-indigo-500 text-white rounded-lg font-medium hover:bg-indigo-600">
+                🔄 再来一次
+            </button>
+            <button onclick="reviewQuiz()" class="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 ml-3">
+                📖 查看解析
+            </button>
+        </div>
+        <div id="quiz-review" class="mt-6 space-y-3"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let quizQuestions = [];
+let currentQ = 0;
+let timerInterval = null;
+let timeLeft = 0;
+let userAnswers = [];
+
+function startQuiz() {
+    const count = document.getElementById('quiz-count').value;
+    const chapter = document.getElementById('quiz-chapter').value;
+    const difficulty = document.getElementById('quiz-difficulty').value;
+    timeLeft = parseInt(document.getElementById('quiz-time').value) * 60;
+
+    const params = new URLSearchParams();
+    if (chapter) params.set('chapter', chapter);
+    if (difficulty) params.set('difficulty', difficulty);
+
+    fetch('/api/problems?' + params.toString())
+        .then(r => r.json())
+        .then(data => {
+            // 随机选题
+            const shuffled = data.problems.sort(() => Math.random() - 0.5);
+            quizQuestions = shuffled.slice(0, Math.min(count, shuffled.length));
+            userAnswers = new Array(quizQuestions.length).fill(null);
+
+            document.getElementById('quiz-setup').classList.add('hidden');
+            document.getElementById('quiz-active').classList.remove('hidden');
+            document.getElementById('quiz-total').textContent = quizQuestions.length;
+
+            renderQuestion();
+            startTimer();
+        });
+}
+
+function renderQuestion() {
+    const q = quizQuestions[currentQ];
+    document.getElementById('quiz-progress').textContent = currentQ + 1;
+    document.getElementById('btn-prev').disabled = currentQ === 0;
+    document.getElementById('btn-next').textContent = currentQ === quizQuestions.length - 1 ? '最后一题 →' : '下一题 →';
+
+    document.getElementById('quiz-question').innerHTML = `
+        <div class="text-xs text-gray-400 mb-2">第${currentQ+1}题 · ${q.source} · ${q.difficulty}</div>
+        <div class="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap mb-4">${q.statement}</div>
+        <div class="border-t border-gray-100 pt-4">
+            <div class="text-xs font-medium text-gray-500 mb-2">你的答案/思路（自己评判）：</div>
+            <div class="flex gap-2">
+                <button onclick="recordAnswer('correct')" class="px-4 py-2 rounded-lg text-sm font-medium border-2 transition-colors
+                    ${userAnswers[currentQ] === 'correct' ? 'bg-green-50 border-green-500 text-green-700' : 'border-gray-200 text-gray-500 hover:border-green-300'}">
+                    ✅ 已掌握
+                </button>
+                <button onclick="recordAnswer('partial')" class="px-4 py-2 rounded-lg text-sm font-medium border-2 transition-colors
+                    ${userAnswers[currentQ] === 'partial' ? 'bg-amber-50 border-amber-500 text-amber-700' : 'border-gray-200 text-gray-500 hover:border-amber-300'}">
+                    🤔 部分掌握
+                </button>
+                <button onclick="recordAnswer('wrong')" class="px-4 py-2 rounded-lg text-sm font-medium border-2 transition-colors
+                    ${userAnswers[currentQ] === 'wrong' ? 'bg-red-50 border-red-500 text-red-700' : 'border-gray-200 text-gray-500 hover:border-red-300'}">
+                    ❌ 不会
+                </button>
+            </div>
+        </div>
+        <div class="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+            <button onclick="this.nextElementSibling.classList.toggle('hidden')" class="text-xs text-indigo-600 font-medium">💡 查看答案</button>
+            <div class="hidden mt-2 text-sm text-gray-700 whitespace-pre-wrap">${q.solution}</div>
+        </div>
+    `;
+}
+
+function recordAnswer(status) {
+    userAnswers[currentQ] = status;
+    renderQuestion();
+}
+
+function prevQuestion() { if (currentQ > 0) { currentQ--; renderQuestion(); } }
+function nextQuestion() { if (currentQ < quizQuestions.length - 1) { currentQ++; renderQuestion(); } }
+
+function startTimer() {
+    updateTimerDisplay();
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) submitQuiz();
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const m = Math.floor(timeLeft / 60);
+    const s = timeLeft % 60;
+    document.getElementById('quiz-timer').textContent = `${m}:${String(s).padStart(2, '0')}`;
+    if (timeLeft < 300) document.getElementById('quiz-timer').classList.add('text-red-600');
+}
+
+function submitQuiz() {
+    clearInterval(timerInterval);
+    document.getElementById('quiz-active').classList.add('hidden');
+    document.getElementById('quiz-result').classList.remove('hidden');
+
+    const correct = userAnswers.filter(a => a === 'correct').length;
+    const partial = userAnswers.filter(a => a === 'partial').length;
+    const wrong = userAnswers.filter(a => a === 'wrong').length;
+    const score = Math.round((correct + partial * 0.5) / quizQuestions.length * 100);
+
+    document.getElementById('result-score').textContent = score + '分';
+    document.getElementById('result-detail').textContent =
+        `正确 ${correct} · 部分掌握 ${partial} · 不会 ${wrong} · 共 ${quizQuestions.length} 题`;
+    document.getElementById('result-emoji').textContent = score >= 80 ? '🎉' : score >= 60 ? '👍' : '💪';
+
+    // 保存成绩
+    const records = JSON.parse(localStorage.getItem('quiz_records') || '[]');
+    records.push({date: new Date().toISOString(), score, total: quizQuestions.length, correct, partial, wrong});
+    localStorage.setItem('quiz_records', JSON.stringify(records.slice(-20)));
+}
+
+function reviewQuiz() {
+    document.getElementById('quiz-review').innerHTML = quizQuestions.map((q, i) => {
+        const status = userAnswers[i];
+        const colors = {correct: 'border-green-300 bg-green-50', partial: 'border-amber-300 bg-amber-50', wrong: 'border-red-300 bg-red-50'};
+        return `
+        <div class="bg-white rounded-xl shadow-sm border ${colors[status] || 'border-gray-100'} p-4">
+            <div class="text-xs text-gray-400 mb-1">第${i+1}题</div>
+            <div class="text-sm text-gray-700 whitespace-pre-wrap">${q.statement}</div>
+            <div class="mt-2 p-3 bg-gray-50 rounded border border-gray-200">
+                <div class="text-xs font-medium text-gray-500 mb-1">📖 解答：</div>
+                <div class="text-sm text-gray-700 whitespace-pre-wrap">${q.solution}</div>
+            </div>
+        </div>`;
+    }).join('');
+}
+</script>
+{% endblock %}
