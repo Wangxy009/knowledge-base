@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中宏 · 考点公式+判断模板+计算模板</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f1f5f9;color:#1e293b;line-height:1.75;padding:20px;max-width:1000px;margin:0 auto}
+h1{text-align:center;color:#1e40af;font-size:1.4rem;margin-bottom:4px}
+.subtitle{text-align:center;color:#64748b;font-size:0.78rem;margin-bottom:20px}
+.toc{background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.06);display:flex;flex-wrap:wrap;gap:8px}
+.toc a{color:#2563eb;text-decoration:none;font-size:0.82rem;padding:4px 10px;background:#eff6ff;border-radius:5px;font-weight:500}
+.toc a:hover{background:#2563eb;color:#fff}
+.section{margin-bottom:28px}
+.section h2{color:#1e40af;font-size:1.1rem;border-bottom:3px solid #2563eb;padding-bottom:6px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section h2 .emoji{font-size:1.3rem}
+
+.formula-box{background:#fff;border-radius:10px;padding:14px 18px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:4px solid #2563eb}
+.formula-box h4{font-size:0.88rem;color:#1e40af;margin-bottom:6px}
+.formula-box .eq{display:block;background:#f8fafc;padding:8px 14px;border-radius:5px;font-family:"SF Mono","Cascadia Code",monospace;font-size:0.82rem;color:#b91c1c;text-align:center;margin:4px 0;font-weight:600}
+.formula-box .note{font-size:0.76rem;color:#64748b;margin-top:4px}
+
+.tf-box{background:#fff;border-radius:10px;padding:14px 18px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:4px solid #eab308}
+.tf-box h4{font-size:0.88rem;color:#854d0e;margin-bottom:6px}
+.tf-box .stmt{padding:6px 10px;border-radius:5px;margin:4px 0;font-size:0.82rem}
+.tf-box .stmt.wrong{background:#fef2f2;border:1px solid #fecaca}
+.tf-box .stmt.wrong::before{content:"❌ 错·";color:#dc2626;font-weight:700}
+.tf-box .stmt.right{background:#f0fdf4;border:1px solid #bbf7d0}
+.tf-box .stmt.right::before{content:"✅ 对·";color:#16a34a;font-weight:700}
+.tf-box .fix{font-size:0.78rem;color:#991b1b;margin-top:2px;padding-left:12px;border-left:2px solid #fca5a5}
+
+.template-box{background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:4px solid #7c3aed}
+.template-box h4{font-size:0.9rem;color:#7c3aed;margin-bottom:8px}
+.template-box .step{margin:6px 0;padding:6px 10px;background:#f8fafc;border-radius:5px;font-size:0.82rem}
+.template-box .step .label{display:inline-block;background:#7c3aed;color:#fff;padding:1px 7px;border-radius:4px;font-size:0.7rem;font-weight:700;margin-right:6px}
+.template-box .final{background:#fefce8;padding:8px 12px;border-radius:5px;font-size:0.82rem;font-weight:600;margin-top:8px;border:1px solid #facc15}
+
+.keyword{display:inline-block;background:#dbeafe;color:#1e40af;padding:1px 5px;border-radius:3px;font-size:0.78rem;font-weight:600}
+.warn{background:#fff7ed;border-left:4px solid #f97316;padding:8px 12px;border-radius:0 6px 6px 0;margin:6px 0;font-size:0.8rem}
+.warn strong{color:#c2410c}
+
+@media print{body{background:#fff}.section{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<h1>📋 中级宏观经济学 考前速记</h1>
+<p class="subtitle">考点公式 · 判断改错模板 · 计算答题模板 ｜ 适用1-12章</p>
+
+<div class="toc">
+<a href="#formula">📐 核心公式</a>
+<a href="#tf">✅ 判断题模板</a>
+<a href="#solow">📝 索洛计算</a>
+<a href="#islm">📝 IS-LM计算</a>
+<a href="#mf">📝 M-F计算</a>
+<a href="#concept">🧠 概念辨析</a>
+</div>
+
+<!-- ====== 核心公式 ====== -->
+<div class="section" id="formula">
+<h2><span class="emoji">📐</span>第一部分：全章节核心公式速记</h2>
+
+<div class="formula-box"><h4>第2章 GDP核算</h4>
+<div class="eq">Y = C + I + G + NX</div>
+<div class="eq">GDP平减指数 = 名义GDP/实际GDP × 100</div>
+<div class="eq">CPI = (固定篮子当期成本/基期成本) × 100</div>
+<div class="eq">失业率 = 失业人数/劳动力 × 100%</div>
+<div class="note">GDP只计<strong>最终</strong>产品、<strong>当期</strong>生产、<strong>境内</strong>。二手货、股票、转移支付不计入。CPI含进口品，GDP平减指数不含。</div>
+</div>
+
+<div class="formula-box"><h4>第3章 古典模型（长期）</h4>
+<div class="eq">Y = F(K, L) = A·K<sup>α</sup>·L<sup>1-α</sup></div>
+<div class="eq">W/P = MPL（实际工资 = 劳动边际产出）</div>
+<div class="eq">R/P = MPK（实际租金 = 资本边际产出）</div>
+<div class="eq">S = I（可贷资金市场均衡）</div>
+<div class="eq">S = (Y-T-C) + (T-G) = S<sub>private</sub> + S<sub>public</sub></div>
+<div class="note">古典二分法：实际变量由供给侧决定，货币只影响名义变量。价格完全弹性。</div>
+</div>
+
+<div class="formula-box"><h4>第4章 货币系统</h4>
+<div class="eq">M = m × B，m = (cr+1)/(cr+rr)</div>
+<div class="eq">B = C + R（基础货币 = 通货 + 准备金）</div>
+<div class="eq">M1 = C + D（通货 + 活期存款）</div>
+<div class="note">央行控制B，但m取决于公众(cr)和银行(rr)行为。<strong>R↑→rr↑→m↓，M可能不升反降。</strong></div>
+</div>
+
+<div class="formula-box"><h4>第5章 通货膨胀</h4>
+<div class="eq">MV = PY（数量方程式）</div>
+<div class="eq">π = ΔM/M + ΔV/V - ΔY/Y</div>
+<div class="eq">i = r + π（费雪方程）</div>
+<div class="note">货币中性：长期中M只影响P和i，不影响Y和r。费雪效应：Δπ→Δi一对一传导。</div>
+</div>
+
+<div class="formula-box"><h4>第6章 索洛增长模型</h4>
+<div class="eq">Δk̂ = sf(k̂) - (δ+n+g)k̂（资本积累方程）</div>
+<div class="eq">稳态：sf(k̂*) = (δ+n+g)k̂*</div>
+<div class="eq">k̂* = [s/(δ+n+g)]<sup>1/(1-α)</sup>（Cobb-Douglas）</div>
+<div class="eq">黄金律：MPK = δ + n + g</div>
+<div class="eq">MPK = α·k̂<sup>α-1</sup> = α/(K/Y)</div>
+<div class="eq">Y增长率 = n+g；y增长率 = g；ŷ增长率 = 0</div>
+<div class="eq">增长核算：ΔY/Y = ΔA/A + α·ΔK/K + (1-α)·ΔL/L</div>
+<div class="note"><strong>核心结论：s只有水平效应没有增长效应。长期增长率仅由g决定。</strong></div>
+</div>
+
+<div class="formula-box"><h4>第7章 经济波动导论</h4>
+<div class="eq">奥肯定律：Δ(Y-Ȳ)/Ȳ ≈ -2Δu</div>
+<div class="note">失业↑1%→GDP↓约2%。短期P粘性→货币非中性；长期P弹性→货币中性。</div>
+</div>
+
+<div class="formula-box"><h4>第8章 IS-LM模型（短期）</h4>
+<div class="eq">IS：Y = C(Y-T) + I(r) + G</div>
+<div class="eq">LM：M/P = L(Y, r)</div>
+<div class="eq">乘数 = 1/(1-MPC)（凯恩斯交叉）</div>
+<div class="eq">税收乘数 = -MPC/(1-MPC)</div>
+<div class="eq">平衡预算乘数 = 1</div>
+<div class="note">政策效果：G↑/T↓→IS右移→Y↑+r↑。<strong>挤出效应</strong>：r↑→I↓→部分抵消Y的初始增加。</div>
+</div>
+
+<div class="formula-box"><h4>第9-10章 总供给与开放经济</h4>
+<div class="eq">SRAS：Y = Ȳ + α(P - P<sup>e</sup>)</div>
+<div class="eq">菲利普斯：π = π<sup>e</sup> - γ(u - u<sub>n</sub>) + ε</div>
+<div class="eq">牺牲率 ≈ 降1%通胀需牺牲的GDP百分比</div>
+<div class="eq">NX = S - I（贸易余额 = 国民储蓄 - 国内投资）</div>
+<div class="eq">小型开放经济：r = r*（国内利率 = 世界利率）</div>
+</div>
+
+<div class="formula-box"><h4>第11-12章 蒙代尔-弗莱明模型</h4>
+<div class="eq">IS*：Y = C(Y-T) + I(r*) + G + NX(e)</div>
+<div class="eq">LM*：M/P = L(r*, Y)（r被r*锁定，LM垂直）</div>
+<div class="note"><strong>浮财无货有，固财有货无。</strong>不可能三角：独立货币、资本自由、固定汇率三选二。</div>
+</div>
+</div>
+
+<!-- ====== 判断题模板 ====== -->
+<div class="section" id="tf">
+<h2><span class="emoji">✅</span>第二部分：判断题高频考点与改错模板</h2>
+<div class="warn"><strong>⚠️ 判断题答题格式：</strong>先写"正确"或"错误"。如果错误，必须写出<strong>改正后的正确表述</strong>。每题2分，判断+改正各1分。</div>
+
+<div class="tf-box"><h4>🔴 GDP与福利</h4>
+<div class="stmt wrong">"GDP是衡量经济福利的完美指标。"</div>
+<div class="fix">改：GDP遗漏家庭生产、闲暇、环境质量、收入分配、地下经济，不是完美福利指标。</div>
+
+<div class="stmt wrong">"买股票属于GDP中的投资。"</div>
+<div class="fix">改：买股票是金融资产转移，不计入GDP。GDP中的I是实物资本形成。</div>
+
+<div class="stmt wrong">"政府发放的养老金计入GDP中的G。"</div>
+<div class="fix">改：养老金是转移支付，不计入GDP。G只含政府对商品和服务的购买。</div>
+</div>
+
+<div class="tf-box"><h4>🔴 古典模型</h4>
+<div class="stmt right">"古典模型中，价格完全弹性，货币供给变化只影响名义变量。"</div>
+<div class="fix">这就是古典二分法/货币中性。正确表述，无需改正。</div>
+
+<div class="stmt wrong">"古典模型中，政府增加购买支出可以提高均衡产出。"</div>
+<div class="fix">改：古典模型中Y由K、L和技术决定（供给侧），G↑不改变Y，只抬高利率挤出投资。</div>
+</div>
+
+<div class="tf-box"><h4>🔴 索洛增长模型（高频！）</h4>
+<div class="stmt wrong">"储蓄率提高可以永久提高人均产出增长率。"</div>
+<div class="fix">改：s↑只有<span class="keyword">水平效应</span>（y*提高），没有<span class="keyword">增长效应</span>。长期增长率仍由技术进步率g决定。</div>
+
+<div class="stmt wrong">"两个国家有相同的人口增长率，就会收敛到相同的人均产出。"</div>
+<div class="fix">改：需要<span class="keyword">所有结构参数相同</span>（s、δ、n、g、生产函数）才会收敛——这是条件收敛，不是绝对收敛。</div>
+
+<div class="stmt wrong">"如果MPK > δ+n+g，说明资本存量高于黄金律水平。"</div>
+<div class="fix">改：MPK > δ+n+g→资本边际产出高于持平投资斜率→资本<span class="keyword">不足</span>→k* < k_gold→应增加储蓄。</div>
+
+<div class="stmt wrong">"人口更多的国家，稳态人均产出更高。"</div>
+<div class="fix">改：人口规模L不影响人均稳态值。y*由s、δ、n、g决定，与L大小无关（规模报酬不变）。</div>
+</div>
+
+<div class="tf-box"><h4>🔴 IS-LM模型</h4>
+<div class="stmt wrong">"流动性陷阱中，货币政策最有效。"</div>
+<div class="fix">改：流动性陷阱中LM水平→货币增发无法再降低r→货币政策<span class="keyword">无效</span>，财政政策完全有效。</div>
+
+<div class="stmt wrong">"IS-LM中财政扩张的乘数等于凯恩斯交叉中的乘数。"</div>
+<div class="fix">改：IS-LM中G↑→r↑→I↓（挤出效应）→乘数<span class="keyword">小于</span>凯恩斯交叉（凯恩斯交叉假设r不变）。</div>
+
+<div class="stmt wrong">"LM曲线垂直时（古典情形），财政政策最有效。"</div>
+<div class="fix">改：LM垂直→货币需求与利率无关→G↑只会抬高r，完全挤出I→财政政策<span class="keyword">完全无效</span>。</div>
+</div>
+
+<div class="tf-box"><h4>🔴 菲利普斯曲线</h4>
+<div class="stmt wrong">"政策制定者可以永久用较高通胀换取较低失业。"</div>
+<div class="fix">改：<span class="keyword">长期</span>菲利普斯曲线在自然失业率处垂直→不存在长期通胀-失业权衡。只有短期有。</div>
+
+<div class="stmt wrong">"理性预期下，反通胀的牺牲率为正。"</div>
+<div class="fix">改：理性预期+可信承诺下，公众立即调整预期→牺牲率可<span class="keyword">接近零</span>。适应性预期下牺牲率为正。</div>
+
+<div class="stmt wrong">"根据卢卡斯批判，历史数据估计的模型参数在政策变化后依然有效。"</div>
+<div class="fix">改：卢卡斯批判：政策规则改变→人们行为（预期）改变→历史参数<span class="keyword">不再有效</span>。</div>
+</div>
+
+<div class="tf-box"><h4>🔴 开放经济与M-F模型</h4>
+<div class="stmt wrong">"浮动汇率下，财政扩张能有效提高产出。"</div>
+<div class="fix">改：浮动汇率下G↑→本币升值→NX完全抵消→Y不变。浮动汇率下<span class="keyword">货币政策</span>有效，财政无效。</div>
+
+<div class="stmt wrong">"固定汇率下，货币扩张能有效提高产出。"</div>
+<div class="fix">改：固定汇率下M↑→资本外流→央行干预→M自动回缩→Y不变。固定汇率下<span class="keyword">财政政策</span>有效，货币无效。</div>
+
+<div class="stmt wrong">"一国可以同时实现独立货币政策、资本自由流动和固定汇率。"</div>
+<div class="fix">改：不可能三角——三者只能选其二。中国选独立货币+管理汇率→必须限制资本流动。</div>
+</div>
+
+<div class="tf-box"><h4>🔴 费雪效应与通胀</h4>
+<div class="stmt wrong">"货币供给增长率提高会永久降低实际利率。"</div>
+<div class="fix">改：实际利率r由实体经济（S=I）决定，不受货币影响（货币中性）。货币增长↑只提高<span class="keyword">名义利率</span>（费雪效应）。</div>
+
+<div class="stmt wrong">"通货膨胀对所有人都造成损失。"</div>
+<div class="fix">改：<span class="keyword">未预期</span>通胀使债务人受益（还的钱实际价值降低）、债权人受损。预期到的通胀影响较小。</div>
+</div>
+</div>
+
+<!-- ====== 计算题模板 ====== -->
+<div class="section" id="solow">
+<h2><span class="emoji">📝</span>第三部分：计算分析题答题模板 — 索洛模型（20分）</h2>
+
+<div class="template-box">
+<h4>📐 题型A：求稳态 + 黄金律判断 + 储蓄率调整</h4>
+<div class="step"><span class="label">Step 1</span>写出稳态条件：<code>sf(k̂*) = (δ+n+g)k̂*</code></div>
+<div class="step"><span class="label">Step 2</span>Cobb-Douglas下代入：<code>k̂* = [s/(δ+n+g)]<sup>1/(1-α)</sup></code>，计算数值</div>
+<div class="step"><span class="label">Step 3</span>计算增长率：ŷ→0%，y→g，Y→n+g（三个增长率对应三个层次）</div>
+<div class="step"><span class="label">Step 4</span>计算MPK：<code>MPK = α·(k̂*)<sup>α-1</sup> = α/(K/Y)</code></div>
+<div class="step"><span class="label">Step 5</span>黄金律判断：比较MPK vs δ+n+g。MPK大→资本不足→增s；MPK小→资本过度→降s</div>
+<div class="step"><span class="label">Step 6</span>黄金律k̂_gold：<code>MPK=δ+n+g → k̂_gold = [α/(δ+n+g)]<sup>1/(1-α)</sup></code></div>
+<div class="step"><span class="label">Step 7</span>黄金律s_gold：<code>s_gold = (δ+n+g)·k̂_gold/f(k̂_gold)</code></div>
+<div class="final">📌 必写结论句：该经济体MPK=XX% > (=/<) δ+n+g=XX%，资本存量低于（等于/高于）黄金律水平，应增加（不变/减少）储蓄率。过渡期间人均产出增长率暂时高于（等于/低于）稳态增长率g。</div>
+</div>
+
+<div class="template-box">
+<h4>📐 题型B：增长核算</h4>
+<div class="step"><span class="label">Step 1</span>计算各变量的增长率：ΔY/Y, ΔK/K, ΔL/L</div>
+<div class="step"><span class="label">Step 2</span>代入：<code>ΔA/A = ΔY/Y - α·ΔK/K - (1-α)·ΔL/L</code></div>
+<div class="step"><span class="label">Step 3</span>分别写：资本贡献=α·ΔK/K=XX%，劳动贡献=(1-α)·ΔL/L=XX%，TFP贡献=XX%</div>
+<div class="final">📌 结论句：经济增长的XX%可由要素投入解释，剩余XX%归因于全要素生产率（索洛残差）。</div>
+</div>
+</div>
+
+<div class="section" id="islm">
+<h2><span class="emoji">📝</span>第四部分：计算分析题答题模板 — IS-LM模型（25分）</h2>
+
+<div class="template-box">
+<h4>📐 标准IS-LM六步求解法</h4>
+<div class="step"><span class="label">Step 1</span><strong>推导IS曲线：</strong>Y = C + I + G，代入消费函数C=a+b(Y-T)和投资函数I=c-dr，整理为 <code>Y = A - B·r</code> 形式</div>
+<div class="step"><span class="label">Step 2</span><strong>推导LM曲线：</strong>M/P = kY - hr，整理为 <code>r = (k/h)Y - (1/h)(M/P)</code> 或 <code>Y = (1/k)(M/P) + (h/k)r</code></div>
+<div class="step"><span class="label">Step 3</span><strong>联立求均衡：</strong>IS与LM联立 → 解出 <code>Y*</code> 和 <code>r*</code></div>
+<div class="step"><span class="label">Step 4</span><strong>政策冲击分析：</strong>
+  <br>财政扩张(G↑或T↓)→IS右移→新IS方程→联立新LM→新的Y**和r**
+  <br>货币扩张(M↑)→LM右移→新LM方程→联立IS→新的Y***和r***</div>
+<div class="step"><span class="label">Step 5</span><strong>挤出效应计算：</strong>挤出 = 凯恩斯乘数×ΔG - 实际ΔY
+  <br>凯恩斯乘数 = 1/(1-MPC)，ΔY_凯恩斯 = 乘数×ΔG
+  <br>实际ΔY从Step 4得出，两者之差即为利率上升挤出的部分</div>
+<div class="step"><span class="label">Step 6</span><strong>推导AD曲线（如需）：</strong>从IS和LM消去r，得到 Y = Y(P) 形式</div>
+<div class="final">📌 必写结论句：财政扩张使Y从XX增至XX，r从XX%升至XX%，挤出效应为XX。货币扩张使Y从XX增至XX，r从XX%降至XX%。两种政策对产出有相似效果但对利率和投资的影响方向相反。</div>
+</div>
+</div>
+
+<div class="section" id="mf">
+<h2><span class="emoji">📝</span>第五部分：计算分析题答题模板 — 蒙代尔-弗莱明模型（20分）</h2>
+
+<div class="template-box">
+<h4>📐 M-F模型标准求解流程</h4>
+<div class="step"><span class="label">Step 1</span><strong>写出IS*方程：</strong>Y = C(Y-T) + I(r*) + G + NX(e)，代入具体函数</div>
+<div class="step"><span class="label">Step 2</span><strong>写出LM*方程：</strong>M/P = L(r*, Y)。注意r被世界利率r*锁定，LM*是<strong>垂直的</strong>（Y由货币市场单独决定）</div>
+<div class="step"><span class="label">Step 3</span><strong>浮动汇率下求解：</strong>
+  <br>① 从LM*解出Y*（Y由货币市场决定）
+  <br>② 将Y*代入IS*解出均衡汇率e*
+  <br>③ 代入NX(e)得到贸易余额</div>
+<div class="step"><span class="label">Step 4</span><strong>固定汇率下求解：</strong>
+  <br>① 将给定e代入IS*解出Y*
+  <br>② 将Y*代入LM*解出所需的M（央行被动调整）</div>
+<div class="step"><span class="label">Step 5</span><strong>政策分析对比：</strong></div>
+<div class="step" style="overflow-x:auto">
+<table style="width:100%;border-collapse:collapse;font-size:0.78rem;margin:6px 0">
+<tr style="background:#f1f5f9"><th style="padding:4px 8px;border:1px solid #e2e8f0">政策</th><th style="padding:4px 8px;border:1px solid #e2e8f0">浮动汇率</th><th style="padding:4px 8px;border:1px solid #e2e8f0">固定汇率</th></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e2e8f0">财政扩张G↑</td><td style="padding:4px 8px;border:1px solid #e2e8f0">Y不变，ε↑，NX↓</td><td style="padding:4px 8px;border:1px solid #e2e8f0">Y↑，M被动↑</td></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e2e8f0">货币扩张M↑</td><td style="padding:4px 8px;border:1px solid #e2e8f0">Y↑，ε↓，NX↑</td><td style="padding:4px 8px;border:1px solid #e2e8f0">Y不变，储备↓</td></tr>
+<tr><td style="padding:4px 8px;border:1px solid #e2e8f0">贸易保护</td><td style="padding:4px 8px;border:1px solid #e2e8f0">Y不变，ε↑，NX不变</td><td style="padding:4px 8px;border:1px solid #e2e8f0">Y↑，NX↑</td></tr>
+</table>
+</div>
+<div class="final">📌 必写结论句：浮动汇率下，货币政策有效而财政政策无效（汇率调整抵消财政效果）。固定汇率下，财政政策有效而货币政策无效（央行需维持汇率牺牲货币自主权）。这体现了"不可能三角"——独立货币政策、资本自由流动、固定汇率三者只能选其二。</div>
+</div>
+</div>
+
+<!-- ====== 概念辨析 ====== -->
+<div class="section" id="concept">
+<h2><span class="emoji">🧠</span>第六部分：易混淆概念辨析（判断改错高频区）</h2>
+
+<div class="tf-box">
+<h4>1. 水平效应 vs 增长效应</h4>
+<div class="stmt wrong">"储蓄率提高→增长率永久提高"</div>
+<div class="fix">改：s提高→<span class="keyword">水平效应</span>（y*提高），过渡期增长率暂时提高，但长期增长率回归g。只有g的变化才有<span class="keyword">增长效应</span>。</div>
+</div>
+
+<div class="tf-box">
+<h4>2. 绝对收敛 vs 条件收敛</h4>
+<div class="stmt wrong">"穷国必然增长更快，最终追上富国"</div>
+<div class="fix">改：只有结构参数（s,δ,n,g）相同时才收敛——这是<span class="keyword">条件收敛</span>。无条件/绝对收敛的实证支持较弱。</div>
+</div>
+
+<div class="tf-box">
+<h4>3. 短期 vs 长期</h4>
+<div class="stmt wrong">"货币供给减少使产出永久下降"</div>
+<div class="fix">改：<span class="keyword">短期</span>P粘性→Y↓；<span class="keyword">长期</span>P弹性→Y回Ȳ，只P同比例↓。货币长期中性。</div>
+</div>
+
+<div class="tf-box">
+<h4>4. 名义利率 vs 实际利率</h4>
+<div class="stmt wrong">"货币扩张降低名义利率"</div>
+<div class="fix">改：<span class="keyword">短期</span>M↑→LM右移→r↓→i↓（流动性效应）。<span class="keyword">长期</span>M↑→π↑→费雪效应→i↑。短期和长期方向相反！</div>
+</div>
+
+<div class="tf-box">
+<h4>5. CPI vs GDP平减指数</h4>
+<div class="stmt wrong">"CPI和GDP平减指数衡量的是同样的价格变化"</div>
+<div class="fix">改：CPI衡量<span class="keyword">消费者购买的固定篮子</span>（含进口品），GDP平减指数衡量<span class="keyword">国内生产的所有商品</span>（不含进口品）。进口石油涨价→CPI涨更多。</div>
+</div>
+
+<div class="tf-box">
+<h4>6. 适应性预期 vs 理性预期</h4>
+<div class="stmt wrong">"无论哪种预期，反通胀都有显著的产出代价"</div>
+<div class="fix">改：<span class="keyword">适应性预期</span>下反通胀有牺牲率（约5%GDP/1%通胀）。<span class="keyword">理性预期+可信承诺</span>下牺牲率可接近零。</div>
+</div>
+
+<div class="tf-box">
+<h4>7. 索洛模型 vs 内生增长模型</h4>
+<div class="stmt wrong">"索洛和AK模型都预测储蓄率不影响长期增长率"</div>
+<div class="fix">改：<span class="keyword">索洛</span>：s不影响长期增长率（仅水平效应）。<span class="keyword">AK模型</span>：s永久影响增长率（sA-δ-n），因为消除了边际报酬递减。</div>
+</div>
+</div>
+
+</body>
+</html>
