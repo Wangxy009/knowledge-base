@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% block title %}题库 · 数理统计B{% endblock %}
+
+{% block content %}
+<div class="flex gap-6">
+    <!-- 左侧筛选 -->
+    <aside class="w-56 shrink-0">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 sticky top-20">
+            <h3 class="font-semibold text-gray-800 mb-3">🔍 筛选条件</h3>
+            <div class="mb-3">
+                <label class="text-xs text-gray-500 font-medium">章节</label>
+                <select id="filter-chapter" class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg text-sm" onchange="filterCore()">
+                    <option value="">全部章节</option>
+                    <option value="2">第2章 抽样分布</option>
+                    <option value="3">第3章 估计理论</option>
+                    <option value="4">第4章 假设检验</option>
+                    <option value="5">第5章 统计决策</option>
+                    <option value="6">第6章 方差分析</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="text-xs text-gray-500 font-medium">难度</label>
+                <select id="filter-difficulty" class="w-full mt-1 px-3 py-2 border border-gray-200 rounded-lg text-sm" onchange="filterCore()">
+                    <option value="">全部难度</option>
+                    <option value="easy">简单</option>
+                    <option value="medium">中等</option>
+                    <option value="hard">困难</option>
+                </select>
+            </div>
+            <button onclick="document.getElementById('filter-chapter').value=''; document.getElementById('filter-difficulty').value=''; filterCore();"
+                class="w-full mt-1 bg-gray-100 text-gray-600 rounded-lg py-2 text-sm hover:bg-gray-200">重置</button>
+
+            <div class="mt-3 p-3 bg-amber-50 rounded-lg border border-amber-200">
+                <div class="text-xs font-medium text-amber-800">💡 核心精选题</div>
+                <div class="text-xs text-amber-600 mt-1">人工整理，格式完整<br>覆盖所有考点</div>
+            </div>
+            <div class="mt-2 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                <div class="text-xs font-medium text-gray-600">📋 全部题库</div>
+                <div class="text-xs text-gray-400 mt-1">自动提取，作为索引<br>建议对照原PDF使用</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 题目列表 -->
+    <div class="flex-1">
+
+        <!-- ====== 核心精选题 ====== -->
+        <div class="mb-6">
+            <h1 class="text-xl font-bold text-gray-800 mb-1">⭐ 核心精选题</h1>
+            <p class="text-sm text-gray-400 mb-4">人工整理，格式完整 · 来自试题库和课本重点题目</p>
+            <div class="space-y-4" id="core-problem-list"></div>
+        </div>
+
+        <!-- ====== 全部题库(自动提取) ====== -->
+        <div class="border-t border-gray-200 pt-6">
+            <div class="flex items-center justify-between mb-4">
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-700">📋 全部题库（自动提取）</h2>
+                    <p class="text-xs text-gray-400 mt-1">⚠️ PDF提取可能存在符号问题，建议对照原PDF。每道题标注了来源，可在原资料中查找。</p>
+                </div>
+                <a href="/quiz" class="px-4 py-2 bg-green-500 text-white rounded-lg text-sm font-medium hover:bg-green-600 shrink-0">
+                    🎲 随机组卷测验
+                </a>
+            </div>
+
+            <div class="mb-3 flex gap-2">
+                <select id="ref-chapter" class="px-3 py-1.5 border border-gray-200 rounded-lg text-sm">
+                    <option value="">全部章节</option>
+                    <option value="2">第2章</option><option value="3">第3章</option>
+                    <option value="4">第4章</option><option value="5">第5章</option><option value="6">第6章</option>
+                </select>
+                <select id="ref-source" class="px-3 py-1.5 border border-gray-200 rounded-lg text-sm">
+                    <option value="">全部来源</option>
+                    <option value="试题库">试题库</option>
+                    <option value="习题2">习题2</option><option value="习题3">习题3</option>
+                    <option value="习题4">习题4</option><option value="习题5">习题5</option><option value="习题6">习题6</option>
+                </select>
+                <button onclick="filterRef()" class="px-3 py-1.5 bg-indigo-500 text-white rounded-lg text-sm">筛选</button>
+                <span class="text-xs text-gray-400 self-center" id="ref-count"></span>
+            </div>
+            <div class="space-y-2" id="ref-problem-list"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// ====== 核心精选题 ======
+let coreProblems = [];
+let coreStatus = JSON.parse(localStorage.getItem('core_status') || '{}');
+
+fetch('/api/core_problems').then(r => r.json()).then(data => {
+    coreProblems = data.problems;
+    filterCore();
+});
+
+function filterCore() {
+    const ch = document.getElementById('filter-chapter').value;
+    const diff = document.getElementById('filter-difficulty').value;
+    let filtered = coreProblems;
+    if (ch) filtered = filtered.filter(p => p.chapter == ch);
+    if (diff) filtered = filtered.filter(p => p.difficulty == diff);
+    renderCore(filtered);
+}
+
+function renderCore(problems) {
+    const diffLabels = {easy: '简单', medium: '中等', hard: '困难'};
+    const diffColors = {easy: 'bg-green-100 text-green-700', medium: 'bg-amber-100 text-amber-700', hard: 'bg-red-100 text-red-700'};
+
+    document.getElementById('core-problem-list').innerHTML = problems.map((p, idx) => {
+        const st = coreStatus[p.id] || 'new';
+        const badge = st === 'done' ? '✅' : st === 'wrong' ? '❌' : '';
+        return `
+        <div class="bg-white rounded-xl shadow-sm border-2 border-amber-200 overflow-hidden hover:border-amber-300 transition-colors">
+            <div class="bg-amber-50 px-4 py-2 flex items-center justify-between border-b border-amber-100">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold text-amber-700">⭐ ${p.id}</span>
+                    <span class="text-xs px-2 py-0.5 rounded-full ${diffColors[p.difficulty]}">${diffLabels[p.difficulty]}</span>
+                    <span class="text-xs text-gray-500">${p.source}</span>
+                    ${p.tags.map(t => `<span class="text-xs px-1.5 py-0.5 bg-white text-gray-500 rounded border border-gray-200">${t}</span>`).join('')}
+                </div>
+                <span>${badge}</span>
+            </div>
+            <div class="p-4">
+                <h3 class="font-semibold text-gray-800 mb-2">${p.title}</h3>
+                <div class="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">${p.statement}</div>
+
+                <div class="mt-3 flex items-center gap-2">
+                    <button onclick="document.getElementById('core-sol-${idx}').classList.toggle('hidden')"
+                        class="text-xs text-indigo-600 hover:text-indigo-800 font-medium">💡 显示答案与解析</button>
+                    <button onclick="markCore('${p.id}','done')" class="text-xs px-2 py-1 rounded ${st==='done'?'bg-green-100 text-green-700':'bg-gray-100 text-gray-500'}">✅</button>
+                    <button onclick="markCore('${p.id}','wrong')" class="text-xs px-2 py-1 rounded ${st==='wrong'?'bg-red-100 text-red-700':'bg-gray-100 text-gray-500'}">❌</button>
+                </div>
+                <div id="core-sol-${idx}" class="hidden mt-3 p-4 bg-indigo-50 rounded-lg border border-indigo-100">
+                    <div class="text-xs font-medium text-indigo-600 mb-2">📖 解答：</div>
+                    <div class="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">${p.solution}</div>
+                    ${p.key_insight ? `<div class="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded text-xs"><span class="font-medium text-yellow-700">💡 解题关键：</span> ${p.key_insight}</div>` : ''}
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+
+    if (problems.length === 0) {
+        document.getElementById('core-problem-list').innerHTML =
+            '<div class="text-center text-gray-400 py-8">没有匹配的核心题目</div>';
+    }
+}
+
+function markCore(pid, status) {
+    coreStatus[pid] = status;
+    localStorage.setItem('core_status', JSON.stringify(coreStatus));
+    filterCore();
+}
+
+// ====== 全部题库(自动提取) ======
+let refProblems = [];
+let refStatus = JSON.parse(localStorage.getItem('problem_status') || '{}');
+
+fetch('/api/problems').then(r => r.json()).then(data => {
+    refProblems = data.problems;
+    filterRef();
+});
+
+function filterRef() {
+    const ch = document.getElementById('ref-chapter').value;
+    const src = document.getElementById('ref-source').value;
+    let filtered = refProblems;
+    if (ch) filtered = filtered.filter(p => p.chapter == ch);
+    if (src) filtered = filtered.filter(p => p.source == src);
+    renderRef(filtered);
+    document.getElementById('ref-count').textContent = `共 ${filtered.length} 道题`;
+}
+
+function renderRef(problems) {
+    const diffLabels = {easy: '简单', medium: '中等', hard: '困难'};
+    const diffColors = {easy: 'bg-green-100 text-green-700', medium: 'bg-amber-100 text-amber-700', hard: 'bg-red-100 text-red-700'};
+
+    document.getElementById('ref-problem-list').innerHTML = problems.map((p, idx) => {
+        const st = refStatus[p.id] || 'new';
+        const badge = st === 'done' ? '✅' : st === 'wrong' ? '❌' : '';
+        return `
+        <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+            <div class="p-3">
+                <div class="flex items-start justify-between mb-1">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="text-xs font-mono text-gray-400">${p.id}</span>
+                        <span class="text-xs px-1.5 py-0.5 rounded-full ${diffColors[p.difficulty]||''}">${diffLabels[p.difficulty]||'中等'}</span>
+                        <span class="text-xs text-gray-500">📄 ${p.source}</span>
+                        ${(p.tags||[]).slice(0,3).map(t=>`<span class="text-xs px-1 py-0.5 bg-gray-100 text-gray-400 rounded">${t}</span>`).join('')}
+                    </div>
+                    <span class="text-xs">${badge}</span>
+                </div>
+                <div class="text-xs text-gray-600 leading-relaxed line-clamp-3">${(p.statement||'').substring(0, 200)}</div>
+                <div class="mt-2 flex items-center gap-2">
+                    <button onclick="document.getElementById('ref-sol-${idx}').classList.toggle('hidden')"
+                        class="text-xs text-indigo-500 hover:text-indigo-700">💡 答案</button>
+                    <span class="text-xs text-gray-400">📌 详见原「${p.source}」</span>
+                </div>
+                <div id="ref-sol-${idx}" class="hidden mt-2 p-3 bg-gray-50 rounded border border-gray-200">
+                    <div class="text-xs text-gray-700 whitespace-pre-wrap">${p.solution||'(解答请参照原文)'}</div>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+</script>
+{% endblock %}
