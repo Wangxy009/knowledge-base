@@ -1,0 +1,300 @@
+{
+  "course": "数理统计B",
+  "textbook": "数理统计基础 - 陈家清 唐湘晋",
+  "exam_date": "2026-07-01",
+  "total_pages": 356,
+  "chapters": [
+    {
+      "id": 1,
+      "title": "基础知识",
+      "pages": "1-53",
+      "importance": 2,
+      "sections": [
+        {
+          "id": "1.1",
+          "title": "多维随机变量及其分布",
+          "topics": [
+            {"name": "随机向量的概念", "textbook_page": 1},
+            {"name": "边缘分布", "textbook_page": 3},
+            {"name": "随机变量的独立性", "textbook_page": 6},
+            {"name": "多维随机变量函数的分布（连续型）", "textbook_page": 8},
+            {"name": "条件分布与条件数学期望", "textbook_page": 12},
+            {"name": "多维随机变量的数字特征", "textbook_page": 15}
+          ]
+        },
+        {
+          "id": "1.2",
+          "title": "随机变量的特征函数及其性质",
+          "topics": [
+            {"name": "特征函数的定义", "textbook_page": 18},
+            {"name": "特征函数的基本性质", "textbook_page": 20},
+            {"name": "唯一定理", "textbook_page": 23},
+            {"name": "多元特征函数", "textbook_page": 25}
+          ]
+        },
+        {
+          "id": "1.3",
+          "title": "常见分布族",
+          "topics": [
+            {"name": "Γ分布族", "textbook_page": 28},
+            {"name": "β分布族", "textbook_page": 31},
+            {"name": "t分布族", "textbook_page": 33},
+            {"name": "F分布族", "textbook_page": 35},
+            {"name": "Fisher Z分布族", "textbook_page": 37},
+            {"name": "多元正态分布族", "textbook_page": 38}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "统计量与抽样分布",
+      "pages": "54-97",
+      "importance": 3,
+      "sections": [
+        {
+          "id": "2.1",
+          "title": "总体和样本",
+          "topics": [
+            {"name": "总体和个体", "textbook_page": 54},
+            {"name": "样本（简单随机样本）", "textbook_page": 55}
+          ]
+        },
+        {
+          "id": "2.2",
+          "title": "统计量",
+          "topics": [
+            {"name": "统计量的定义", "textbook_page": 57},
+            {"name": "次序统计量", "textbook_page": 58},
+            {"name": "经验分布函数", "textbook_page": 60}
+          ]
+        },
+        {
+          "id": "2.3",
+          "title": "样本数字特征",
+          "topics": [
+            {"name": "样本均值", "textbook_page": 62},
+            {"name": "样本方差和样本标准差", "textbook_page": 63},
+            {"name": "样本的高阶矩", "textbook_page": 65}
+          ]
+        },
+        {
+          "id": "2.4",
+          "title": "统计量的分布",
+          "topics": [
+            {"name": "样本均值的分布", "textbook_page": 66},
+            {"name": "正态总体样本的线性函数的分布", "textbook_page": 68},
+            {"name": "次序统计量的分布", "textbook_page": 70}
+          ]
+        },
+        {
+          "id": "2.5",
+          "title": "三类重要分布",
+          "topics": [
+            {"name": "χ²分布的定义与性质", "textbook_page": 73},
+            {"name": "t分布的定义与性质", "textbook_page": 77},
+            {"name": "F分布的定义与性质", "textbook_page": 80}
+          ]
+        },
+        {
+          "id": "2.6",
+          "title": "抽样分布定理",
+          "topics": [
+            {"name": "单个正态总体的抽样分布定理", "textbook_page": 83},
+            {"name": "两个正态总体的抽样分布定理", "textbook_page": 88},
+            {"name": "非中心分布简介", "textbook_page": 92}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "估计理论",
+      "pages": "98-178",
+      "importance": 5,
+      "sections": [
+        {
+          "id": "3.1",
+          "title": "点估计方法",
+          "topics": [
+            {"name": "参数估计的基本概念", "textbook_page": 98},
+            {"name": "矩估计法", "textbook_page": 100},
+            {"name": "极大似然估计法", "textbook_page": 105}
+          ]
+        },
+        {
+          "id": "3.2",
+          "title": "估计量的评价标准",
+          "topics": [
+            {"name": "无偏性", "textbook_page": 112},
+            {"name": "有效性", "textbook_page": 116},
+            {"name": "相合性（一致性）", "textbook_page": 120}
+          ]
+        },
+        {
+          "id": "3.3",
+          "title": "充分统计量与因子分解定理",
+          "topics": [
+            {"name": "充分统计量的定义", "textbook_page": 124},
+            {"name": "因子分解定理", "textbook_page": 127}
+          ]
+        },
+        {
+          "id": "3.4",
+          "title": "C-R不等式与UMVUE",
+          "topics": [
+            {"name": "Cramér-Rao不等式", "textbook_page": 132},
+            {"name": "一致最小方差无偏估计(UMVUE)", "textbook_page": 138}
+          ]
+        },
+        {
+          "id": "3.5",
+          "title": "区间估计",
+          "topics": [
+            {"name": "区间估计的基本概念", "textbook_page": 145},
+            {"name": "单个正态总体均值的置信区间", "textbook_page": 148},
+            {"name": "单个正态总体方差的置信区间", "textbook_page": 152},
+            {"name": "两个正态总体均值差的置信区间", "textbook_page": 155},
+            {"name": "两个正态总体方差比的置信区间", "textbook_page": 160},
+            {"name": "大样本区间估计", "textbook_page": 165}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "假设检验",
+      "pages": "179-280",
+      "importance": 4,
+      "sections": [
+        {
+          "id": "4.1",
+          "title": "假设检验的概念与步骤",
+          "topics": [
+            {"name": "统计假设（原假设/备择假设）", "textbook_page": 179},
+            {"name": "假设检验的思想方法", "textbook_page": 181},
+            {"name": "假设检验的步骤", "textbook_page": 184},
+            {"name": "两类错误和检验水平", "textbook_page": 186},
+            {"name": "检验的p值", "textbook_page": 190}
+          ]
+        },
+        {
+          "id": "4.2",
+          "title": "正态总体参数的假设检验",
+          "topics": [
+            {"name": "单个正态总体均值的检验（U检验和t检验）", "textbook_page": 195},
+            {"name": "单个正态总体方差的检验（χ²检验）", "textbook_page": 202},
+            {"name": "两个正态总体均值差的检验", "textbook_page": 207},
+            {"name": "两个正态总体方差比的检验（F检验）", "textbook_page": 213}
+          ]
+        },
+        {
+          "id": "4.3",
+          "title": "单参数指数型分布族的假设检验",
+          "topics": [
+            {"name": "单参数指数型分布族的性质", "textbook_page": 218},
+            {"name": "贝努里分布族的参数假设检验", "textbook_page": 222},
+            {"name": "指数分布族的参数假设检验", "textbook_page": 225},
+            {"name": "泊松分布族的参数假设检验", "textbook_page": 228}
+          ]
+        },
+        {
+          "id": "4.4",
+          "title": "非参数假设检验",
+          "topics": [
+            {"name": "χ²拟合优度检验", "textbook_page": 230},
+            {"name": "列联表的独立性检验", "textbook_page": 238},
+            {"name": "柯尔莫哥洛夫及斯米尔诺夫检验", "textbook_page": 242}
+          ]
+        },
+        {
+          "id": "4.5",
+          "title": "似然比检验",
+          "topics": [
+            {"name": "似然比检验原理", "textbook_page": 248},
+            {"name": "分布的似然比检验", "textbook_page": 253},
+            {"name": "大样本似然比检验", "textbook_page": 258}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "统计决策与贝叶斯估计",
+      "pages": "281-320",
+      "importance": 2,
+      "sections": [
+        {
+          "id": "5.1",
+          "title": "统计决策的基本概念",
+          "topics": [
+            {"name": "统计决策问题的三个要素", "textbook_page": 281},
+            {"name": "统计决策函数及其风险函数", "textbook_page": 285}
+          ]
+        },
+        {
+          "id": "5.2",
+          "title": "贝叶斯统计决策",
+          "topics": [
+            {"name": "贝叶斯原理（先验/后验）", "textbook_page": 290},
+            {"name": "贝叶斯风险与贝叶斯解", "textbook_page": 294},
+            {"name": "参数估计的贝叶斯解", "textbook_page": 298},
+            {"name": "区间估计的贝叶斯解", "textbook_page": 303},
+            {"name": "参数假设检验的贝叶斯解", "textbook_page": 307}
+          ]
+        },
+        {
+          "id": "5.3",
+          "title": "最小最大(Minimax)决策",
+          "topics": [
+            {"name": "Minimax决策原理", "textbook_page": 312}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "方差分析与试验设计",
+      "pages": "321-356",
+      "importance": 2,
+      "sections": [
+        {
+          "id": "6.1",
+          "title": "方差分析的基本原理",
+          "topics": [
+            {"name": "方差分析的基本思想", "textbook_page": 321}
+          ]
+        },
+        {
+          "id": "6.2",
+          "title": "单因素方差分析",
+          "topics": [
+            {"name": "数学模型和数据结构", "textbook_page": 325},
+            {"name": "参数点估计", "textbook_page": 327},
+            {"name": "离差平方和的分解与自由度", "textbook_page": 329},
+            {"name": "显著性检验（F检验）", "textbook_page": 332},
+            {"name": "参数的区间估计", "textbook_page": 335},
+            {"name": "均值的多重比较", "textbook_page": 338}
+          ]
+        },
+        {
+          "id": "6.3",
+          "title": "两因素方差分析",
+          "topics": [
+            {"name": "无交互作用的两因素方差分析", "textbook_page": 342},
+            {"name": "有交互作用的两因素方差分析", "textbook_page": 348}
+          ]
+        },
+        {
+          "id": "6.4",
+          "title": "正交试验设计",
+          "topics": [
+            {"name": "正交试验设计的基本思想", "textbook_page": 352},
+            {"name": "正交表与直观分析法", "textbook_page": 354},
+            {"name": "方差分析法", "textbook_page": 355}
+          ]
+        }
+      ]
+    }
+  ]
+}
