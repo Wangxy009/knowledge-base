@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}仪表盘 · 数理统计B{% endblock %}
+
+{% block content %}
+<!-- 顶部横幅 -->
+<div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-6 mb-6 text-white">
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="text-2xl font-bold mb-1">👋 期末复习仪表盘</h1>
+            <p class="text-indigo-100">教材：陈家清 唐湘晋《数理统计基础》</p>
+        </div>
+        <div class="text-right">
+            <div class="text-4xl font-bold" id="countdown">--</div>
+            <div class="text-indigo-100 text-sm">距7月1日考试</div>
+        </div>
+    </div>
+</div>
+
+<!-- 统计卡片 -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center"><i class="fas fa-layer-group text-blue-600"></i></div>
+            <div><div class="text-xs text-gray-500">课程章节</div><div class="text-xl font-bold" id="stat-chapters">6</div></div>
+        </div>
+    </div>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center"><i class="fas fa-file-lines text-green-600"></i></div>
+            <div><div class="text-xs text-gray-500">题库总量</div><div class="text-xl font-bold" id="stat-problems">205</div></div>
+        </div>
+    </div>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center"><i class="fas fa-star text-orange-600"></i></div>
+            <div><div class="text-xs text-gray-500">核心公式</div><div class="text-xl font-bold" id="stat-formulas">--</div></div>
+        </div>
+    </div>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center"><i class="fas fa-check-circle text-purple-600"></i></div>
+            <div><div class="text-xs text-gray-500">已掌握章节</div><div class="text-xl font-bold" id="stat-mastered">0/6</div></div>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- 章节进度 -->
+    <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+        <h2 class="font-semibold text-gray-800 mb-4">📚 各章节学习进度</h2>
+        <div class="space-y-3" id="chapter-progress"></div>
+    </div>
+
+    <!-- 今日推荐 -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+        <h2 class="font-semibold text-gray-800 mb-4">🎯 今日推荐任务</h2>
+        <div class="space-y-3" id="daily-tasks">
+            <div class="p-3 bg-indigo-50 rounded-lg border border-indigo-100">
+                <div class="text-sm font-medium text-indigo-800">📖 第3章 估计理论</div>
+                <div class="text-xs text-indigo-600 mt-1">重点章节，55道题待练习</div>
+            </div>
+            <div class="p-3 bg-amber-50 rounded-lg border border-amber-100">
+                <div class="text-sm font-medium text-amber-800">📝 第4章 假设检验</div>
+                <div class="text-xs text-amber-600 mt-1">55道题，考试必考</div>
+            </div>
+            <div class="p-3 bg-green-50 rounded-lg border border-green-100">
+                <div class="text-sm font-medium text-green-800">🔄 回顾第2章</div>
+                <div class="text-xs text-green-600 mt-1">抽样分布定理是基础</div>
+            </div>
+        </div>
+
+        <!-- 难度分布 -->
+        <h2 class="font-semibold text-gray-800 mt-6 mb-3">📊 题目难度分布</h2>
+        <div class="flex gap-2" id="difficulty-bars">
+            <div class="flex-1"><div class="text-xs text-gray-500 mb-1">简单</div><div class="h-2 bg-green-200 rounded-full"><div class="h-2 bg-green-500 rounded-full" id="bar-easy" style="width:0%"></div></div></div>
+            <div class="flex-1"><div class="text-xs text-gray-500 mb-1">中等</div><div class="h-2 bg-amber-200 rounded-full"><div class="h-2 bg-amber-500 rounded-full" id="bar-medium" style="width:0%"></div></div></div>
+            <div class="flex-1"><div class="text-xs text-gray-500 mb-1">困难</div><div class="h-2 bg-red-200 rounded-full"><div class="h-2 bg-red-500 rounded-full" id="bar-hard" style="width:0%"></div></div></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+fetch('/api/dashboard')
+    .then(r => r.json())
+    .then(data => {
+        // 倒计时
+        document.getElementById('countdown').textContent = data.days_left + '天';
+
+        // 公式数
+        fetch('/api/formulas').then(r => r.json()).then(f => {
+            let total = 0;
+            Object.values(f.chapters).forEach(c => total += c.formulas.length);
+            document.getElementById('stat-formulas').textContent = total;
+        });
+
+        // 掌握进度（从localStorage读取）
+        const mastered = JSON.parse(localStorage.getItem('mastered_topics') || '[]');
+        document.getElementById('stat-mastered').textContent = new Set(mastered.map(m => m.split('.')[0])).size + '/6';
+
+        // 章节进度条
+        const html = data.chapters.map(ch => {
+            const pct = localStorage.getItem('progress_ch' + ch.id) || 0;
+            const stars = '⭐'.repeat(ch.importance);
+            return `<div class="flex items-center gap-3">
+                <span class="text-sm font-medium text-gray-700 w-32">第${ch.id}章 ${ch.title}</span>
+                <span class="text-xs text-gray-400">${stars}</span>
+                <div class="flex-1 h-2 bg-gray-200 rounded-full">
+                    <div class="h-2 bg-indigo-500 rounded-full transition-all" style="width:${pct}%"></div>
+                </div>
+                <span class="text-xs text-gray-500 w-20 text-right">${ch.problem_count}道题</span>
+                <span class="text-xs font-medium ${pct > 0 ? 'text-green-600' : 'text-gray-400'}">${pct}%</span>
+            </div>`;
+        }).join('');
+        document.getElementById('chapter-progress').innerHTML = html;
+
+        // 难度分布
+        const total = data.total_problems;
+        document.getElementById('bar-easy').style.width = (data.difficulty_distribution.easy/total*100) + '%';
+        document.getElementById('bar-medium').style.width = (data.difficulty_distribution.medium/total*100) + '%';
+        document.getElementById('bar-hard').style.width = (data.difficulty_distribution.hard/total*100) + '%';
+    });
+</script>
+{% endblock %}
