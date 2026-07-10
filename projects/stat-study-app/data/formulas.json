@@ -1,0 +1,77 @@
+{
+  "chapters": {
+    "1": {
+      "title": "基础知识",
+      "formulas": [
+        {"name": "多元正态分布密度", "latex": "f(\\mathbf{x}) = \\frac{1}{(2\\pi)^{n/2}|\\Sigma|^{1/2}} \\exp\\left(-\\frac{1}{2}(\\mathbf{x}-\\boldsymbol{\\mu})^T\\Sigma^{-1}(\\mathbf{x}-\\boldsymbol{\\mu})\\right)", "note": "n元正态分布N_n(μ,Σ)"},
+        {"name": "边缘密度（连续型）", "latex": "f_{1,\\ldots,k}(x_1,\\ldots,x_k) = \\int_{-\\infty}^{\\infty} \\cdots \\int_{-\\infty}^{\\infty} f(x_1,\\ldots,x_n) dx_{k+1}\\cdots dx_n", "note": ""},
+        {"name": "独立性条件", "latex": "F(x_1,\\ldots,x_n) = F_1(x_1)F_2(x_2)\\cdots F_n(x_n)", "note": ""},
+        {"name": "特征函数定义", "latex": "\\varphi_X(t) = E[e^{itX}]", "note": ""},
+        {"name": "多项分布", "latex": "P(X_1=n_1,\\ldots,X_m=n_m) = \\frac{n!}{n_1!\\cdots n_m!}p_1^{n_1}\\cdots p_m^{n_m}", "note": "M(n, p_1, ..., p_m)"}
+      ]
+    },
+    "2": {
+      "title": "统计量与抽样分布",
+      "formulas": [
+        {"name": "样本均值", "latex": "\\bar{X} = \\frac{1}{n}\\sum_{i=1}^{n} X_i", "note": ""},
+        {"name": "样本方差", "latex": "S_n^2 = \\frac{1}{n}\\sum_{i=1}^{n}(X_i - \\bar{X})^2", "note": "有偏；无偏用n-1"},
+        {"name": "χ²分布定义", "latex": "\\chi^2(n) = \\sum_{i=1}^{n} Z_i^2, \\quad Z_i \\stackrel{iid}{\\sim} N(0,1)", "note": "E[χ²]=n, Var[χ²]=2n"},
+        {"name": "t分布定义", "latex": "T = \\frac{Z}{\\sqrt{\\chi^2(n)/n}}, \\quad Z \\sim N(0,1) \\perp \\chi^2(n)", "note": ""},
+        {"name": "F分布定义", "latex": "F = \\frac{\\chi^2(m)/m}{\\chi^2(n)/n}, \\quad \\chi^2(m) \\perp \\chi^2(n)", "note": "F(m,n)"},
+        {"name": "次序统计量密度", "latex": "f_{X_{(k)}}(x) = \\frac{n!}{(k-1)!(n-k)!}[F(x)]^{k-1}[1-F(x)]^{n-k}f(x)", "note": ""},
+        {"name": "抽样定理1", "latex": "\\bar{X} \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)", "note": ""},
+        {"name": "抽样定理2", "latex": "\\frac{(n-1)S^2}{\\sigma^2} \\sim \\chi^2(n-1)", "note": "S²与X̄独立"},
+        {"name": "抽样定理3（t统计量）", "latex": "\\frac{\\bar{X}-\\mu}{S/\\sqrt{n}} \\sim t(n-1)", "note": "最常用！"},
+        {"name": "两个总体（等方差）", "latex": "\\frac{(\\bar{X}-\\bar{Y})-(\\mu_1-\\mu_2)}{S_w\\sqrt{\\frac{1}{m}+\\frac{1}{n}}} \\sim t(m+n-2)", "note": "S_w²为合并方差"},
+        {"name": "两个总体方差比", "latex": "\\frac{S_1^2/\\sigma_1^2}{S_2^2/\\sigma_2^2} \\sim F(m-1, n-1)", "note": ""}
+      ]
+    },
+    "3": {
+      "title": "估计理论",
+      "formulas": [
+        {"name": "矩估计法", "latex": "\\frac{1}{n}\\sum_{i=1}^{n} X_i^k = E[X^k], \\quad k=1,2,\\ldots", "note": "用样本矩代替总体矩"},
+        {"name": "极大似然估计", "latex": "L(\\theta) = \\prod_{i=1}^{n} f(x_i;\\theta), \\quad \\hat{\\theta}_{MLE} = \\arg\\max L(\\theta)", "note": "通常取对数求导"},
+        {"name": "无偏性", "latex": "E[\\hat{\\theta}] = \\theta", "note": ""},
+        {"name": "有效性", "latex": "Var[\\hat{\\theta}_1] \\leq Var[\\hat{\\theta}_2]", "note": "方差越小越有效"},
+        {"name": "相合性", "latex": "\\hat{\\theta}_n \\xrightarrow{P} \\theta \\quad (n \\to \\infty)", "note": "依概率收敛"},
+        {"name": "因子分解定理", "latex": "f(x;\\theta) = g(T(x), \\theta) \\cdot h(x)", "note": "T是充分统计量当且仅当此分解成立"},
+        {"name": "C-R不等式", "latex": "Var[\\hat{\\theta}] \\geq \\frac{1}{nI(\\theta)}, \\quad I(\\theta) = E\\left[\\left(\\frac{\\partial \\ln f}{\\partial \\theta}\\right)^2\\right]", "note": "Fisher信息量"},
+        {"name": "单个正态均值CI（σ已知）", "latex": "\\bar{X} \\pm z_{\\alpha/2} \\cdot \\frac{\\sigma}{\\sqrt{n}}", "note": ""},
+        {"name": "单个正态均值CI（σ未知）", "latex": "\\bar{X} \\pm t_{\\alpha/2}(n-1) \\cdot \\frac{S}{\\sqrt{n}}", "note": ""},
+        {"name": "单个正态方差CI", "latex": "\\left[\\frac{(n-1)S^2}{\\chi^2_{\\alpha/2}(n-1)}, \\frac{(n-1)S^2}{\\chi^2_{1-\\alpha/2}(n-1)}\\right]", "note": ""}
+      ]
+    },
+    "4": {
+      "title": "假设检验",
+      "formulas": [
+        {"name": "两类错误", "latex": "\\alpha = P(\\text{拒}H_0|H_0\\text{真}), \\quad \\beta = P(\\text{接}H_0|H_0\\text{伪})", "note": "第I类和第II类错误"},
+        {"name": "检验功效", "latex": "\\text{Power} = 1 - \\beta = P(\\text{拒}H_0|H_1\\text{真})", "note": ""},
+        {"name": "p值定义", "latex": "p = P(T \\geq t_{obs} | H_0)", "note": "p<α则拒绝H₀"},
+        {"name": "单个正态均值U检验", "latex": "U = \\frac{\\bar{X} - \\mu_0}{\\sigma/\\sqrt{n}} \\sim N(0,1)", "note": "σ已知"},
+        {"name": "单个正态均值t检验", "latex": "T = \\frac{\\bar{X} - \\mu_0}{S/\\sqrt{n}} \\sim t(n-1)", "note": "σ未知"},
+        {"name": "单个正态方差χ²检验", "latex": "\\chi^2 = \\frac{(n-1)S^2}{\\sigma_0^2} \\sim \\chi^2(n-1)", "note": ""},
+        {"name": "两个总体均值差检验", "latex": "T = \\frac{(\\bar{X}-\\bar{Y})-(\\mu_1-\\mu_2)}{S_w\\sqrt{\\frac{1}{m}+\\frac{1}{n}}} \\sim t(m+n-2)", "note": "等方差假设"},
+        {"name": "两个总体方差比F检验", "latex": "F = \\frac{S_1^2}{S_2^2} \\sim F(m-1, n-1)", "note": "H₀: σ₁²=σ₂²"},
+        {"name": "χ²拟合优度检验", "latex": "\\chi^2 = \\sum_{i=1}^{k} \\frac{(O_i - E_i)^2}{E_i} \\sim \\chi^2(k-1-r)", "note": "O为观测频数，E为期望频数"},
+        {"name": "似然比检验", "latex": "\\Lambda = \\frac{\\sup_{\\theta \\in \\Theta_0} L(\\theta)}{\\sup_{\\theta \\in \\Theta} L(\\theta)}, \\quad -2\\ln\\Lambda \\xrightarrow{d} \\chi^2", "note": "大样本近似"}
+      ]
+    },
+    "5": {
+      "title": "统计决策与贝叶斯估计",
+      "formulas": [
+        {"name": "风险函数", "latex": "R(\\theta, d) = E_\\theta[L(\\theta, d(X))]", "note": "期望损失"},
+        {"name": "贝叶斯定理", "latex": "\\pi(\\theta|x) = \\frac{f(x|\\theta)\\pi(\\theta)}{\\int f(x|\\theta)\\pi(\\theta)d\\theta}", "note": "后验 ∝ 似然 × 先验"},
+        {"name": "贝叶斯风险", "latex": "R_B(d) = E^{\\pi}[R(\\theta, d)]", "note": ""},
+        {"name": "贝叶斯估计（平方损失）", "latex": "\\hat{\\theta}_B = E[\\theta|X]", "note": "后验均值"}
+      ]
+    },
+    "6": {
+      "title": "方差分析与试验设计",
+      "formulas": [
+        {"name": "总离差平方和分解", "latex": "SST = SSA + SSE", "note": "总=组间+组内"},
+        {"name": "单因素ANOVA F检验", "latex": "F = \\frac{SSA/(k-1)}{SSE/(n-k)} \\sim F(k-1, n-k)", "note": "k为水平数，n为总样本量"},
+        {"name": "双因素（无交互）", "latex": "SST = SSA + SSB + SSE", "note": "A因素+B因素+误差"}
+      ]
+    }
+  }
+}
