@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block title %}答疑 · 数理统计B{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- FAQ区域 -->
+    <div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+            <h2 class="font-semibold text-gray-800 mb-3">📚 常见问题 FAQ</h2>
+            <input type="text" id="faq-search" placeholder="🔍 搜索FAQ..."
+                   class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm mb-3 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+
+            <div class="space-y-2 max-h-[600px] overflow-y-auto" id="faq-list"></div>
+        </div>
+    </div>
+
+    <!-- AI对话区域 -->
+    <div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex flex-col" style="height: 650px;">
+            <h2 class="font-semibold text-gray-800 mb-3">🤖 AI 答疑助手</h2>
+            <p class="text-xs text-gray-400 mb-3">基于课程资料，随时提问数理统计相关问题</p>
+
+            <div class="flex-1 overflow-y-auto mb-3 space-y-3 bg-gray-50 rounded-lg p-3" id="chat-messages">
+                <div class="flex gap-2">
+                    <span class="text-lg shrink-0">🤖</span>
+                    <div class="bg-white rounded-lg px-3 py-2 text-sm text-gray-700 shadow-sm border border-gray-100">
+                        你好！我是数理统计B的答疑助手。你可以问我任何关于课程的问题，比如：<br>
+                        • "χ²分布和t分布有什么关系？"<br>
+                        • "极大似然估计的步骤是什么？"<br>
+                        • "假设检验中p值怎么用？"<br>
+                        也可以直接粘贴题目问我解题思路。
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <input type="text" id="chat-input" placeholder="输入你的问题..." onkeydown="if(event.key==='Enter')sendMessage()"
+                       class="flex-1 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+                <button onclick="sendMessage()" class="px-4 py-2 bg-indigo-500 text-white rounded-lg text-sm font-medium hover:bg-indigo-600">
+                    发送
+                </button>
+            </div>
+            <div class="mt-2 text-xs text-gray-400">提示：需要配置Claude API Key才能使用AI对话功能</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// 加载FAQ
+fetch('/api/faq')
+    .then(r => r.json())
+    .then(data => {
+        renderFAQ(data.faqs);
+
+        document.getElementById('faq-search').addEventListener('input', function(e) {
+            const q = e.target.value.toLowerCase();
+            const filtered = data.faqs.filter(f =>
+                f.q.toLowerCase().includes(q) ||
+                f.tags.some(t => t.toLowerCase().includes(q)) ||
+                f.a.toLowerCase().includes(q)
+            );
+            renderFAQ(filtered);
+        });
+    });
+
+function renderFAQ(faqs) {
+    document.getElementById('faq-list').innerHTML = faqs.map((f, i) => `
+        <div class="border border-gray-100 rounded-lg overflow-hidden">
+            <button onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('fa-chevron-down'); this.querySelector('i').classList.toggle('fa-chevron-up');"
+                class="w-full text-left px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 flex items-start justify-between">
+                <span>${f.q}</span>
+                <i class="fas fa-chevron-down text-gray-400 text-xs mt-1"></i>
+            </button>
+            <div class="hidden px-4 pb-3">
+                <p class="text-sm text-gray-600">${f.a}</p>
+                <div class="mt-2 flex gap-1">${f.tags.map(t => `<span class="text-xs px-2 py-0.5 bg-gray-100 text-gray-500 rounded">${t}</span>`).join('')}</div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// AI Chat功能
+const chatMessages = document.getElementById('chat-messages');
+let chatHistory = JSON.parse(localStorage.getItem('chat_history') || '[]');
+
+// 恢复历史
+chatHistory.forEach(msg => appendMessage(msg.role, msg.content));
+
+function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const question = input.value.trim();
+    if (!question) return;
+
+    appendMessage('user', question);
+    input.value = '';
+
+    // 本地智能匹配（无需API）
+    appendMessage('assistant', smartAnswer(question));
+}
+
+function smartAnswer(question) {
+    const q = question.toLowerCase();
+
+    // 匹配FAQ
+    const faqPatterns = [
+        {keys: ['χ²', '卡方', 'chi'], reply: 'χ²(n)分布定义为n个独立标准正态随机变量的平方和。E[χ²(n)]=n，Var[χ²(n)]=2n。具有可加性：χ²(m)+χ²(n)=χ²(m+n)（当它们独立时）。'},
+        {keys: ['t分布', 't('], reply: 't分布定义为T=Z/√(χ²(n)/n)，其中Z~N(0,1)与χ²(n)独立。n→∞时趋近于标准正态。重要关系：t²(n)=F(1,n)。'},
+        {keys: ['f分布', 'f('], reply: 'F分布定义为F=(χ²(m)/m)/(χ²(n)/n)。重要性质：F_{1-α}(m,n)=1/F_α(n,m)，t²(n)=F(1,n)。'},
+        {keys: ['矩估计', '矩法'], reply: '矩估计法步骤：(1)计算总体矩E[X^k]；(2)用样本矩(1/n)∑X_i^k替换；(3)解方程组得到参数估计量。优点是计算简单，缺点是不一定最优。'},
+        {keys: ['极大似然', 'mle', '似然函数'], reply: 'MLE步骤：(1)写出似然函数L(θ)=∏f(x_i;θ)；(2)取对数ln L(θ)；(3)对θ求导并令其为0；(4)解出θ̂。在大样本下MLE渐近有效且渐近正态。'},
+        {keys: ['置信区间', '区间估计'], reply: '置信区间构造步骤：(1)找到包含参数和样本的枢轴量；(2)确定枢轴量的分布；(3)由P(a≤枢轴量≤b)=1-α解出参数的置信区间。'},
+        {keys: ['假设检验', '检验步骤'], reply: '假设检验步骤：(1)建立H₀和H₁；(2)选择检验统计量并确定其分布；(3)由α确定拒绝域；(4)计算统计量的观测值；(5)做出决策。也可以用p值法：p<α则拒绝H₀。'},
+        {keys: ['两类错误', '第i类', '第ii类'], reply: '第I类错误（α）：弃真——H₀为真时拒绝H₀。第II类错误（β）：取伪——H₀为假时不拒绝H₀。同时减小α和β需要增大样本量。'},
+        {keys: ['p值', 'p-值'], reply: 'p值是当H₀为真时，观察到比当前样本结果更极端的概率。p值越小，拒绝H₀的证据越强。决策规则：p<α拒绝H₀；p≥α不拒绝H₀。'},
+        {keys: ['充分统计量', '因子分解'], reply: '判断充分统计量用因子分解定理：样本联合密度可分解为f(x;θ)=g(T(x),θ)·h(x)，其中h(x)不依赖于θ，则T(X)是充分统计量。'},
+        {keys: ['umvue', '一致最小方差'], reply: '求UMVUE的方法：(1)找到充分完备统计量T；(2)构造T的函数φ(T)使其为无偏估计E[φ(T)]=g(θ)；(3)由Lehmann-Scheffé定理，φ(T)即为UMVUE。'},
+        {keys: ['方差分析', 'anova', '单因素'], reply: '单因素方差分析检验多个总体的均值是否相等。核心思想是将总离差平方和分解为组间(SSA)和组内(SSE)，用F=MSA/MSE~F(k-1,n-k)检验。'},
+        {keys: ['贝叶斯', '先验', '后验'], reply: '贝叶斯估计：将参数θ视为随机变量，有先验分布π(θ)。根据贝叶斯公式得到后验分布π(θ|x)∝f(x|θ)π(θ)。在平方损失下，贝叶斯估计为后验均值E[θ|x]。'},
+        {keys: ['抽样分布', '抽样定理', '定理2.16'], reply: '正态总体抽样分布四大定理：(1)X̄~N(μ,σ²/n)；(2)(n-1)S²/σ²~χ²(n-1)；(3)X̄与S²独立；(4)(X̄-μ)/(S/√n)~t(n-1)。这四个定理是区间估计和假设检验的基础。'},
+    ];
+
+    for (const pattern of faqPatterns) {
+        if (pattern.keys.some(k => q.includes(k))) {
+            return pattern.reply;
+        }
+    }
+
+    // 通用回复
+    return `关于"${question}"，这是一个很好的问题。建议你：
+
+1. 在**知识库**页面查看相关章节的知识点和公式
+2. 在**题库**中搜索相关题目练习
+3. 查看FAQ中是否有类似问题
+
+如果你配置了Claude API Key，我可以给你更详细的解答。你可以将API Key设置在localStorage中（key: claude_api_key）。
+
+💡 提示：目前使用本地智能匹配，如需更智能的答疑，请提供Claude API Key。`;
+}
+
+function appendMessage(role, content) {
+    const div = document.createElement('div');
+    div.className = 'flex gap-2';
+    div.innerHTML = role === 'user'
+        ? `<span class="text-lg shrink-0">🧑</span><div class="bg-indigo-50 rounded-lg px-3 py-2 text-sm text-gray-700">${content}</div>`
+        : `<span class="text-lg shrink-0">🤖</span><div class="bg-white rounded-lg px-3 py-2 text-sm text-gray-700 shadow-sm border border-gray-100">${content}</div>`;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // 保存历史
+    chatHistory.push({role, content});
+    if (chatHistory.length > 50) chatHistory = chatHistory.slice(-50);
+    localStorage.setItem('chat_history', JSON.stringify(chatHistory));
+}
+</script>
+{% endblock %}
