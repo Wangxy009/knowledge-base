@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数理统计模拟试卷</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+  :root {
+    --primary: #1a365d;
+    --accent: #2b6cb0;
+    --bg: #f7fafc;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --text: #2d3748;
+    --muted: #718096;
+    --danger: #c53030;
+    --success: #2f855a;
+    --warning: #b7791f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 12px;
+    margin: 20px 0 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 8px; }
+  .header .meta { font-size: 0.95em; opacity: 0.85; }
+  .header .meta span { margin: 0 12px; padding: 4px 12px; background: rgba(255,255,255,0.15); border-radius: 20px; }
+
+  /* Sections */
+  .section-title {
+    font-size: 1.4em;
+    color: var(--primary);
+    border-left: 4px solid var(--accent);
+    padding-left: 14px;
+    margin: 40px 0 16px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .card h3 {
+    font-size: 1.05em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .question-label {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 0.8em;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .difficulty {
+    display: inline-block;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    vertical-align: middle;
+    font-weight: 600;
+  }
+  .diff-easy { background: #c6f6d5; color: #22543d; }
+  .diff-med { background: #fefcbf; color: #744210; }
+  .diff-hard { background: #fed7d7; color: #822727; }
+
+  /* Score badges */
+  .score-badge {
+    float: right;
+    font-size: 0.85em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  /* Answer styling */
+  .answer {
+    background: #f0fff4;
+    border: 1px solid #c6f6d5;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 14px;
+  }
+  .answer-label {
+    font-weight: 700;
+    color: var(--success);
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .answer .step {
+    margin: 8px 0;
+    padding-left: 8px;
+    border-left: 3px solid #c6f6d5;
+  }
+  .answer .highlight {
+    background: #fefcbf;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 12px;
+    text-align: center;
+    font-weight: 600;
+  }
+  td {
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    text-align: center;
+  }
+  tr:nth-child(even) td { background: #f7fafc; }
+
+  /* Formula reference cards at end */
+  .formula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 18px;
+  }
+  .formula-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .formula-card h4 {
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-size: 0.95em;
+  }
+  .formula-card ul { padding-left: 18px; }
+  .formula-card li { margin: 4px 0; font-size: 0.9em; }
+
+  /* TOC */
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 28px;
+    margin-bottom: 30px;
+  }
+  .toc h3 { margin-bottom: 12px; color: var(--primary); }
+  .toc ul { padding-left: 20px; columns: 2; }
+  .toc li { margin: 4px 0; font-size: 0.92em; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* Print */
+  @media print {
+    body { background: white; }
+    .card, .answer, .formula-card { box-shadow: none; break-inside: avoid; }
+    .toc { break-after: page; }
+    .header { background: var(--primary) !important; -webkit-print-color-adjust: exact; }
+  }
+
+  .page-break { page-break-before: always; }
+  .divider { border: none; border-top: 2px dashed var(--border); margin: 30px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== HEADER ========== -->
+<div class="header">
+  <h1>📐 数理统计 模拟试卷</h1>
+  <div class="meta">
+    <span>满分 100 分</span><span>时间 120 分钟</span><span>闭卷</span>
+  </div>
+</div>
+
+<!-- ========== TOC ========== -->
+<div class="toc">
+  <h3>📋 试卷结构</h3>
+  <ul>
+    <li><a href="#part1">一、简答题</a>（5 题 × 6 分 = 30 分）</li>
+    <li><a href="#part2">二、计算题</a>（6 题 × 10 分 = 60 分）</li>
+    <li><a href="#part3">三、证明题</a>（1 题 × 10 分 = 10 分）</li>
+    <li><a href="#answers">📝 参考答案</a></li>
+    <li><a href="#appendix">📚 附录：解题体系总整理</a></li>
+  </ul>
+</div>
+
+<!-- ================================================ -->
+<!-- PART 1: SHORT ANSWER QUESTIONS -->
+<!-- ================================================ -->
+<h2 class="section-title" id="part1">一、简答题（每题 6 分，共 30 分）</h2>
+
+<div class="card">
+  <h3><span class="question-label">1</span> 方差分析的基本假定</h3>
+  <span class="difficulty diff-easy">基础</span><span class="score-badge">6 分</span>
+  <p>请说明单因素方差分析需要满足哪三个基本假定，并简要阐释每个假定的含义。如果在实际数据中不满足这些假定，可能会带来什么问题？</p>
+</div>
+
+<div class="card">
+  <h3><span class="question-label">2</span> 假设检验的两类错误及 P 值的统计含义</h3>
+  <span class="difficulty diff-med">中等</span><span class="score-badge">6 分</span>
+  <p>(1) 请解释假设检验中第一类错误和第二类错误的定义、概率表示及其相互关系。<br>
+  (2) 请给出 P 值的统计定义，并说明 P 值与显著水平 α 在决策中的关系。</p>
+</div>
+
+<div class="card">
+  <h3><span class="question-label">3</span> 评估估计量优良性的准则</h3>
+  <span class="difficulty diff-med">中等</span><span class="score-badge">6 分</span>
+  <p>请分别阐述无偏性、一致性（相合性）和有效性的定义，并说明三者之间的关系。举出一个满足无偏性但不一定是有效估计量的例子。</p>
+</div>
+
+<div class="card">
+  <h3><span class="question-label">4</span> 假设检验中的显著水平与统计性显著</h3>
+  <span class="difficulty diff-med">中等</span><span class="score-badge">6 分</span>
+  <p>请解释"显著水平 α"和"统计性显著"的含义。为什么说"统计性显著"不等于"实际显著"？试举例说明。</p>
+</div>
+
+<div class="card">
+  <h3><span class="question-label">5</span> 假设检验与参数估计的区别和联系</h3>
+  <span class="difficulty diff-easy">基础</span><span class="score-badge">6 分</span>
+  <p>请从目的、结论形式和概率基础三个方面比较假设检验与参数估计的区别，并阐述两者之间的联系（对偶关系和互补性）。</p>
+</div>
+
+<!-- ================================================ -->
+<!-- PART 2: CALCULATION PROBLEMS -->
+<!-- ================================================ -->
+<h2 class="section-title" id="part2">二、计算题（每题 10 分，共 60 分）</h2>
+
+<div class="card">
+  <h3><span class="question-label">1</span> 贝叶斯估计（平方损失）</h3>
+  <span class="difficulty diff-med">中等</span><span class="score-badge">10 分</span>
+  <p>
+    设 $X_1, X_2, \ldots, X_n$ 独立同分布于泊松分布 $\text{Poisson}(\lambda)$，即
+    $$P(X_i = x) = \frac{\lambda^x e^{-\lambda}}{x!}, \quad x = 0,1,2,\ldots$$
+    取 $\lambda$ 的先验分布为伽马分布 $\text{Gamma}(\alpha, \beta)$，其密度为
+    $$\pi(\lambda) = \frac{\beta^\alpha}{\Gamma(\alpha)} \lambda^{\alpha-1} e^{-\beta\lambda}, \quad \lambda > 0$$
+    其中 $\alpha > 0, \beta > 0$ 为已知的超参数。
+  </p>
+  <p>(1) 求 $\lambda$ 的后验分布。（5 分）<br>
+  (2) 在平方损失函数 $L(\lambda, d) = (\lambda - d)^2$ 下，求 $\lambda$ 的贝叶斯估计，并说明该估计可以表示为先验均值与样本均值的加权平均。（5 分）</p>
+</div>
+
+<div class="card">
+  <h3><span class="question-label">2</span> 极大似然估计与区间估计</h3>
+  <span class="difficulty diff-med">中等</span><span class="score-badge">10 分</span>
+  <p>
+    设总体 $X \sim N(\mu, \sigma^2)$。现抽取容量为 $n = 25$ 的样本，计算得样本均值 $\bar{x} = 15$，样本标准差 $s = 4$。
+  </p>
+  <p>(1) 求 $\mu$ 和 $\sigma^2$ 的极大似然估计。（3 分）<br>
+  (2) 求 $\mu$ 的置信水平为 $95\%$ 的双侧置信区间。（3 分）<br>
+  (3) 求 $\mu$ 的置信水平为 $95\%$ 的单侧置信下限。（2 分）<br>
+  (4) 求 $\sigma^2$ 的置信水平为 $95\%$ 的双侧置信区间。（2 分）</p>
+  <p style="font-size:0.85em; color: var(--muted);">（可能需要用到的分位数：$z_{0.025}=1.96,\; z_{0.05}=1.645,\; t_{0.025}(24)=2.064,\; t_{0.05}(24)=1.711$, $\chi^2_{0.025}(24)=39.364,\; \chi^2_{0.975}(24)=12.401$）</p>
+</div>
+
+<div class="card">
+  <h3><span class="question-label">3</span> 假设检验（双侧）</h3>
+  <span class="difficulty diff-med">中等</span><span class="score-badge">10 分</span>
+  <p>
+    某工厂生产的零件长度服从正态分布 $N(\mu, \sigma^2)$。设计要求长度为 $50\text{mm}$。现随机抽取 $16$ 个零件，测得 $\bar{x} = 50.8$, $s = 1.6$。
+    在显著水平 $\alpha = 0.05$ 下，问该批零件长度是否符合设计要求？
+  </p>
+  <p>(1) 写出原假设和备择假设。（2 分）<br>
+  (2) 选择合适的检验统计量，给出其分布，写出拒绝域。（3 分）<br>
+  (3) 计算检验统计量的观测值，做出判断。（3 分）<br>
+  (4) 请解释本题中 P 值的含义。（2 分）</p>
+  <p style="font-size:0.85em; color: var(--muted);">（$t_{0.025}(15)=2.131,\; t_{0.05}(15)=1.753$）</p>
+</div>
+
+<div class="card">
+  <h3><span class="question-label">4</span> 双正态总体的比较</h3>
+  <span class="difficulty diff-hard">较难</span><span class="score-badge">10 分</span>
+  <p>
+    为比较甲、乙两种安眠药的疗效，随机选取 $20$ 名患者，随机分成两组（各 $10$ 人），分别服用甲、乙两种药物，记录延长睡眠时间（小时）：
+  </p>
+  <p>甲组：$\bar{x}_1 = 2.33,\; s_1^2 = 3.61,\; n_1 = 10$<br>
+  乙组：$\bar{x}_2 = 0.75,\; s_2^2 = 2.89,\; n_2 = 10$</p>
+  <p>假定两组数据均来自正态总体，且方差相等（$\sigma_1^2 = \sigma_2^2 = \sigma^2$）。</p>
+  <p>(1) 在 $\alpha = 0.05$ 下，检验两种药物的疗效是否有显著差异。（6 分）<br>
+  (2) 求 $\mu_1 - \mu_2$ 的 $95\%$ 置信区间。（4 分）</p>
+  <p style="font-size:0.85em; color: var(--muted);">（$t_{0.025}(18)=2.101,\; t_{0.05}(18)=1.734$）</p>
+</div>
+
+<div class="card">
+  <h3><span class="question-label">5</span> 单因素方差分析</h3>
+  <span class="difficulty diff-hard">较难</span><span class="score-badge">10 分</span>
+  <p>
+    为研究三种不同教学方法（A、B、C）对学生成绩的影响，随机将 $15$ 名学生分成三组（每组 $5$ 人），分别采用三种方法教学，期末成绩如下：
+  </p>
+  <table>
+    <tr><th>方法 A</th><td>88</td><td>83</td><td>90</td><td>85</td><td>84</td></tr>
+    <tr><th>方法 B</th><td>76</td><td>72</td><td>75</td><td>78</td><td>74</td></tr>
+    <tr><th>方法 C</th><td>92</td><td>95</td><td>96</td><td>90</td><td>93</td></tr>
+  </table>
+  <p>假定数据满足正态性和方差齐性。在 $\alpha = 0.05$ 下，问三种教学方法的效果是否有显著差异？</p>
+  <p>(1) 写出原假设和备择假设。（2 分）<br>
+  (2) 计算 SST, SSA, SSE 及各自由度。（4 分）<br>
+  (3) 列出方差分析表。（2 分）<br>
+  (4) 做出统计判断。（2 分）</p>
+  <p style="font-size:0.85em; color: var(--muted);">（$F_{0.05}(2,12)=3.89$）</p>
+</div>
+
+<div class="card">
+  <h3><span class="question-label">6</span> 最小方差无偏估计（C-R 下界 &amp; 充分完备统计量）</h3>
+  <span class="difficulty diff-hard">较难</span><span class="score-badge">10 分</span>
+  <p>
+    设 $X_1, X_2, \ldots, X_n$ 独立同分布于指数分布，其密度函数为
+    $$f(x; \lambda) = \lambda e^{-\lambda x},\quad x > 0,\; \lambda > 0$$
+  </p>
+  <p>(1) 求 $\lambda$ 的 Fisher 信息量 $I(\lambda)$ 和 Cramér-Rao 下界。（3 分）<br>
+  (2) 判断 $\bar{X}$ 的倒数 $1/\bar{X}$ 是否为 $\lambda$ 的无偏估计，并说明原因。（2 分）<br>
+  (3) 利用充分完备统计量，求 $\lambda$ 的最小方差无偏估计（UMVUE）。（5 分）</p>
+  <p style="font-size:0.85em; color: var(--muted);">（提示：$\sum_{i=1}^n X_i \sim \text{Gamma}(n, \lambda)$，$\mathbb{E}(1/\sum X_i) = \lambda/(n-1)$）</p>
+</div>
+
+<!-- ================================================ -->
+<!-- PART 3: PROOF -->
+<!-- ================================================ -->
+<h2 class="section-title" id="part3">三、证明题（10 分）</h2>
+
+<div class="card">
+  <h3><span class="question-label">7</span> 证明题</h3>
+  <span class="difficulty diff-hard">较难</span><span class="score-badge">10 分</span>
+  <p>
+    设 $X_1, X_2, \ldots, X_n$ 独立同分布于正态分布 $N(\mu, \sigma^2)$，其中 $\sigma^2$ 已知。
+  </p>
+  <p>(1) 证明 $\bar{X} = \frac{1}{n}\sum_{i=1}^n X_i$ 是 $\mu$ 的充分统计量。（4 分）<br>
+  (2) 利用 Cramér-Rao 不等式，证明 $\bar{X}$ 是 $\mu$ 的有效估计量（即达到 C-R 下界的无偏估计）。（6 分）</p>
+</div>
+
+<!-- ================================================ -->
+<!-- ANSWERS -->
+<!-- ================================================ -->
+<hr class="divider">
+<h2 class="section-title page-break" id="answers">📝 参考答案</h2>
+
+<!-- ===== SHORT ANSWER 1 ===== -->
+<div class="answer">
+  <div class="answer-label">简答题 1 答案</div>
+  <p><strong>方差分析的三个基本假定：</strong></p>
+  <div class="step">
+    <p><strong>(1) 正态性假定。</strong>每个总体均服从正态分布。即 $X_{ij} \sim N(\mu_i, \sigma^2)$。正态性是 F 检验统计量精确服从 F 分布的前提保证。</p>
+  </div>
+  <div class="step">
+    <p><strong>(2) 方差齐性假定。</strong>各总体的方差相等。即 $\sigma_1^2 = \sigma_2^2 = \cdots = \sigma_k^2 = \sigma^2$。若方差不齐，F 检验的第一类错误率会偏离名义水平。</p>
+  </div>
+  <div class="step">
+    <p><strong>(3) 独立性假定。</strong>所有观测值相互独立。不同组之间以及同一组内各观测值之间均不相关。违反独立性（如重复测量、聚类数据）会导致标准误低估、假阳性率升高。</p>
+  </div>
+  <p><strong>违反后果：</strong>正态性不满足（尤其在小样本下）会使 F 检验的第一类错误率偏离名义水平；方差齐性不满足时可通过 Welch 近似或非参数方法（Kruskal-Wallis）替代；独立性不满足时需用重复测量方差分析或混合效应模型。</p>
+</div>
+
+<!-- ===== SHORT ANSWER 2 ===== -->
+<div class="answer">
+  <div class="answer-label">简答题 2 答案</div>
+  <p><strong>(1) 两类错误：</strong></p>
+  <div class="step">
+    <p><strong>第一类错误（拒真错误）：</strong>$H_0$ 为真时错误地拒绝了 $H_0$。其概率记为 $\alpha$，$\alpha = P(\text{拒绝}H_0 \mid H_0\text{为真})$。由研究者事先设定（常取 $0.01, 0.05, 0.10$），又称为检验的显著水平。</p>
+  </div>
+  <div class="step">
+    <p><strong>第二类错误（取伪错误）：</strong>$H_0$ 为假时错误地接受了 $H_0$。其概率记为 $\beta$，$\beta = P(\text{接受}H_0 \mid H_0\text{为假})$。$1 - \beta$ 称为检验的功效（power）。</p>
+  </div>
+  <div class="step">
+    <p><strong>关系：</strong>在样本容量 $n$ 固定时，减小 $\alpha$ 会增大 $\beta$，反之亦然——二者不能同时减小。唯一同时减小两类错误的方法是<strong>增大样本容量 $n$</strong>。实际中遵循"先控制第一类错误 $\alpha$，再在此约束下尽可能减小 $\beta$"的原则。</p>
+  </div>
+  <p><strong>(2) P 值：</strong></p>
+  <div class="step">
+    <p><strong>定义：</strong>在原假设 $H_0$ 为真的条件下，检验统计量取到比当前观测值<strong>更极端</strong>（即更倾向于 $H_1$ 方向）的值的概率。它是观测到的显著水平，也是能拒绝 $H_0$ 的最小 $\alpha$。</p>
+  </div>
+  <div class="step">
+    <p><strong>决策关系：</strong>若 $P\text{-value} \le \alpha$，拒绝 $H_0$（统计性显著）；若 $P\text{-value} > \alpha$，不拒绝 $H_0$。P 值不是 $H_0$ 为真的概率——它是关于<strong>数据</strong>的概率陈述。</p>
+  </div>
+</div>
+
+<!-- ===== SHORT ANSWER 3 ===== -->
+<div class="answer">
+  <div class="answer-label">简答题 3 答案</div>
+  <div class="step">
+    <p><strong>(1) 无偏性：</strong>若 $\mathbb{E}(\hat{\theta}) = \theta$ 对所有 $\theta$ 成立，则称 $\hat{\theta}$ 为 $\theta$ 的无偏估计量。无偏性保证在<strong>重复抽样</strong>下估计量不系统性地偏高或偏低。</p>
+  </div>
+  <div class="step">
+    <p><strong>(2) 一致性（相合性）：</strong>若 $n \to \infty$ 时 $\hat{\theta}_n \xrightarrow{P} \theta$（依概率收敛），即对任意 $\varepsilon > 0$，$\lim_{n\to\infty} P(|\hat{\theta}_n - \theta| < \varepsilon) = 1$，则称 $\hat{\theta}_n$ 是 $\theta$ 的一致估计量。一致性是<strong>大样本性质</strong>，保证样本量足够大时估计可以任意精确。</p>
+  </div>
+  <div class="step">
+    <p><strong>(3) 有效性：</strong>在 $\theta$ 的所有无偏估计量中，方差最小的称为有效估计量（MVUE）。Cramér-Rao 下界 $\text{Var}(\hat{\theta}) \ge 1/[nI(\theta)]$ 给出了无偏估计方差的理论下限，达到该下界的估计量称为有效估计量。</p>
+  </div>
+  <p><strong>三者关系：</strong>无偏性关注期望（有限样本），一致性关注极限行为（大样本），有效性关注方差（精度）。这三条准则是评估估计量的基本标准。但也有例外：有时一个轻微有偏的估计量可能比无偏估计量有更小的均方误差（MSE）。</p>
+  <p><strong>例子：</strong>样本均值 $\bar{X}$ 是总体均值 $\mu$ 的无偏估计，但 $\bar{X}$ 不一定是最有效的——例如当总体是正态分布时 $\bar{X}$ 达到 C-R 下界，是最有效的；但当总体是拉普拉斯分布（双指数分布）时，样本中位数比 $\bar{X}$ 更有效。</p>
+</div>
+
+<!-- ===== SHORT ANSWER 4 ===== -->
+<div class="answer">
+  <div class="answer-label">简答题 4 答案</div>
+  <div class="step">
+    <p><strong>显著水平 α：</strong>检验之前人为设定的、允许犯第一类错误的最大概率。$\alpha$ 是<strong>事先确定</strong>的门槛值（常取 $0.01, 0.05, 0.10$），反映研究者对"假阳性"结论的容忍程度。</p>
+  </div>
+  <div class="step">
+    <p><strong>统计性显著：</strong>检验统计量的观测值落入拒绝域（或 $P \le \alpha$），从而做出"拒绝 $H_0$"的判断结论。</p>
+  </div>
+  <div class="step">
+    <p><strong>统计性显著 ≠ 实际显著：</strong>在大样本下，即使微小的实际差异也可能被检验判断为"统计性显著"。但这种差异在实际中可能毫无意义。</p>
+    <p><strong>举例：</strong>一种新降压药比旧药平均多降 $0.01\text{mmHg}$。若样本量 $n = 10^6$，可能得到 $P < 0.001$（统计性显著），但 $0.01\text{mmHg}$ 的降压幅度在临床上毫无价值（实际不显著）。反之，样本量很小时，即使实际差异很大也可能不显著。</p>
+    <p>因此，统计学界越来越强调报告<strong>效应量（effect size）和置信区间</strong>，而非仅报告 P 值。</p>
+  </div>
+</div>
+
+<!-- ===== SHORT ANSWER 5 ===== -->
+<div class="answer">
+  <div class="answer-label">简答题 5 答案</div>
+  <p><strong>区别：</strong></p>
+  <table>
+    <tr><th>维度</th><th>假设检验</th><th>参数估计</th></tr>
+    <tr><td>目的</td><td>判断参数的命题是否成立</td><td>推断参数的具体数值或范围</td></tr>
+    <tr><td>回答的问题</td><td>"μ 是否等于 μ₀？"</td><td>"μ 是多少？"</td></tr>
+    <tr><td>结论形式</td><td>二分决策（拒绝/不拒绝）</td><td>数值（点估计）或区间（区间估计）</td></tr>
+    <tr><td>概率基础</td><td>小概率事件原理，控制两类错误</td><td>估计量的优良性准则</td></tr>
+  </table>
+  <p><strong>联系：</strong></p>
+  <div class="step">
+    <p><strong>对偶关系：</strong>若 $\theta_0$ 落在 $\theta$ 的 $1-\alpha$ 置信区间内，则在显著水平 $\alpha$ 下不拒绝 $H_0: \theta = \theta_0$；反之则拒绝。利用这一对偶关系，置信区间可以代替假设检验。</p>
+  </div>
+  <div class="step">
+    <p><strong>互补使用：</strong>假设检验回答"是否有差异"，置信区间回答"差异有多大"。现代统计实践建议<strong>同时报告置信区间和效应量</strong>，而不仅仅依赖 P 值做决策。</p>
+  </div>
+</div>
+
+<!-- ===== CALCULATION 1 ===== -->
+<div class="answer page-break">
+  <div class="answer-label">计算题 1 答案（贝叶斯估计）</div>
+  <p><strong>(1) 求后验分布</strong></p>
+  <div class="step">
+    <p>似然函数：$L(\lambda \mid \mathbf{x}) = \prod_{i=1}^n \frac{\lambda^{x_i} e^{-\lambda}}{x_i!} \propto \lambda^{\sum x_i} e^{-n\lambda}$</p>
+    <p>先验分布：$\pi(\lambda) \propto \lambda^{\alpha - 1} e^{-\beta\lambda}$</p>
+    <p>后验核：$\pi(\lambda \mid \mathbf{x}) \propto L \cdot \pi \propto \lambda^{\sum x_i + \alpha - 1} \cdot e^{-(n + \beta)\lambda}$</p>
+    <p>识别分布类型：此为 $\text{Gamma}(\alpha + \sum_{i=1}^n x_i,\; \beta + n)$ 的核。</p>
+    <p><strong>故后验分布为</strong> $\lambda \mid \mathbf{x} \sim \text{Gamma}(\alpha + n\bar{x},\; \beta + n)$。</p>
+  </div>
+  <p><strong>(2) 平方损失下贝叶斯估计</strong></p>
+  <div class="step">
+    <p>平方损失下贝叶斯估计 = 后验均值。</p>
+    <p>$\text{Gamma}(a, b)$ 的期望为 $a/b$，故</p>
+    <p>$$\hat{\lambda}_{\text{Bayes}} = \mathbb{E}(\lambda \mid \mathbf{x}) = \frac{\alpha + n\bar{x}}{\beta + n}$$</p>
+    <p><strong>改写为加权平均形式：</strong></p>
+    <p>$$\hat{\lambda}_{\text{Bayes}} = \frac{\beta}{\beta + n} \cdot \frac{\alpha}{\beta} + \frac{n}{\beta + n} \cdot \bar{x}$$</p>
+    <p>其中 $\alpha/\beta$ 是先验均值 $\mathbb{E}(\lambda)_{\text{prior}}$，$\bar{x}$ 是样本均值（即 $\lambda$ 的 MLE）。</p>
+    <p>先验的权重为 $\beta/(\beta+n)$，样本的权重为 $n/(\beta+n)$。当 $n$ 增大时，样本信息的权重增大，先验信息的影响逐渐减小；当 $\beta$ 相对于 $n$ 很小时，贝叶斯估计趋近于 MLE $\bar{x}$。</p>
+  </div>
+</div>
+
+<!-- ===== CALCULATION 2 ===== -->
+<div class="answer">
+  <div class="answer-label">计算题 2 答案（MLE 与区间估计）</div>
+  <p><strong>(1) MLE</strong></p>
+  <div class="step">
+    <p>$\hat{\mu}_{\text{MLE}} = \bar{x} = 15$</p>
+    <p>$\hat{\sigma}^2_{\text{MLE}} = \frac{1}{n}\sum(x_i - \bar{x})^2 = \frac{n-1}{n}s^2 = \frac{24}{25} \times 16 = 15.36$</p>
+  </div>
+  <p><strong>(2) μ 的双侧 95% 置信区间</strong></p>
+  <div class="step">
+    <p>$\sigma^2$ 未知，用 $t$ 分布。枢轴量：$\frac{\bar{X} - \mu}{S / \sqrt{n}} \sim t(n-1)$</p>
+    <p>$$\bar{x} \pm t_{0.025}(24) \cdot \frac{s}{\sqrt{n}} = 15 \pm 2.064 \times \frac{4}{5} = 15 \pm 1.6512$$</p>
+    <p>区间：$[13.3488,\; 16.6512]$</p>
+  </div>
+  <p><strong>(3) μ 的单侧 95% 置信下限</strong></p>
+  <div class="step">
+    <p>单侧用 $t_\alpha$ 而非 $t_{\alpha/2}$：</p>
+    <p>下限 $= \bar{x} - t_{0.05}(24) \cdot \frac{s}{\sqrt{n}} = 15 - 1.711 \times 0.8 = 15 - 1.3688 = 13.6312$</p>
+    <p><strong>注意区别：</strong>双侧用 $t_{0.025} = 2.064$，单侧用 $t_{0.05} = 1.711$。</p>
+  </div>
+  <p><strong>(4) σ² 的双侧 95% 置信区间</strong></p>
+  <div class="step">
+    <p>$(n-1)S^2 = 24 \times 16 = 384$</p>
+    <p>$$\left[\frac{384}{\chi^2_{0.025}(24)},\; \frac{384}{\chi^2_{0.975}(24)}\right] = \left[\frac{384}{39.364},\; \frac{384}{12.401}\right] = [9.755,\; 30.965]$$</p>
+  </div>
+</div>
+
+<!-- ===== CALCULATION 3 ===== -->
+<div class="answer">
+  <div class="answer-label">计算题 3 答案（假设检验）</div>
+  <p><strong>(1) 假设</strong></p>
+  <div class="step"><p>$H_0: \mu = 50$，$H_1: \mu \neq 50$（双侧检验）</p></div>
+  <p><strong>(2) 检验统计量与拒绝域</strong></p>
+  <div class="step">
+    <p>$\sigma^2$ 未知，使用 $t$ 检验：</p>
+    <p>$$t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}} \sim t(15) \;\; (\text{在 } H_0 \text{ 下})$$</p>
+    <p>拒绝域：$|t| > t_{0.025}(15) = 2.131$</p>
+  </div>
+  <p><strong>(3) 计算与判断</strong></p>
+  <div class="step">
+    <p>$$t_{\text{obs}} = \frac{50.8 - 50}{1.6 / \sqrt{16}} = \frac{0.8}{0.4} = 2.0$$</p>
+    <p>$|t_{\text{obs}}| = 2.0 < 2.131 = t_{0.025}(15)$</p>
+    <p>观测值未落入拒绝域，<strong>不拒绝 $H_0$</strong>。</p>
+    <p>结论：在 $\alpha = 0.05$ 显著水平下，没有充分证据认为该批零件长度不符合设计要求。</p>
+  </div>
+  <p><strong>(4) P 值含义</strong></p>
+  <div class="step">
+    <p>P 值 $= 2 \cdot P(t(15) \ge 2.0)$，即在 $H_0$ 为真的前提下，观察到 $|t| \ge 2.0$ 的概率。由于 $|t_{\text{obs}}|=2.0 < 2.131$，故 P 值 $> 0.05$，不拒绝 $H_0$。精确 P 值约为 $0.064$。</p>
+  </div>
+</div>
+
+<!-- ===== CALCULATION 4 ===== -->
+<div class="answer">
+  <div class="answer-label">计算题 4 答案（双正态总体比较）</div>
+  <p><strong>(1) 假设检验</strong></p>
+  <div class="step">
+    <p>$H_0: \mu_1 = \mu_2$，$H_1: \mu_1 \neq \mu_2$</p>
+    <p>合并样本方差：</p>
+    <p>$$s_w^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2} = \frac{9 \times 3.61 + 9 \times 2.89}{18} = \frac{32.49 + 26.01}{18} = 3.25$$</p>
+    <p>$$s_w = \sqrt{3.25} \approx 1.803$$</p>
+    <p>检验统计量：</p>
+    <p>$$t = \frac{\bar{x}_1 - \bar{x}_2}{s_w \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} = \frac{2.33 - 0.75}{1.803 \times \sqrt{0.2}} = \frac{1.58}{1.803 \times 0.4472} = \frac{1.58}{0.8064} \approx 1.96$$</p>
+    <p>拒绝域：$|t| > t_{0.025}(18) = 2.101$</p>
+    <p>$|t_{\text{obs}}| = 1.96 < 2.101$，<strong>不拒绝 $H_0$</strong>。</p>
+  </div>
+  <p><strong>(2) μ₁ − μ₂ 的 95% 置信区间</strong></p>
+  <div class="step">
+    <p>$$(\bar{x}_1 - \bar{x}_2) \pm t_{0.025}(18) \cdot s_w \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$$</p>
+    <p>$$= 1.58 \pm 2.101 \times 1.803 \times 0.4472$$</p>
+    <p>$$= 1.58 \pm 2.101 \times 0.8063 = 1.58 \pm 1.694 = [-0.114,\; 3.274]$$</p>
+    <p>区间包含 0，与检验结论一致（不拒绝 $H_0$）。</p>
+  </div>
+</div>
+
+<!-- ===== CALCULATION 5 ===== -->
+<div class="answer">
+  <div class="answer-label">计算题 5 答案（单因素方差分析）</div>
+  <p><strong>(1) 假设</strong></p>
+  <div class="step"><p>$H_0: \mu_A = \mu_B = \mu_C$，$H_1$：至少有两个均值不等</p></div>
+  <p><strong>(2) 计算</strong></p>
+  <div class="step">
+    <p><strong>各组和与总：</strong></p>
+    <p>$T_A = 88+83+90+85+84 = 430$，$n_A = 5$</p>
+    <p>$T_B = 76+72+75+78+74 = 375$，$n_B = 5$</p>
+    <p>$T_C = 92+95+96+90+93 = 466$，$n_C = 5$</p>
+    <p>$T = 430 + 375 + 466 = 1271$，$n = 15$</p>
+
+    <p><strong>修正项：</strong>$CT = T^2/n = 1271^2/15 = 1615441/15 = 107696.067$</p>
+
+    <p><strong>总平方和 SST：</strong></p>
+    <p>先算 $\sum\sum x_{ij}^2$：</p>
+    <p>A组平方：$88^2+83^2+90^2+85^2+84^2 = 7744+6889+8100+7225+7056 = 37014$</p>
+    <p>B组平方：$76^2+72^2+75^2+78^2+74^2 = 5776+5184+5625+6084+5476 = 28145$</p>
+    <p>C组平方：$92^2+95^2+96^2+90^2+93^2 = 8464+9025+9216+8100+8649 = 43454$</p>
+    <p>$\sum\sum x_{ij}^2 = 37014 + 28145 + 43454 = 108613$</p>
+    <p>$SST = 108613 - 107696.067 = 916.933$</p>
+
+    <p><strong>组间平方和 SSA：</strong></p>
+    <p>$SSA = \frac{430^2}{5} + \frac{375^2}{5} + \frac{466^2}{5} - CT$</p>
+    <p>$= \frac{184900}{5} + \frac{140625}{5} + \frac{217156}{5} - 107696.067$</p>
+    <p>$= 36980 + 28125 + 43431.2 - 107696.067$</p>
+    <p>$= 108536.2 - 107696.067 = 840.133$</p>
+
+    <p><strong>组内平方和 SSE：</strong></p>
+    <p>$SSE = SST - SSA = 916.933 - 840.133 = 76.8$</p>
+
+    <p><strong>自由度：</strong></p>
+    <p>$f_A = 3-1 = 2$，$f_E = 15-3 = 12$，$f_T = 15-1 = 14$</p>
+    <p>验证：$2 + 12 = 14$ ✓，$840.133 + 76.8 = 916.933$ ✓</p>
+  </div>
+  <p><strong>(3) 方差分析表</strong></p>
+  <table>
+    <tr><th>来源</th><th>平方和</th><th>自由度</th><th>均方</th><th>F 值</th></tr>
+    <tr><td>教学方法</td><td>840.133</td><td>2</td><td>420.067</td><td rowspan="2">$F = \frac{420.067}{6.4} = 65.635$</td></tr>
+    <tr><td>误差</td><td>76.8</td><td>12</td><td>6.4</td></tr>
+    <tr><td>总和</td><td>916.933</td><td>14</td><td></td><td></td></tr>
+  </table>
+  <p><strong>(4) 判断</strong></p>
+  <div class="step">
+    <p>$F_{\text{obs}} = 65.635 > F_{0.05}(2, 12) = 3.89$，<strong>拒绝 $H_0$</strong>。</p>
+    <p>结论：三种教学方法对学生成绩的影响有极显著差异（$P \ll 0.001$）。</p>
+  </div>
+</div>
+
+<!-- ===== CALCULATION 6 ===== -->
+<div class="answer page-break">
+  <div class="answer-label">计算题 6 答案（UMVUE / C-R 下界）</div>
+  <p><strong>(1) Fisher 信息量与 C-R 下界</strong></p>
+  <div class="step">
+    <p>单样本对数密度：$\ln f(x; \lambda) = \ln \lambda - \lambda x$</p>
+    <p>一阶导：$\frac{\partial \ln f}{\partial \lambda} = \frac{1}{\lambda} - x$</p>
+    <p>二阶导：$\frac{\partial^2 \ln f}{\partial \lambda^2} = -\frac{1}{\lambda^2}$</p>
+    <p>Fisher 信息量：$I(\lambda) = -\mathbb{E}\left[\frac{\partial^2 \ln f}{\partial \lambda^2}\right] = -\mathbb{E}\left[-\frac{1}{\lambda^2}\right] = \frac{1}{\lambda^2}$</p>
+    <p><strong>C-R 下界：</strong>$\displaystyle \text{CRLB} = \frac{1}{n I(\lambda)} = \frac{\lambda^2}{n}$</p>
+  </div>
+  <p><strong>(2) 1/X̄ 的评估</strong></p>
+  <div class="step">
+    <p>由 Jenson 不等式（$1/x$ 为凸函数），$\mathbb{E}(1/\bar{X}) > 1/\mathbb{E}(\bar{X}) = \lambda$</p>
+    <p>更精确地，$T = \sum X_i \sim \text{Gamma}(n, \lambda)$，$\mathbb{E}(1/T) = \frac{\lambda}{n-1}$</p>
+    <p>故 $\mathbb{E}(1/\bar{X}) = n \cdot \mathbb{E}(1/T) = n \cdot \frac{\lambda}{n-1} = \frac{n}{n-1}\lambda \neq \lambda$</p>
+    <p><strong>$1/\bar{X}$ 不是 λ 的无偏估计</strong>，它系统性地高估了 λ。</p>
+  </div>
+  <p><strong>(3) 求 UMVUE</strong></p>
+  <div class="step">
+    <p><strong>步骤 1：找充分完备统计量。</strong></p>
+    <p>将密度写为指数族形式：</p>
+    <p>$f(x; \lambda) = \exp\{-\lambda x + \ln \lambda\},\; x > 0$</p>
+    <p>自然参数 $\eta(\lambda) = -\lambda$，充分统计量 $T(x) = x$。</p>
+    <p>故 $T = \sum_{i=1}^n X_i$ 是 λ 的充分完备统计量（参数空间 $(0, \infty)$ 有内点）。</p>
+
+    <p><strong>步骤 2：构造无偏估计。</strong></p>
+    <p>已知 $T \sim \text{Gamma}(n, \lambda)$。</p>
+    <p>$\mathbb{E}\left(\frac{1}{T}\right) = \int_0^\infty \frac{1}{t} \cdot \frac{\lambda^n}{\Gamma(n)} t^{n-1} e^{-\lambda t} dt = \frac{\lambda^n}{\Gamma(n)} \frac{\Gamma(n-1)}{\lambda^{n-1}} = \frac{\lambda}{n-1}$</p>
+    <p>故 $\mathbb{E}\left(\frac{n-1}{T}\right) = \lambda$。</p>
+
+    <p><strong>步骤 3：由 Lehmann-Scheffé 定理得结论。</strong></p>
+    <p>$\hat{\lambda} = \frac{n-1}{T} = \frac{n-1}{\sum_{i=1}^n X_i} = \frac{n-1}{n\bar{X}}$ 是充分完备统计量 $T$ 的函数，且是 λ 的无偏估计。</p>
+    <p><strong>故 λ 的 UMVUE 为</strong> $\displaystyle \hat{\lambda}_{\text{UMVUE}} = \frac{n-1}{\sum X_i} = \frac{n-1}{n\bar{X}}$。</p>
+
+    <p><strong>补充验证方差：</strong></p>
+    <p>$\text{Var}(\hat{\lambda}) = \frac{\lambda^2}{n-2}$（$n>2$），而 C-R 下界为 $\lambda^2/n$。</p>
+    <p>$\frac{\lambda^2}{n-2} > \frac{\lambda^2}{n}$，UMVUE 的方差未达到 C-R 下界（注意：C-R 下界是针对所有无偏估计的，但不是每个无偏估计都能达到）。这说明指数分布中 λ 没有达到 C-R 下界的无偏估计量。</p>
+  </div>
+</div>
+
+<!-- ===== PROOF ===== -->
+<div class="answer">
+  <div class="answer-label">证明题 答案</div>
+  <p><strong>(1) 证明 X̄ 是充分统计量</strong></p>
+  <div class="step">
+    <p>样本联合密度：</p>
+    <p>$f(x_1, \ldots, x_n; \mu) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left\{-\frac{(x_i - \mu)^2}{2\sigma^2}\right\}$</p>
+    <p>$= \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^n \exp\left\{-\frac{1}{2\sigma^2} \sum_{i=1}^n (x_i - \mu)^2\right\}$</p>
+    <p>展开指数部分：</p>
+    <p>$\sum (x_i - \mu)^2 = \sum (x_i - \bar{x} + \bar{x} - \mu)^2$</p>
+    <p>$= \sum (x_i - \bar{x})^2 + n(\bar{x} - \mu)^2 + 2(\bar{x} - \mu)\sum (x_i - \bar{x})$</p>
+    <p>$= \sum (x_i - \bar{x})^2 + n(\bar{x} - \mu)^2$  （交叉项为 0）</p>
+    <p>因此：</p>
+    <p>$f(x_1, \ldots, x_n; \mu) = \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^n \exp\left\{-\frac{1}{2\sigma^2}\sum (x_i - \bar{x})^2\right\} \cdot \exp\left\{-\frac{n(\bar{x} - \mu)^2}{2\sigma^2}\right\}$</p>
+    <p>$= h(\mathbf{x}) \cdot g(\bar{x}, \mu)$</p>
+    <p>其中 $h(\mathbf{x}) = (\frac{1}{\sqrt{2\pi\sigma^2}})^n \exp\{-\frac{1}{2\sigma^2}\sum(x_i-\bar{x})^2\}$ 不依赖 $\mu$，</p>
+    <p>$g(\bar{x}, \mu) = \exp\{-\frac{n(\bar{x}-\mu)^2}{2\sigma^2}\}$ 仅通过 $\bar{x}$ 依赖样本。</p>
+    <p><strong>由 Neyman-Fisher 分解定理，X̄ 是 μ 的充分统计量。∎</strong></p>
+  </div>
+
+  <p><strong>(2) 证明 X̄ 是 μ 的有效估计量</strong></p>
+  <div class="step">
+    <p><strong>① 验证无偏性：</strong>$\mathbb{E}(\bar{X}) = \mathbb{E}(\frac{1}{n}\sum X_i) = \frac{n\mu}{n} = \mu$。✓</p>
+
+    <p><strong>② 计算 Fisher 信息量与 C-R 下界：</strong></p>
+    <p>单样本对数密度：$\ln f = -\frac{1}{2}\ln(2\pi\sigma^2) - \frac{(x-\mu)^2}{2\sigma^2}$</p>
+    <p>一阶导：$\frac{\partial \ln f}{\partial \mu} = \frac{x - \mu}{\sigma^2}$</p>
+    <p>二阶导：$\frac{\partial^2 \ln f}{\partial \mu^2} = -\frac{1}{\sigma^2}$</p>
+    <p>$I(\mu) = -\mathbb{E}\left[\frac{\partial^2 \ln f}{\partial \mu^2}\right] = -\mathbb{E}\left[-\frac{1}{\sigma^2}\right] = \frac{1}{\sigma^2}$</p>
+    <p>$\text{CRLB} = \frac{1}{n I(\mu)} = \frac{\sigma^2}{n}$</p>
+
+    <p><strong>③ 计算 X̄ 的方差：</strong></p>
+    <p>$\text{Var}(\bar{X}) = \text{Var}\left(\frac{1}{n}\sum X_i\right) = \frac{1}{n^2} \cdot n\sigma^2 = \frac{\sigma^2}{n}$</p>
+
+    <p><strong>④ 比较：</strong>$\text{Var}(\bar{X}) = \frac{\sigma^2}{n} = \text{CRLB}$，方差达到 C-R 下界。</p>
+    <p><strong>故 X̄ 是 μ 的有效估计量（且由 (1) 的充分性和 Lehmann-Scheffé 定理，它还是 UMVUE）。∎</strong></p>
+  </div>
+</div>
+
+<!-- ================================================ -->
+<!-- APPENDIX -->
+<!-- ================================================ -->
+<hr class="divider">
+<h2 class="section-title page-break" id="appendix">📚 附录：解题体系总整理</h2>
+
+<!-- A. 解题思路 -->
+<h3 style="color: var(--primary); margin: 24px 0 12px;">A. 六大题型的解题思路</h3>
+
+<div class="formula-grid">
+  <div class="formula-card">
+    <h4>🔵 题型 1：贝叶斯估计（平方损失）</h4>
+    <ul>
+      <li><strong>核心公式：</strong>平方损失下 $\hat{\theta}_B = \mathbb{E}(\theta \mid \mathbf{x})$</li>
+      <li><strong>套路：</strong>写似然 → 写先验 → 乘出后验核 → 识别分布 → 取期望</li>
+      <li><strong>必背：</strong>Beta-Binomial、Gamma-Poisson、Normal-Normal 三组共轭</li>
+      <li><strong>常见坑：</strong>参数化方式（Gamma 的 rate/scale 参数化不要搞混）</li>
+      <li><strong>加分点：</strong>会写成先验均值与样本均值的加权平均形式</li>
+    </ul>
+  </div>
+
+  <div class="formula-card">
+    <h4>🟢 题型 2：MLE + 区间估计</h4>
+    <ul>
+      <li><strong>MLE 步骤：</strong>写似然 → 取对数 → 求导 = 0 → 解出 $\hat{\theta}$ → 验证二阶导 &lt; 0</li>
+      <li><strong>区间估计核心：</strong>找枢轴量（分布已知且不依赖参数）</li>
+      <li><strong>双侧 vs 单侧：</strong>双侧用 $\alpha/2$ 分位数，单侧用 $\alpha$ 分位数</li>
+      <li><strong>区分：</strong>$\sigma$ 已知用 Z，未知用 t；方差用卡方</li>
+      <li><strong>MLE 不变性：</strong>若 $\hat{\theta}$ 是 MLE，则 $g(\hat{\theta})$ 也是 $g(\theta)$ 的 MLE</li>
+    </ul>
+  </div>
+
+  <div class="formula-card">
+    <h4>🟡 题型 3：假设检验（双侧为主）</h4>
+    <ul>
+      <li><strong>五步法：</strong>假设 → 统计量+分布 → α+拒绝域 → 观测值 → 结论</li>
+      <li><strong>选择统计量口诀：</strong>一个正态均值 σ²已知用 Z，未知用 t；两个均值方差相等用 pooled-t，不等用 Welch</li>
+      <li><strong>P 值法：</strong>$P \le \alpha$ 拒绝，$P > \alpha$ 不拒绝</li>
+      <li><strong>结论写法：</strong>不拒绝 ≠ 接受 H₀！写"没有充分证据拒绝 H₀"</li>
+    </ul>
+  </div>
+
+  <div class="formula-card">
+    <h4>🟠 题型 4：区间估计（单侧为主）</h4>
+    <ul>
+      <li><strong>关键区别：</strong>单侧下限用 $t_\alpha$（双侧用 $t_{\alpha/2}$）</li>
+      <li><strong>正态均值单侧下限：</strong>$\bar{x} - t_\alpha(n-1) \cdot s/\sqrt{n}$</li>
+      <li><strong>正态均值单侧上限：</strong>$\bar{x} + t_\alpha(n-1) \cdot s/\sqrt{n}$</li>
+      <li><strong>方差单侧下限：</strong>$(n-1)S^2 / \chi^2_\alpha(n-1)$</li>
+      <li><strong>方差单侧上限：</strong>$(n-1)S^2 / \chi^2_{1-\alpha}(n-1)$</li>
+    </ul>
+  </div>
+
+  <div class="formula-card">
+    <h4>🔴 题型 5：单因素方差分析</h4>
+    <ul>
+      <li><strong>口诀：</strong>算 Tᵢ → CT = T²/n → ΣΣx² → SST = ΣΣx² − CT → SSA = Σ(Tᵢ²/nᵢ) − CT → SSE = SST − SSA</li>
+      <li><strong>自由度：</strong>$f_A = k-1$，$f_E = n-k$</li>
+      <li><strong>ANOVA 表必含：</strong>来源、SS、df、MS、F</li>
+      <li><strong>F = MSA/MSE</strong>，比较 $F_\alpha(k-1, n-k)$</li>
+      <li><strong>验证：</strong>SST = SSA + SSE，$f_T = f_A + f_E$</li>
+    </ul>
+  </div>
+
+  <div class="formula-card">
+    <h4>🟣 题型 6：UMVUE / C-R 下界</h4>
+    <ul>
+      <li><strong>求 C-R 下界：</strong>算 ∂²ln f/∂θ² → 取负期望 → $I(\theta)$ → CRLB = $1/[nI(\theta)]$</li>
+      <li><strong>求 UMVUE 路径：</strong>写指数族 → 识别充分完备统计量 T → 找无偏估计 → 求条件期望（或直接用 Lehmann-Scheffé 定理）</li>
+      <li><strong>分解定理：</strong>$f = g(T, \theta) \cdot h(\mathbf{x})$，则 T 充分</li>
+      <li><strong>关键结论：</strong>指数族中自然充分统计量是充分完备的</li>
+    </ul>
+  </div>
+</div>
+
+<!-- B. 必背公式 -->
+<h3 style="color: var(--primary); margin: 30px 0 12px;">B. 必背公式速查</h3>
+
+<div class="formula-grid">
+  <div class="formula-card">
+    <h4>📌 正态总体均值 μ 的置信区间</h4>
+    <ul>
+      <li>σ² 已知（双侧）：$\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}$</li>
+      <li>σ² 未知（双侧）：$\bar{x} \pm t_{\alpha/2}(n-1) \cdot \frac{s}{\sqrt{n}}$</li>
+      <li>单侧下限：$\bar{x} - t_\alpha(n-1) \cdot \frac{s}{\sqrt{n}}$</li>
+      <li>单侧上限：$\bar{x} + t_\alpha(n-1) \cdot \frac{s}{\sqrt{n}}$</li>
+    </ul>
+  </div>
+  <div class="formula-card">
+    <h4>📌 正态总体方差 σ² 的置信区间</h4>
+    <ul>
+      <li>双侧：$\left[\frac{(n-1)s^2}{\chi^2_{\alpha/2}(n-1)},\; \frac{(n-1)s^2}{\chi^2_{1-\alpha/2}(n-1)}\right]$</li>
+      <li>单侧下限：$\frac{(n-1)s^2}{\chi^2_\alpha(n-1)}$</li>
+      <li>单侧上限：$\frac{(n-1)s^2}{\chi^2_{1-\alpha}(n-1)}$</li>
+    </ul>
+  </div>
+  <div class="formula-card">
+    <h4>📌 假设检验统计量</h4>
+    <ul>
+      <li>单样本均值（σ²已知）：$Z = \frac{\bar{x} - \mu_0}{\sigma/\sqrt{n}} \sim N(0,1)$</li>
+      <li>单样本均值（σ²未知）：$t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}} \sim t(n-1)$</li>
+      <li>单样本方差：$\chi^2 = \frac{(n-1)s^2}{\sigma_0^2} \sim \chi^2(n-1)$</li>
+      <li>两样本均值（等方差）：$t = \frac{\bar{x}_1 - \bar{x}_2}{s_w\sqrt{1/n_1 + 1/n_2}} \sim t(n_1+n_2-2)$</li>
+      <li>两样本方差比：$F = s_1^2/s_2^2 \sim F(n_1-1, n_2-1)$</li>
+    </ul>
+  </div>
+  <div class="formula-card">
+    <h4>📌 常用分布的 MLE & 期望</h4>
+    <table style="font-size:0.85em;">
+      <tr><th>分布</th><th>MLE</th><th>E(X)</th><th>Var(X)</th></tr>
+      <tr><td>$N(\mu,\sigma^2)$</td><td>$\hat{\mu}=\bar{x}, \hat{\sigma}^2=\frac{n-1}{n}s^2$</td><td>$\mu$</td><td>$\sigma^2$</td></tr>
+      <tr><td>Poisson(λ)</td><td>$\hat{\lambda}=\bar{x}$</td><td>λ</td><td>λ</td></tr>
+      <tr><td>Exp(λ)</td><td>$\hat{\lambda}=1/\bar{x}$</td><td>$1/\lambda$</td><td>$1/\lambda^2$</td></tr>
+      <tr><td>B(1,p)</td><td>$\hat{p}=\bar{x}$</td><td>p</td><td>$p(1-p)$</td></tr>
+      <tr><td>$U(0,\theta)$</td><td>$\hat{\theta}=X_{(n)}$</td><td>$\theta/2$</td><td>$\theta^2/12$</td></tr>
+    </table>
+  </div>
+  <div class="formula-card">
+    <h4>📌 C-R 下界计算方法</h4>
+    <ul>
+      <li>① $\ln f(x;\theta)$，求 $\partial \ln f / \partial \theta$</li>
+      <li>② 求 $\partial^2 \ln f / \partial \theta^2$</li>
+      <li>③ $I(\theta) = -\mathbb{E}[\partial^2 \ln f / \partial \theta^2]$</li>
+      <li>④ CRLB $= 1 / [n I(\theta)]$</li>
+      <li>⑤ 若某无偏估计方差 = CRLB，则为有效估计</li>
+      <li><strong>注意：</strong>多参数时用 Fisher 信息矩阵</li>
+    </ul>
+  </div>
+  <div class="formula-card">
+    <h4>📌 共轭先验速查</h4>
+    <table style="font-size:0.85em;">
+      <tr><th>似然</th><th>先验</th><th>后验</th></tr>
+      <tr><td>Bin(n,p)</td><td>Beta(α,β)</td><td>Beta(α+Σxᵢ, β+n−Σxᵢ)</td></tr>
+      <tr><td>Poisson(λ)</td><td>Gamma(α,β)</td><td>Gamma(α+Σxᵢ, β+n)</td></tr>
+      <tr><td>Exp(λ)</td><td>Gamma(α,β)</td><td>Gamma(α+n, β+Σxᵢ)</td></tr>
+      <tr><td>$N(\mu,\sigma_0^2)$</td><td>$N(\mu_0,\tau^2)$</td><td>$N(\mu_n,\tau_n^2)$</td></tr>
+    </table>
+  </div>
+  <div class="formula-card">
+    <h4>📌 方差分析公式</h4>
+    <ul>
+      <li>$CT = T^2/n$</li>
+      <li>$SST = \sum\sum x_{ij}^2 - CT$</li>
+      <li>$SSA = \sum(T_i^2/n_i) - CT$</li>
+      <li>$SSE = SST - SSA$</li>
+      <li>$f_A = k-1,\; f_E = n-k,\; f_T = n-1$</li>
+      <li>$MSA = SSA/f_A,\; MSE = SSE/f_E$</li>
+      <li>$F = MSA/MSE \sim F(f_A, f_E)$</li>
+    </ul>
+  </div>
+  <div class="formula-card">
+    <h4>📌 Fisher 信息量常见结果</h4>
+    <table style="font-size:0.85em;">
+      <tr><th>分布</th><th>$I(\theta)$</th><th>CRLB</th></tr>
+      <tr><td>$N(\mu,\sigma^2)$, μ未知</td><td>$1/\sigma^2$</td><td>$\sigma^2/n$</td></tr>
+      <tr><td>$N(\mu,\sigma^2)$, σ未知</td><td>$2/\sigma^2$ 或 $1/(2\sigma^4)$</td><td>$2\sigma^4/n$</td></tr>
+      <tr><td>Poisson(λ)</td><td>$1/\lambda$</td><td>$\lambda/n$</td></tr>
+      <tr><td>Exp(λ)</td><td>$1/\lambda^2$</td><td>$\lambda^2/n$</td></tr>
+      <tr><td>Bin(1,p)</td><td>$1/[p(1-p)]$</td><td>$p(1-p)/n$</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- C. 常见陷阱 -->
+<h3 style="color: var(--primary); margin: 30px 0 12px;">C. 高频踩坑点与辨析</h3>
+
+<div class="card">
+  <table>
+    <tr><th>易混概念</th><th>正确理解</th><th>错误理解</th></tr>
+    <tr>
+      <td>MLE 的 σ²</td>
+      <td>分母是 $n$：$\hat{\sigma}^2 = \frac{1}{n}\sum(x_i - \bar{x})^2$</td>
+      <td>分母是 $n-1$（那是无偏估计 $S^2$）</td>
+    </tr>
+    <tr>
+      <td>不拒绝 H₀</td>
+      <td>"没有充分证据拒绝 H₀"</td>
+      <td>"接受 H₀" 或 "证明 H₀ 为真"</td>
+    </tr>
+    <tr>
+      <td>P 值</td>
+      <td>数据在 H₀ 下的极端程度</td>
+      <td>H₀ 为真的概率</td>
+    </tr>
+    <tr>
+      <td>置信区间</td>
+      <td>区间是随机的，参数是固定的</td>
+      <td>"参数有 95% 概率落入区间"</td>
+    </tr>
+    <tr>
+      <td>单侧 vs 双侧查表</td>
+      <td>单侧用 $z_\alpha$，双侧用 $z_{\alpha/2}$</td>
+      <td>都用 $z_{\alpha/2}$</td>
+    </tr>
+    <tr>
+      <td>贝叶斯后验期望</td>
+      <td>仅平方损失下等于贝叶斯估计</td>
+      <td>任何损失下都是后验期望</td>
+    </tr>
+    <tr>
+      <td>C-R 下界</td>
+      <td>下界，不是所有无偏估计都能达到</td>
+      <td>任何无偏估计的方差都可等于 CRLB</td>
+    </tr>
+    <tr>
+      <td>充分统计量</td>
+      <td>包含样本中关于参数的全部信息</td>
+      <td>充分统计量一定是完备的</td>
+    </tr>
+  </table>
+</div>
+
+<!-- D. 证明题框架 -->
+<h3 style="color: var(--primary); margin: 30px 0 12px;">D. 证明题标准框架</h3>
+
+<div class="card">
+  <table>
+    <tr><th style="width:25%;">证明类型</th><th style="width:40%;">核心步骤</th><th>关键词</th></tr>
+    <tr>
+      <td><strong>分解定理证充分性</strong></td>
+      <td>① 写联合密度/分布列<br>② 将含 θ 的部分与含 T 的打包为 g(T, θ)<br>③ 剩下不含 θ 的作为 h(x)<br>④ 结论：由分解定理，T 充分</td>
+      <td>"分离变量、不含 θ"</td>
+    </tr>
+    <tr>
+      <td><strong>证达到 C-R 下界</strong></td>
+      <td>① 证无偏性：E(θ̂) = θ<br>② 算 Fisher 信息量 I(θ)<br>③ 算 CRLB = 1/[n I(θ)]<br>④ 算 Var(θ̂)<br>⑤ 比较：Var(θ̂) = CRLB → 有效估计</td>
+      <td>"二阶导求期望、方差比"</td>
+    </tr>
+    <tr>
+      <td><strong>L-S 定理证 UMVUE</strong></td>
+      <td>① 写指数族形式 → 识别充分完备统计量 T<br>② 找 θ 的一个无偏估计 θ̃<br>③ 若 θ̃ 是 T 的函数 → 由 L-S，θ̃ 是 UMVUE<br>④ 若 θ̃ 不是 T 的函数 → 算 E(θ̃|T)，由 L-S 此为 UMVUE</td>
+      <td>"指数族、条件期望、唯一"</td>
+    </tr>
+    <tr>
+      <td><strong>SST = SSA + SSE</strong></td>
+      <td>① SST = ΣΣ(Xᵢⱼ − X̄)²<br>② 括号内 ±X̄ᵢ<br>③ 展开平方，交叉项 Σⱼ(Xᵢⱼ − X̄ᵢ) = 0<br>④ 得 SST = SSE + SSA</td>
+      <td>"加减组均值、交叉项为零"</td>
+    </tr>
+    <tr>
+      <td><strong>贝叶斯后验均值</strong></td>
+      <td>① 写后验期望损失 R(d) = E[(θ−d)²|x]<br>② 展开 R(d) = E(θ²|x) − 2d·E(θ|x) + d²<br>③ 对 d 求导 = 0 → d* = E(θ|x)<br>④ 二阶导 = 2 > 0 验证极小值</td>
+      <td>"求导、极小值验证"</td>
+    </tr>
+  </table>
+</div>
+
+<!-- E. 关键结论 -->
+<h3 style="color: var(--primary); margin: 30px 0 12px;">E. 必须牢记的关键结论</h3>
+
+<div class="formula-grid">
+  <div class="formula-card">
+    <h4>🔑 结论 1：枢轴量法的核心</h4>
+    <p>构造一个包含样本和参数的函数 $G(T, \theta)$，其分布<strong>完全已知且不依赖任何未知参数</strong>，利用分布分位数反解出 θ 的范围。</p>
+  </div>
+  <div class="formula-card">
+    <h4>🔑 结论 2：指数族的威力</h4>
+    <p>若分布属于指数族 $f(x;\theta) = h(x)\exp\{\eta(\theta) \cdot T(x) - A(\theta)\}$，则 $T = \sum T(X_i)$ 是<strong>充分完备统计量</strong>——这是求 UMVUE 的最短路径。</p>
+  </div>
+  <div class="formula-card">
+    <h4>🔑 结论 3：两类错误不可兼得</h4>
+    <p>n 固定时 α ↓ ⇒ β ↑，唯一出路是<strong>增大 n</strong>。这就是为什么实验设计阶段就需要确定样本量（功效分析）。</p>
+  </div>
+  <div class="formula-card">
+    <h4>🔑 结论 4：检验与区间的对偶性</h4>
+    <p>置信区间就是"被接受的参数集合"。若 θ₀ 在 1−α 置信区间内 ⇔ 不拒绝 H₀: θ=θ₀（水平 α）。</p>
+  </div>
+  <div class="formula-card">
+    <h4>🔑 结论 5：UMVUE 的唯一性</h4>
+    <p>若充分完备统计量存在，则 UMVUE <strong>唯一</strong>：一定是充分完备统计量的函数。反过来，不是充分完备统计量函数的无偏估计一定不是 UMVUE。</p>
+  </div>
+  <div class="formula-card">
+    <h4>🔑 结论 6：样本方差的分母</h4>
+    <p>$S^2 = \frac{1}{n-1}\sum(X_i - \bar{X})^2$ → 无偏估计<br>$\hat{\sigma}^2_{\text{MLE}} = \frac{1}{n}\sum(X_i - \bar{X})^2$ → 有偏但渐近无偏<br>这是考试最爱考的区分点！</p>
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<div style="text-align:center; margin: 40px 0 20px; color: var(--muted); font-size:0.85em;">
+  <hr style="border-color: var(--border); margin-bottom: 12px;">
+  <p>祝你考试顺利！📐✨</p>
+</div>
+
+</div><!-- .container -->
+</body>
+</html>
