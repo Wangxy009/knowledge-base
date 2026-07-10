@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>AI 智能体在信贷客户信用风险预警中的应用实践报告</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm; }
+  body {
+    margin: 0;
+    color: #172033;
+    font-family: "Hiragino Sans GB", "STHeiti", "PingFang SC", Arial, sans-serif;
+    line-height: 1.72;
+    font-size: 12.2pt;
+    background: #ffffff;
+  }
+  .cover {
+    min-height: 250mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    page-break-after: always;
+  }
+  .tag {
+    width: max-content;
+    padding: 7px 16px;
+    border-radius: 7px;
+    color: #2563eb;
+    background: #eaf2ff;
+    font-size: 12pt;
+    font-weight: 700;
+    letter-spacing: .3px;
+  }
+  h1 {
+    margin: 28px 0 20px;
+    font-size: 30pt;
+    line-height: 1.28;
+    color: #0b1f44;
+  }
+  .subtitle {
+    color: #53627a;
+    font-size: 15pt;
+    margin-bottom: 42px;
+  }
+  .info {
+    border-top: 3px solid #2563eb;
+    padding-top: 18px;
+    color: #334155;
+    font-size: 13pt;
+  }
+  h2 {
+    margin: 24px 0 10px;
+    color: #0b1f44;
+    font-size: 18pt;
+    border-left: 5px solid #2563eb;
+    padding-left: 10px;
+    page-break-after: avoid;
+  }
+  h3 {
+    margin: 18px 0 8px;
+    color: #0f766e;
+    font-size: 14.2pt;
+  }
+  p { margin: 7px 0; }
+  .note {
+    margin: 12px 0;
+    padding: 10px 14px;
+    background: #f5f8fc;
+    border: 1px solid #d8e2f1;
+    border-radius: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px;
+    font-size: 10.8pt;
+  }
+  th {
+    background: #0b1f44;
+    color: white;
+    font-weight: 700;
+  }
+  th, td {
+    border: 1px solid #d8e2f1;
+    padding: 8px 9px;
+    vertical-align: top;
+  }
+  ul { margin: 7px 0 10px 1.2em; padding: 0; }
+  li { margin: 3px 0; }
+  .prompt {
+    white-space: pre-wrap;
+    background: #0f172a;
+    color: #eef2ff;
+    padding: 14px 16px;
+    border-radius: 9px;
+    font-size: 10.5pt;
+    line-height: 1.62;
+  }
+  .bar-row { display: flex; align-items: center; margin: 7px 0; gap: 10px; }
+  .bar-label { width: 88px; color: #334155; }
+  .bar-track { flex: 1; height: 16px; background: #e8eef7; border-radius: 9px; overflow: hidden; }
+  .bar { height: 100%; background: #2563eb; }
+  .score { width: 24px; text-align: right; color: #0b1f44; font-weight: 700; }
+  .small { color: #64748b; font-size: 10pt; }
+  .page-break { page-break-before: always; }
+</style>
+</head>
+<body>
+  <section class="cover">
+    <div class="tag">AI + FINANCE PRACTICE</div>
+    <h1>AI 智能体在信贷客户<br>信用风险预警中的应用实践报告</h1>
+    <div class="subtitle">围绕金融信息处理场景，完成一次“任务设计 + 工具使用 + 结果分析”的课程实践。</div>
+    <div class="info">
+      <p>姓名：__________　学号：__________　班级：__________</p>
+      <p>报告方向：信贷客户信用风险预警</p>
+      <p>说明：本报告使用模拟样本，不包含真实客户隐私，不构成投资建议或授信建议。</p>
+    </div>
+  </section>
+
+  <h2>一、实验目标与业务场景</h2>
+  <p>本次实验选择“信贷客户信用风险预警”作为金融业务场景。银行在贷后管理中需要定期查看企业客户的经营数据、还款记录、账户流水、外部公开信息和客户经理备注。传统做法依赖人工逐项查看，工作量较大，也容易遗漏早期风险信号。</p>
+  <p>本实验的目标是设计一个 AI 智能体，让它在给定模拟资料的情况下，完成客户资料整理、异常信号提取、风险等级初判和人工复核清单生成。它的定位不是自动审批贷款，而是作为客户经理和风险审核员的辅助工具，提高发现问题和组织证据的效率。</p>
+  <div class="note"><strong>核心问题：</strong>AI 能否在有限资料下，把分散的风险线索整理成结构化、可复核、可执行的预警结果。</div>
+
+  <h2>二、实验输入与任务设计</h2>
+  <p>为了保护隐私，本实验使用模拟客户“华东某小微制造企业 A”的简化资料。输入数据覆盖四类信号：经营变化、还款表现、外部信息和人工备注。</p>
+  <table>
+    <tr><th>资料类别</th><th>模拟输入</th><th>可能含义</th></tr>
+    <tr><td>经营数据</td><td>近 6 个月销售额从 120 万元降至 86 万元，连续 4 个月下降。</td><td>收入端承压，现金流可能变弱。</td></tr>
+    <tr><td>还款记录</td><td>近两期利息分别延迟 3 天和 5 天入账，无本金逾期。</td><td>出现轻微还款压力，但尚未形成严重违约。</td></tr>
+    <tr><td>外部公开信息</td><td>出现一条合同纠纷公告，金额约 38 万元，尚未判决。</td><td>需要核验主体、金额、影响范围。</td></tr>
+    <tr><td>客户经理备注</td><td>核心客户订单延期，企业称短期内可恢复交付。</td><td>订单延期可能影响回款，但需要进一步确认。</td></tr>
+  </table>
+  <p>本实验要求智能体输出三类内容：第一，低 / 中 / 高风险等级；第二，按类别列出关键风险信号；第三，列出人工复核问题，便于后续客户经理执行。</p>
+
+  <h2>三、Prompt 与工具流程</h2>
+  <h3>1. 核心 Prompt</h3>
+  <div class="prompt">你是银行信贷风险审核助手。请基于输入资料完成月度风险预警，不能编造没有给出的事实。
+
+输入资料包括：客户基本信息、近 6 个月销售额、贷款还款记录、账户流水摘要、外部公开信息和客户经理备注。
+
+请输出：
+1. 风险等级：低 / 中 / 高，并说明主要原因。
+2. 关键风险信号：按经营、还款、外部信息、人工备注分类列出。
+3. 需要人工复核的问题：列出 3 到 5 个可执行核查项。
+4. 如果证据不足，请明确写出“不足以判断”的部分。</div>
+
+  <h3>2. 工具使用流程</h3>
+  <ul>
+    <li>第一步，使用电子表格整理模拟数据，把不同来源的信息合并成统一输入。</li>
+    <li>第二步，在通用大模型对话工具中输入角色、资料范围和输出格式要求。</li>
+    <li>第三步，让智能体按经营、还款、外部信息、人工备注四类提取风险信号。</li>
+    <li>第四步，要求智能体输出风险等级、判断依据和人工复核清单。</li>
+    <li>第五步，由人工检查输出是否引用了输入资料，是否存在过度推断。</li>
+  </ul>
+
+  <h2 class="page-break">四、AI 输出结果展示</h2>
+  <p>在输入模拟资料后，AI 智能体给出的初步结论为“中高风险”。主要原因不是单一指标异常，而是销售下滑、轻微延迟还款、外部纠纷和订单延期同时出现，说明客户短期经营压力和现金流压力有所增加。</p>
+  <table>
+    <tr><th>输出项目</th><th>AI 结果摘要</th><th>人工评价</th></tr>
+    <tr><td>风险等级</td><td>中高风险</td><td>判断方向合理，但“中高”仍需结合原始流水和征信进一步确认。</td></tr>
+    <tr><td>经营信号</td><td>销售额连续 4 个月下降，累计降幅约 28%。</td><td>该信号明确，属于重要预警依据。</td></tr>
+    <tr><td>还款信号</td><td>近两期利息有 3 天和 5 天延迟。</td><td>未形成本金逾期，但说明资金安排趋紧。</td></tr>
+    <tr><td>外部信号</td><td>出现合同纠纷公告。</td><td>需要核验公告主体、诉讼阶段和影响金额。</td></tr>
+    <tr><td>复核建议</td><td>核查最新流水、订单真实性、回款计划、纠纷影响和抵质押物状态。</td><td>建议可执行，适合交给客户经理跟进。</td></tr>
+  </table>
+  <h3>风险强度排序</h3>
+  <div class="bar-row"><div class="bar-label">销售下滑</div><div class="bar-track"><div class="bar" style="width:80%"></div></div><div class="score">4</div></div>
+  <div class="bar-row"><div class="bar-label">延迟还款</div><div class="bar-track"><div class="bar" style="width:60%"></div></div><div class="score">3</div></div>
+  <div class="bar-row"><div class="bar-label">外部纠纷</div><div class="bar-track"><div class="bar" style="width:80%"></div></div><div class="score">4</div></div>
+  <div class="bar-row"><div class="bar-label">订单延期</div><div class="bar-track"><div class="bar" style="width:60%"></div></div><div class="score">3</div></div>
+  <p class="small">注：上图为 1 到 5 分的实验展示评分，用于排序，不代表真实授信模型。</p>
+
+  <h2>五、结果分析与人工判断</h2>
+  <p>从结果看，AI 的主要价值在于把分散资料变成结构化结论。它不仅给出风险等级，还能说明“为什么这么判断”，并把后续需要人工核查的问题列出来。这使客户经理可以更快进入核查阶段，而不是先花大量时间整理资料。</p>
+  <p>但 AI 的局限也很明显。第一，模拟数据并不等于完整征信报告、银行流水和合同材料，证据不足时不能直接下结论。第二，外部负面信息需要核验主体是否一致，不能只看到关键词就认定客户风险恶化。第三，客户经理备注属于软信息，可能带有主观性，需要与订单、发票、回款记录互相印证。</p>
+  <p>因此，本实验更适合把 AI 定位为“风险初筛与材料整理助手”。它提高的是发现问题、组织证据和生成复核清单的效率，而不是替代金融机构的责任判断。</p>
+
+  <h2>六、实验心得与改进方向</h2>
+  <p>本次实践让我认识到，金融场景中使用 AI 的关键不是让模型给出看似确定的答案，而是让它在明确边界内处理信息，并把不确定性说清楚。一个好的 Prompt 应该限定角色、限定事实来源、规定输出结构，同时要求模型暴露证据不足的部分。</p>
+  <p>如果继续改进，可以从三方面展开：一是接入更完整的原始资料，例如真实流水、征信摘要和合同履约记录；二是建立更明确的风险评分规则，避免模型凭语言感觉给分；三是记录人工采纳或驳回 AI 建议的原因，形成可审计的贷后管理流程。</p>
+  <div class="note"><strong>结论：</strong>AI 智能体适合用于信贷风险预警中的资料整合、异常识别和复核清单生成。它可以提升效率和一致性，但最终授信处置仍必须由人工结合原始材料、制度规则和风险责任进行判断。</div>
+</body>
+</html>
