@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中级宏观经济学 选择题题库</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f1f5f9;color:#1e293b;line-height:1.7;padding:20px}
+h1{text-align:center;color:#1e40af;margin-bottom:8px;font-size:1.3rem}
+.subtitle{text-align:center;color:#64748b;font-size:0.8rem;margin-bottom:20px}
+.score-bar{position:sticky;top:0;z-index:100;background:#fff;border-radius:12px;padding:12px 20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.score-bar .total{font-size:1.5rem;font-weight:800;color:#2563eb}
+.score-bar .detail{font-size:0.85rem;color:#64748b}
+.score-bar button{padding:6px 16px;border-radius:6px;border:none;font-weight:600;cursor:pointer;font-size:0.82rem}
+.btn-reset{background:#fee2e2;color:#991b1b}
+.btn-reset:hover{background:#fecaca}
+.btn-show{background:#dbeafe;color:#1e40af}
+.btn-show:hover{background:#bfdbfe}
+.chapter-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.chapter-filter button{padding:4px 10px;border-radius:5px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;font-size:0.75rem;transition:all 0.15s}
+.chapter-filter button.active{background:#2563eb;color:#fff;border-color:#2563eb}
+.chapter-filter button:hover:not(.active){background:#f1f5f9}
+
+.q-card{background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border:2px solid #e2e8f0;transition:border-color 0.2s}
+.q-card.answered-correct{border-color:#16a34a;background:#f0fdf4}
+.q-card.answered-wrong{border-color:#dc2626;background:#fef2f2}
+.q-num{display:inline-block;background:#2563eb;color:#fff;padding:2px 10px;border-radius:5px;font-size:0.75rem;font-weight:700;margin-bottom:8px}
+.q-text{font-size:0.9rem;font-weight:600;margin-bottom:10px;color:#0f172a}
+.options{display:flex;flex-direction:column;gap:6px}
+.opt{padding:8px 14px;border-radius:7px;border:2px solid #e2e8f0;cursor:pointer;font-size:0.84rem;transition:all 0.12s;user-select:none}
+.opt:hover:not(.done){border-color:#93c5fd;background:#eff6ff}
+.opt.done{pointer-events:none;opacity:0.85}
+.opt.pick-correct{background:#dcfce7!important;border-color:#16a34a!important;color:#15803d!important}
+.opt.pick-wrong{background:#fef2f2!important;border-color:#dc2626!important;color:#991b1b!important}
+.opt.show-answer{background:#fefce8!important;border-color:#eab308!important}
+.feedback{margin-top:8px;padding:8px 12px;border-radius:6px;font-size:0.8rem;font-weight:600;display:none}
+.feedback.show{display:block}
+.feedback.correct{background:#dcfce7;color:#15803d}
+.feedback.wrong{background:#fef2f2;color:#991b1b}
+.explanation{margin-top:6px;font-size:0.78rem;color:#475569;line-height:1.6;display:none}
+.explanation.show{display:block}
+</style>
+</head>
+<body>
+
+<h1>📝 中级宏观经济学 选择题题库</h1>
+<p class="subtitle">点击选项直接作答 · 即时判断对错 · 共<span id="totalQ">0</span>题</p>
+
+<div class="score-bar" id="scoreBar">
+  <span style="font-weight:700">得分：</span>
+  <span class="total" id="scoreDisplay">0/0</span>
+  <span class="detail" id="percentDisplay"></span>
+  <span style="flex:1"></span>
+  <button class="btn-show" onclick="showAllAnswers()">📖 显示全部答案</button>
+  <button class="btn-reset" onclick="resetAll()">🔄 重置</button>
+</div>
+
+<div class="chapter-filter" id="chapterFilter"></div>
+<div id="questionsContainer"></div>
+
+<script>
+// ===== 题库数据 =====
+var questions = [];
+
+// Chapter 6 新增9道
+var ch6new = [
+  {ch:6, q:"经济增长的真实含义是人均收入的持续增长。以人均量形式表示的生产函数y=f(k)表明（  ）。", opts:["A. 劳动不是经济增长的决定因素","B. 人均产出是劳动生产率的函数","C. 人均产出取决于人均资本存量","D. 生产函数符合规模报酬递增特征"], ans:"C", exp:"y=f(k)直接表明人均产出(y)由人均资本(k)决定——这是索洛模型的核心逻辑起点。A错误：劳动是自变量；B混淆了y=f(k)与y=f(L)；D错误：索洛生产函数是规模报酬不变的。"},
+  {ch:6, q:"2008年金融危机之后，欧美国家致力于提高储蓄率。根据索罗增长模型，这些国家新的稳态和初始稳态相比，资本的边际产量（  ），经济增长率（  ）。", opts:["A. 相同；降低","B. 降低；更高","C. 更低；相同","D. 更高；相同"], ans:"C", exp:"s↑→k*↑→MPK↓（边际报酬递减）。但长期经济增长率由技术进步g决定，与储蓄率无关——s只有水平效应没有增长效应。这是索洛模型最核心的结论！"},
+  {ch:6, q:"假设甲乙两个经济体相同，只是甲国的人均资本量高于乙国。两个经济体的生产函数都显示资本的边际产量递减。那么额外的人均资本存量所导致的人均产出（  ）。", opts:["A. 甲国更高","B. 乙国更高","C. 两国增加量相同","D. 只有甲国会增加"], ans:"B", exp:"MPK递减→k较低的穷国（乙）MPK更高→同样增一单位k→乙国产出增幅更大。这就是收敛假说的微观基础。"},
+  {ch:6, q:"第二次世界大战摧毁德国和日本的物质资本，按照索洛增长模型的预测，在储蓄率不变的情况下，这两个国家的产出将会增长且新的稳态将会接近（  ）。", opts:["A. 比之前更高的人均产出水平","B. 和之前的人均产出相同","C. 比之前的人均产出更低","D. 资本的黄金律水平"], ans:"B", exp:"s、δ、n、g未变→稳态k*、y*不变。战后K被摧毁→k<k*→快速资本积累→回到原稳态。索洛完美预测了德日'经济奇迹'本质上是回归稳态的追赶过程。"},
+  {ch:6, q:"假设某个孤立国处在没有人口增长和技术进步的稳态，且资本的边际产量低于折旧率，则（  ）。", opts:["A. 经济遵循黄金律","B. 人均稳态消费可能高于低储蓄率的稳态","C. 人均稳态消费可能高于高储蓄率稳态","D. 为实现黄金律稳态，折旧率应该被取消"], ans:"C", exp:"MPK<δ→资本过度积累→k*>k_gold→降低储蓄率可以减少维持过剩资本的成本，释放资源用于消费→c*反而提高。这正是'动态无效率'。"},
+  {ch:6, q:"假设某个孤立国没有人口增长和技术进步，该经济体稳态的资本边际产量是0.125，折旧率是0.1，储蓄率是0.225，那么稳态的资本存量（  ）。", opts:["A. 大于黄金律水平","B. 小于黄金律水平","C. 等于黄金律水平","D. 可能大于也可能小于黄金律水平"], ans:"B", exp:"无n和g时黄金律MPK=δ=0.10。当前MPK=0.125>0.10→资本边际产出仍高于折旧→资本太少→k*<k_gold。口诀：MPK>δ+n+g→资本不足，应多储蓄。"},
+  {ch:6, q:"假设某个孤立国处于稳态且资本存量高于黄金律水平，且该国没有人口增长和技术进步。如果储蓄率下降，（  ）。", opts:["A. 产出、消费、投资和折旧都会减少","B. 产出和投资会减少，消费和折旧会增加","C. 产出和投资会减少，消费和折旧会增加然后减少，但最终接近高于其初始状态的水平","D. 产出、投资和折旧会减少，消费会增加然后减少，但最终接近高于其初始状态的水平"], ans:"D", exp:"s↓→I↓→k↓→Y↓、δk↓。c=(1-s)y：s↓直接增消费份额但y↓减消费量→c先↑后↓，新稳态c*高于初始（向黄金律移动）。"},
+  {ch:6, q:"假设有甲和乙两个国家——甲国有10亿人口，乙国有1000万人口。这两个国家在其它方面均相同，则稳态的人均产出水平（  ），稳态的人均产出增长率（  ）。", opts:["A. 相同；相同","B. 甲国更高；甲国更高","C. 乙国更高；乙国更高","D. 甲国更高；乙国更高"], ans:"A", exp:"人口规模L不影响人均稳态值。y*由s、δ、n、g决定，与L大小无关——规模报酬不变+没有规模效应的必然结果。"},
+  {ch:6, q:"随着工业化和城市化的推进，欧美发达国家逐渐从人口增长的稳态转变为人口增长率为零。在新的稳态，总产出的增长会（  ），人均产出的增长会（  ）。", opts:["A. 更低；更低","B. 更低；和以前一样","C. 更高；比之前高","D. 更高；更低"], ans:"B", exp:"总产出增长率=n+g，n↓→Y增长率↓。人均产出增长率=g，n的变化不影响。但n↓→k*↑→y*水平↑（水平效应）。"}
+];
+
+// 预测卷15道选择题
+var examMC = [
+  {ch:"预测", q:"假设进口石油价格大幅上涨。以下说法正确的是（  ）。", opts:["A. GDP平减指数和CPI上涨幅度相同","B. GDP平减指数比CPI上涨更多","C. CPI比GDP平减指数上涨更多","D. 两者都不受影响"], ans:"C", exp:"CPI包含进口消费品（如汽油），GDP平减指数只计国内生产。进口石油涨价→CPI显著上升，GDP平减指数受影响较小。"},
+  {ch:"预测", q:"在古典模型中，政府增加购买支出G且不增税（发债融资）。长期中，（  ）。", opts:["A. 产出Y增加，利率r下降","B. 产出Y增加，利率r上升","C. 产出Y不变，利率r下降","D. 产出Y不变，利率r上升，投资I被挤出"], ans:"D", exp:"古典模型中Y由供给侧决定。G↑→S_public↓→国民储蓄↓→r↑→I↓（挤出效应）。古典二分法核心应用。"},
+  {ch:"预测", q:"假设通货存款比cr=0.3，准备金率rr=0.1。央行注入100亿元基础货币，M最终增加约（  ）。", opts:["A. 250亿","B. 325亿","C. 400亿","D. 1000亿"], ans:"B", exp:"m=(cr+1)/(cr+rr)=(0.3+1)/(0.3+0.1)=1.3/0.4=3.25。ΔM=3.25×100=325亿。"},
+  {ch:"预测", q:"实际利率保持在3%，货币供给增长率从5%永久提高到8%，长期中名义利率将（  ）。", opts:["A. 从8%上升到11%","B. 从8%上升到8%（不变）","C. 从3%上升到6%","D. 从5%上升到8%"], ans:"A", exp:"i=r+π。初始π=5%→i=8%；新π=8%→i=11%。r由实体经济决定，费雪效应为一对一传导。"},
+  {ch:"预测", q:"在包含技术进步的索洛模型中，储蓄率永久提高会导致（  ）。", opts:["A. 人均产出增长率永久提高","B. 总产出增长率永久提高","C. 人均产出水平提高，但增长率不变","D. 有效工人人均资本不变"], ans:"C", exp:"储蓄率只有水平效应没有增长效应。s↑→y*水平提高，但长期人均增长率仍为g。索洛模型最核心结论。"},
+  {ch:"预测", q:"某经济体处于稳态，δ=0.04, n=0.01, g=0.02, MPK=0.10。该经济体的资本存量（  ）。", opts:["A. 大于黄金律水平","B. 小于黄金律水平","C. 等于黄金律水平","D. 无法判断"], ans:"B", exp:"黄金律MPK=δ+n+g=0.07。当前MPK=0.10>0.07→资本不足→k*<k_gold→应提高储蓄率。"},
+  {ch:"预测", q:"在IS-LM模型中，政府支出乘数小于凯恩斯交叉中的乘数，原因是（  ）。", opts:["A. 价格水平上升抵消了部分效果","B. 净出口减少","C. 税收自动增加","D. 利率上升挤出了部分投资"], ans:"D", exp:"IS-LM中G↑→Y↑→货币需求↑→r↑→I↓→部分抵消Y的初始增加。凯恩斯交叉假设r不变故无此效应。"},
+  {ch:"预测", q:"当经济处于流动性陷阱时，（  ）。", opts:["A. 货币政策无效，财政政策完全有效","B. 财政政策无效，货币政策完全有效","C. 两者都无效","D. 两者都完全有效"], ans:"A", exp:"流动性陷阱中r极低→LM水平段→货币增发无法进一步降低r→货币政策无效。财政扩张不抬高利率→无挤出→财政政策完全有效。"},
+  {ch:"预测", q:"从IS-LM模型推导总需求曲线时，价格水平P下降导致（  ）。", opts:["A. IS曲线右移，Y增加","B. IS曲线左移，Y减少","C. LM曲线右移，Y增加","D. LM曲线左移，Y减少"], ans:"C", exp:"P↓→实际货币供给M/P↑→给定Y下r更低→LM右移→与IS交点处Y更大。AD曲线向右下倾斜：P↓→Y↑。"},
+  {ch:"预测", q:"根据附加预期的菲利普斯曲线，如果通胀低于预期通胀，（  ）。", opts:["A. 失业率低于自然失业率","B. 失业率高于自然失业率","C. 失业率等于自然失业率","D. 实际GDP高于自然产出"], ans:"B", exp:"π=π^e-γ(u-u_n)。π<π^e→-γ(u-u_n)>0→u>u_n。通胀低于预期→失业高于自然率（短期权衡）。"},
+  {ch:"预测", q:"小型开放经济中，世界利率r*上升会导致（  ）。", opts:["A. 贸易余额改善，实际汇率升值","B. 贸易余额恶化，实际汇率贬值","C. 贸易余额恶化，实际汇率升值","D. 贸易余额改善，实际汇率贬值"], ans:"D", exp:"r*↑→国内I↓→S不变而I↓→S-I↑→NX↑（贸易盈余扩大）。资本外流→本币贬值。"},
+  {ch:"预测", q:"蒙代尔-弗莱明模型中，浮动汇率制下财政扩张会导致（  ）。", opts:["A. 产出增加，汇率不变","B. 产出增加，汇率贬值","C. 产出不变，汇率升值","D. 产出减少，汇率贬值"], ans:"C", exp:"浮动汇率+资本自由流动→G↑→本币升值→NX完全抵消→Y不变。财政政策在浮动汇率下完全无效。"},
+  {ch:"预测", q:"蒙代尔-弗莱明模型中，固定汇率制下货币扩张会导致（  ）。", opts:["A. 产出不变，央行外汇储备减少","B. 产出增加，央行外汇储备增加","C. 产出增加，汇率不变","D. 产出减少，汇率不变"], ans:"A", exp:"固定汇率下M↑→LM*右移→资本外流→央行干预→M自动回缩→Y不变。货币政策在固定汇率下完全无效，只消耗储备。"},
+  {ch:"预测", q:"某国GDP增长5%，资本增长6%，劳动增长2%，资本份额α=0.4。索洛残差约为（  ）。", opts:["A. 1.8%","B. 1.4%","C. 2.6%","D. 5.0%"], ans:"B", exp:"ΔA/A=5%-0.4×6%-0.6×2%=5%-2.4%-1.2%=1.4%。TFP贡献占总增长的28%。"},
+  {ch:"预测", q:"根据'不可能三角'理论，若一国选择固定汇率且允许资本自由流动，则（  ）。", opts:["A. 可以同时保持独立的货币政策","B. 货币政策对调节国内经济最有效","C. 财政政策完全无效","D. 货币政策必须服从汇率目标，丧失独立性"], ans:"D", exp:"不可能三角：独立货币政策、资本自由流动、固定汇率——三者只能选其二。选固定汇率+资本自由→货币政策不独立。"}
+];
+
+// Chapter 6 第一批7道
+var ch6first = [
+  {ch:6, q:"在索洛模型中，与平衡增长路径兼容的技术进步是（  ）。", opts:["A. 资本改善型","B. 希克斯中性","C. 劳动改善型Y=F(K,L×E)","D. 任何类型"], ans:"C", exp:"Y=F(K,L×E)，E以速率g增长。唯一与稳态兼容的形式，称为哈罗德中性。"},
+  {ch:6, q:"L增长率5%，E增长率2%，则有效工人L×E增长率是（  ）。", opts:["A. 3%","B. 5%","C. 2%","D. 7%"], ans:"D", exp:"有效工人增长率=ΔL/L+ΔE/E=5%+2%=7%。增长率相加。"},
+  {ch:6, q:"'持平投资'(δ+n+g)k̂包括（  ）。", opts:["A. 仅折旧","B. 折旧+新工人资本","C. 折旧+技术进步需要的资本","D. 折旧+新工人资本+新有效工人资本"], ans:"D", exp:"持平投资需覆盖：δk̂（折旧）、nk̂（新工人）、gk̂（新有效工人）。"},
+  {ch:6, q:"在有技术进步的索洛模型中，黄金律稳态最大化的是（  ）。", opts:["A. 人均产出","B. 总消费","C. 人均资本","D. 有效工人人均消费"], ans:"D", exp:"黄金律最大化稳态ĉ*。人均消费c以g增长，但ĉ*最大化等价于最大化消费路径截距。"},
+  {ch:6, q:"在有技术进步的稳态中，以下哪项以g的速率增长？（  ）", opts:["A. 有效工人人均资本k̂","B. 有效工人人均产出ŷ","C. 资本产出比K/Y","D. 实际工资W/P"], ans:"D", exp:"W/P=MPL=(1-α)Y/L以g增长。k̂、ŷ、K/Y、MPK在稳态均不变。"},
+  {ch:6, q:"资本收入占GDP的20%，K/Y=2，折旧率=4%。净MPK是（  ）。", opts:["A. 4%","B. 8%","C. 10%","D. 6%"], ans:"D", exp:"MPK×K=0.2Y。K/Y=2→MPK×2Y=0.2Y→MPK=10%。净MPK=10%-4%=6%。"},
+  {ch:6, q:"AK模型与索洛模型的根本区别在于（  ）。", opts:["A. AK模型中储蓄率更高","B. AK模型不考虑折旧","C. 资本没有表现出边际报酬递减","D. AK模型中没有技术进步"], ans:"C", exp:"AK模型中MPK=A（常数），消除边际报酬递减→s的永久增长效应成为可能。"}
+];
+
+// Chapter 1-5 选择代表性题目
+var ch1to5 = [
+  {ch:1, q:"经济学使用模型的原因是（  ）。", opts:["A. 阐明经济学家的思考","B. 说明外生变量如何影响内生变量","C. 有趣","D. 以上所有"], ans:"D", exp:"模型阐明思考(A)、说明外生→内生传导(B)、也有智识趣味(C)。最核心的是B。"},
+  {ch:1, q:"微观经济学（  ）。", opts:["A. 是对如何从个体观察构建宏观经济数据的研究","B. 对理解宏观经济关系背后的决策有用","C. 是与宏观经济学无关的另外一个领域","D. 是宏观经济学这个单词的误拼"], ans:"B", exp:"微观研究个体决策，是宏观关系的微观基础。消费←效用最大化、投资←利润最大化。"},
+  {ch:1, q:"'工资不涨是为了让我们努力奋斗'，这说明（  ）。", opts:["A. 劳动力工资是弹性价格","B. 劳动力工资是粘性价格","C. 劳动力市场容易实现市场出清","D. 劳动力工资由需求方决定"], ans:"B", exp:"工资不随供需灵活调整，正是价格粘性的体现。"},
+  {ch:1, q:"外生变量是（  ）。", opts:["A. 在模型之外决定","B. 在模型之内决定","C. 为模型分析的结果","D. 由模型所解释"], ans:"A", exp:"外生变量=模型的输入；内生变量=模型的输出。索洛模型中s、n、g是外生，k*、y*是内生。"},
+  {ch:2, q:"辞职做家庭主妇后，劳动参与率（ ），失业率（ ）。", opts:["A. 上升，上升","B. 上升，不变","C. 下降，上升","D. 下降，不变"], ans:"C", exp:"退出劳动力→劳动参与率↓。E↓而U不变→失业率↑。"},
+  {ch:2, q:"三星韩国公司提高手机售价，影响中国（  ）。", opts:["A. 影响GDP平减指数和CPI","B. 不影响GDP平减指数但影响CPI","C. 影响GDP平减指数但不影响CPI","D. 两者都不影响"], ans:"B", exp:"三星是韩国公司→不影响中国GDP平减指数（只计国内生产），但影响中国CPI（消费者购买进口品）。"},
+  {ch:2, q:"面包发霉变质被扔掉，GDP会（  ）。", opts:["A. 增加","B. 不变","C. 减少","D. 无法确定"], ans:"C", exp:"面包发霉报废→存货投资被冲销→GDP减少。GDP计入存货变动。"},
+  {ch:2, q:"以下哪项不属于政府购买G？（  ）", opts:["A. 社会保障支付","B. 公共基础设施建设","C. 购买军事设备","D. 公务员提供的服务"], ans:"A", exp:"社保是转移支付，不购买商品/服务。GDP中G不含转移支付。"},
+  {ch:3, q:"古典模型中，什么决定总产出？（  ）", opts:["A. 技术水平","B. 人口增长率","C. 资本积累数量","D. 产品和服务的数量"], ans:"D", exp:"给定K、L和技术，Y=F(K,L)直接确定。古典模型从供给侧出发。"},
+  {ch:3, q:"古典模型的充分就业假设意味着（  ）。", opts:["A. 资本和劳动都得到充分利用","B. 资本充分利用但一些劳动未雇佣","C. 所有劳动被雇佣但资本闲置","D. 资本和劳动力都未充分利用"], ans:"A", exp:"价格完全弹性→市场即时出清→不存在失业和产能过剩。这是古典模型与现实的最大差距。"},
+  {ch:3, q:"地震摧毁资本存量后，实际工资（ ），实际租金（ ）。", opts:["A. ↑，↓","B. ↓，↓","C. ↑，↑","D. ↓，↑"], ans:"D", exp:"K↓→MPK↑→R/P↑。每个工人搭配的资本↓→MPL↓→W/P↓。"},
+  {ch:4, q:"基础货币B=C+R。C=1000亿, R=500亿，则B=（  ）。", opts:["A. 500亿","B. 1000亿","C. 1500亿","D. 6000亿"], ans:"C", exp:"B=C+R=1000+500=1500亿。银行存款D不属于基础货币。"},
+  {ch:4, q:"cr=0.5, rr=0.1，货币乘数=（  ）。", opts:["A. 2","B. 3","C. 4","D. 2.5"], ans:"D", exp:"m=(cr+1)/(cr+rr)=(0.5+1)/(0.5+0.1)=1.5/0.6=2.5。"},
+  {ch:5, q:"i=1%, π=5%，实际利率=（  ）。", opts:["A. 6%","B. 4%","C. -4%","D. -6%"], ans:"C", exp:"r=i-π=1%-5%=-4%。实际利率为负→购买力缩水。"},
+  {ch:5, q:"实际利率↓1%，通胀↑2%，名义利率（  ）。", opts:["A. ↓3%","B. ↑1%","C. ↓1%","D. ↑3%"], ans:"B", exp:"Δi=Δr+Δπ=-1%+2%=+1%。费雪效应：名义利率调整反映实际利率和通胀变化。"},
+  {ch:5, q:"持有货币的机会成本是（  ）。", opts:["A. 名义利率","B. 实际利率","C. 通胀率","D. 汇率"], ans:"A", exp:"持币放弃的收益=将钱存银行能获得的i。Baumol-Tobin模型定义机会成本为名义利率。"},
+  {ch:5, q:"恶性通胀背后的动机往往是政府（  ）。", opts:["A. 想降低失业率","B. 需要通过征收铸币税支付其支出","C. 希望刺激出口","D. 试图降低实际工资"], ans:"B", exp:"财政困境→无法征税/发债→只能印钱→货币激增→恶性通胀。财政是根源，货币是近因。"},
+  {ch:7, q:"典型衰退中，消费（  ）；投资波动比例（  ）。", opts:["A. 不变；更小","B. 上升；更大","C. 下降；更大","D. 下降；更小"], ans:"C", exp:"衰退中C↓、I↓，但投资波动远大于消费（加速数效应，通常GDP变动的3-5倍）。"},
+  {ch:7, q:"经济周期是（  ）。", opts:["A. 定期且可预测的","B. 不定期但可预测的","C. 定期但不可预测的","D. 不定期且不可预测的"], ans:"D", exp:"经济周期具有误导性——不像物理周期那样规律。衰退不定期发生且难以预测。"},
+  {ch:7, q:"失业率↑2%，根据奥肯定律GDP将（  ）。", opts:["A. ↑约1-2%","B. ↑约3-4%","C. ↓约3-4%","D. ↓约1-2%"], ans:"C", exp:"奥肯定律：Δ(Y-Ȳ)/Ȳ≈3%-2Δu。失业↑2%→GDP↓约3-4%。"},
+  {ch:8, q:"MPC=2/3，G↑1200亿→Y↑（  ）。", opts:["A. 1200亿","B. 2400亿","C. 3000亿","D. 3600亿"], ans:"D", exp:"乘数=1/(1-2/3)=3。ΔY=3×1200=3600亿。"},
+  {ch:8, q:"MPC=2/3，减税1200亿→Y↑（  ）。", opts:["A. 3600亿","B. 3000亿","C. 2400亿","D. 1200亿"], ans:"C", exp:"税收乘数=-MPC/(1-MPC)=-2。ΔY=2×1200=2400亿。小于支出乘数(3)。"},
+  {ch:8, q:"古典理论Y取决于（  ）；凯恩斯Y取决于（  ）。", opts:["A. 总需求；总供给","B. 总供给；总需求","C. 货币；财政","D. 财政；货币"], ans:"B", exp:"全书最重要的二分法。古典（长期）=供给侧决定；凯恩斯（短期）=需求侧决定。"},
+  {ch:8, q:"IS-LM中扩张财政对Y的影响小于凯恩斯交叉，因为（  ）。", opts:["A. 利率上升挤出了部分投资","B. 价格上升抵消了效果","C. 汇率升值减少了净出口","D. 税收自动增加"], ans:"A", exp:"G↑→Y↑→r↑→I↓→部分抵消Y的初始增加。这就是利率渠道的挤出效应。"},
+  {ch:10, q:"小型开放经济中G↑→贸易（  ），实际汇率（  ）。", opts:["A. 盈余；贬值","B. 盈余；升值","C. 赤字；升值","D. 赤字；贬值"], ans:"C", exp:"G↑→S↓→S-I↓→NX↓（贸易赤字）。资本流入→本币升值。双赤字假说。"},
+  {ch:10, q:"小型开放经济中r*↑→贸易（  ），实际汇率（  ）。", opts:["A. 赤字；升值","B. 盈余；贬值","C. 赤字；贬值","D. 盈余；升值"], ans:"B", exp:"r*↑→国内I↓→S-I↑→NX↑（盈余）。资本外流→本币贬值。"},
+  {ch:11, q:"浮动汇率制下，哪项政策能有效提高Y？（  ）", opts:["A. 财政扩张","B. 货币扩张","C. 贸易保护","D. 以上都无效"], ans:"B", exp:"浮动汇率：M↑→LM*右移→本币贬值→NX↑→Y↑。财政扩张→本币升值→NX抵消→Y不变。"},
+  {ch:11, q:"固定汇率制下，哪项政策能有效提高Y？（  ）", opts:["A. 财政扩张","B. 货币扩张","C. 货币政策","D. 以上都无效"], ans:"A", exp:"固定汇率：G↑→Y↑→央行配合扩张M→双重刺激→Y大幅↑。货币扩张无效（央行需维持汇率）。"},
+  {ch:11, q:"不可能三角的三者不包括（  ）。", opts:["A. 独立的货币政策","B. 自由的资本流动","C. 固定汇率","D. 自由贸易"], ans:"D", exp:"不可能三角：独立货币政策、自由资本流动、固定汇率——三者只能选其二。自由贸易不是三角之一。"}
+];
+
+// 合并所有题目
+questions = ch6first.concat(ch6new).concat(ch1to5).concat(examMC);
+
+// ===== 渲染题目 =====
+var answered = {};
+var container = document.getElementById('questionsContainer');
+var totalEl = document.getElementById('totalQ');
+totalEl.textContent = questions.length;
+
+// 章节筛选按钮
+var chapters = [];
+var seen = {};
+questions.forEach(function(q){
+  var ch = String(q.ch);
+  if(!seen[ch]){seen[ch]=true;chapters.push(ch);}
+});
+chapters.sort(function(a,b){
+  if(a==='预测') return 1;
+  if(b==='预测') return -1;
+  return parseInt(a)-parseInt(b);
+});
+var filterDiv = document.getElementById('chapterFilter');
+chapters.forEach(function(ch){
+  var btn = document.createElement('button');
+  btn.textContent = ch==='预测' ? '🎯 预测卷' : '第'+ch+'章';
+  btn.setAttribute('data-ch', ch);
+  btn.onclick = function(){filterChapter(ch, this);};
+  filterDiv.appendChild(btn);
+});
+
+function filterChapter(ch, btn){
+  var buttons = filterDiv.querySelectorAll('button');
+  var isActive = btn.classList.contains('active');
+  buttons.forEach(function(b){b.classList.remove('active');});
+  if(!isActive){
+    btn.classList.add('active');
+    container.querySelectorAll('.q-card').forEach(function(card){
+      if(card.getAttribute('data-ch') === ch){
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  } else {
+    container.querySelectorAll('.q-card').forEach(function(card){
+      card.style.display = '';
+    });
+  }
+}
+
+// 渲染所有题目
+questions.forEach(function(q, i){
+  var card = document.createElement('div');
+  card.className = 'q-card';
+  card.setAttribute('data-ch', String(q.ch));
+  card.setAttribute('data-idx', i);
+  
+  var chLabel = q.ch === '预测' ? '🎯预测卷' : '第'+q.ch+'章';
+  var html = '<span class="q-num">'+chLabel+' · 第'+(i+1)+'题</span>';
+  html += '<div class="q-text">'+q.q+'</div>';
+  html += '<div class="options">';
+  var labels = ['A','B','C','D'];
+  q.opts.forEach(function(opt, j){
+    html += '<div class="opt" data-idx="'+i+'" data-val="'+labels[j]+'" onclick="pickAnswer(this,\''+labels[j]+'\','+i+')">'+opt+'</div>';
+  });
+  html += '</div>';
+  html += '<div class="feedback" id="fb'+i+'"></div>';
+  html += '<div class="explanation" id="exp'+i+'">💡 '+q.exp+'</div>';
+  
+  card.innerHTML = html;
+  container.appendChild(card);
+});
+
+function pickAnswer(optEl, userVal, idx){
+  if(answered[idx]) return;
+  answered[idx] = true;
+  var q = questions[idx];
+  var card = optEl.closest('.q-card');
+  var allOpts = card.querySelectorAll('.opt');
+  
+  allOpts.forEach(function(o){o.classList.add('done');});
+  
+  if(userVal === q.ans){
+    optEl.classList.add('pick-correct');
+    card.classList.add('answered-correct');
+    document.getElementById('fb'+idx).textContent = '✅ 正确！';
+    document.getElementById('fb'+idx).className = 'feedback correct show';
+  } else {
+    optEl.classList.add('pick-wrong');
+    card.classList.add('answered-wrong');
+    allOpts.forEach(function(o){
+      if(o.getAttribute('data-val') === q.ans) o.classList.add('show-answer');
+    });
+    document.getElementById('fb'+idx).textContent = '❌ 错误！正确答案是 '+q.ans;
+    document.getElementById('fb'+idx).className = 'feedback wrong show';
+  }
+  document.getElementById('exp'+idx).className = 'explanation show';
+  updateScore();
+}
+
+function updateScore(){
+  var total = Object.keys(answered).length;
+  var correct = 0;
+  for(var key in answered){
+    if(answered[key]){
+      var idx = parseInt(key);
+      var card = document.querySelector('[data-idx="'+idx+'"]');
+      if(card && card.classList.contains('answered-correct')) correct++;
+    }
+  }
+  document.getElementById('scoreDisplay').textContent = correct+'/'+total;
+  var pct = total > 0 ? Math.round(correct/total*100) : 0;
+  document.getElementById('percentDisplay').textContent = pct+'% ('+correct+'✓ / '+(total-correct)+'✗)';
+}
+
+function resetAll(){
+  answered = {};
+  document.querySelectorAll('.q-card').forEach(function(card){
+    card.classList.remove('answered-correct','answered-wrong');
+    card.querySelectorAll('.opt').forEach(function(o){
+      o.classList.remove('done','pick-correct','pick-wrong','show-answer');
+    });
+    card.querySelectorAll('.feedback').forEach(function(f){
+      f.className = 'feedback';f.textContent='';
+    });
+    card.querySelectorAll('.explanation').forEach(function(e){
+      e.className = 'explanation';
+    });
+  });
+  updateScore();
+}
+
+function showAllAnswers(){
+  questions.forEach(function(q, i){
+    if(!answered[i]){
+      answered[i] = true;
+      var card = document.querySelector('[data-idx="'+i+'"]');
+      card.querySelectorAll('.opt').forEach(function(o){
+        o.classList.add('done');
+        if(o.getAttribute('data-val') === q.ans) o.classList.add('show-answer');
+      });
+      document.getElementById('exp'+i).className = 'explanation show';
+    }
+  });
+  updateScore();
+}
+
+updateScore();
+</script>
+</body>
+</html>
